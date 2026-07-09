@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Billing &amp; Plans — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-ByM0Yjt-.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-BZxKtNBU.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <a href="/" class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Nexus home">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" data-tooltip="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" data-tooltip="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" data-tooltip="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" data-tooltip="Team" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" data-theme-icon class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" data-tooltip="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <main data-app-main class="flex-1 overflow-y-auto bg-slate-950">
+    <!-- Top bar -->
+    <div class="sticky top-0 z-10 flex items-center justify-between gap-3 px-6 py-4 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+      <div>
+        <h1 class="text-lg font-bold text-slate-100">Billing &amp; Plans</h1>
+        <p class="text-xs text-slate-500">Manage your subscription, payment methods and invoices</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="window.NexusComponents?.toast('Preparing invoice export…','info')" class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sm text-slate-200 transition"><i data-lucide="download" class="w-4 h-4"></i>Export</button>
+        <button onclick="window.NexusComponents?.openModal('upgrade-modal')" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition"><i data-lucide="arrow-up" class="w-4 h-4"></i>Upgrade</button>
+      </div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-6 py-8 space-y-10">
+
+      <!-- ═══ Billing Overview ═══ -->
+      <section>
+        <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Billing Overview</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="rounded-2xl border border-slate-800 bg-slate-900 p-4">
+            <div class="flex items-center gap-2 text-slate-500 text-xs mb-2"><i data-lucide="dollar-sign" class="w-4 h-4"></i>Current plan</div>
+            <p class="text-2xl font-bold text-slate-100">$48<span class="text-sm font-medium text-slate-500">/mo</span></p>
+            <p class="text-xs text-slate-500 mt-1">Pro · billed monthly</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900 p-4">
+            <div class="flex items-center gap-2 text-slate-500 text-xs mb-2"><i data-lucide="calendar" class="w-4 h-4"></i>Next payment</div>
+            <p class="text-2xl font-bold text-slate-100">Aug 1</p>
+            <p class="text-xs text-slate-500 mt-1">in 23 days</p>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900 p-4">
+            <div class="flex items-center gap-2 text-slate-500 text-xs mb-2"><i data-lucide="credit-card" class="w-4 h-4"></i>Payment method</div>
+            <p class="text-lg font-bold text-slate-100 flex items-center gap-2">Visa ···· 4242</p>
+            <p class="text-xs text-slate-500 mt-1">Expires 08/27</p>
+          </div>
+          <div class="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+            <div class="flex items-center gap-2 text-emerald-400/80 text-xs mb-2"><i data-lucide="wallet" class="w-4 h-4"></i>Account credit</div>
+            <p class="text-2xl font-bold text-emerald-300">$25.00</p>
+            <p class="text-xs text-slate-500 mt-1">Applied to next invoice</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ Current Plan ═══ -->
+      <section>
+        <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Current Plan</h2>
+        <div class="rounded-2xl border border-violet-500/30 bg-gradient-to-br from-violet-600/10 to-slate-900 p-6">
+          <div class="flex items-start justify-between gap-4 flex-wrap">
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-xl font-bold text-slate-100">Pro</h3>
+                <span class="px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-300 text-[10px] font-bold uppercase tracking-wide">Active</span>
+              </div>
+              <p class="text-sm text-slate-400 mt-1">Everything a growing team needs — renews Aug 1, 2026.</p>
+              <div class="grid sm:grid-cols-2 gap-x-8 gap-y-1.5 mt-4 text-sm text-slate-300">
+                <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>Up to 25 seats</span>
+                <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>100 GB file storage</span>
+                <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>Unlimited message history</span>
+                <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>Group video calls</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-3xl font-bold text-slate-100">$48<span class="text-sm font-medium text-slate-500">/mo</span></p>
+              <div class="flex flex-col gap-2 mt-3">
+                <button onclick="window.NexusComponents?.openModal('upgrade-modal')" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Upgrade plan</button>
+                <button onclick="window.NexusComponents?.toast('Subscription set to cancel at period end','error')" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel plan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ Pricing Plans ═══ -->
+      <section>
+        <div class="flex items-center justify-between mb-3 flex-wrap gap-3">
+          <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Pricing Plans</h2>
+          <!-- Monthly / Yearly toggle -->
+          <div class="flex items-center gap-1 bg-slate-900 border border-slate-800 rounded-lg p-0.5" id="cycle-toggle">
+            <button data-cycle="monthly" class="px-3 py-1.5 rounded-md text-xs font-medium bg-slate-700 text-slate-100 transition">Monthly</button>
+            <button data-cycle="yearly" class="px-3 py-1.5 rounded-md text-xs font-medium text-slate-400 transition">Yearly <span class="text-emerald-400">−20%</span></button>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Free -->
+          <div class="rounded-2xl border border-slate-800 bg-slate-900 p-5 flex flex-col">
+            <h3 class="font-semibold text-slate-100">Free</h3>
+            <p class="mt-2"><span class="text-3xl font-bold text-slate-100" data-price data-m="0" data-y="0">$0</span><span class="text-xs text-slate-500 plan-suffix">/mo</span></p>
+            <p class="text-xs text-slate-500 mt-1">For small teams getting started</p>
+            <ul class="mt-4 space-y-1.5 text-sm text-slate-400 flex-1">
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-500"></i>Up to 5 seats</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-500"></i>10 GB storage</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-500"></i>90-day history</li>
+            </ul>
+            <button onclick="window.NexusComponents?.toast('Downgrade requested','info')" class="mt-4 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Downgrade</button>
+          </div>
+          <!-- Pro (current) -->
+          <div class="rounded-2xl border-2 border-violet-500 bg-slate-900 p-5 flex flex-col relative">
+            <span class="absolute -top-2.5 left-4 px-2 py-0.5 rounded-full bg-violet-600 text-white text-[10px] font-bold uppercase">Current</span>
+            <h3 class="font-semibold text-slate-100">Pro</h3>
+            <p class="mt-2"><span class="text-3xl font-bold text-slate-100" data-price data-m="48" data-y="38">$48</span><span class="text-xs text-slate-500 plan-suffix">/mo</span></p>
+            <p class="text-xs text-slate-500 mt-1">For growing teams</p>
+            <ul class="mt-4 space-y-1.5 text-sm text-slate-400 flex-1">
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-400"></i>Up to 25 seats</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-400"></i>100 GB storage</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-violet-400"></i>Unlimited history</li>
+            </ul>
+            <button disabled class="mt-4 px-4 py-2 rounded-xl bg-violet-600/20 text-violet-300 text-sm font-semibold cursor-default">Your plan</button>
+          </div>
+          <!-- Business -->
+          <div class="rounded-2xl border border-slate-800 bg-slate-900 p-5 flex flex-col">
+            <h3 class="font-semibold text-slate-100">Business</h3>
+            <p class="mt-2"><span class="text-3xl font-bold text-slate-100" data-price data-m="96" data-y="77">$96</span><span class="text-xs text-slate-500 plan-suffix">/mo</span></p>
+            <p class="text-xs text-slate-500 mt-1">For scaling organizations</p>
+            <ul class="mt-4 space-y-1.5 text-sm text-slate-400 flex-1">
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>Up to 100 seats</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>1 TB storage</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>SSO &amp; audit logs</li>
+            </ul>
+            <button data-plan="Business" data-plan-price="96" class="upgrade-btn mt-4 px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Upgrade</button>
+          </div>
+          <!-- Enterprise -->
+          <div class="rounded-2xl border border-slate-800 bg-slate-900 p-5 flex flex-col">
+            <h3 class="font-semibold text-slate-100">Enterprise</h3>
+            <p class="mt-2"><span class="text-3xl font-bold text-slate-100">Custom</span></p>
+            <p class="text-xs text-slate-500 mt-1">Advanced security &amp; support</p>
+            <ul class="mt-4 space-y-1.5 text-sm text-slate-400 flex-1">
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i>Unlimited seats</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i>Dedicated support</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i>99.99% SLA</li>
+            </ul>
+            <button onclick="window.NexusComponents?.toast('Our team will reach out shortly','success')" class="mt-4 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Contact sales</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ Usage Summary ═══ -->
+      <section>
+        <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Usage Summary</h2>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900 p-6 grid sm:grid-cols-2 gap-6">
+          <div>
+            <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-300">Seats</span><span class="text-slate-500">18 / 25</span></div>
+            <div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-violet-500" style="width:72%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-300">File storage</span><span class="text-slate-500">64 / 100 GB</span></div>
+            <div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-blue-500" style="width:64%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-300">Messages this month</span><span class="text-slate-500">142k / 500k</span></div>
+            <div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-emerald-500" style="width:28%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-300">API calls</span><span class="text-amber-400">89k / 100k</span></div>
+            <div class="h-2 rounded-full bg-slate-800"><div class="h-2 rounded-full bg-amber-500" style="width:89%"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- ═══ Payment Methods ═══ -->
+        <section>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Payment Methods</h2>
+            <button onclick="openPaymentModal('add')" class="flex items-center gap-1.5 text-xs text-violet-400 hover:text-violet-300 transition"><i data-lucide="plus" class="w-4 h-4"></i>Add method</button>
+          </div>
+          <div id="payment-list" class="space-y-3"></div>
+        </section>
+
+        <!-- ═══ Billing Address ═══ -->
+        <section>
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Billing Address</h2>
+            <button onclick="window.NexusComponents?.openModal('address-modal')" class="flex items-center gap-1.5 text-xs text-violet-400 hover:text-violet-300 transition"><i data-lucide="pencil" class="w-4 h-4"></i>Edit</button>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900 p-5 text-sm text-slate-300 leading-relaxed">
+            <p class="font-semibold text-slate-100" id="addr-name">Nexus HQ Inc.</p>
+            <p id="addr-line">548 Market Street, Suite 200</p>
+            <p id="addr-city">San Francisco, CA 94104</p>
+            <p id="addr-country">United States</p>
+            <div class="mt-3 pt-3 border-t border-slate-800 flex items-center gap-2 text-slate-500 text-xs">
+              <i data-lucide="receipt" class="w-3.5 h-3.5"></i>VAT ID: <span id="addr-vat" class="text-slate-300">US-8829174</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ═══ Invoice History ═══ -->
+      <section>
+        <div class="flex items-center justify-between mb-3 flex-wrap gap-3">
+          <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Invoice History</h2>
+          <div class="flex items-center gap-2 flex-wrap">
+            <!-- Status filter tabs -->
+            <div class="flex items-center gap-1 bg-slate-900 border border-slate-800 rounded-lg p-0.5" id="invoice-filter">
+              <button data-status="all" class="px-2.5 py-1 rounded-md text-xs bg-slate-700 text-slate-100 transition">All</button>
+              <button data-status="paid" class="px-2.5 py-1 rounded-md text-xs text-slate-400 transition">Paid</button>
+              <button data-status="pending" class="px-2.5 py-1 rounded-md text-xs text-slate-400 transition">Pending</button>
+              <button data-status="failed" class="px-2.5 py-1 rounded-md text-xs text-slate-400 transition">Failed</button>
+            </div>
+            <div class="relative">
+              <i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2"></i>
+              <input id="invoice-search" type="search" placeholder="Search invoices" class="w-44 bg-slate-900 border border-slate-800 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-violet-500" />
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-slate-950/50 text-slate-500 text-xs uppercase tracking-wide">
+                <tr>
+                  <th class="text-left font-medium px-5 py-3">Invoice</th>
+                  <th class="text-left font-medium px-5 py-3 hidden sm:table-cell">Date</th>
+                  <th class="text-left font-medium px-5 py-3">Amount</th>
+                  <th class="text-left font-medium px-5 py-3">Status</th>
+                  <th class="text-right font-medium px-5 py-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="invoice-body" class="divide-y divide-slate-800"></tbody>
+            </table>
+          </div>
+          <div id="invoice-empty" class="hidden px-5 py-10 text-center text-sm text-slate-500">No invoices match your filters.</div>
+          <div id="invoice-pager" class="flex items-center justify-center gap-1 px-5 py-3 border-t border-slate-800"></div>
+        </div>
+      </section>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- ═══ Recent Transactions ═══ -->
+        <section>
+          <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Recent Transactions</h2>
+          <div id="txn-list" class="rounded-2xl border border-slate-800 bg-slate-900 divide-y divide-slate-800 overflow-hidden"></div>
+        </section>
+
+        <!-- ═══ Promo Code ═══ -->
+        <section>
+          <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Promo Code</h2>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+            <p class="text-sm text-slate-400 mb-3">Have a discount code? Enter it below to apply credit to your account.</p>
+            <div class="flex gap-2">
+              <input id="promo-input" type="text" placeholder="Enter code (try NEXUS20)" class="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 uppercase focus:outline-none focus:border-violet-500 transition" />
+              <button id="promo-apply" class="px-4 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Apply</button>
+            </div>
+            <p id="promo-msg" class="hidden mt-2 text-xs"></p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded-lg bg-slate-800 text-slate-400">NEXUS20 — 20% off</span>
+              <span class="px-2 py-1 rounded-lg bg-slate-800 text-slate-400">WELCOME10 — $10 credit</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ═══ Billing FAQ ═══ -->
+      <section>
+        <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Billing FAQ</h2>
+        <div class="rounded-2xl border border-slate-800 bg-slate-900 divide-y divide-slate-800 overflow-hidden" id="faq"></div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- ═══ Modals ═══ -->
+
+<!-- Add / Edit Payment Method -->
+<div id="payment-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <h2 class="font-bold text-slate-100" id="payment-modal-title">Add Payment Method</h2>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <form data-validate data-success="Payment method saved" data-close-modal="payment-modal" data-reset onsubmit="onPaymentSaved(event)">
+      <div class="p-5 space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 mb-1.5">Cardholder name</label>
+          <input id="pm-name" type="text" data-rule="required" placeholder="Jamie Rivera" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 mb-1.5">Card number</label>
+          <div class="flex items-center gap-2 bg-slate-800 border border-slate-700 rounded-xl px-3 focus-within:border-violet-500 transition">
+            <i data-lucide="credit-card" class="w-4 h-4 text-slate-500"></i>
+            <input id="pm-number" type="text" inputmode="numeric" data-rule="required|min:12" placeholder="4242 4242 4242 4242" class="flex-1 bg-transparent py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-1.5">Expiry (MM/YY)</label>
+            <input id="pm-exp" type="text" data-rule="required|min:4" placeholder="08/27" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-400 mb-1.5">CVC</label>
+            <input id="pm-cvc" type="text" inputmode="numeric" data-rule="required|min:3" placeholder="123" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition" />
+          </div>
+        </div>
+        <label class="flex items-center gap-2 text-sm text-slate-300 cursor-pointer">
+          <input id="pm-default" type="checkbox" class="w-4 h-4 rounded accent-violet-600" /> Set as default payment method
+        </label>
+      </div>
+      <div class="flex justify-end gap-2 px-5 py-4 border-t border-slate-800">
+        <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+        <button type="submit" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Save card</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Upgrade Plan -->
+<div id="upgrade-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-lg bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <h2 class="font-bold text-slate-100">Upgrade Plan</h2>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="p-5">
+      <p class="text-sm text-slate-400 mb-4">Choose a plan to upgrade to. Changes take effect immediately and are prorated.</p>
+      <div class="space-y-2" id="upgrade-options">
+        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+          <input type="radio" name="upgrade-plan" value="Business" data-price="96" class="w-4 h-4 accent-violet-600" checked />
+          <div class="flex-1"><p class="text-sm font-semibold text-slate-100">Business</p><p class="text-xs text-slate-500">100 seats · 1 TB · SSO &amp; audit logs</p></div>
+          <span class="text-sm font-bold text-slate-100">$96<span class="text-xs text-slate-500">/mo</span></span>
+        </label>
+        <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+          <input type="radio" name="upgrade-plan" value="Enterprise" data-price="0" class="w-4 h-4 accent-violet-600" />
+          <div class="flex-1"><p class="text-sm font-semibold text-slate-100">Enterprise</p><p class="text-xs text-slate-500">Unlimited · dedicated support · 99.99% SLA</p></div>
+          <span class="text-sm font-bold text-slate-100">Custom</span>
+        </label>
+      </div>
+    </div>
+    <div class="flex items-center justify-between gap-2 px-5 py-4 border-t border-slate-800">
+      <p class="text-sm text-slate-400">New total: <span id="upgrade-total" class="text-slate-100 font-bold">$96/mo</span></p>
+      <div class="flex gap-2">
+        <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+        <button id="upgrade-confirm" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Confirm upgrade</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Billing Address -->
+<div id="address-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <h2 class="font-bold text-slate-100">Edit Billing Address</h2>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <form data-validate data-success="Billing address updated" data-close-modal="address-modal" onsubmit="onAddressSaved(event)">
+      <div class="p-5 space-y-3">
+        <div><label class="block text-xs font-semibold text-slate-400 mb-1.5">Company / Name</label>
+          <input id="ad-name" type="text" data-rule="required" value="Nexus HQ Inc." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-violet-500 transition" /></div>
+        <div><label class="block text-xs font-semibold text-slate-400 mb-1.5">Address</label>
+          <input id="ad-line" type="text" data-rule="required" value="548 Market Street, Suite 200" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-violet-500 transition" /></div>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="block text-xs font-semibold text-slate-400 mb-1.5">City, State ZIP</label>
+            <input id="ad-city" type="text" data-rule="required" value="San Francisco, CA 94104" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-violet-500 transition" /></div>
+          <div><label class="block text-xs font-semibold text-slate-400 mb-1.5">Country</label>
+            <input id="ad-country" type="text" data-rule="required" value="United States" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-violet-500 transition" /></div>
+        </div>
+        <div><label class="block text-xs font-semibold text-slate-400 mb-1.5">VAT ID <span class="text-slate-600 font-normal">(optional)</span></label>
+          <input id="ad-vat" type="text" value="US-8829174" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:border-violet-500 transition" /></div>
+      </div>
+      <div class="flex justify-end gap-2 px-5 py-4 border-t border-slate-800">
+        <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+        <button type="submit" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Save address</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2"></div>
+
+<script>
+const toast = (m, t = 'success') => window.NexusComponents?.toast(m, t, 2200);
+
+// ── Sample data ───────────────────────────────────────────────
+let paymentMethods = [
+  { id: 1, brand: 'Visa', icon: 'credit-card', last4: '4242', exp: '08/27', color: 'text-blue-400 bg-blue-900/40', default: true },
+  { id: 2, brand: 'Mastercard', icon: 'credit-card', last4: '8829', exp: '11/26', color: 'text-amber-400 bg-amber-900/40', default: false },
+];
+const INVOICES = [
+  { id: 'INV-2026-007', date: 'Jul 1, 2026', amount: 48, status: 'paid' },
+  { id: 'INV-2026-006', date: 'Jun 1, 2026', amount: 48, status: 'paid' },
+  { id: 'INV-2026-005', date: 'May 1, 2026', amount: 48, status: 'paid' },
+  { id: 'INV-2026-004', date: 'Apr 1, 2026', amount: 48, status: 'failed' },
+  { id: 'INV-2026-003', date: 'Mar 1, 2026', amount: 38, status: 'paid' },
+  { id: 'INV-2026-002', date: 'Feb 1, 2026', amount: 38, status: 'pending' },
+  { id: 'INV-2026-001', date: 'Jan 1, 2026', amount: 38, status: 'paid' },
+  { id: 'INV-2025-012', date: 'Dec 1, 2025', amount: 38, status: 'paid' },
+];
+const TXNS = [
+  { icon: 'arrow-down-left', color: 'text-emerald-400 bg-emerald-900/40', title: 'Payment · Pro plan', date: 'Jul 1, 2026', amount: '-$48.00' },
+  { icon: 'gift', color: 'text-violet-400 bg-violet-900/40', title: 'Promo credit · WELCOME10', date: 'Jun 12, 2026', amount: '+$10.00' },
+  { icon: 'arrow-down-left', color: 'text-emerald-400 bg-emerald-900/40', title: 'Payment · Pro plan', date: 'Jun 1, 2026', amount: '-$48.00' },
+  { icon: 'rotate-ccw', color: 'text-amber-400 bg-amber-900/40', title: 'Refund · overage adjustment', date: 'May 18, 2026', amount: '+$6.20' },
+];
+const FAQ = [
+  { q: 'When will I be charged?', a: 'Your subscription renews automatically on the 1st of each month. Annual plans are billed once per year on your renewal date.' },
+  { q: 'Can I change plans anytime?', a: 'Yes. Upgrades take effect immediately and are prorated. Downgrades apply at the end of your current billing period.' },
+  { q: 'How do refunds work?', a: 'We offer a 14-day money-back guarantee on new subscriptions. Prorated credits for downgrades are applied to your next invoice.' },
+  { q: 'Do you support invoicing for teams?', a: 'Business and Enterprise plans can be billed via invoice with net-30 terms. Contact sales to enable PO-based billing.' },
+];
+const STATUS_BADGE = {
+  paid: 'bg-emerald-500/15 text-emerald-300', pending: 'bg-amber-500/15 text-amber-300', failed: 'bg-red-500/15 text-red-300',
+};
+
+// ── Payment methods ───────────────────────────────────────────
+function renderPayments() {
+  const host = document.getElementById('payment-list');
+  host.innerHTML = paymentMethods.map(pm => `
+    <div class="rounded-2xl border border-slate-800 bg-slate-900 p-4 flex items-center gap-3">
+      <span class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${pm.color}"><i data-lucide="${pm.icon}" class="w-5 h-5"></i></span>
+      <div class="min-w-0 flex-1">
+        <p class="text-sm font-medium text-slate-100 flex items-center gap-2">${pm.brand} ···· ${pm.last4}
+          ${pm.default ? '<span class="px-1.5 py-0.5 rounded bg-violet-500/15 text-violet-300 text-[10px] font-semibold">Default</span>' : ''}</p>
+        <p class="text-xs text-slate-500">Expires ${pm.exp}</p>
+      </div>
+      <div class="relative">
+        <button data-dropdown-trigger="pm-menu-${pm.id}" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
+        <div id="pm-menu-${pm.id}" data-dropdown class="hidden absolute right-0 top-full mt-1 z-30 w-40 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-1 text-sm">
+          <button onclick="openPaymentModal('edit', ${pm.id})" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="pencil" class="w-4 h-4 opacity-60"></i>Edit</button>
+          ${pm.default ? '' : `<button onclick="setDefaultPayment(${pm.id})" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check-circle" class="w-4 h-4 opacity-60"></i>Set default</button>`}
+          <button onclick="removePayment(${pm.id})" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="trash-2" class="w-4 h-4 opacity-60"></i>Remove</button>
+        </div>
+      </div>
+    </div>`).join('');
+  if (window.lucide) lucide.createIcons();
+}
+function setDefaultPayment(id) { paymentMethods.forEach(p => p.default = p.id === id); renderPayments(); toast('Default payment method updated'); }
+function removePayment(id) {
+  if (paymentMethods.length <= 1) { toast('You must keep at least one payment method', 'error'); return; }
+  const wasDefault = paymentMethods.find(p => p.id === id)?.default;
+  paymentMethods = paymentMethods.filter(p => p.id !== id);
+  if (wasDefault && paymentMethods[0]) paymentMethods[0].default = true;
+  renderPayments(); toast('Payment method removed', 'error');
+}
+let editingId = null;
+function openPaymentModal(mode, id) {
+  editingId = mode === 'edit' ? id : null;
+  document.getElementById('payment-modal-title').textContent = mode === 'edit' ? 'Edit Payment Method' : 'Add Payment Method';
+  const pm = id ? paymentMethods.find(p => p.id === id) : null;
+  document.getElementById('pm-name').value = pm ? pm.brand + ' holder' : '';
+  document.getElementById('pm-number').value = pm ? '•••• •••• •••• ' + pm.last4 : '';
+  document.getElementById('pm-exp').value = pm ? pm.exp : '';
+  document.getElementById('pm-cvc').value = '';
+  document.getElementById('pm-default').checked = pm ? pm.default : false;
+  document.querySelectorAll('#payment-modal .field-error').forEach(e => e.remove());
+  window.NexusComponents?.openModal('payment-modal');
+}
+function onPaymentSaved(e) {
+  // Runs before interactions.js validates/resets — capture values now.
+  const last4 = (document.getElementById('pm-number').value.replace(/\D/g, '').slice(-4)) || '0000';
+  const exp = document.getElementById('pm-exp').value || '01/30';
+  const isDefault = document.getElementById('pm-default').checked;
+  const id = editingId;
+  // Apply only if interactions.js accepted it (modal closed on valid submit).
+  setTimeout(() => {
+    if (!document.getElementById('payment-modal').classList.contains('hidden')) return; // validation failed
+    if (id) {
+      const pm = paymentMethods.find(p => p.id === id);
+      if (pm) { pm.last4 = last4; pm.exp = exp; }
+    } else {
+      paymentMethods.push({ id: Date.now(), brand: 'Card', icon: 'credit-card', last4, exp, color: 'text-slate-300 bg-slate-700', default: false });
+    }
+    if (isDefault) paymentMethods.forEach(p => p.default = (id ? p.id === id : p.last4 === last4));
+    renderPayments();
+  }, 0);
+}
+
+// ── Billing address ───────────────────────────────────────────
+function onAddressSaved() {
+  setTimeout(() => {
+    document.getElementById('addr-name').textContent = document.getElementById('ad-name').value;
+    document.getElementById('addr-line').textContent = document.getElementById('ad-line').value;
+    document.getElementById('addr-city').textContent = document.getElementById('ad-city').value;
+    document.getElementById('addr-country').textContent = document.getElementById('ad-country').value;
+    document.getElementById('addr-vat').textContent = document.getElementById('ad-vat').value || '—';
+  }, 0);
+}
+
+// ── Pricing cycle toggle ──────────────────────────────────────
+document.getElementById('cycle-toggle').addEventListener('click', e => {
+  const btn = e.target.closest('[data-cycle]'); if (!btn) return;
+  const yearly = btn.getAttribute('data-cycle') === 'yearly';
+  document.querySelectorAll('#cycle-toggle button').forEach(b => {
+    const on = b === btn;
+    b.classList.toggle('bg-slate-700', on); b.classList.toggle('text-slate-100', on); b.classList.toggle('text-slate-400', !on);
+  });
+  document.querySelectorAll('[data-price][data-m]').forEach(el => {
+    const v = yearly ? el.getAttribute('data-y') : el.getAttribute('data-m');
+    el.textContent = '$' + v;
+  });
+  document.querySelectorAll('.plan-suffix').forEach(s => s.textContent = yearly ? '/mo billed yearly' : '/mo');
+});
+
+// ── Upgrade modal ─────────────────────────────────────────────
+document.querySelectorAll('.upgrade-btn').forEach(b => b.addEventListener('click', () => {
+  const plan = b.getAttribute('data-plan');
+  const radio = document.querySelector(`input[name="upgrade-plan"][value="${plan}"]`);
+  if (radio) { radio.checked = true; updateUpgradeTotal(); }
+  window.NexusComponents?.openModal('upgrade-modal');
+}));
+function updateUpgradeTotal() {
+  const sel = document.querySelector('input[name="upgrade-plan"]:checked');
+  const price = sel?.getAttribute('data-price');
+  document.getElementById('upgrade-total').textContent = (!price || price === '0') ? 'Custom' : `$${price}/mo`;
+}
+document.getElementById('upgrade-options').addEventListener('change', updateUpgradeTotal);
+document.getElementById('upgrade-confirm').addEventListener('click', () => {
+  const sel = document.querySelector('input[name="upgrade-plan"]:checked');
+  window.NexusComponents?.closeModal('upgrade-modal');
+  toast(`Upgraded to ${sel?.value || 'new'} plan`, 'success');
+});
+
+// ── Invoice history: filter + search + pagination ─────────────
+const PER_PAGE = 5;
+let invStatus = 'all', invQuery = '', invPage = 1;
+function renderInvoices() {
+  const rows = INVOICES.filter(inv =>
+    (invStatus === 'all' || inv.status === invStatus) &&
+    (!invQuery || (inv.id + ' ' + inv.date).toLowerCase().includes(invQuery)));
+  const pages = Math.max(1, Math.ceil(rows.length / PER_PAGE));
+  if (invPage > pages) invPage = pages;
+  const slice = rows.slice((invPage - 1) * PER_PAGE, invPage * PER_PAGE);
+  document.getElementById('invoice-empty').classList.toggle('hidden', rows.length > 0);
+  document.getElementById('invoice-body').innerHTML = slice.map(inv => `
+    <tr class="hover:bg-slate-800/40 transition">
+      <td class="px-5 py-3 font-medium text-slate-100">${inv.id}</td>
+      <td class="px-5 py-3 text-slate-400 hidden sm:table-cell">${inv.date}</td>
+      <td class="px-5 py-3 text-slate-300">$${inv.amount.toFixed(2)}</td>
+      <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-md text-[11px] font-semibold capitalize ${STATUS_BADGE[inv.status]}">${inv.status}</span></td>
+      <td class="px-5 py-3 text-right">
+        <button onclick="window.NexusComponents?.toast('Downloading ${inv.id}','success')" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition" title="Download PDF"><i data-lucide="download" class="w-4 h-4"></i></button>
+        <button onclick="window.NexusComponents?.toast('Opening ${inv.id}','info')" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition" title="View"><i data-lucide="eye" class="w-4 h-4"></i></button>
+      </td>
+    </tr>`).join('');
+  // pager
+  const pager = document.getElementById('invoice-pager');
+  if (pages <= 1) { pager.innerHTML = `<span class="text-xs text-slate-500">${rows.length} invoice${rows.length === 1 ? '' : 's'}</span>`; }
+  else {
+    let html = `<button ${invPage === 1 ? 'disabled' : ''} data-pg="${invPage - 1}" class="inv-pg min-w-8 h-8 px-2 rounded-lg text-xs bg-slate-800 text-slate-400 hover:text-slate-100 hover:bg-slate-700 transition ${invPage === 1 ? 'opacity-40 pointer-events-none' : ''}"><i data-lucide="chevron-left" class="w-3.5 h-3.5"></i></button>`;
+    for (let p = 1; p <= pages; p++) html += `<button data-pg="${p}" class="inv-pg min-w-8 h-8 px-2 rounded-lg text-xs font-medium transition ${p === invPage ? 'bg-violet-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-slate-100 hover:bg-slate-700'}">${p}</button>`;
+    html += `<button ${invPage === pages ? 'disabled' : ''} data-pg="${invPage + 1}" class="inv-pg min-w-8 h-8 px-2 rounded-lg text-xs bg-slate-800 text-slate-400 hover:text-slate-100 hover:bg-slate-700 transition ${invPage === pages ? 'opacity-40 pointer-events-none' : ''}"><i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></button>`;
+    pager.innerHTML = html;
+    pager.querySelectorAll('.inv-pg').forEach(b => b.addEventListener('click', () => { invPage = +b.getAttribute('data-pg'); renderInvoices(); }));
+  }
+  if (window.lucide) lucide.createIcons();
+}
+document.getElementById('invoice-filter').addEventListener('click', e => {
+  const btn = e.target.closest('[data-status]'); if (!btn) return;
+  invStatus = btn.getAttribute('data-status'); invPage = 1;
+  document.querySelectorAll('#invoice-filter button').forEach(b => {
+    const on = b === btn;
+    b.classList.toggle('bg-slate-700', on); b.classList.toggle('text-slate-100', on); b.classList.toggle('text-slate-400', !on);
+  });
+  renderInvoices();
+});
+document.getElementById('invoice-search').addEventListener('input', e => { invQuery = e.target.value.trim().toLowerCase(); invPage = 1; renderInvoices(); });
+
+// ── Transactions ──────────────────────────────────────────────
+function renderTxns() {
+  document.getElementById('txn-list').innerHTML = TXNS.map(t => `
+    <div class="flex items-center gap-3 p-4">
+      <span class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${t.color}"><i data-lucide="${t.icon}" class="w-4 h-4"></i></span>
+      <div class="min-w-0 flex-1"><p class="text-sm text-slate-200 truncate">${t.title}</p><p class="text-xs text-slate-500">${t.date}</p></div>
+      <span class="text-sm font-semibold ${t.amount.startsWith('+') ? 'text-emerald-400' : 'text-slate-200'}">${t.amount}</span>
+    </div>`).join('');
+  if (window.lucide) lucide.createIcons();
+}
+
+// ── Promo code ────────────────────────────────────────────────
+const PROMOS = { NEXUS20: '20% off applied to your next invoice', WELCOME10: '$10 credit added to your account' };
+document.getElementById('promo-apply').addEventListener('click', () => {
+  const input = document.getElementById('promo-input');
+  const code = input.value.trim().toUpperCase();
+  const msg = document.getElementById('promo-msg');
+  msg.classList.remove('hidden');
+  if (PROMOS[code]) {
+    msg.className = 'mt-2 text-xs text-emerald-400 flex items-center gap-1';
+    msg.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5"></i>${PROMOS[code]}`;
+    toast('Promo code applied', 'success');
+    input.value = '';
+  } else if (!code) {
+    msg.className = 'mt-2 text-xs text-amber-400'; msg.textContent = 'Enter a promo code first.';
+  } else {
+    msg.className = 'mt-2 text-xs text-red-400 flex items-center gap-1';
+    msg.innerHTML = `<i data-lucide="x-circle" class="w-3.5 h-3.5"></i>“${code}” is not a valid code.`;
+    toast('Invalid promo code', 'error');
+  }
+  if (window.lucide) lucide.createIcons();
+});
+
+// ── FAQ accordion ─────────────────────────────────────────────
+function renderFaq() {
+  document.getElementById('faq').innerHTML = FAQ.map((f, i) => `
+    <div>
+      <button data-accordion-trigger="faq-${i}" class="w-full flex items-center justify-between gap-3 px-5 py-4 text-left hover:bg-slate-800/40 transition">
+        <span class="text-sm font-medium text-slate-100">${f.q}</span>
+        <i data-lucide="chevron-down" data-accordion-icon class="w-4 h-4 text-slate-500 shrink-0 transition-transform"></i>
+      </button>
+      <div id="faq-${i}" class="channel-group-content" style="height:0px"><p class="px-5 pb-4 text-sm text-slate-400 leading-relaxed">${f.a}</p></div>
+    </div>`).join('');
+  if (window.lucide) lucide.createIcons();
+}
+
+// ── Init ──────────────────────────────────────────────────────
+renderPayments();
+renderInvoices();
+renderTxns();
+renderFaq();
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+</script>
+</body>
+</html>

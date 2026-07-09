@@ -25,6 +25,7 @@ export default defineConfig({
         '404':          resolve(__dirname, 'pages/404.html'),
         maintenance:    resolve(__dirname, 'pages/maintenance.html'),
         status:         resolve(__dirname, 'pages/status.html'),
+        billing:        resolve(__dirname, 'pages/billing.html'),
       }
     }
   },
