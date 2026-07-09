@@ -1,0 +1,218 @@
+Create a **premium Slack-inspired Team Chat UI Template** using **Tailwind CSS** only. This is a **frontend-only template** for ThemeForest. **Do not build any backend, authentication, APIs, database, Firebase, or server-side functionality.** Focus entirely on a polished, reusable, responsive UI with realistic sample data.
+
+## Design Requirements
+
+* Modern SaaS design with a unique visual identity (do not copy Slack)
+* Tailwind CSS (latest version)
+* Fully responsive (Desktop, Tablet, Mobile)
+* Light & Dark mode
+* RTL Ready
+* Glassmorphism and soft shadows where appropriate
+* Clean typography and spacing
+* Component-based structure
+* Reusable UI components
+* Heroicons or Lucide Icons
+* Smooth transitions and animations
+* Accessible UI
+* ThemeForest-quality code and folder structure
+
+## Layout
+
+### Left Sidebar
+
+* Workspace Switcher
+* Workspace Logo
+* Search
+* Home
+* Threads
+* Mentions & Reactions
+* Direct Messages
+* Channels
+* Favorites
+* Drafts
+* Files
+* Shared Files
+* Team Members
+* Apps
+* Settings
+
+### Channel List
+
+* Public Channels
+* Private Channels
+* Voice Channels
+* Archived Channels
+* Expand/Collapse Groups
+* Channel Badges
+* Online Indicators
+* Unread Counts
+
+### Chat Area
+
+* Channel Header
+* Channel Description
+* Member Count
+* Search Messages
+* Pinned Messages
+* Shared Files Button
+* Call Button
+* Video Call Button
+* More Actions
+
+### Message UI
+
+* Sender Avatar
+* Sender Name
+* Timestamp
+* Rich Text Messages
+* Code Blocks
+* Quotes
+* Links
+* Emoji Reactions
+* Attachments
+* Images
+* Videos
+* Audio Messages
+* File Cards
+* Edited Messages
+* Reply Threads
+* Pinned Messages
+* System Messages
+* Message Status
+* Hover Actions
+* Inline Emoji Picker UI
+* Message Context Menu UI
+
+### Message Composer
+
+* Rich Text Input
+* Emoji Button
+* GIF Button
+* Sticker Button
+* Mention Button
+* File Upload UI
+* Voice Recording Button
+* Send Button
+* Formatting Toolbar
+* Character Counter
+* Typing Indicator
+* Draft State
+
+### Right Sidebar
+
+* Channel Information
+* Members
+* Shared Files
+* Shared Links
+* Media Gallery
+* Pinned Messages
+* Bookmarks
+* Activity Timeline
+
+## Direct Messages
+
+* Conversation List
+* Online Status
+* Last Seen
+* Favorite Contacts
+* Group Conversations
+* Empty State
+
+## Threads
+
+* Thread List
+* Replies
+* Thread Composer
+* Thread Participants
+
+## Calls UI
+
+* Voice Call Screen
+* Video Call Screen
+* Incoming Call UI
+* Ongoing Call Controls
+* Screen Share UI
+* Participants Panel
+
+## Notifications
+
+* Notification Center
+* Mentions
+* Reactions
+* Invitations
+* System Notifications
+
+## User Profile
+
+* Profile Card
+* Status Selector
+* Availability
+* Custom Status
+* Activity
+* Shared Media
+* Contact Information
+
+## Settings Pages
+
+* General
+* Appearance
+* Notifications
+* Language
+* Accessibility
+* Keyboard Shortcuts
+* Connected Apps
+* Privacy
+* Account
+
+## Additional Pages
+
+* Welcome Screen
+* Empty Chat
+* No Search Results
+* File Browser
+* Media Gallery
+* Bookmarks
+* Activity Feed
+* Team Directory
+* Invite Members
+* Keyboard Shortcuts
+* 404 Page
+* Maintenance Page
+
+## Components
+
+* Dropdowns
+* Modals
+* Offcanvas Panels
+* Tooltips
+* Popovers
+* Tabs
+* Accordions
+* Context Menus
+* Toast Notifications
+* Skeleton Loaders
+* Progress Bars
+* Avatars
+* Badges
+* Chips
+* Cards
+* Pagination
+* Breadcrumbs
+
+## Sample Data
+
+* Populate every page with realistic team names, users, channels, messages, files, and notifications.
+* Include avatars, timestamps, reactions, attachments, and conversation history.
+
+## Deliverables
+
+* Pure HTML + Tailwind CSS + JavaScript only
+* No backend code
+* No authentication
+* No APIs
+* No database
+* No Firebase
+* No server-side rendering
+* Clean, well-organized folder structure
+* Reusable Tailwind components
+* Production-ready frontend code suitable for a premium ThemeForest template.

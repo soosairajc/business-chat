@@ -1,0 +1,231 @@
+Create a **new premium ThemeForest HTML Admin Template** called **Dreams Business Chat**. The design should be modern, clean, enterprise-grade, and inspired by WhatsApp Business, Intercom, Slack, and Microsoft Teams, but **do not copy any existing product**. Build an original UI with a unique visual identity using Bootstrap 5, responsive layouts, reusable components, and clean code.
+
+### Design Requirements
+
+* Premium SaaS dashboard design
+* Modern glassmorphism and soft shadow effects
+* Unique sidebar and top header
+* Beautiful statistics cards (different on every page)
+* Professional color palette
+* Light & Dark mode
+* Fully responsive
+* RTL Ready
+* Reusable components
+* Bootstrap Icons
+* Charts using ApexCharts
+* DataTables
+* Offcanvas panels
+* Modal forms
+* Form validation
+* Empty states
+* Loading skeletons
+* Notification center
+
+### Create the following pages.
+
+#### Dashboard
+
+* Dashboard
+* Analytics Dashboard
+* Sales Dashboard
+* Support Dashboard
+* AI Dashboard
+
+#### Inbox
+
+* All Chats
+* My Chats
+* Assigned Chats
+* Team Inbox
+* Archived Chats
+* Starred Chats
+* Broadcast Messages
+* Scheduled Messages
+* Draft Messages
+* Message Templates
+* Spam
+* Blocked Contacts
+
+#### Contacts
+
+* Customers
+* Leads
+* Companies
+* Groups
+* Labels
+* Import Contacts
+* Contact Profile
+* Customer Timeline
+
+#### CRM
+
+* Leads
+* Opportunities
+* Deals Pipeline
+* Quotations
+* Orders
+* Invoices
+* Payments
+* Follow-ups
+* Activities
+
+#### Customer Support
+
+* Support Tickets
+* Complaints
+* Escalations
+* SLA Management
+* Knowledge Base
+* FAQ
+* Customer Feedback
+* CSAT
+
+#### Team
+
+* Agents
+* Teams
+* Departments
+* Roles & Permissions
+* Shift Management
+* Online Status
+* Performance
+
+#### AI Features
+
+* AI Reply Assistant
+* AI Rewrite
+* AI Translation
+* AI Conversation Summary
+* AI Smart Suggestions
+* AI FAQ Assistant
+* AI Sentiment Analysis
+* AI Lead Qualification
+* AI Intent Detection
+* AI Analytics
+
+#### Marketing
+
+* Campaigns
+* Broadcast Messages
+* Customer Segments
+* Promotions
+* Coupons
+* Campaign Analytics
+
+#### Automation
+
+* Chatbot Builder
+* Workflow Builder
+* Auto Assignment
+* Auto Replies
+* Keyword Triggers
+* Welcome Messages
+* Business Hours
+* Escalation Rules
+
+#### Product Catalog
+
+* Products
+* Categories
+* Services
+* Variants
+* Price Lists
+
+#### Orders
+
+* New Orders
+* Processing
+* Completed
+* Cancelled
+* Returns
+* Delivery Tracking
+
+#### Appointments
+
+* Calendar
+* Appointments
+* Staff Schedule
+* Availability
+* Meeting Links
+* Reminders
+
+#### Calls
+
+* Voice Calls
+* Video Calls
+* Call History
+* Missed Calls
+* Recordings
+
+#### Reports
+
+* Conversation Report
+* Agent Report
+* Customer Report
+* Sales Report
+* Campaign Report
+* AI Report
+* Response Time
+* Resolution Time
+* Revenue Report
+* CSAT Report
+
+#### Integrations
+
+* WhatsApp Business
+* Facebook Messenger
+* Instagram
+* Telegram
+* Email
+* SMS Gateway
+* Shopify
+* WooCommerce
+* Stripe
+* Razorpay
+* Webhooks
+
+#### Settings
+
+* Business Profile
+* Business Hours
+* Greeting Message
+* Away Message
+* Quick Replies
+* Labels
+* Notifications
+* Security
+* Privacy
+* API Settings
+* Backup & Restore
+* Languages
+* Appearance
+
+#### Super Admin
+
+* Dashboard
+* Tenants
+* Subscription Plans
+* Billing
+* Transactions
+* AI Usage
+* Storage Usage
+* User Management
+* Support
+* Audit Logs
+* System Settings
+
+### Page Requirements
+
+* Every page must have a unique layout.
+* Do not reuse the same statistics card design across pages.
+* Include realistic sample data.
+* Add Add/Edit/Delete modals where applicable.
+* Use advanced tables with filters, search, pagination, export, and bulk actions.
+* Include breadcrumbs and page actions.
+* Add empty states and loading states.
+* Use modern charts and analytics widgets.
+* Include profile dropdown, notification panel, quick search, and command palette.
+* Build reusable cards, widgets, and components.
+* Maintain consistent spacing, typography, and naming conventions.
+
+Generate the complete HTML structure, assets, CSS, JavaScript, and reusable components suitable for a premium ThemeForest submission with production-quality UI and code.
