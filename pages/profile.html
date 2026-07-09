@@ -118,10 +118,10 @@
     <!-- Tabs -->
     <div class="border-b border-slate-800 px-6 md:px-10 bg-slate-950 sticky top-0 z-10">
       <div class="flex gap-0" role="tablist" aria-label="Profile sections">
-        <button role="tab" data-tab="overview" aria-selected="true" onclick="switchTab('overview')" class="profile-tab px-5 py-3.5 text-sm font-medium text-violet-400 border-b-2 border-violet-500 transition">Overview</button>
-        <button role="tab" data-tab="activity" aria-selected="false" onclick="switchTab('activity')" class="profile-tab px-5 py-3.5 text-sm font-medium text-slate-400 hover:text-slate-300 border-b-2 border-transparent hover:border-slate-600 transition">Activity</button>
-        <button role="tab" data-tab="files" aria-selected="false" onclick="switchTab('files')" class="profile-tab px-5 py-3.5 text-sm font-medium text-slate-400 hover:text-slate-300 border-b-2 border-transparent hover:border-slate-600 transition">Files</button>
-        <button role="tab" data-tab="incommon" aria-selected="false" onclick="switchTab('incommon')" class="profile-tab px-5 py-3.5 text-sm font-medium text-slate-400 hover:text-slate-300 border-b-2 border-transparent hover:border-slate-600 transition">In Common</button>
+        <button role="tab" data-tab="overview" aria-selected="true" onclick="switchTab('overview')" class="profile-tab px-5 py-3.5 -mb-px text-sm font-medium border-b-2 transition-colors duration-200 text-violet-400 border-violet-500">Overview</button>
+        <button role="tab" data-tab="activity" aria-selected="false" onclick="switchTab('activity')" class="profile-tab px-5 py-3.5 -mb-px text-sm font-medium border-b-2 transition-colors duration-200 text-slate-400 border-transparent hover:text-slate-300 hover:border-slate-600">Activity</button>
+        <button role="tab" data-tab="files" aria-selected="false" onclick="switchTab('files')" class="profile-tab px-5 py-3.5 -mb-px text-sm font-medium border-b-2 transition-colors duration-200 text-slate-400 border-transparent hover:text-slate-300 hover:border-slate-600">Files</button>
+        <button role="tab" data-tab="incommon" aria-selected="false" onclick="switchTab('incommon')" class="profile-tab px-5 py-3.5 -mb-px text-sm font-medium border-b-2 transition-colors duration-200 text-slate-400 border-transparent hover:text-slate-300 hover:border-slate-600">In Common</button>
       </div>
     </div>
 
@@ -590,16 +590,18 @@
 <script>
 window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); filterFiles('all'); });
 
+const TAB_ACTIVE = ['text-violet-400', 'border-violet-500'];
+const TAB_INACTIVE = ['text-slate-400', 'border-transparent', 'hover:text-slate-300', 'hover:border-slate-600'];
+
 function switchTab(id) {
   document.querySelectorAll('.profile-panel').forEach(p => p.classList.add('hidden'));
   document.getElementById('tab-' + id)?.classList.remove('hidden');
   document.querySelectorAll('.profile-tab').forEach(t => {
     const isActive = t.getAttribute('data-tab') === id;
     t.setAttribute('aria-selected', String(isActive));
-    t.classList.toggle('text-violet-400', isActive);
-    t.classList.toggle('border-violet-500', isActive);
-    t.classList.toggle('text-slate-400', !isActive);
-    t.classList.toggle('border-transparent', !isActive);
+    // Swap the full class set so the active tab never carries hover styles.
+    t.classList.remove(...TAB_ACTIVE, ...TAB_INACTIVE);
+    t.classList.add(...(isActive ? TAB_ACTIVE : TAB_INACTIVE));
   });
 }
 
