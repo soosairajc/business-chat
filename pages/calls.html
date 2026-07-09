@@ -360,7 +360,7 @@
               <p class="text-xs text-slate-400 mt-0.5">Video call · 8 min 22 sec</p>
               <p class="text-xs text-slate-500 mt-0.5">10:15 AM</p>
             </div>
-            <button onclick="window.NexusComponents?.toast('Calling Carol Wu…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+            <button onclick="event.stopPropagation();openCallBack({name:'Carol Wu',seed:'carol',role:'Product Designer · Nexus HQ',callType:'video',direction:'outgoing',duration:'8 min 22 sec',when:'Today · 10:15 AM'})" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
               <i data-lucide="phone" class="w-3.5 h-3.5 text-green-400"></i> Call back
             </button>
           </div>
@@ -378,7 +378,7 @@
               <p class="text-xs text-slate-400 mt-0.5">Audio call</p>
               <p class="text-xs text-slate-500 mt-0.5">9:02 AM</p>
             </div>
-            <button onclick="window.NexusComponents?.toast('Calling Mike Johnson…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-red-600/20 hover:bg-red-600/30 text-red-400 text-xs font-medium rounded-lg border border-red-800/50 transition">
+            <button onclick="event.stopPropagation();openCallBack({name:'Mike Johnson',seed:'mike',role:'CEO · Nexus HQ',callType:'voice',direction:'missed',duration:'',when:'Today · 9:02 AM'})" class="flex items-center gap-1.5 px-3 py-1.5 bg-red-600/20 hover:bg-red-600/30 text-red-400 text-xs font-medium rounded-lg border border-red-800/50 transition">
               <i data-lucide="phone" class="w-3.5 h-3.5"></i> Call back
             </button>
           </div>
@@ -409,7 +409,7 @@
               <p class="text-xs text-slate-400 mt-0.5">Audio call · 4 min 51 sec</p>
               <p class="text-xs text-slate-500 mt-0.5">11:30 AM</p>
             </div>
-            <button onclick="window.NexusComponents?.toast('Calling Bob Martinez…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+            <button onclick="event.stopPropagation();openCallBack({name:'Bob Martinez',seed:'bob',role:'Engineering Lead · Nexus HQ',callType:'voice',direction:'incoming',duration:'4 min 51 sec',when:'Yesterday · 11:30 AM'})" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
               <i data-lucide="phone" class="w-3.5 h-3.5 text-green-400"></i> Call back
             </button>
           </div>
@@ -423,7 +423,7 @@
               <p class="text-xs text-slate-400 mt-0.5">Audio call</p>
               <p class="text-xs text-slate-500 mt-0.5">9:45 AM</p>
             </div>
-            <button onclick="window.NexusComponents?.toast('Calling Priya Sharma…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-red-600/20 hover:bg-red-600/30 text-red-400 text-xs font-medium rounded-lg border border-red-800/50 transition">
+            <button onclick="event.stopPropagation();openCallBack({name:'Priya Sharma',seed:'priya',role:'Marketing Manager · Nexus HQ',callType:'voice',direction:'missed',duration:'',when:'Yesterday · 9:45 AM'})" class="flex items-center gap-1.5 px-3 py-1.5 bg-red-600/20 hover:bg-red-600/30 text-red-400 text-xs font-medium rounded-lg border border-red-800/50 transition">
               <i data-lucide="phone" class="w-3.5 h-3.5"></i> Call back
             </button>
           </div>
@@ -454,7 +454,7 @@
               <p class="text-xs text-slate-400 mt-0.5">Video call · 22 min 10 sec</p>
               <p class="text-xs text-slate-500 mt-0.5">Mon, Feb 5 · 11:00 AM</p>
             </div>
-            <button onclick="window.NexusComponents?.toast('Calling Sarah Lee…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+            <button onclick="event.stopPropagation();openCallBack({name:'Sarah Lee',seed:'sarah',role:'Content Strategist · Nexus HQ',callType:'video',direction:'outgoing',duration:'22 min 10 sec',when:'Mon, Feb 5 · 11:00 AM'})" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
               <i data-lucide="phone" class="w-3.5 h-3.5 text-green-400"></i> Call back
             </button>
           </div>
@@ -462,6 +462,63 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- ══ CALL BACK MODAL ══ -->
+<div id="callback-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeCallBack()" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[26rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <!-- Header with avatar -->
+    <div class="relative h-28 bg-gradient-to-br from-violet-900 to-indigo-900 flex items-end">
+      <div class="absolute inset-0 opacity-30" style="background:radial-gradient(circle at 50% 100%, #7c3aed, transparent 70%)"></div>
+      <button onclick="closeCallBack()" aria-label="Close" class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/30 hover:bg-black/50 flex items-center justify-center text-slate-200 transition z-10">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <div class="relative flex items-end gap-3 px-6 -mb-8 z-10">
+        <img id="cb-avatar" src="https://api.dicebear.com/9.x/avataaars/svg?seed=user" alt="Contact avatar" class="w-20 h-20 rounded-2xl bg-slate-700 ring-4 ring-slate-900 shadow-lg" />
+      </div>
+    </div>
+    <div class="pt-10 px-6 pb-6">
+      <!-- Contact details -->
+      <div class="flex items-center gap-2">
+        <h3 id="cb-name" class="text-xl font-bold text-slate-100">Contact Name</h3>
+        <span id="cb-type-badge" class="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold"></span>
+      </div>
+      <p id="cb-role" class="text-sm text-slate-400 mt-0.5">Role · Nexus HQ</p>
+
+      <!-- Previous call info -->
+      <div class="mt-4 p-3.5 rounded-2xl bg-slate-800/60 border border-slate-700/60">
+        <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">Previous Call</p>
+        <div class="flex items-center gap-3">
+          <div id="cb-prev-icon-wrap" class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0">
+            <i id="cb-prev-icon" data-lucide="phone" class="w-4 h-4"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p id="cb-prev-line" class="text-sm font-medium text-slate-200">Video call · 8 min 22 sec</p>
+            <p id="cb-prev-time" class="text-xs text-slate-500 mt-0.5">Today · 10:15 AM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="mt-5 grid grid-cols-2 gap-2">
+        <button onclick="startCallBack('voice')" class="flex flex-col items-center gap-1.5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-green-600/50 transition group">
+          <span class="w-10 h-10 rounded-full bg-green-600/20 group-hover:bg-green-600/30 flex items-center justify-center transition"><i data-lucide="phone" class="w-5 h-5 text-green-400"></i></span>
+          <span class="text-xs font-semibold text-slate-200">Voice Call</span>
+        </button>
+        <button onclick="startCallBack('video')" class="flex flex-col items-center gap-1.5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-violet-600/50 transition group">
+          <span class="w-10 h-10 rounded-full bg-violet-600/20 group-hover:bg-violet-600/30 flex items-center justify-center transition"><i data-lucide="video" class="w-5 h-5 text-violet-400"></i></span>
+          <span class="text-xs font-semibold text-slate-200">Video Call</span>
+        </button>
+      </div>
+      <div class="mt-3 flex items-center gap-2">
+        <button onclick="closeCallBack()" class="flex-1 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-xl border border-slate-700 transition">Cancel</button>
+        <button onclick="startCallBack()" class="flex-1 px-4 py-2.5 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-xl transition flex items-center justify-center gap-2">
+          <i data-lucide="phone-call" class="w-4 h-4"></i> Start Call
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -630,6 +687,55 @@ function rejoinCall() {
 function closeLeftOverlay() {
   document.getElementById('left-call-overlay').classList.add('hidden');
   showCallView('history');
+}
+
+let cbCurrent = null;
+const CB_TYPES = {
+  incoming: { icon: 'phone-incoming', color: 'text-green-400', wrap: 'bg-green-600/15' },
+  outgoing: { icon: 'phone-outgoing', color: 'text-blue-400', wrap: 'bg-blue-600/15' },
+  missed:   { icon: 'phone-missed',   color: 'text-red-400',   wrap: 'bg-red-600/15' },
+};
+
+function openCallBack(data) {
+  cbCurrent = data;
+  const seed = data.seed || 'user';
+  document.getElementById('cb-avatar').src = 'https://api.dicebear.com/9.x/avataaars/svg?seed=' + seed;
+  document.getElementById('cb-avatar').alt = data.name;
+  document.getElementById('cb-name').textContent = data.name;
+  document.getElementById('cb-role').textContent = data.role || 'Team Member · Nexus HQ';
+
+  // Call type badge (Voice / Video)
+  const badge = document.getElementById('cb-type-badge');
+  const isVideo = (data.callType || 'voice').toLowerCase() === 'video';
+  badge.textContent = isVideo ? 'Video' : 'Voice';
+  badge.className = 'flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold ' +
+    (isVideo ? 'bg-violet-500/20 text-violet-300' : 'bg-green-500/20 text-green-300');
+
+  // Previous call info
+  const dir = CB_TYPES[data.direction] || CB_TYPES.outgoing;
+  const iconWrap = document.getElementById('cb-prev-icon-wrap');
+  iconWrap.className = 'w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ' + dir.wrap;
+  const prevIcon = document.getElementById('cb-prev-icon');
+  prevIcon.setAttribute('data-lucide', dir.icon);
+  prevIcon.className = 'w-4 h-4 ' + dir.color;
+  document.getElementById('cb-prev-line').textContent =
+    (isVideo ? 'Video call' : 'Voice call') + (data.duration ? ' · ' + data.duration : ' · No answer');
+  document.getElementById('cb-prev-time').textContent = data.when || '';
+
+  document.getElementById('callback-modal').classList.remove('hidden');
+  if (window.lucide) lucide.createIcons();
+}
+
+function closeCallBack() {
+  document.getElementById('callback-modal').classList.add('hidden');
+}
+
+function startCallBack(type) {
+  const mode = type || (cbCurrent && (cbCurrent.callType || 'voice').toLowerCase()) || 'voice';
+  const name = cbCurrent ? cbCurrent.name : 'contact';
+  closeCallBack();
+  window.NexusComponents?.toast('Starting ' + (mode === 'video' ? 'video' : 'voice') + ' call with ' + name + '…', 'success');
+  showCallView('active');
 }
 
 function showIncomingCall() {

@@ -41,7 +41,7 @@
         <div><p class="text-sm font-semibold text-slate-100">Design Studio</p><p class="text-xs text-slate-400">design.io · 12 members</p></div>
       </button>
       <div class="border-t border-slate-700 mt-1 pt-1">
-        <button onclick="window.NexusComponents?.toast('Create a workspace','info')" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left text-sm text-slate-400">
+        <button onclick="window.NexusComponents?.openModal('create-workspace-modal')" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left text-sm text-slate-400">
           <div class="w-8 h-8 rounded-lg border-2 border-dashed border-slate-600 flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4"></i></div>
           Add a workspace
         </button>
@@ -359,7 +359,7 @@
           <a href="/pages/notifications.html" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i>Notifications</a>
           <button onclick="window.NexusComponents?.toast('Added to favorites','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="star" class="w-4 h-4 opacity-60"></i>Add to Favorites</button>
           <div class="border-t border-slate-700 my-1"></div>
-          <button onclick="window.NexusComponents?.toast('Left channel','error')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Leave Channel</button>
+          <button onclick="window.NexusComponents?.openModal('leave-channel-modal')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Leave Channel</button>
         </div>
       </div>
     </header>
@@ -666,7 +666,7 @@ Authorization: Bearer &lt;token&gt;
           <button data-file-trigger data-attachments="#attachment-bar" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file" title="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
           <button data-file-trigger data-accept="image/*" data-attachments="#attachment-bar" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Upload image" title="Upload image"><i data-lucide="image" class="w-4 h-4"></i></button>
           <div class="flex-1"></div>
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Voice message" title="Voice message"><i data-lucide="mic" class="w-4 h-4"></i></button>
+          <button type="button" onclick="openVoiceRecorder()" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Voice message" title="Voice message"><i data-lucide="mic" class="w-4 h-4"></i></button>
           <button id="send-btn" aria-label="Send message" onclick="window.NexusComponents?.toast('Message sent!','success',2000)" class="w-8 h-8 rounded-xl bg-violet-600 hover:bg-violet-500 active:scale-95 transition flex items-center justify-center ml-1">
             <i data-lucide="send" class="w-3.5 h-3.5 text-white"></i>
           </button>
@@ -874,14 +874,15 @@ Authorization: Bearer &lt;token&gt;
       </div>
       <div>
         <label class="block text-xs font-semibold text-slate-400 mb-2">Visibility</label>
+        <input type="hidden" id="channel-visibility" value="public" />
         <div class="grid grid-cols-2 gap-2">
-          <button type="button" class="flex items-center gap-2 p-3 rounded-xl bg-violet-600/20 border border-violet-500/40 text-left">
-            <i data-lucide="hash" class="w-4 h-4 text-violet-400 shrink-0"></i>
-            <div><p class="text-xs font-semibold text-slate-200">Public</p><p class="text-[10px] text-slate-400">Anyone can join</p></div>
+          <button type="button" data-visibility-option="public" onclick="setChannelVisibility('public')" aria-pressed="true" class="visibility-option flex items-center gap-2 p-3 rounded-xl bg-violet-600/20 border border-violet-500/40 text-left transition">
+            <i data-lucide="hash" class="w-4 h-4 shrink-0"></i>
+            <div><p class="text-xs font-semibold">Public</p><p class="text-[10px] opacity-70">Anyone can join</p></div>
           </button>
-          <button type="button" class="flex items-center gap-2 p-3 rounded-xl bg-slate-800 border border-slate-700 hover:border-slate-600 text-left transition">
-            <i data-lucide="lock" class="w-4 h-4 text-slate-400 shrink-0"></i>
-            <div><p class="text-xs font-semibold text-slate-400">Private</p><p class="text-[10px] text-slate-500">Invite only</p></div>
+          <button type="button" data-visibility-option="private" onclick="setChannelVisibility('private')" aria-pressed="false" class="visibility-option flex items-center gap-2 p-3 rounded-xl bg-slate-800 border border-slate-700 hover:border-slate-600 text-left transition">
+            <i data-lucide="lock" class="w-4 h-4 shrink-0"></i>
+            <div><p class="text-xs font-semibold">Private</p><p class="text-[10px] opacity-70">Invite only</p></div>
           </button>
         </div>
       </div>
@@ -970,6 +971,136 @@ Authorization: Bearer &lt;token&gt;
   <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
 </div>
 
+<!-- Create Workspace Modal -->
+<div id="create-workspace-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-panel class="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <h2 class="font-bold text-slate-100">Create a Workspace</h2>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <form data-validate data-success="Workspace created!" data-close-modal="create-workspace-modal" data-reset>
+    <div class="p-5 space-y-4">
+      <!-- Workspace icon -->
+      <div>
+        <label class="block text-xs font-semibold text-slate-400 mb-2">Workspace Icon</label>
+        <div class="flex items-center gap-3">
+          <div id="ws-icon-preview" class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shrink-0 shadow-lg">
+            <span id="ws-icon-glyph" class="text-2xl font-bold text-white">W</span>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            <button type="button" onclick="setWorkspaceIcon('from-violet-600 to-indigo-600',this)" class="ws-icon-swatch w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 ring-2 ring-white/70" aria-label="Violet"></button>
+            <button type="button" onclick="setWorkspaceIcon('from-emerald-600 to-teal-600',this)" class="ws-icon-swatch w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 ring-2 ring-transparent" aria-label="Emerald"></button>
+            <button type="button" onclick="setWorkspaceIcon('from-rose-600 to-pink-600',this)" class="ws-icon-swatch w-7 h-7 rounded-lg bg-gradient-to-br from-rose-600 to-pink-600 ring-2 ring-transparent" aria-label="Rose"></button>
+            <button type="button" onclick="setWorkspaceIcon('from-amber-500 to-orange-600',this)" class="ws-icon-swatch w-7 h-7 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 ring-2 ring-transparent" aria-label="Amber"></button>
+            <button type="button" onclick="setWorkspaceIcon('from-sky-600 to-blue-600',this)" class="ws-icon-swatch w-7 h-7 rounded-lg bg-gradient-to-br from-sky-600 to-blue-600 ring-2 ring-transparent" aria-label="Sky"></button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-400 mb-1.5">Workspace Name</label>
+        <input id="ws-name-input" type="text" data-rule="required|min:2" oninput="updateWorkspaceIconGlyph(this.value)" placeholder="e.g. Acme Inc" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition" aria-label="Workspace name" />
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-400 mb-1.5">Description <span class="text-slate-600 font-normal">(optional)</span></label>
+        <textarea rows="2" placeholder="What is this workspace for?" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition resize-none" aria-label="Workspace description"></textarea>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-400 mb-2">Visibility</label>
+        <input type="hidden" id="workspace-visibility" value="private" />
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" data-ws-visibility-option="private" onclick="setWorkspaceVisibility('private')" aria-pressed="true" class="ws-visibility-option flex items-center gap-2 p-3 rounded-xl bg-violet-600/20 border border-violet-500/40 text-left transition">
+            <i data-lucide="lock" class="w-4 h-4 shrink-0"></i>
+            <div><p class="text-xs font-semibold">Private</p><p class="text-[10px] opacity-70">Invite only</p></div>
+          </button>
+          <button type="button" data-ws-visibility-option="public" onclick="setWorkspaceVisibility('public')" aria-pressed="false" class="ws-visibility-option flex items-center gap-2 p-3 rounded-xl bg-slate-800 border border-slate-700 hover:border-slate-600 text-left transition">
+            <i data-lucide="globe" class="w-4 h-4 shrink-0"></i>
+            <div><p class="text-xs font-semibold">Public</p><p class="text-[10px] opacity-70">Anyone with link</p></div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end gap-2 px-5 py-4 border-t border-slate-800">
+      <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+      <button type="submit" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Create Workspace</button>
+    </div>
+    </form>
+  </div>
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+</div>
+
+<!-- Leave Channel Confirmation Modal -->
+<div id="leave-channel-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-panel class="w-full max-w-sm bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl">
+    <div class="p-5">
+      <div class="flex items-start gap-3">
+        <div class="w-11 h-11 rounded-xl bg-red-600/20 flex items-center justify-center shrink-0">
+          <i data-lucide="log-out" class="w-5 h-5 text-red-400"></i>
+        </div>
+        <div class="min-w-0">
+          <h2 class="font-bold text-slate-100">Leave <span class="text-slate-100">#general</span>?</h2>
+          <p class="text-sm text-slate-400 mt-1">You'll no longer receive messages from this channel. You can rejoin anytime since it's a public channel.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end gap-2 px-5 py-4 border-t border-slate-800">
+      <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+      <button type="button" onclick="confirmLeaveChannel()" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-sm text-white font-semibold transition flex items-center gap-1.5"><i data-lucide="log-out" class="w-4 h-4"></i>Leave Channel</button>
+    </div>
+  </div>
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+</div>
+
+<!-- Voice Message Recorder Modal -->
+<div id="voice-recorder-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-panel class="w-full max-w-sm bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <h2 class="font-bold text-slate-100 flex items-center gap-2"><i data-lucide="mic" class="w-4 h-4 text-violet-400"></i>Voice Message</h2>
+      <button data-modal-close onclick="stopVoiceTicker()" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="p-5">
+      <!-- Status -->
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <span id="voice-status-dot" class="w-2.5 h-2.5 rounded-full bg-slate-600"></span>
+        <span id="voice-status-text" class="text-xs font-semibold uppercase tracking-wider text-slate-400">Ready to record</span>
+      </div>
+      <!-- Timer -->
+      <p id="voice-timer" class="text-center text-4xl font-bold font-mono text-slate-100 mb-4 tabular-nums">0:00</p>
+      <!-- Waveform -->
+      <div id="voice-waveform" class="flex items-end justify-center gap-1 h-16 mb-5"></div>
+      <!-- Controls -->
+      <div id="voice-controls" class="flex items-center justify-center gap-3">
+        <!-- Record -->
+        <button type="button" id="voice-record-btn" onclick="voiceRecord()" class="w-16 h-16 rounded-full bg-red-600 hover:bg-red-500 flex items-center justify-center transition shadow-lg" aria-label="Record">
+          <i data-lucide="mic" class="w-7 h-7 text-white"></i>
+        </button>
+        <!-- Pause (hidden until recording) -->
+        <button type="button" id="voice-pause-btn" onclick="voicePause()" class="hidden w-14 h-14 rounded-full bg-slate-800 border border-slate-700 hover:bg-slate-700 flex items-center justify-center transition text-slate-200" aria-label="Pause">
+          <i data-lucide="pause" class="w-6 h-6"></i>
+        </button>
+        <!-- Stop (hidden until recording) -->
+        <button type="button" id="voice-stop-btn" onclick="voiceStop()" class="hidden w-16 h-16 rounded-full bg-slate-100 hover:bg-white flex items-center justify-center transition shadow-lg" aria-label="Stop">
+          <i data-lucide="square" class="w-6 h-6 text-slate-900 fill-slate-900"></i>
+        </button>
+        <!-- Play (hidden until recorded) -->
+        <button type="button" id="voice-play-btn" onclick="voicePlay()" class="hidden w-16 h-16 rounded-full bg-violet-600 hover:bg-violet-500 flex items-center justify-center transition shadow-lg" aria-label="Play">
+          <i data-lucide="play" class="w-7 h-7 text-white ml-0.5"></i>
+        </button>
+      </div>
+      <!-- Post-record actions -->
+      <div id="voice-actions" class="hidden flex items-center gap-2 mt-5">
+        <button type="button" onclick="voiceDelete()" class="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sm font-semibold text-red-400 transition">
+          <i data-lucide="trash-2" class="w-4 h-4"></i>Delete
+        </button>
+        <button type="button" onclick="voiceSend()" class="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm font-semibold text-white transition">
+          <i data-lucide="send" class="w-4 h-4"></i>Send
+        </button>
+      </div>
+      <p class="text-[11px] text-slate-600 text-center mt-4">Demo recorder · sample frontend data only</p>
+    </div>
+  </div>
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+</div>
+
 <!-- ─── Thread panel (slide-in) ──────────────────────────────── -->
 <aside id="thread-panel" class="hidden translate-x-full fixed top-0 right-0 h-full w-full max-w-md bg-slate-900 border-l border-slate-800 shadow-2xl z-50 flex flex-col transition-transform duration-300 ease-out" style="transition-property:transform" aria-label="Thread">
   <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800 shrink-0">
@@ -1042,6 +1173,212 @@ Authorization: Bearer &lt;token&gt;
 <script>
   // Init icons after modules load (Cmd/Ctrl+K command palette is handled in interactions.js)
   window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+
+  /* ═══ Create Channel — Visibility toggle ═══ */
+  function setChannelVisibility(vis) {
+    document.getElementById('channel-visibility').value = vis;
+    document.querySelectorAll('[data-visibility-option]').forEach(btn => {
+      const active = btn.getAttribute('data-visibility-option') === vis;
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      btn.classList.toggle('bg-violet-600/20', active);
+      btn.classList.toggle('border-violet-500/40', active);
+      btn.classList.toggle('text-violet-300', active);
+      btn.classList.toggle('bg-slate-800', !active);
+      btn.classList.toggle('border-slate-700', !active);
+      btn.classList.toggle('text-slate-400', !active);
+    });
+  }
+  window.setChannelVisibility = setChannelVisibility;
+
+  /* ═══ Create Workspace ═══ */
+  let wsIconGradient = 'from-violet-600 to-indigo-600';
+  function setWorkspaceIcon(gradient, el) {
+    wsIconGradient = gradient;
+    const preview = document.getElementById('ws-icon-preview');
+    preview.className = 'w-14 h-14 rounded-2xl bg-gradient-to-br ' + gradient + ' flex items-center justify-center shrink-0 shadow-lg';
+    document.querySelectorAll('.ws-icon-swatch').forEach(s => {
+      s.classList.remove('ring-white/70'); s.classList.add('ring-transparent');
+    });
+    el.classList.remove('ring-transparent'); el.classList.add('ring-white/70');
+  }
+  window.setWorkspaceIcon = setWorkspaceIcon;
+
+  function updateWorkspaceIconGlyph(val) {
+    const glyph = (val.trim()[0] || 'W').toUpperCase();
+    document.getElementById('ws-icon-glyph').textContent = glyph;
+  }
+  window.updateWorkspaceIconGlyph = updateWorkspaceIconGlyph;
+
+  function setWorkspaceVisibility(vis) {
+    document.getElementById('workspace-visibility').value = vis;
+    document.querySelectorAll('[data-ws-visibility-option]').forEach(btn => {
+      const active = btn.getAttribute('data-ws-visibility-option') === vis;
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      btn.classList.toggle('bg-violet-600/20', active);
+      btn.classList.toggle('border-violet-500/40', active);
+      btn.classList.toggle('text-violet-300', active);
+      btn.classList.toggle('bg-slate-800', !active);
+      btn.classList.toggle('border-slate-700', !active);
+      btn.classList.toggle('text-slate-400', !active);
+    });
+  }
+  window.setWorkspaceVisibility = setWorkspaceVisibility;
+
+  /* ═══ Leave Channel ═══ */
+  function confirmLeaveChannel() {
+    window.NexusComponents?.closeModal('leave-channel-modal');
+    window.NexusComponents?.toast('You left #general', 'error');
+  }
+  window.confirmLeaveChannel = confirmLeaveChannel;
+
+  /* ═══ Voice Message Recorder ═══ */
+  let voiceState = 'idle'; // idle | recording | paused | recorded | playing
+  let voiceSeconds = 0, voiceTicker = null, voicePlayTicker = null, voicePlayPos = 0;
+  const VOICE_BARS = 32;
+
+  function buildWaveform() {
+    const wrap = document.getElementById('voice-waveform');
+    wrap.innerHTML = '';
+    for (let i = 0; i < VOICE_BARS; i++) {
+      const bar = document.createElement('span');
+      bar.className = 'voice-bar w-1.5 rounded-full bg-slate-700 transition-all';
+      bar.style.height = '8%';
+      wrap.appendChild(bar);
+    }
+  }
+  function fmtTime(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  function setVoiceStatus(text, dotClass) {
+    document.getElementById('voice-status-text').textContent = text;
+    document.getElementById('voice-status-dot').className = 'w-2.5 h-2.5 rounded-full ' + dotClass;
+  }
+  function pseudoRand(i, t) { return (Math.sin(i * 12.9898 + t * 3.233) * 43758.5453) % 1; }
+  function animateBars(activeCount) {
+    const bars = document.querySelectorAll('.voice-bar');
+    bars.forEach((bar, i) => {
+      if (i < activeCount) {
+        const h = 20 + Math.abs(pseudoRand(i, voiceSeconds + i)) * 80;
+        bar.style.height = Math.min(100, h) + '%';
+        bar.classList.remove('bg-slate-700'); bar.classList.add('bg-violet-500');
+      } else {
+        bar.style.height = '8%';
+        bar.classList.add('bg-slate-700'); bar.classList.remove('bg-violet-500');
+      }
+    });
+  }
+  function showVoiceButtons(ids) {
+    ['voice-record-btn','voice-pause-btn','voice-stop-btn','voice-play-btn'].forEach(id => {
+      document.getElementById(id).classList.toggle('hidden', !ids.includes(id));
+    });
+    document.getElementById('voice-actions').classList.toggle('hidden', !ids.includes('actions'));
+  }
+
+  function openVoiceRecorder() {
+    voiceResetInternal();
+    buildWaveform();
+    window.NexusComponents?.openModal('voice-recorder-modal');
+    if (window.lucide) lucide.createIcons();
+  }
+  window.openVoiceRecorder = openVoiceRecorder;
+
+  function voiceResetInternal() {
+    clearInterval(voiceTicker); clearInterval(voicePlayTicker);
+    voiceState = 'idle'; voiceSeconds = 0; voicePlayPos = 0;
+    document.getElementById('voice-timer').textContent = '0:00';
+    setVoiceStatus('Ready to record', 'bg-slate-600');
+    showVoiceButtons(['voice-record-btn']);
+    buildWaveform();
+  }
+
+  function voiceRecord() {
+    if (voiceState === 'recording') return;
+    voiceState = 'recording';
+    setVoiceStatus('Recording…', 'bg-red-500 animate-pulse');
+    showVoiceButtons(['voice-pause-btn','voice-stop-btn']);
+    if (window.lucide) lucide.createIcons();
+    clearInterval(voiceTicker);
+    voiceTicker = setInterval(() => {
+      voiceSeconds++;
+      document.getElementById('voice-timer').textContent = fmtTime(voiceSeconds);
+      animateBars(Math.min(VOICE_BARS, voiceSeconds));
+      if (voiceSeconds >= VOICE_BARS) voiceSeconds = voiceSeconds; // keep counting
+    }, 1000);
+  }
+  window.voiceRecord = voiceRecord;
+
+  function voicePause() {
+    if (voiceState !== 'recording') return;
+    voiceState = 'paused';
+    clearInterval(voiceTicker);
+    setVoiceStatus('Paused', 'bg-amber-400');
+    showVoiceButtons(['voice-record-btn','voice-stop-btn']);
+    if (window.lucide) lucide.createIcons();
+  }
+  window.voicePause = voicePause;
+
+  function voiceStop() {
+    clearInterval(voiceTicker);
+    if (voiceSeconds === 0) voiceSeconds = 12; // sample data if stopped immediately
+    voiceState = 'recorded';
+    setVoiceStatus('Recorded · ' + fmtTime(voiceSeconds), 'bg-violet-500');
+    animateBars(VOICE_BARS);
+    showVoiceButtons(['voice-play-btn','actions']);
+    if (window.lucide) lucide.createIcons();
+  }
+  window.voiceStop = voiceStop;
+
+  function voicePlay() {
+    if (voiceState === 'playing') { // pause playback
+      clearInterval(voicePlayTicker);
+      voiceState = 'recorded';
+      setVoiceStatus('Recorded · ' + fmtTime(voiceSeconds), 'bg-violet-500');
+      document.getElementById('voice-play-btn').innerHTML = '<i data-lucide="play" class="w-7 h-7 text-white ml-0.5"></i>';
+      if (window.lucide) lucide.createIcons();
+      return;
+    }
+    voiceState = 'playing';
+    setVoiceStatus('Playing…', 'bg-green-500 animate-pulse');
+    document.getElementById('voice-play-btn').innerHTML = '<i data-lucide="pause" class="w-7 h-7 text-white"></i>';
+    if (window.lucide) lucide.createIcons();
+    voicePlayPos = 0;
+    clearInterval(voicePlayTicker);
+    voicePlayTicker = setInterval(() => {
+      voicePlayPos++;
+      document.getElementById('voice-timer').textContent = fmtTime(voicePlayPos) + ' / ' + fmtTime(voiceSeconds);
+      const progress = Math.round((voicePlayPos / voiceSeconds) * VOICE_BARS);
+      const bars = document.querySelectorAll('.voice-bar');
+      bars.forEach((b, i) => b.classList.toggle('bg-violet-300', i < progress));
+      if (voicePlayPos >= voiceSeconds) {
+        clearInterval(voicePlayTicker);
+        voiceState = 'recorded';
+        setVoiceStatus('Recorded · ' + fmtTime(voiceSeconds), 'bg-violet-500');
+        document.getElementById('voice-timer').textContent = fmtTime(voiceSeconds);
+        document.getElementById('voice-play-btn').innerHTML = '<i data-lucide="play" class="w-7 h-7 text-white ml-0.5"></i>';
+        document.querySelectorAll('.voice-bar').forEach(b => b.classList.remove('bg-violet-300'));
+        if (window.lucide) lucide.createIcons();
+      }
+    }, 1000);
+  }
+  window.voicePlay = voicePlay;
+
+  function voiceDelete() {
+    voiceResetInternal();
+    if (window.lucide) lucide.createIcons();
+    window.NexusComponents?.toast('Recording deleted', 'info', 2000);
+  }
+  window.voiceDelete = voiceDelete;
+
+  function voiceSend() {
+    const dur = fmtTime(voiceSeconds);
+    stopVoiceTicker();
+    window.NexusComponents?.closeModal('voice-recorder-modal');
+    window.NexusComponents?.toast('Voice message sent · ' + dur, 'success');
+  }
+  window.voiceSend = voiceSend;
+
+  function stopVoiceTicker() {
+    clearInterval(voiceTicker); clearInterval(voicePlayTicker);
+  }
+  window.stopVoiceTicker = stopVoiceTicker;
 </script>
 
 </body>
