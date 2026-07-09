@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr" data-ai-active="suggestions">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Reply Suggestions — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-CLa40IAl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-D4D8r34w.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/ai-assistant.html" aria-label="AI" data-tooltip="AI Features" class="w-9 h-9 rounded-xl flex items-center justify-center bg-violet-600/20 text-violet-300 transition"><i data-lucide="sparkles" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- AI Sidebar -->
+  <aside data-app-sidebar class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex transition-all">
+    <div class="px-4 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center"><i data-lucide="sparkles" class="w-4 h-4 text-white"></i></span>
+        <h2 class="text-sm font-bold text-slate-100">AI Features</h2>
+      </div>
+      <p class="text-xs text-slate-500 mt-1.5">Smart tools for your workspace</p>
+    </div>
+    <div class="flex-1 py-3 space-y-0.5 px-2" data-ai-nav></div>
+  </aside>
+
+  <!-- Main -->
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden">
+    <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-800 bg-slate-900 shrink-0">
+      <button aria-label="Open menu" class="md:hidden p-1.5 rounded-lg hover:bg-slate-800 text-slate-400" onclick="document.querySelector('[data-app-sidebar]').classList.toggle('hidden')"><i data-lucide="menu" class="w-5 h-5"></i></button>
+      <div>
+        <h1 class="text-base font-bold text-slate-100 flex items-center gap-2"><i data-lucide="lightbulb" class="w-4 h-4 text-violet-400"></i> Reply Suggestions</h1>
+        <p class="text-xs text-slate-500">Smart, ready-to-send replies in your chosen tone</p>
+      </div>
+    </div>
+
+    <div data-ai-disabled class="hidden mx-6 mt-4 flex items-center gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm">
+      <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0"></i>
+      <span>Reply Suggestions are turned off. Enable them in <a href="/pages/ai-settings.html" class="underline font-medium">AI Settings</a>.</span>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 max-w-3xl mx-auto w-full" data-ai-guarded>
+      <!-- Incoming message -->
+      <div class="mb-5">
+        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Incoming message</p>
+        <div class="flex items-start gap-3 bg-slate-900 border border-slate-800 rounded-xl p-4">
+          <img id="sg-avatar" src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" class="w-9 h-9 rounded-lg bg-slate-700 shrink-0" alt="" />
+          <div class="min-w-0 flex-1">
+            <div class="flex items-baseline gap-2 mb-1">
+              <span id="sg-name" class="text-sm font-semibold text-slate-100">Alice Chen</span>
+              <span class="text-xs text-slate-500">10:24 AM</span>
+            </div>
+            <p id="sg-message" class="text-sm text-slate-300">Hey! The client loved the demo. Can you send over the final deck before our 3pm call?</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 mt-3">
+          <span class="text-xs text-slate-500">Try another:</span>
+          <button class="sg-sample text-xs px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition" data-seed="mike" data-name="Mike Ross" data-msg="Can we push the standup to 10:30 tomorrow?">Meeting reschedule</button>
+          <button class="sg-sample text-xs px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition" data-seed="carol" data-name="Carol Wu" data-msg="Thanks so much for jumping on that bug so fast!">A thank-you</button>
+          <button class="sg-sample text-xs px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition" data-seed="david" data-name="David Kim" data-msg="Are you free to review my PR this afternoon?">A question</button>
+        </div>
+      </div>
+
+      <!-- Tone tabs -->
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider mr-1">Tone</span>
+        <div class="inline-flex bg-slate-900 border border-slate-800 rounded-lg p-0.5" role="tablist">
+          <button class="sg-tone px-3 py-1.5 text-xs font-medium rounded-md transition" data-tone="professional">Professional</button>
+          <button class="sg-tone px-3 py-1.5 text-xs font-medium rounded-md transition" data-tone="friendly">Friendly</button>
+          <button class="sg-tone px-3 py-1.5 text-xs font-medium rounded-md transition" data-tone="casual">Casual</button>
+        </div>
+        <button onclick="regenerate()" class="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Regenerate</button>
+      </div>
+
+      <!-- Suggestions -->
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Suggested replies</p>
+      <div id="sg-list" class="space-y-2.5"></div>
+
+      <!-- Composer preview -->
+      <div class="mt-6">
+        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Your reply</p>
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-2 focus-within:border-violet-500/60 transition">
+          <textarea id="sg-reply" data-auto-resize rows="2" placeholder="Pick a suggestion above or write your own…" class="w-full bg-transparent px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none resize-none"></textarea>
+          <div class="flex justify-end px-1">
+            <button onclick="sendReply()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-violet-600 hover:bg-violet-500 active:scale-95 text-white text-sm font-semibold transition"><i data-lucide="send" class="w-4 h-4"></i> Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+let currentTone = 'professional';
+
+function setToneUI() {
+  document.querySelectorAll('.sg-tone').forEach(b => {
+    const on = b.getAttribute('data-tone') === currentTone;
+    b.classList.toggle('bg-violet-600', on);
+    b.classList.toggle('text-white', on);
+    b.classList.toggle('text-slate-400', !on);
+  });
+}
+
+function renderSuggestions() {
+  const msg = document.getElementById('sg-message').textContent;
+  const list = window.NexusAI.suggestions(msg, currentTone);
+  const host = document.getElementById('sg-list');
+  host.innerHTML = '';
+  list.forEach((s, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'sg-item w-full text-left flex items-start gap-3 p-3.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:bg-slate-800/50 transition group fade-in';
+    btn.innerHTML = `
+      <span class="w-6 h-6 rounded-lg bg-violet-600/15 text-violet-400 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">${i+1}</span>
+      <span class="flex-1 text-sm text-slate-200 leading-relaxed">${s}</span>
+      <span class="flex items-center gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition">
+        <span class="p-1.5 rounded-lg bg-slate-800 text-slate-400" title="Use"><i data-lucide="corner-down-left" class="w-3.5 h-3.5"></i></span>
+      </span>`;
+    btn.addEventListener('click', () => {
+      document.getElementById('sg-reply').value = s;
+      window.NexusComponents?.toast('Suggestion added to your reply', 'success', 1800);
+      document.getElementById('sg-reply').focus();
+    });
+    host.appendChild(btn);
+  });
+  if (window.lucide) lucide.createIcons();
+}
+
+function regenerate() {
+  renderSuggestions();
+  window.NexusComponents?.toast('Fresh suggestions generated', 'info', 1500);
+}
+function sendReply() {
+  const v = document.getElementById('sg-reply').value.trim();
+  if (!v) { window.NexusComponents?.toast('Pick or write a reply first', 'warning'); return; }
+  window.NexusComponents?.toast('Reply sent!', 'success');
+  document.getElementById('sg-reply').value = '';
+}
+
+document.addEventListener('click', e => {
+  const tone = e.target.closest('.sg-tone');
+  if (tone) { currentTone = tone.getAttribute('data-tone'); setToneUI(); renderSuggestions(); }
+  const sample = e.target.closest('.sg-sample');
+  if (sample) {
+    document.getElementById('sg-name').textContent = sample.getAttribute('data-name');
+    document.getElementById('sg-message').textContent = sample.getAttribute('data-msg');
+    document.getElementById('sg-avatar').src = 'https://api.dicebear.com/9.x/avataaars/svg?seed=' + sample.getAttribute('data-seed');
+    renderSuggestions();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  currentTone = window.NexusAI?.get().style || 'professional';
+  setToneUI();
+  renderSuggestions();
+  window.NexusAI?.guardFeature('suggestions');
+});
+</script>
+</body>
+</html>

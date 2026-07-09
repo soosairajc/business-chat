@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr" data-ai-active="summary">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Conversation Summary — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-CLa40IAl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-D4D8r34w.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/ai-assistant.html" aria-label="AI" data-tooltip="AI Features" class="w-9 h-9 rounded-xl flex items-center justify-center bg-violet-600/20 text-violet-300 transition"><i data-lucide="sparkles" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- AI Sidebar -->
+  <aside data-app-sidebar class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex transition-all">
+    <div class="px-4 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center"><i data-lucide="sparkles" class="w-4 h-4 text-white"></i></span>
+        <h2 class="text-sm font-bold text-slate-100">AI Features</h2>
+      </div>
+      <p class="text-xs text-slate-500 mt-1.5">Smart tools for your workspace</p>
+    </div>
+    <div class="flex-1 py-3 space-y-0.5 px-2" data-ai-nav></div>
+  </aside>
+
+  <!-- Main -->
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden">
+    <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-800 bg-slate-900 shrink-0">
+      <button aria-label="Open menu" class="md:hidden p-1.5 rounded-lg hover:bg-slate-800 text-slate-400" onclick="document.querySelector('[data-app-sidebar]').classList.toggle('hidden')"><i data-lucide="menu" class="w-5 h-5"></i></button>
+      <div>
+        <h1 class="text-base font-bold text-slate-100 flex items-center gap-2"><i data-lucide="text-select" class="w-4 h-4 text-violet-400"></i> Conversation Summary</h1>
+        <p class="text-xs text-slate-500">Turn long threads into key points, decisions &amp; action items</p>
+      </div>
+    </div>
+
+    <div data-ai-disabled class="hidden mx-6 mt-4 flex items-center gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm">
+      <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0"></i>
+      <span>Conversation Summary is turned off. Enable it in <a href="/pages/ai-settings.html" class="underline font-medium">AI Settings</a>.</span>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 max-w-3xl mx-auto w-full" data-ai-guarded>
+      <!-- Source selector -->
+      <div class="flex flex-wrap items-center gap-3 mb-5">
+        <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Conversation</label>
+        <div class="relative">
+          <select id="sum-source" class="bg-slate-900 border border-slate-800 text-slate-100 text-sm rounded-lg pl-3 pr-8 py-2 appearance-none focus:outline-none focus:border-violet-500 transition">
+            <option value="design-sync">#design-sync · 42 messages</option>
+            <option value="q4-planning">#q4-planning · 68 messages</option>
+            <option value="incident-501">#incident-501 · 31 messages</option>
+          </select>
+          <i data-lucide="chevron-down" class="w-4 h-4 absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"></i>
+        </div>
+        <button id="sum-generate" onclick="generateSummary()" class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 active:scale-95 text-white text-sm font-semibold transition"><i data-lucide="sparkles" class="w-4 h-4"></i> Summarize</button>
+        <button onclick="copySummary()" class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-medium transition"><i data-lucide="copy" class="w-4 h-4"></i> Copy</button>
+      </div>
+
+      <!-- Loading -->
+      <div id="sum-loading" class="hidden">
+        <div class="flex items-center gap-3 p-4 rounded-xl bg-slate-900 border border-slate-800">
+          <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shrink-0"><i data-lucide="loader" class="w-4 h-4 text-white animate-spin"></i></span>
+          <div class="flex-1">
+            <div class="h-3 w-1/3 bg-slate-800 rounded animate-pulse mb-2"></div>
+            <div class="h-3 w-2/3 bg-slate-800 rounded animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="sum-result" class="space-y-4"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+
+function meta(key){ return window.NexusAI.SAMPLE_CONVERSATIONS[key]; }
+
+function sentimentColor(s){
+  return ({ Positive:'emerald', Focused:'sky', Resolved:'emerald' })[s] || 'violet';
+}
+
+function renderSummary(key) {
+  const info = meta(key);
+  const d = info.summary;
+  const c = sentimentColor(d.sentiment);
+  const peopleAvatars = info.people.map(p => `<img src="https://api.dicebear.com/9.x/avataaars/svg?seed=${p.split(' ')[0].toLowerCase()}" title="${p}" class="w-6 h-6 rounded-full bg-slate-700 ring-2 ring-slate-900" alt="${p}" />`).join('');
+  return `
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 fade-in">
+      <div class="flex items-center justify-between gap-3 flex-wrap mb-4">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center"><i data-lucide="hash" class="w-5 h-5 text-white"></i></span>
+          <div>
+            <p class="text-sm font-bold text-slate-100">${info.title}</p>
+            <p class="text-xs text-slate-500">${info.messages} messages · ${info.people.length} people</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex -space-x-2">${peopleAvatars}</div>
+          <span class="px-2.5 py-1 rounded-full bg-${c}-500/15 text-${c}-400 text-xs font-semibold flex items-center gap-1"><i data-lucide="activity" class="w-3.5 h-3.5"></i> ${d.sentiment}</span>
+        </div>
+      </div>
+      <p class="text-sm text-slate-300 leading-relaxed bg-slate-950/40 border border-slate-800 rounded-xl p-3.5">${d.overview}</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 fade-in">
+        <h3 class="text-sm font-bold text-slate-100 flex items-center gap-2 mb-3"><i data-lucide="list" class="w-4 h-4 text-violet-400"></i> Key Points</h3>
+        <ul class="space-y-2.5">${d.bullets.map(b => `<li class="flex items-start gap-2.5 text-sm text-slate-300"><i data-lucide="dot" class="w-4 h-4 text-violet-400 shrink-0 mt-0.5"></i><span>${b}</span></li>`).join('')}</ul>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 fade-in">
+        <h3 class="text-sm font-bold text-slate-100 flex items-center gap-2 mb-3"><i data-lucide="gavel" class="w-4 h-4 text-amber-400"></i> Decisions</h3>
+        <ul class="space-y-2.5">${d.decisions.map(b => `<li class="flex items-start gap-2.5 text-sm text-slate-300"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i><span>${b}</span></li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 fade-in">
+      <h3 class="text-sm font-bold text-slate-100 flex items-center gap-2 mb-3"><i data-lucide="list-checks" class="w-4 h-4 text-sky-400"></i> Action Items</h3>
+      <div class="space-y-2">
+        ${d.actions.map(a => `
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-950/40 border border-slate-800">
+            <input type="checkbox" class="w-4 h-4 rounded border-slate-600 bg-slate-800 text-violet-600 focus:ring-violet-500 shrink-0" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=${a.who.split(' ')[0].toLowerCase()}" class="w-7 h-7 rounded-lg bg-slate-700 shrink-0" alt="" />
+            <div class="min-w-0 flex-1">
+              <p class="text-sm text-slate-200 truncate">${a.task}</p>
+              <p class="text-xs text-slate-500">${a.who}</p>
+            </div>
+            <span class="text-xs font-medium px-2 py-1 rounded-lg bg-slate-800 text-slate-400 shrink-0">${a.due}</span>
+          </div>`).join('')}
+      </div>
+      <div class="flex items-center gap-2 mt-3 text-xs text-slate-500"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-violet-400"></i> ${d.sentimentNote}</div>
+    </div>`;
+}
+
+async function generateSummary() {
+  if (!window.NexusAI?.isEnabled('summary')) { window.NexusComponents?.toast('Enable Conversation Summary in AI Settings', 'warning'); return; }
+  const key = document.getElementById('sum-source').value;
+  const result = document.getElementById('sum-result');
+  const loading = document.getElementById('sum-loading');
+  result.innerHTML = '';
+  loading.classList.remove('hidden');
+  await window.NexusAI.think(900 + Math.random() * 700);
+  loading.classList.add('hidden');
+  result.innerHTML = renderSummary(key);
+  if (window.lucide) lucide.createIcons();
+  window.NexusComponents?.toast('Summary generated', 'success', 1800);
+}
+
+function copySummary() {
+  const key = document.getElementById('sum-source').value;
+  const d = meta(key).summary;
+  const text = `Summary of ${meta(key).title}\n\n${d.overview}\n\nKey Points:\n${d.bullets.map(b=>'• '+b).join('\n')}\n\nDecisions:\n${d.decisions.map(b=>'• '+b).join('\n')}\n\nAction Items:\n${d.actions.map(a=>`• ${a.task} — ${a.who} (${a.due})`).join('\n')}`;
+  navigator.clipboard?.writeText(text).then(() => window.NexusComponents?.toast('Summary copied to clipboard', 'success'));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.NexusAI?.guardFeature('summary');
+  generateSummary();
+});
+document.getElementById('sum-source')?.addEventListener('change', generateSummary);
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr" data-ai-active="assistant">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Assistant — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/ai-assistant.html" aria-label="AI" data-tooltip="AI Features" class="w-9 h-9 rounded-xl flex items-center justify-center bg-violet-600/20 text-violet-300 transition"><i data-lucide="sparkles" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- AI Sidebar -->
+  <aside data-app-sidebar class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex transition-all">
+    <div class="px-4 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center"><i data-lucide="sparkles" class="w-4 h-4 text-white"></i></span>
+        <h2 class="text-sm font-bold text-slate-100">AI Features</h2>
+      </div>
+      <p class="text-xs text-slate-500 mt-1.5">Smart tools for your workspace</p>
+    </div>
+    <div class="flex-1 py-3 space-y-0.5 px-2" data-ai-nav></div>
+    <div class="px-3 py-3 border-t border-slate-800">
+      <div class="rounded-xl bg-gradient-to-br from-violet-600/15 to-indigo-600/10 border border-violet-500/20 p-3">
+        <p class="text-xs font-semibold text-violet-300 flex items-center gap-1.5"><i data-lucide="info" class="w-3.5 h-3.5"></i> Demo mode</p>
+        <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">All AI responses use on-device sample logic — no data leaves your browser.</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden">
+    <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-800 bg-slate-900 shrink-0">
+      <button aria-label="Open menu" class="md:hidden p-1.5 rounded-lg hover:bg-slate-800 text-slate-400" onclick="document.querySelector('[data-app-sidebar]').classList.toggle('hidden')"><i data-lucide="menu" class="w-5 h-5"></i></button>
+      <div>
+        <h1 class="text-base font-bold text-slate-100 flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-violet-400"></i> AI Assistant</h1>
+        <p class="text-xs text-slate-500">Ask anything about your workspace</p>
+      </div>
+      <button onclick="clearChat()" class="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition"><i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> New chat</button>
+    </div>
+
+    <!-- Disabled banner -->
+    <div data-ai-disabled class="hidden mx-6 mt-4 flex items-center gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm">
+      <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0"></i>
+      <span>The AI Assistant is turned off. Enable it in <a href="/pages/ai-settings.html" class="underline font-medium">AI Settings</a> to use it.</span>
+    </div>
+
+    <!-- Chat area -->
+    <div id="ai-chat" class="flex-1 overflow-y-auto px-4 md:px-6 py-6 space-y-5 max-w-3xl mx-auto w-full" data-ai-guarded>
+      <!-- Welcome -->
+      <div class="text-center py-6">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mx-auto mb-4 shadow-lg"><i data-lucide="sparkles" class="w-7 h-7 text-white"></i></div>
+        <h2 class="text-lg font-bold text-slate-100">How can I help you today?</h2>
+        <p class="text-sm text-slate-400 mt-1">Try one of these to get started</p>
+        <div class="grid sm:grid-cols-2 gap-2 mt-5 text-left">
+          <button class="ai-prompt group p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 transition text-left" data-prompt="Summarize today's activity for me">
+            <span class="flex items-center gap-2 text-sm font-medium text-slate-200"><i data-lucide="text-select" class="w-4 h-4 text-violet-400"></i> Recap my day</span>
+            <span class="block text-xs text-slate-500 mt-1">Summarize today's activity for me</span>
+          </button>
+          <button class="ai-prompt group p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 transition text-left" data-prompt="Draft a reply thanking the team for their work">
+            <span class="flex items-center gap-2 text-sm font-medium text-slate-200"><i data-lucide="pen-line" class="w-4 h-4 text-emerald-400"></i> Draft a message</span>
+            <span class="block text-xs text-slate-500 mt-1">Thank the team for their work</span>
+          </button>
+          <button class="ai-prompt group p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 transition text-left" data-prompt="Help me plan a sprint review meeting">
+            <span class="flex items-center gap-2 text-sm font-medium text-slate-200"><i data-lucide="calendar-clock" class="w-4 h-4 text-amber-400"></i> Plan a meeting</span>
+            <span class="block text-xs text-slate-500 mt-1">Help me plan a sprint review</span>
+          </button>
+          <button class="ai-prompt group p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 transition text-left" data-prompt="What can you do?">
+            <span class="flex items-center gap-2 text-sm font-medium text-slate-200"><i data-lucide="help-circle" class="w-4 h-4 text-sky-400"></i> Explore features</span>
+            <span class="block text-xs text-slate-500 mt-1">What can you do?</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Composer -->
+    <div class="px-4 md:px-6 pb-5 pt-2 max-w-3xl mx-auto w-full" data-ai-guarded>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-2 focus-within:border-violet-500/60 transition">
+        <textarea id="ai-input" data-auto-resize rows="1" placeholder="Message AI Assistant…" class="w-full bg-transparent px-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none resize-none max-h-40"></textarea>
+        <div class="flex items-center justify-between px-1">
+          <span class="text-[11px] text-slate-500 flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5"></i> On-device demo · private</span>
+          <button id="ai-send" onclick="sendAI()" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-violet-600 hover:bg-violet-500 active:scale-95 text-white text-sm font-semibold transition"><i data-lucide="send" class="w-4 h-4"></i> Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+
+function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function addBubble(role, text) {
+  const chat = document.getElementById('ai-chat');
+  const wrap = document.createElement('div');
+  if (role === 'user') {
+    wrap.className = 'flex gap-3 justify-end fade-in';
+    wrap.innerHTML = `
+      <div class="max-w-[80%] bg-violet-600 text-white rounded-2xl rounded-tr-sm px-4 py-2.5 text-sm leading-relaxed">${escapeHtml(text)}</div>
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" class="w-8 h-8 rounded-lg bg-slate-700 shrink-0" alt="You" />`;
+  } else {
+    wrap.className = 'flex gap-3 fade-in';
+    wrap.innerHTML = `
+      <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shrink-0"><i data-lucide="sparkles" class="w-4 h-4 text-white"></i></span>
+      <div class="max-w-[80%] bg-slate-900 border border-slate-800 rounded-2xl rounded-tl-sm px-4 py-2.5 text-sm text-slate-200 leading-relaxed whitespace-pre-line ai-answer"></div>`;
+  }
+  chat.appendChild(wrap);
+  chat.scrollTop = chat.scrollHeight;
+  if (window.lucide) lucide.createIcons();
+  return wrap.querySelector('.ai-answer');
+}
+
+function typingBubble() {
+  const chat = document.getElementById('ai-chat');
+  const el = document.createElement('div');
+  el.id = 'ai-typing';
+  el.className = 'flex gap-3 fade-in';
+  el.innerHTML = `
+    <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shrink-0"><i data-lucide="sparkles" class="w-4 h-4 text-white"></i></span>
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl rounded-tl-sm px-4 py-3 flex items-center gap-1">
+      <span class="typing-dot w-2 h-2 rounded-full bg-slate-400 block"></span>
+      <span class="typing-dot w-2 h-2 rounded-full bg-slate-400 block"></span>
+      <span class="typing-dot w-2 h-2 rounded-full bg-slate-400 block"></span>
+    </div>`;
+  chat.appendChild(el);
+  chat.scrollTop = chat.scrollHeight;
+  if (window.lucide) lucide.createIcons();
+}
+
+async function sendAI(preset) {
+  if (!window.NexusAI?.isEnabled('assistant')) { window.NexusComponents?.toast('Enable the AI Assistant in AI Settings', 'warning'); return; }
+  const input = document.getElementById('ai-input');
+  const text = (preset || input.value).trim();
+  if (!text) return;
+  // Clear the welcome block on first message.
+  document.querySelectorAll('#ai-chat .ai-prompt')[0]?.closest('.text-center')?.remove();
+  addBubble('user', text);
+  input.value = ''; input.style.height = 'auto';
+  typingBubble();
+  await window.NexusAI.think(650 + Math.random() * 600);
+  document.getElementById('ai-typing')?.remove();
+  const answer = window.NexusAI.chatReply(text);
+  const el = addBubble('ai', '');
+  await window.NexusAI.typeInto(el, answer);
+  document.getElementById('ai-chat').scrollTop = document.getElementById('ai-chat').scrollHeight;
+}
+
+function clearChat() {
+  location.reload();
+}
+
+document.addEventListener('click', e => {
+  const p = e.target.closest('.ai-prompt');
+  if (p) sendAI(p.getAttribute('data-prompt'));
+});
+document.getElementById('ai-input')?.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAI(); }
+});
+document.addEventListener('DOMContentLoaded', () => window.NexusAI?.guardFeature('assistant'));
+</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr" data-ai-active="translate">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Translate — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-CLa40IAl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-D4D8r34w.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/ai-assistant.html" aria-label="AI" data-tooltip="AI Features" class="w-9 h-9 rounded-xl flex items-center justify-center bg-violet-600/20 text-violet-300 transition"><i data-lucide="sparkles" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- AI Sidebar -->
+  <aside data-app-sidebar class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex transition-all">
+    <div class="px-4 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center"><i data-lucide="sparkles" class="w-4 h-4 text-white"></i></span>
+        <h2 class="text-sm font-bold text-slate-100">AI Features</h2>
+      </div>
+      <p class="text-xs text-slate-500 mt-1.5">Smart tools for your workspace</p>
+    </div>
+    <div class="flex-1 py-3 space-y-0.5 px-2" data-ai-nav></div>
+  </aside>
+
+  <!-- Main -->
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden">
+    <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-800 bg-slate-900 shrink-0">
+      <button aria-label="Open menu" class="md:hidden p-1.5 rounded-lg hover:bg-slate-800 text-slate-400" onclick="document.querySelector('[data-app-sidebar]').classList.toggle('hidden')"><i data-lucide="menu" class="w-5 h-5"></i></button>
+      <div>
+        <h1 class="text-base font-bold text-slate-100 flex items-center gap-2"><i data-lucide="languages" class="w-4 h-4 text-violet-400"></i> AI Translate</h1>
+        <p class="text-xs text-slate-500">Translate messages into 9 languages</p>
+      </div>
+    </div>
+
+    <div data-ai-disabled class="hidden mx-6 mt-4 flex items-center gap-3 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm">
+      <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0"></i>
+      <span>AI Translate is turned off. Enable it in <a href="/pages/ai-settings.html" class="underline font-medium">AI Settings</a>.</span>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 max-w-4xl mx-auto w-full" data-ai-guarded>
+      <!-- Language bar -->
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-sm text-slate-300"><span>🇬🇧</span> English <span class="text-xs text-slate-500">(auto-detected)</span></div>
+        <span class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 shrink-0"><i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+        <div class="relative">
+          <select id="tr-lang" class="bg-slate-900 border border-slate-800 text-slate-100 text-sm rounded-lg pl-3 pr-9 py-2 appearance-none focus:outline-none focus:border-violet-500 transition"></select>
+          <i data-lucide="chevron-down" class="w-4 h-4 absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"></i>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5">
+        <!-- Source -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Original</p>
+            <button onclick="loadSample()" class="text-xs text-violet-400 hover:text-violet-300 transition flex items-center gap-1"><i data-lucide="shuffle" class="w-3.5 h-3.5"></i> Sample</button>
+          </div>
+          <textarea id="tr-input" rows="7" placeholder="Type a message to translate…" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition resize-none leading-relaxed"></textarea>
+        </div>
+        <!-- Result -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Translation</p>
+            <span id="tr-target-label" class="text-xs text-slate-500"></span>
+          </div>
+          <div id="tr-output" class="w-full min-h-[11.5rem] bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 leading-relaxed overflow-y-auto whitespace-pre-line">
+            <span class="text-slate-600">Translation will appear here…</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mt-4">
+        <button onclick="runTranslate()" class="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 active:scale-95 text-white text-sm font-semibold transition"><i data-lucide="languages" class="w-4 h-4"></i> Translate</button>
+        <button onclick="copyOutput()" class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-medium transition"><i data-lucide="copy" class="w-4 h-4"></i> Copy</button>
+        <button onclick="speakOutput()" class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-medium transition"><i data-lucide="volume-2" class="w-4 h-4"></i> Listen</button>
+      </div>
+
+      <!-- Common phrases -->
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mt-7 mb-3">Quick phrases</p>
+      <div id="tr-phrases" class="flex flex-wrap gap-2"></div>
+
+      <p class="text-[11px] text-slate-500 mt-6 flex items-center gap-1.5"><i data-lucide="info" class="w-3.5 h-3.5"></i> Demo translator using an on-device sample phrasebook — for illustration only.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+const SAMPLES = ['Hello, thank you for your help!', 'Good morning team, great work on the demo.', 'Can you send me the file, please?', 'Let me know if you have any questions.'];
+const PHRASES = ['Hello', 'Thank you', 'Good morning', 'Please', 'Yes', 'No', 'Welcome', 'See you'];
+let lastOutput = '';
+
+function fillLanguages() {
+  const sel = document.getElementById('tr-lang');
+  const langs = window.NexusAI.languages();
+  const def = window.NexusAI.get().language;
+  sel.innerHTML = langs.map(l => `<option value="${l.code}" ${l.code===def?'selected':''}>${l.flag} ${l.name}</option>`).join('');
+}
+function targetName(){ return window.NexusAI.languageName(document.getElementById('tr-lang').value); }
+
+function loadSample() {
+  const s = SAMPLES[Math.floor(Math.random()*SAMPLES.length)];
+  document.getElementById('tr-input').value = s;
+  runTranslate();
+}
+
+async function runTranslate() {
+  if (!window.NexusAI?.isEnabled('translate')) { window.NexusComponents?.toast('Enable AI Translate in AI Settings', 'warning'); return; }
+  const text = document.getElementById('tr-input').value.trim();
+  const lang = document.getElementById('tr-lang').value;
+  const out = document.getElementById('tr-output');
+  document.getElementById('tr-target-label').textContent = window.NexusAI.languageFlag(lang) + ' ' + targetName();
+  if (!text) { out.innerHTML = '<span class="text-slate-600">Translation will appear here…</span>'; return; }
+  out.innerHTML = '<span class="inline-flex items-center gap-2 text-slate-500"><i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Translating…</span>';
+  if (window.lucide) lucide.createIcons();
+  await window.NexusAI.think(500 + Math.random() * 400);
+  lastOutput = window.NexusAI.translate(text, lang);
+  await window.NexusAI.typeInto(out, lastOutput);
+}
+
+function renderPhrases() {
+  const lang = document.getElementById('tr-lang').value;
+  const host = document.getElementById('tr-phrases');
+  host.innerHTML = '';
+  PHRASES.forEach(p => {
+    const t = window.NexusAI.translate(p, lang);
+    const chip = document.createElement('button');
+    chip.className = 'flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-violet-500/50 transition text-left';
+    chip.innerHTML = `<span class="text-sm text-slate-200">${t}</span><span class="text-xs text-slate-500">${p}</span>`;
+    chip.addEventListener('click', () => {
+      document.getElementById('tr-input').value = p; runTranslate();
+    });
+    host.appendChild(chip);
+  });
+}
+
+function copyOutput() {
+  if (!lastOutput) { window.NexusComponents?.toast('Nothing to copy yet', 'warning'); return; }
+  navigator.clipboard?.writeText(lastOutput).then(() => window.NexusComponents?.toast('Translation copied', 'success'));
+}
+function speakOutput() {
+  if (!lastOutput) { window.NexusComponents?.toast('Translate something first', 'warning'); return; }
+  try {
+    const u = new SpeechSynthesisUtterance(lastOutput);
+    u.lang = document.getElementById('tr-lang').value;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+    window.NexusComponents?.toast('Playing translation', 'info', 1500);
+  } catch { window.NexusComponents?.toast('Speech not supported here', 'warning'); }
+}
+
+document.getElementById('tr-lang')?.addEventListener('change', () => { renderPhrases(); runTranslate(); });
+document.addEventListener('DOMContentLoaded', () => {
+  fillLanguages();
+  renderPhrases();
+  window.NexusAI?.guardFeature('translate');
+});
+</script>
+</body>
+</html>

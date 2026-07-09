@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr" data-ai-active="settings">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Settings — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-CLa40IAl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-D4D8r34w.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/ai-assistant.html" aria-label="AI" data-tooltip="AI Features" class="w-9 h-9 rounded-xl flex items-center justify-center bg-violet-600/20 text-violet-300 transition"><i data-lucide="sparkles" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- AI Sidebar -->
+  <aside data-app-sidebar class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex transition-all">
+    <div class="px-4 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2">
+        <span class="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center"><i data-lucide="sparkles" class="w-4 h-4 text-white"></i></span>
+        <h2 class="text-sm font-bold text-slate-100">AI Features</h2>
+      </div>
+      <p class="text-xs text-slate-500 mt-1.5">Smart tools for your workspace</p>
+    </div>
+    <div class="flex-1 py-3 space-y-0.5 px-2" data-ai-nav></div>
+  </aside>
+
+  <!-- Main -->
+  <div data-app-main class="flex-1 overflow-y-auto bg-slate-950">
+    <div class="max-w-2xl mx-auto px-6 py-8">
+      <div class="mb-8">
+        <h1 class="text-xl font-bold text-slate-100 flex items-center gap-2"><i data-lucide="sliders-horizontal" class="w-5 h-5 text-violet-400"></i> AI Settings</h1>
+        <p class="text-sm text-slate-400 mt-1">Manage AI features, response style, and language. Saved to your browser.</p>
+      </div>
+
+      <!-- Features -->
+      <section class="mb-8">
+        <h2 class="text-sm font-semibold text-slate-300 mb-4 uppercase tracking-wide">Features</h2>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-lg bg-violet-500/15 text-violet-400 flex items-center justify-center shrink-0"><i data-lucide="sparkles" class="w-4.5 h-4.5"></i></span>
+              <div><p class="text-sm font-medium text-slate-100">AI Chat Assistant</p><p class="text-xs text-slate-400">Ask questions and get help in a chat</p></div>
+            </div>
+            <button role="switch" aria-checked="true" data-ai="assistant" class="relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none shrink-0"><span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span></button>
+          </div>
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-lg bg-amber-500/15 text-amber-400 flex items-center justify-center shrink-0"><i data-lucide="lightbulb" class="w-4.5 h-4.5"></i></span>
+              <div><p class="text-sm font-medium text-slate-100">Reply Suggestions</p><p class="text-xs text-slate-400">Smart quick replies for incoming messages</p></div>
+            </div>
+            <button role="switch" aria-checked="true" data-ai="suggestions" class="relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none shrink-0"><span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span></button>
+          </div>
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-lg bg-sky-500/15 text-sky-400 flex items-center justify-center shrink-0"><i data-lucide="text-select" class="w-4.5 h-4.5"></i></span>
+              <div><p class="text-sm font-medium text-slate-100">Conversation Summary</p><p class="text-xs text-slate-400">Summarize long threads into key points</p></div>
+            </div>
+            <button role="switch" aria-checked="true" data-ai="summary" class="relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none shrink-0"><span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span></button>
+          </div>
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0"><i data-lucide="wand-2" class="w-4.5 h-4.5"></i></span>
+              <div><p class="text-sm font-medium text-slate-100">AI Rewrite</p><p class="text-xs text-slate-400">Rephrase messages (professional, friendly, shorter, grammar)</p></div>
+            </div>
+            <button role="switch" aria-checked="true" data-ai="rewrite" class="relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none shrink-0"><span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span></button>
+          </div>
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-900 border border-slate-800">
+            <div class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-lg bg-rose-500/15 text-rose-400 flex items-center justify-center shrink-0"><i data-lucide="languages" class="w-4.5 h-4.5"></i></span>
+              <div><p class="text-sm font-medium text-slate-100">AI Translate</p><p class="text-xs text-slate-400">Translate messages into 9 languages</p></div>
+            </div>
+            <button role="switch" aria-checked="true" data-ai="translate" class="relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none shrink-0"><span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Default style -->
+      <section class="mb-8">
+        <h2 class="text-sm font-semibold text-slate-300 mb-1 uppercase tracking-wide">Default Response Style</h2>
+        <p class="text-xs text-slate-400 mb-4">Used for reply suggestions and AI-generated messages.</p>
+        <div class="grid grid-cols-3 gap-3">
+          <button data-ai-style-opt="professional" class="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-900 border-2 border-slate-700 transition">
+            <i data-lucide="briefcase" class="w-6 h-6 text-blue-400"></i>
+            <span class="text-sm font-semibold text-slate-200">Professional</span>
+            <span class="text-[11px] text-slate-500 text-center">Formal &amp; polished</span>
+          </button>
+          <button data-ai-style-opt="friendly" class="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-900 border-2 border-slate-700 transition">
+            <i data-lucide="smile" class="w-6 h-6 text-emerald-400"></i>
+            <span class="text-sm font-semibold text-slate-200">Friendly</span>
+            <span class="text-[11px] text-slate-500 text-center">Warm &amp; approachable</span>
+          </button>
+          <button data-ai-style-opt="casual" class="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-900 border-2 border-slate-700 transition">
+            <i data-lucide="coffee" class="w-6 h-6 text-amber-400"></i>
+            <span class="text-sm font-semibold text-slate-200">Casual</span>
+            <span class="text-[11px] text-slate-500 text-center">Relaxed &amp; brief</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Default language -->
+      <section class="mb-8">
+        <h2 class="text-sm font-semibold text-slate-300 mb-1 uppercase tracking-wide">Default Translation Language</h2>
+        <p class="text-xs text-slate-400 mb-4">The language pre-selected in AI Translate.</p>
+        <div class="relative">
+          <select data-ai="language" id="ai-language" class="w-full bg-slate-900 border border-slate-800 text-slate-100 text-sm rounded-lg pl-3 pr-9 py-2.5 appearance-none focus:outline-none focus:border-violet-500 transition"></select>
+          <i data-lucide="chevron-down" class="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none"></i>
+        </div>
+      </section>
+
+      <!-- Privacy note -->
+      <div class="mb-8 flex items-start gap-3 p-4 rounded-xl bg-slate-900 border border-slate-800">
+        <span class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0"><i data-lucide="shield-check" class="w-4.5 h-4.5"></i></span>
+        <div>
+          <p class="text-sm font-medium text-slate-100">On-device &amp; private</p>
+          <p class="text-xs text-slate-400 mt-0.5">This is a frontend demo. All AI output is generated locally with sample logic — nothing is sent to any server, API, or database.</p>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-wrap gap-3 pt-4 border-t border-slate-800">
+        <button onclick="window.NexusComponents?.toast('AI preferences saved!', 'success')" class="px-5 py-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-lg transition">Save Changes</button>
+        <button data-ai-reset class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg transition flex items-center gap-2"><i data-lucide="rotate-ccw" class="w-4 h-4"></i>Reset AI Preferences</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+document.addEventListener('DOMContentLoaded', () => {
+  // Populate language select from the AI module, then sync current values.
+  const sel = document.getElementById('ai-language');
+  if (sel && window.NexusAI) {
+    sel.innerHTML = window.NexusAI.languages().map(l => `<option value="${l.code}">${l.flag} ${l.name}</option>`).join('');
+    sel.value = window.NexusAI.get().language;
+  }
+});
+</script>
+</body>
+</html>

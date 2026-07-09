@@ -8,6 +8,7 @@ import './settings.js';
 import './components.js';
 import './interactions.js';
 import './notifications.js';
+import './ai.js';
 
 // ─── Init Lucide icons ────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {

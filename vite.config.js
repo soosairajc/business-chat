@@ -26,6 +26,12 @@ export default defineConfig({
         maintenance:    resolve(__dirname, 'pages/maintenance.html'),
         status:         resolve(__dirname, 'pages/status.html'),
         billing:        resolve(__dirname, 'pages/billing.html'),
+        'ai-assistant':   resolve(__dirname, 'pages/ai-assistant.html'),
+        'ai-suggestions': resolve(__dirname, 'pages/ai-suggestions.html'),
+        'ai-summary':     resolve(__dirname, 'pages/ai-summary.html'),
+        'ai-rewrite':     resolve(__dirname, 'pages/ai-rewrite.html'),
+        'ai-translate':   resolve(__dirname, 'pages/ai-translate.html'),
+        'ai-settings':    resolve(__dirname, 'pages/ai-settings.html'),
       }
     }
   },
