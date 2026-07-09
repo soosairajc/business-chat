@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script type="module" crossorigin src="/assets/app-DhZ9UWfD.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/app-BEqkwGDi.css">
+  <script type="module" crossorigin src="/assets/app-C-r3qMLk.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-DKlOwHf8.css">
 </head>
 <body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
 
@@ -1059,6 +1059,30 @@
     document.getElementById('dm-char-counter').textContent = '0 / 4000';
     list.scrollTop = list.scrollHeight;
     if (window.lucide) lucide.createIcons();
+
+    // Simulate a reply from the current conversation partner (frontend-only).
+    setTimeout(() => {
+      const replies = ['Got it, thanks! 👍', 'Sounds good!', 'On it 🚀', 'Makes sense 👌', 'Perfect, will do!', 'Let me check and get back to you.'];
+      const rTime = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+      const seed = (currentDM || 'alice').toLowerCase().split(' ')[0];
+      const reply = document.createElement('div');
+      reply.className = 'message-row group relative flex gap-3 px-4 py-1.5 hover:bg-slate-800/40 rounded-lg mx-2 transition fade-in';
+      reply.innerHTML = `
+        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=${seed}" alt="${currentDM}" class="w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-slate-700" />
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <span class="text-sm font-semibold text-slate-100">${currentDM}</span>
+            <span class="text-xs text-slate-500">${rTime}</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">${replies[Math.floor(Math.random()*replies.length)]}</p>
+        </div>`;
+      const tr = list.querySelector('.flex.gap-3.px-6.py-2');
+      list.insertBefore(reply, tr || null);
+      if (!tr) list.appendChild(reply);
+      list.scrollTop = list.scrollHeight;
+      if (window.lucide) lucide.createIcons();
+      window.NexusNotifications?.playMessageSound();
+    }, 1400 + Math.random() * 1200);
   }
 
   document.getElementById('dm-composer-input')?.addEventListener('keydown', e => {

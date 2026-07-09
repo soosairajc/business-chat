@@ -22,8 +22,8 @@
     @keyframes call-timer { from{} }
     .call-duration::before { content: attr(data-time); }
   </style>
-  <script type="module" crossorigin src="/assets/app-DhZ9UWfD.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/app-BEqkwGDi.css">
+  <script type="module" crossorigin src="/assets/app-C-r3qMLk.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-DKlOwHf8.css">
 </head>
 <body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
 
@@ -635,15 +635,18 @@ function closeLeftOverlay() {
 function showIncomingCall() {
   document.getElementById('incoming-call-modal').classList.remove('hidden');
   if (window.lucide) lucide.createIcons();
+  window.NexusNotifications?.startRingtone();
 }
 
 function acceptCall() {
+  window.NexusNotifications?.stopRingtone();
   document.getElementById('incoming-call-modal').classList.add('hidden');
   showCallView('active');
   window.NexusComponents?.toast('Call connected!', 'success');
 }
 
 function declineCall() {
+  window.NexusNotifications?.stopRingtone();
   document.getElementById('incoming-call-modal').classList.add('hidden');
   window.NexusComponents?.toast('Call declined', 'info', 2000);
 }

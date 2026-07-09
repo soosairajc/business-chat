@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script type="module" crossorigin src="/assets/app-DhZ9UWfD.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/app-BEqkwGDi.css">
+  <script type="module" crossorigin src="/assets/app-C-r3qMLk.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-DKlOwHf8.css">
 </head>
 <body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
 
@@ -515,23 +515,71 @@
         </div>
       </section>
       <section class="mb-8">
-        <h3 class="text-sm font-semibold text-slate-300 mb-4 uppercase tracking-wide">Delivery</h3>
+        <h3 class="text-sm font-semibold text-slate-300 mb-4 uppercase tracking-wide">Sounds &amp; Delivery</h3>
         <div class="space-y-2">
           <div class="flex items-center justify-between p-4 rounded-xl bg-slate-800 border border-slate-700">
-            <div>
-              <p class="text-sm font-medium text-slate-100">Sound Alerts</p>
-              <p class="text-xs text-slate-400">Play a sound for new notifications</p>
+            <div class="flex items-center gap-3">
+              <i data-lucide="volume-2" class="w-5 h-5 text-violet-400 shrink-0"></i>
+              <div>
+                <p class="text-sm font-medium text-slate-100">Message Sound</p>
+                <p class="text-xs text-slate-400">Play a chime when a new message arrives</p>
+              </div>
             </div>
-            <button role="switch" aria-checked="true" onclick="toggleSwitch(this)" class="toggle-switch relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none">
+            <div class="flex items-center gap-3">
+              <button data-notif-test="message" class="text-xs px-2.5 py-1 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 transition">Test</button>
+              <button role="switch" aria-checked="true" data-notif="messageSound" class="toggle-switch relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none">
+                <span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span>
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-800 border border-slate-700">
+            <div class="flex items-center gap-3">
+              <i data-lucide="phone-call" class="w-5 h-5 text-emerald-400 shrink-0"></i>
+              <div>
+                <p class="text-sm font-medium text-slate-100">Call Ringtone</p>
+                <p class="text-xs text-slate-400">Ring for incoming voice &amp; video calls</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <button data-notif-call="voice" class="text-xs px-2.5 py-1 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-200 transition">Test</button>
+              <button role="switch" aria-checked="true" data-notif="callRingtone" class="toggle-switch relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none">
+                <span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span>
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-800 border border-slate-700">
+            <div class="flex items-center gap-3">
+              <i data-lucide="app-window" class="w-5 h-5 text-blue-400 shrink-0"></i>
+              <div>
+                <p class="text-sm font-medium text-slate-100">Browser Notifications</p>
+                <p class="text-xs text-slate-400">Show desktop alerts when the tab is in the background</p>
+              </div>
+            </div>
+            <button role="switch" aria-checked="false" data-notif="browserNotif" class="toggle-switch relative inline-flex h-6 w-11 items-center rounded-full bg-slate-700 transition-colors focus:outline-none">
+              <span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1"></span>
+            </button>
+          </div>
+          <div class="flex items-center justify-between p-4 rounded-xl bg-slate-800 border border-slate-700">
+            <div class="flex items-center gap-3">
+              <i data-lucide="bell-dot" class="w-5 h-5 text-rose-400 shrink-0"></i>
+              <div>
+                <p class="text-sm font-medium text-slate-100">Badge Count</p>
+                <p class="text-xs text-slate-400">Show unread counters on nav icons &amp; tab title</p>
+              </div>
+            </div>
+            <button role="switch" aria-checked="true" data-notif="badges" class="toggle-switch relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none">
               <span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span>
             </button>
           </div>
           <div class="flex items-center justify-between p-4 rounded-xl bg-slate-800 border border-slate-700">
-            <div>
-              <p class="text-sm font-medium text-slate-100">Badge Count</p>
-              <p class="text-xs text-slate-400">Show unread count on app icon</p>
+            <div class="flex items-center gap-3">
+              <i data-lucide="radio" class="w-5 h-5 text-amber-400 shrink-0"></i>
+              <div>
+                <p class="text-sm font-medium text-slate-100">Simulate Live Activity</p>
+                <p class="text-xs text-slate-400">Demo: receive sample messages &amp; calls at random intervals</p>
+              </div>
             </div>
-            <button role="switch" aria-checked="true" onclick="toggleSwitch(this)" class="toggle-switch relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none">
+            <button role="switch" aria-checked="true" data-notif="simulate" class="toggle-switch relative inline-flex h-6 w-11 items-center rounded-full bg-violet-600 transition-colors focus:outline-none">
               <span class="toggle-thumb inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span>
             </button>
           </div>
@@ -546,8 +594,10 @@
           </div>
         </div>
       </section>
-      <div class="flex gap-3 pt-4 border-t border-slate-800">
+      <div class="flex flex-wrap gap-3 pt-4 border-t border-slate-800">
         <button onclick="window.NexusComponents?.toast('Notification preferences saved!', 'success')" class="px-5 py-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-lg transition">Save Changes</button>
+        <button data-notif-test="mention" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg transition flex items-center gap-2"><i data-lucide="at-sign" class="w-4 h-4"></i>Test Mention</button>
+        <button data-notif-call="video" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-lg transition flex items-center gap-2"><i data-lucide="video" class="w-4 h-4"></i>Test Incoming Call</button>
       </div>
     </div>
 

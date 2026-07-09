@@ -635,15 +635,18 @@ function closeLeftOverlay() {
 function showIncomingCall() {
   document.getElementById('incoming-call-modal').classList.remove('hidden');
   if (window.lucide) lucide.createIcons();
+  window.NexusNotifications?.startRingtone();
 }
 
 function acceptCall() {
+  window.NexusNotifications?.stopRingtone();
   document.getElementById('incoming-call-modal').classList.add('hidden');
   showCallView('active');
   window.NexusComponents?.toast('Call connected!', 'success');
 }
 
 function declineCall() {
+  window.NexusNotifications?.stopRingtone();
   document.getElementById('incoming-call-modal').classList.add('hidden');
   window.NexusComponents?.toast('Call declined', 'info', 2000);
 }

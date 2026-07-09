@@ -7,6 +7,7 @@ import './theme.js';
 import './settings.js';
 import './components.js';
 import './interactions.js';
+import './notifications.js';
 
 // ─── Init Lucide icons ────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
@@ -213,4 +214,6 @@ function appendBotMessage(list, text) {
   list.appendChild(el);
   if (window.lucide) lucide.createIcons();
   list.scrollTop = list.scrollHeight;
+  // Received-message sound (respects the Settings → Notifications preference).
+  window.NexusNotifications?.playMessageSound();
 }
