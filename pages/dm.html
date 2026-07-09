@@ -132,9 +132,9 @@
 
       <!-- Favorites section -->
       <div class="mb-1">
-        <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-4 py-1.5">⭐ Favorites</p>
+        <p data-dm-section class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-4 py-1.5">⭐ Favorites</p>
         <!-- Alice (active) -->
-        <button onclick="activateDM('alice')" id="dm-btn-alice" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl bg-slate-800 text-left transition group relative" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('alice')" id="dm-btn-alice" data-cat="favorites" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl bg-slate-800 text-left transition group relative" style="width:calc(100% - 8px)">
           <div class="relative shrink-0">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
             <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-slate-900"></span>
@@ -150,7 +150,7 @@
         </button>
 
         <!-- Mike (DND) -->
-        <button onclick="activateDM('mike')" id="dm-btn-mike" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('mike')" id="dm-btn-mike" data-cat="favorites" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
           <div class="relative shrink-0">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-9 h-9 rounded-xl bg-slate-700" />
             <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-slate-900"></span>
@@ -167,10 +167,10 @@
 
       <!-- All conversations -->
       <div>
-        <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-4 py-1.5">Recent</p>
+        <p data-dm-section class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-4 py-1.5">Recent</p>
 
         <!-- Bob — unread -->
-        <button onclick="activateDM('bob')" id="dm-btn-bob" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('bob')" id="dm-btn-bob" data-cat="unread" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
           <div class="relative shrink-0">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-9 h-9 rounded-xl bg-slate-700" />
             <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-slate-900"></span>
@@ -186,7 +186,7 @@
         </button>
 
         <!-- Carol — away -->
-        <button onclick="activateDM('carol')" id="dm-btn-carol" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('carol')" id="dm-btn-carol" data-cat="" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
           <div class="relative shrink-0">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-9 h-9 rounded-xl bg-slate-700" />
             <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-slate-900"></span>
@@ -201,7 +201,7 @@
         </button>
 
         <!-- David — online -->
-        <button onclick="activateDM('david')" id="dm-btn-david" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('david')" id="dm-btn-david" data-cat="unread" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
           <div class="relative shrink-0">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David Kim" class="w-9 h-9 rounded-xl bg-slate-700" />
             <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-slate-900"></span>
@@ -217,7 +217,7 @@
         </button>
 
         <!-- Priya — offline -->
-        <button onclick="activateDM('priya')" id="dm-btn-priya" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('priya')" id="dm-btn-priya" data-cat="" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
           <div class="relative shrink-0">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-9 h-9 rounded-xl bg-slate-700 opacity-70" />
             <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-slate-600 border-2 border-slate-900"></span>
@@ -232,7 +232,7 @@
         </button>
 
         <!-- Sarah — online -->
-        <button onclick="activateDM('sarah')" id="dm-btn-sarah" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('sarah')" id="dm-btn-sarah" data-cat="" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
           <div class="relative shrink-0">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah Lee" class="w-9 h-9 rounded-xl bg-slate-700" />
             <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-slate-900"></span>
@@ -247,7 +247,7 @@
         </button>
 
         <!-- Tom — offline -->
-        <button onclick="activateDM('tom')" id="dm-btn-tom" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('tom')" id="dm-btn-tom" data-cat="" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
           <div class="relative shrink-0">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=tom" alt="Tom Wilson" class="w-9 h-9 rounded-xl bg-slate-700 opacity-70" />
             <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-slate-600 border-2 border-slate-900"></span>
@@ -264,10 +264,10 @@
 
       <!-- Groups Section -->
       <div class="mt-1">
-        <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-4 py-1.5">Group Chats</p>
+        <p data-dm-section class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-4 py-1.5">Group Chats</p>
 
         <!-- Design Squad -->
-        <button onclick="activateDM('design-squad')" id="dm-btn-design-squad" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('design-squad')" id="dm-btn-design-squad" data-cat="groups unread" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
           <div class="relative shrink-0 w-9 h-9">
             <div class="w-9 h-9 rounded-xl overflow-hidden grid grid-cols-2 gap-px bg-slate-700">
               <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="" class="w-full h-full object-cover" />
@@ -287,7 +287,7 @@
         </button>
 
         <!-- Eng Leads -->
-        <button onclick="activateDM('eng-leads')" id="dm-btn-eng-leads" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+        <button onclick="activateDM('eng-leads')" id="dm-btn-eng-leads" data-cat="groups" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
           <div class="relative shrink-0 w-9 h-9">
             <div class="w-9 h-9 rounded-xl overflow-hidden grid grid-cols-2 gap-px bg-slate-700">
               <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="" class="w-full h-full object-cover" />
@@ -354,7 +354,8 @@
           <button onclick="window.NexusComponents?.toast('Muted','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bell-off" class="w-4 h-4 opacity-60"></i>Mute Conversation</button>
           <button onclick="window.NexusComponents?.toast('Archived','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="archive" class="w-4 h-4 opacity-60"></i>Archive</button>
           <div class="border-t border-slate-700 my-1"></div>
-          <button onclick="window.NexusComponents?.toast('Blocked','error')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="ban" class="w-4 h-4 opacity-60"></i>Block User</button>
+          <button onclick="openReportModal()" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="flag" class="w-4 h-4 opacity-60"></i>Report User</button>
+          <button onclick="openBlockModal()" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="ban" class="w-4 h-4 opacity-60"></i>Block User</button>
         </div>
       </div>
     </header>
@@ -774,10 +775,10 @@
           </button>
         </div>
         <div class="pt-1 space-y-1">
-          <button onclick="window.NexusComponents?.toast('Blocked user','warning')" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-800 transition text-sm text-red-400 text-left">
-            <i data-lucide="ban" class="w-4 h-4"></i>Block Alice
+          <button onclick="openBlockModal()" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-800 transition text-sm text-red-400 text-left">
+            <i data-lucide="ban" class="w-4 h-4"></i>Block User
           </button>
-          <button onclick="window.NexusComponents?.toast('Conversation reported','warning')" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-800 transition text-sm text-slate-400 hover:text-slate-200 text-left">
+          <button onclick="openReportModal()" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-800 transition text-sm text-slate-400 hover:text-slate-200 text-left">
             <i data-lucide="flag" class="w-4 h-4"></i>Report
           </button>
         </div>
@@ -855,6 +856,72 @@
   <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
 </div>
 
+<!-- Block User Confirmation Modal -->
+<div id="block-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-sm bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="p-5 text-center">
+      <div class="w-12 h-12 rounded-2xl bg-red-500/15 flex items-center justify-center mx-auto mb-3"><i data-lucide="ban" class="w-6 h-6 text-red-400"></i></div>
+      <h2 class="font-bold text-slate-100 text-lg">Block <span id="block-name">Alice Chen</span>?</h2>
+      <p class="text-sm text-slate-400 mt-2">They won't be able to message you or see your activity. <span id="block-name-2">Alice Chen</span> won't be notified. You can unblock them anytime from settings.</p>
+    </div>
+    <div class="flex gap-2 px-5 pb-5">
+      <button data-modal-close class="flex-1 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 font-medium transition">Cancel</button>
+      <button onclick="confirmBlock()" class="flex-1 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-sm text-white font-semibold transition">Block</button>
+    </div>
+  </div>
+</div>
+
+<!-- Report User Modal -->
+<div id="report-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2">
+        <i data-lucide="flag" class="w-4 h-4 text-amber-400"></i>
+        <h2 class="font-bold text-slate-100">Report <span id="report-name">Alice Chen</span></h2>
+      </div>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <form onsubmit="submitReport(event)">
+      <div class="p-5 space-y-3">
+        <p class="text-sm text-slate-400">Why are you reporting this conversation? Your report is confidential.</p>
+        <div class="space-y-2">
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-reason" value="spam" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Spam or scam</p><p class="text-xs text-slate-500">Unwanted promotions or phishing</p></div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-reason" value="harassment" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Harassment or bullying</p><p class="text-xs text-slate-500">Abusive or threatening behavior</p></div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-reason" value="inappropriate" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Inappropriate content</p><p class="text-xs text-slate-500">Explicit or offensive material</p></div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-reason" value="impersonation" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Impersonation</p><p class="text-xs text-slate-500">Pretending to be someone else</p></div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-reason" value="other" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Something else</p><p class="text-xs text-slate-500">Another safety concern</p></div>
+          </label>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 mb-1.5">Additional details <span class="text-slate-600 font-normal">(optional)</span></label>
+          <textarea id="report-details" rows="3" placeholder="Add any context that will help our team…" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition resize-none"></textarea>
+        </div>
+        <p id="report-error" class="hidden text-xs text-red-400 flex items-center gap-1"><i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>Please select a reason to continue.</p>
+      </div>
+      <div class="flex justify-end gap-2 px-5 py-4 border-t border-slate-800">
+        <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+        <button type="submit" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Submit report</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script type="module" src="/js/app.js"></script>
 <script>
   function switchDMTab(tab, btn) {
@@ -864,6 +931,28 @@
     });
     btn.classList.add('border-violet-400','text-violet-400');
     btn.classList.remove('border-transparent','text-slate-400');
+
+    // Filter the conversation list by category
+    let visible = 0;
+    document.querySelectorAll('.dm-item').forEach(item => {
+      const cats = (item.getAttribute('data-cat') || '').split(' ');
+      const show = tab === 'all' || cats.includes(tab);
+      item.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    // Section labels only make sense in the "All" view
+    document.querySelectorAll('[data-dm-section]').forEach(p => p.classList.toggle('hidden', tab !== 'all'));
+    // Empty state
+    let empty = document.getElementById('dm-empty');
+    if (!empty) {
+      empty = document.createElement('div');
+      empty.id = 'dm-empty';
+      empty.className = 'hidden flex flex-col items-center justify-center py-16 text-center px-6';
+      empty.innerHTML = '<i data-lucide="message-square-dashed" class="w-8 h-8 text-slate-600 mb-2"></i><p class="text-sm text-slate-500">No conversations here yet</p>';
+      document.querySelector('.dm-item')?.closest('.overflow-y-auto')?.appendChild(empty);
+    }
+    empty.classList.toggle('hidden', visible > 0);
+    if (window.lucide) lucide.createIcons();
   }
 
   function activateDM(id) {
@@ -875,8 +964,42 @@
     if (btn) {
       btn.classList.add('bg-slate-800');
       btn.classList.remove('hover:bg-slate-800/60');
+      // Reflect the selected conversation in the chat header
+      const name = btn.querySelector('p.truncate')?.textContent?.trim();
+      const img = btn.querySelector('img')?.getAttribute('src');
+      if (name) { document.getElementById('dm-header-name').textContent = name; document.title = name + ' — Nexus'; }
+      if (img) document.getElementById('dm-header-avatar').src = img;
+      currentDM = name || 'this user';
+      // Clear the unread badge (mark as read)
+      btn.querySelector('span.bg-violet-600.rounded-full')?.remove();
     }
     window.NexusComponents?.toast('Opening conversation…','info',1500);
+  }
+
+  // ── Block / Report ────────────────────────────────────────────
+  let currentDM = 'Alice Chen';
+  function openBlockModal() {
+    document.getElementById('block-name').textContent = currentDM;
+    document.getElementById('block-name-2').textContent = currentDM;
+    window.NexusComponents?.openModal('block-modal');
+  }
+  function confirmBlock() {
+    window.NexusComponents?.closeModal('block-modal');
+    window.NexusComponents?.toast(currentDM + ' has been blocked', 'error');
+  }
+  function openReportModal() {
+    document.getElementById('report-name').textContent = currentDM;
+    document.querySelectorAll('input[name="report-reason"]').forEach(r => r.checked = false);
+    document.getElementById('report-details').value = '';
+    document.getElementById('report-error').classList.add('hidden');
+    window.NexusComponents?.openModal('report-modal');
+  }
+  function submitReport(e) {
+    e.preventDefault();
+    const reason = document.querySelector('input[name="report-reason"]:checked');
+    if (!reason) { document.getElementById('report-error').classList.remove('hidden'); return; }
+    window.NexusComponents?.closeModal('report-modal');
+    window.NexusComponents?.toast('Report submitted — thanks for keeping Nexus safe', 'success');
   }
 
   let notifOn = true, muteOn = false;
