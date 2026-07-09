@@ -68,7 +68,7 @@
           Welcome to <span class="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">Nexus</span>
         </h1>
         <p class="text-xl text-slate-300 mb-3 max-w-2xl mx-auto">Premium Team Chat UI Template</p>
-        <p class="text-slate-400 mb-8 max-w-xl mx-auto">Built with Tailwind CSS v4, featuring dark/light mode, RTL support, glassmorphism, and 16 polished pages ready for production.</p>
+        <p class="text-slate-400 mb-8 max-w-xl mx-auto">Built with Tailwind CSS v4, featuring dark/light mode, RTL support, glassmorphism, a full AI suite, and 24 polished pages ready for production.</p>
 
         <div class="flex flex-wrap items-center justify-center gap-3 mb-8">
           <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-sm text-slate-300">
@@ -109,7 +109,7 @@
       <div class="relative z-10 border-t border-slate-800/60 bg-slate-900/50 backdrop-blur-sm">
         <div class="max-w-4xl mx-auto px-8 py-5 flex flex-wrap items-center justify-center gap-8">
           <div class="text-center">
-            <div class="text-2xl font-bold text-white">16</div>
+            <div class="text-2xl font-bold text-white">24</div>
             <div class="text-xs text-slate-400 mt-0.5">Pages</div>
           </div>
           <div class="w-px h-8 bg-slate-700 hidden md:block"></div>
@@ -139,241 +139,301 @@
     <!-- Pages Grid -->
     <div id="pages" class="px-8 py-12">
       <div class="max-w-6xl mx-auto">
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold text-slate-100">All Pages</h2>
-          <p class="text-slate-400 mt-1">Every page in the Nexus template — click to preview</p>
+        <!-- ═══ What's New ═══ -->
+        <div class="mb-14">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-[11px] font-bold uppercase tracking-wider mb-3">
+            <i data-lucide="sparkles" class="w-3 h-3"></i> What's New
+          </div>
+          <h2 class="text-2xl font-bold text-slate-100">Latest pages &amp; features</h2>
+          <p class="text-slate-400 mt-1 mb-6">The newest additions to the Nexus template — an entire AI suite, billing, live status and more.</p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- AI Hub -->
+            <a href="/pages/ai-assistant.html" class="group relative block rounded-2xl p-5 bg-gradient-to-br from-violet-600/15 to-slate-900 border border-violet-500/30 hover:border-violet-500/60 hover:shadow-lg hover:shadow-violet-500/10 transition-all">
+              <span class="absolute top-4 right-4 px-2 py-0.5 rounded-full bg-violet-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="w-11 h-11 rounded-xl bg-violet-500/20 flex items-center justify-center mb-3"><i data-lucide="sparkles" class="w-5 h-5 text-violet-300"></i></div>
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-300 transition">AI Hub</h3>
+              <p class="text-xs text-slate-400 mt-1">Assistant, summaries, rewrite &amp; translate in one place</p>
+            </a>
+            <!-- Billing -->
+            <a href="/pages/billing.html" class="group relative block rounded-2xl p-5 bg-gradient-to-br from-emerald-600/15 to-slate-900 border border-emerald-500/30 hover:border-emerald-500/60 hover:shadow-lg hover:shadow-emerald-500/10 transition-all">
+              <span class="absolute top-4 right-4 px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-3"><i data-lucide="credit-card" class="w-5 h-5 text-emerald-300"></i></div>
+              <h3 class="font-semibold text-slate-100 group-hover:text-emerald-300 transition">Billing &amp; Plans</h3>
+              <p class="text-xs text-slate-400 mt-1">Subscriptions, invoices, payment methods &amp; promos</p>
+            </a>
+            <!-- Status -->
+            <a href="/pages/status.html" class="group relative block rounded-2xl p-5 bg-gradient-to-br from-sky-600/15 to-slate-900 border border-sky-500/30 hover:border-sky-500/60 hover:shadow-lg hover:shadow-sky-500/10 transition-all">
+              <span class="absolute top-4 right-4 px-2 py-0.5 rounded-full bg-sky-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="w-11 h-11 rounded-xl bg-sky-500/20 flex items-center justify-center mb-3"><i data-lucide="activity-square" class="w-5 h-5 text-sky-300"></i></div>
+              <h3 class="font-semibold text-slate-100 group-hover:text-sky-300 transition">Status Page</h3>
+              <p class="text-xs text-slate-400 mt-1">Live system uptime &amp; incident history</p>
+            </a>
+            <!-- Voice Notes -->
+            <a href="/pages/calls.html" class="group relative block rounded-2xl p-5 bg-gradient-to-br from-rose-600/15 to-slate-900 border border-rose-500/30 hover:border-rose-500/60 hover:shadow-lg hover:shadow-rose-500/10 transition-all">
+              <span class="absolute top-4 right-4 px-2 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="w-11 h-11 rounded-xl bg-rose-500/20 flex items-center justify-center mb-3"><i data-lucide="mic" class="w-5 h-5 text-rose-300"></i></div>
+              <h3 class="font-semibold text-slate-100 group-hover:text-rose-300 transition">Voice Notes</h3>
+              <p class="text-xs text-slate-400 mt-1">Record, play &amp; send voice messages in calls &amp; DMs</p>
+            </a>
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-slate-100">All Pages</h2>
+          <p class="text-slate-400 mt-1">Every page in the Nexus template, grouped by category — click to preview</p>
+        </div>
 
-          <!-- Main Chat -->
-          <a href="/" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-violet-900 to-indigo-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_50%,rgba(139,92,246,0.5),transparent)]"></div>
-              <i data-lucide="message-square" class="w-10 h-10 text-violet-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-violet-600 text-white text-[10px] font-bold">MAIN</span>
+        <!-- ═══ Chat & Messaging ═══ -->
+        <div class="mb-10">
+          <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wide flex items-center gap-2 mb-4"><i data-lucide="message-square" class="w-4 h-4 text-violet-400"></i> Chat &amp; Messaging</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <!-- Main Chat -->
+            <a href="/" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-violet-900 to-indigo-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_50%,rgba(139,92,246,0.5),transparent)]"></div>
+                <i data-lucide="message-square" class="w-10 h-10 text-violet-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-violet-600 text-white text-[10px] font-bold">MAIN</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Main Chat</h3>
-              <p class="text-xs text-slate-400 mt-1">Channels, messages, threads & full app shell</p>
-            </div>
-          </a>
-
-          <!-- Direct Messages -->
-          <a href="/pages/dm.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-emerald-900 to-teal-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_50%,rgba(52,211,153,0.5),transparent)]"></div>
-              <i data-lucide="message-circle" class="w-10 h-10 text-emerald-400 relative z-10"></i>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Direct Messages</h3>
-              <p class="text-xs text-slate-400 mt-1">1:1 and group DM conversations</p>
-            </div>
-          </a>
-
-          <!-- Threads -->
-          <a href="/pages/threads.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-blue-900 to-slate-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_70%,rgba(96,165,250,0.5),transparent)]"></div>
-              <i data-lucide="message-square-text" class="w-10 h-10 text-blue-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-bold">4 NEW</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Main Chat</h3><p class="text-xs text-slate-400 mt-1">Channels, messages, threads &amp; full app shell</p></div>
+            </a>
+            <!-- Direct Messages -->
+            <a href="/pages/dm.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-emerald-900 to-teal-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_50%,rgba(52,211,153,0.5),transparent)]"></div>
+                <i data-lucide="message-circle" class="w-10 h-10 text-emerald-400 relative z-10"></i>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Threads</h3>
-              <p class="text-xs text-slate-400 mt-1">Thread replies & conversations inbox</p>
-            </div>
-          </a>
-
-          <!-- Notifications -->
-          <a href="/pages/notifications.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-amber-900 to-orange-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_30%,rgba(251,191,36,0.5),transparent)]"></div>
-              <i data-lucide="bell" class="w-10 h-10 text-amber-400 relative z-10"></i>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Notifications</h3>
-              <p class="text-xs text-slate-400 mt-1">Mentions, reactions & activity alerts</p>
-            </div>
-          </a>
-
-          <!-- Calls -->
-          <a href="/pages/calls.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-green-900 to-emerald-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_60%_40%,rgba(74,222,128,0.5),transparent)]"></div>
-              <i data-lucide="video" class="w-10 h-10 text-green-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-green-600 text-white text-[10px] font-bold">LIVE</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Direct Messages</h3><p class="text-xs text-slate-400 mt-1">1:1 and group DM conversations</p></div>
+            </a>
+            <!-- Threads -->
+            <a href="/pages/threads.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-blue-900 to-slate-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_70%,rgba(96,165,250,0.5),transparent)]"></div>
+                <i data-lucide="message-square-text" class="w-10 h-10 text-blue-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-bold">4 NEW</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Calls</h3>
-              <p class="text-xs text-slate-400 mt-1">Audio & video calling interface</p>
-            </div>
-          </a>
-
-          <!-- Files -->
-          <a href="/pages/files.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-sky-900 to-blue-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_40%_60%,rgba(56,189,248,0.5),transparent)]"></div>
-              <i data-lucide="folder-open" class="w-10 h-10 text-sky-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-sky-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Threads</h3><p class="text-xs text-slate-400 mt-1">Thread replies &amp; conversations inbox</p></div>
+            </a>
+            <!-- Notifications -->
+            <a href="/pages/notifications.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-amber-900 to-orange-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_30%,rgba(251,191,36,0.5),transparent)]"></div>
+                <i data-lucide="bell" class="w-10 h-10 text-amber-400 relative z-10"></i>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">File Browser</h3>
-              <p class="text-xs text-slate-400 mt-1">Browse, search & manage shared files</p>
-            </div>
-          </a>
-
-          <!-- Team Directory -->
-          <a href="/pages/team-directory.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-purple-900 to-violet-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.5),transparent)]"></div>
-              <i data-lucide="users" class="w-10 h-10 text-purple-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-purple-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Notifications</h3><p class="text-xs text-slate-400 mt-1">Mentions, reactions &amp; activity alerts</p></div>
+            </a>
+            <!-- Activity Feed -->
+            <a href="/pages/activity-feed.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-cyan-900 to-teal-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,0.5),transparent)]"></div>
+                <i data-lucide="activity" class="w-10 h-10 text-cyan-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-cyan-600 text-white text-[10px] font-bold">NEW</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Team Directory</h3>
-              <p class="text-xs text-slate-400 mt-1">Full team member cards & profiles</p>
-            </div>
-          </a>
-
-          <!-- Settings -->
-          <a href="/pages/settings.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_30%,rgba(148,163,184,0.3),transparent)]"></div>
-              <i data-lucide="settings" class="w-10 h-10 text-slate-400 relative z-10"></i>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Settings</h3>
-              <p class="text-xs text-slate-400 mt-1">Account, notifications & preferences</p>
-            </div>
-          </a>
-
-          <!-- Profile -->
-          <a href="/pages/profile.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-rose-900 to-pink-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(251,113,133,0.5),transparent)]"></div>
-              <i data-lucide="user-circle" class="w-10 h-10 text-rose-400 relative z-10"></i>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">User Profile</h3>
-              <p class="text-xs text-slate-400 mt-1">Profile page with activity & info</p>
-            </div>
-          </a>
-
-          <!-- Media Gallery -->
-          <a href="/pages/media-gallery.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-fuchsia-900 to-pink-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_50%,rgba(217,70,239,0.5),transparent)]"></div>
-              <i data-lucide="image" class="w-10 h-10 text-fuchsia-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-fuchsia-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Activity Feed</h3><p class="text-xs text-slate-400 mt-1">Team activity timeline &amp; events</p></div>
+            </a>
+            <!-- Bookmarks -->
+            <a href="/pages/bookmarks.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-yellow-900 to-amber-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_60%_40%,rgba(234,179,8,0.5),transparent)]"></div>
+                <i data-lucide="bookmark" class="w-10 h-10 text-yellow-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-yellow-600 text-white text-[10px] font-bold">NEW</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Media Gallery</h3>
-              <p class="text-xs text-slate-400 mt-1">Masonry image & video gallery</p>
-            </div>
-          </a>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Bookmarks</h3><p class="text-xs text-slate-400 mt-1">Saved messages, files &amp; links</p></div>
+            </a>
+          </div>
+        </div>
 
-          <!-- Bookmarks -->
-          <a href="/pages/bookmarks.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-yellow-900 to-amber-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_60%_40%,rgba(234,179,8,0.5),transparent)]"></div>
-              <i data-lucide="bookmark" class="w-10 h-10 text-yellow-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-yellow-600 text-white text-[10px] font-bold">NEW</span>
+        <!-- ═══ AI Suite ═══ -->
+        <div class="mb-10">
+          <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wide flex items-center gap-2 mb-4"><i data-lucide="sparkles" class="w-4 h-4 text-violet-400"></i> AI Suite <span class="px-1.5 py-0.5 rounded bg-violet-500/15 text-violet-300 text-[10px] font-bold normal-case tracking-normal">New</span></h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <!-- AI Hub -->
+            <a href="/pages/ai-assistant.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-violet-900 to-indigo-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.5),transparent)]"></div>
+                <i data-lucide="sparkles" class="w-10 h-10 text-violet-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-violet-600 text-white text-[10px] font-bold">NEW</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Bookmarks</h3>
-              <p class="text-xs text-slate-400 mt-1">Saved messages, files & links</p>
-            </div>
-          </a>
-
-          <!-- Activity Feed -->
-          <a href="/pages/activity-feed.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-cyan-900 to-teal-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,0.5),transparent)]"></div>
-              <i data-lucide="activity" class="w-10 h-10 text-cyan-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-cyan-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">AI Hub</h3><p class="text-xs text-slate-400 mt-1">AI assistant chat &amp; feature launcher</p></div>
+            </a>
+            <!-- AI Suggestions -->
+            <a href="/pages/ai-suggestions.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-amber-900 to-yellow-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_40%_60%,rgba(251,191,36,0.5),transparent)]"></div>
+                <i data-lucide="lightbulb" class="w-10 h-10 text-amber-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-amber-600 text-white text-[10px] font-bold">NEW</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Activity Feed</h3>
-              <p class="text-xs text-slate-400 mt-1">Team activity timeline & events</p>
-            </div>
-          </a>
-
-          <!-- Invite -->
-          <a href="/pages/invite.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-indigo-900 to-violet-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_40%_60%,rgba(99,102,241,0.5),transparent)]"></div>
-              <i data-lucide="user-plus" class="w-10 h-10 text-indigo-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">AI Suggestions</h3><p class="text-xs text-slate-400 mt-1">Smart reply &amp; message suggestions</p></div>
+            </a>
+            <!-- AI Summary -->
+            <a href="/pages/ai-summary.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-blue-900 to-sky-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_60%_40%,rgba(96,165,250,0.5),transparent)]"></div>
+                <i data-lucide="file-text" class="w-10 h-10 text-blue-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-bold">NEW</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Invite Members</h3>
-              <p class="text-xs text-slate-400 mt-1">Email invites & shareable links</p>
-            </div>
-          </a>
-
-          <!-- Shortcuts -->
-          <a href="/pages/shortcuts.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.3),transparent)]"></div>
-              <i data-lucide="keyboard" class="w-10 h-10 text-violet-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-slate-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">AI Summary</h3><p class="text-xs text-slate-400 mt-1">Summarize threads &amp; conversations</p></div>
+            </a>
+            <!-- AI Rewrite -->
+            <a href="/pages/ai-rewrite.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-fuchsia-900 to-pink-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_50%,rgba(217,70,239,0.5),transparent)]"></div>
+                <i data-lucide="wand-2" class="w-10 h-10 text-fuchsia-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-fuchsia-600 text-white text-[10px] font-bold">NEW</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Keyboard Shortcuts</h3>
-              <p class="text-xs text-slate-400 mt-1">Full shortcut reference guide</p>
-            </div>
-          </a>
-
-          <!-- 404 -->
-          <a href="/pages/404.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-red-900 to-rose-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(248,113,113,0.5),transparent)]"></div>
-              <i data-lucide="file-x" class="w-10 h-10 text-red-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-red-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">AI Rewrite</h3><p class="text-xs text-slate-400 mt-1">Rephrase &amp; adjust tone of messages</p></div>
+            </a>
+            <!-- AI Translate -->
+            <a href="/pages/ai-translate.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-emerald-900 to-green-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(52,211,153,0.5),transparent)]"></div>
+                <i data-lucide="languages" class="w-10 h-10 text-emerald-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-bold">NEW</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">404 Not Found</h3>
-              <p class="text-xs text-slate-400 mt-1">Beautiful error page with navigation</p>
-            </div>
-          </a>
-
-          <!-- Maintenance -->
-          <a href="/pages/maintenance.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
-            <div class="h-36 bg-gradient-to-br from-orange-900 to-amber-950 flex items-center justify-center relative overflow-hidden">
-              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(251,146,60,0.5),transparent)]"></div>
-              <i data-lucide="wrench" class="w-10 h-10 text-orange-400 relative z-10"></i>
-              <div class="absolute top-3 right-3">
-                <span class="px-2 py-0.5 rounded-full bg-orange-600 text-white text-[10px] font-bold">NEW</span>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">AI Translate</h3><p class="text-xs text-slate-400 mt-1">Real-time message translation</p></div>
+            </a>
+            <!-- AI Settings -->
+            <a href="/pages/ai-settings.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-indigo-900 to-violet-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_30%,rgba(99,102,241,0.5),transparent)]"></div>
+                <i data-lucide="sliders-horizontal" class="w-10 h-10 text-indigo-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold">NEW</span></div>
               </div>
-            </div>
-            <div class="p-4">
-              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Maintenance</h3>
-              <p class="text-xs text-slate-400 mt-1">Scheduled downtime status page</p>
-            </div>
-          </a>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">AI Settings</h3><p class="text-xs text-slate-400 mt-1">Configure AI models &amp; preferences</p></div>
+            </a>
+          </div>
+        </div>
 
+        <!-- ═══ Calls & Media ═══ -->
+        <div class="mb-10">
+          <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wide flex items-center gap-2 mb-4"><i data-lucide="video" class="w-4 h-4 text-green-400"></i> Calls &amp; Media</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <!-- Calls -->
+            <a href="/pages/calls.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-green-900 to-emerald-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_60%_40%,rgba(74,222,128,0.5),transparent)]"></div>
+                <i data-lucide="video" class="w-10 h-10 text-green-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-green-600 text-white text-[10px] font-bold">LIVE</span></div>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Calls</h3><p class="text-xs text-slate-400 mt-1">Audio &amp; video calling, history &amp; voice notes</p></div>
+            </a>
+            <!-- Media Gallery -->
+            <a href="/pages/media-gallery.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-fuchsia-900 to-pink-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_50%,rgba(217,70,239,0.5),transparent)]"></div>
+                <i data-lucide="image" class="w-10 h-10 text-fuchsia-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-fuchsia-600 text-white text-[10px] font-bold">NEW</span></div>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Media Gallery</h3><p class="text-xs text-slate-400 mt-1">Masonry image &amp; video gallery</p></div>
+            </a>
+            <!-- File Browser -->
+            <a href="/pages/files.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-sky-900 to-blue-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_40%_60%,rgba(56,189,248,0.5),transparent)]"></div>
+                <i data-lucide="folder-open" class="w-10 h-10 text-sky-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-sky-600 text-white text-[10px] font-bold">NEW</span></div>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">File Browser</h3><p class="text-xs text-slate-400 mt-1">Browse, search &amp; manage shared files</p></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ Workspace & Team ═══ -->
+        <div class="mb-10">
+          <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wide flex items-center gap-2 mb-4"><i data-lucide="users" class="w-4 h-4 text-purple-400"></i> Workspace &amp; Team</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <!-- Team Directory -->
+            <a href="/pages/team-directory.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-purple-900 to-violet-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.5),transparent)]"></div>
+                <i data-lucide="users" class="w-10 h-10 text-purple-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-purple-600 text-white text-[10px] font-bold">NEW</span></div>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Team Directory</h3><p class="text-xs text-slate-400 mt-1">Full team member cards &amp; profiles</p></div>
+            </a>
+            <!-- Invite Members -->
+            <a href="/pages/invite.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-indigo-900 to-violet-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_40%_60%,rgba(99,102,241,0.5),transparent)]"></div>
+                <i data-lucide="user-plus" class="w-10 h-10 text-indigo-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold">NEW</span></div>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Invite Members</h3><p class="text-xs text-slate-400 mt-1">Email invites &amp; shareable links</p></div>
+            </a>
+            <!-- Workspace Settings -->
+            <a href="/pages/settings.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_30%,rgba(148,163,184,0.3),transparent)]"></div>
+                <i data-lucide="settings" class="w-10 h-10 text-slate-400 relative z-10"></i>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Workspace Settings</h3><p class="text-xs text-slate-400 mt-1">Account, notifications, appearance &amp; preferences</p></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ Account & Billing ═══ -->
+        <div class="mb-10">
+          <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wide flex items-center gap-2 mb-4"><i data-lucide="user-circle" class="w-4 h-4 text-rose-400"></i> Account &amp; Billing</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <!-- User Profile -->
+            <a href="/pages/profile.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-rose-900 to-pink-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(251,113,133,0.5),transparent)]"></div>
+                <i data-lucide="user-circle" class="w-10 h-10 text-rose-400 relative z-10"></i>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">User Profile</h3><p class="text-xs text-slate-400 mt-1">Profile page with activity, files &amp; info</p></div>
+            </a>
+            <!-- Billing -->
+            <a href="/pages/billing.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-emerald-900 to-teal-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_40%_60%,rgba(52,211,153,0.5),transparent)]"></div>
+                <i data-lucide="credit-card" class="w-10 h-10 text-emerald-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-bold">NEW</span></div>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Billing &amp; Plans</h3><p class="text-xs text-slate-400 mt-1">Subscription, invoices &amp; payment methods</p></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- ═══ System & Utility ═══ -->
+        <div class="mb-4">
+          <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wide flex items-center gap-2 mb-4"><i data-lucide="layout-grid" class="w-4 h-4 text-slate-400"></i> System &amp; Utility</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <!-- Status -->
+            <a href="/pages/status.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-sky-900 to-cyan-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(56,189,248,0.5),transparent)]"></div>
+                <i data-lucide="activity-square" class="w-10 h-10 text-sky-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-sky-600 text-white text-[10px] font-bold">NEW</span></div>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Status Page</h3><p class="text-xs text-slate-400 mt-1">Live system uptime &amp; incident history</p></div>
+            </a>
+            <!-- Shortcuts -->
+            <a href="/pages/shortcuts.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.3),transparent)]"></div>
+                <i data-lucide="keyboard" class="w-10 h-10 text-violet-400 relative z-10"></i>
+                <div class="absolute top-3 right-3"><span class="px-2 py-0.5 rounded-full bg-slate-600 text-white text-[10px] font-bold">NEW</span></div>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Keyboard Shortcuts</h3><p class="text-xs text-slate-400 mt-1">Full shortcut reference guide</p></div>
+            </a>
+            <!-- Maintenance -->
+            <a href="/pages/maintenance.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-orange-900 to-amber-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(251,146,60,0.5),transparent)]"></div>
+                <i data-lucide="wrench" class="w-10 h-10 text-orange-400 relative z-10"></i>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Maintenance</h3><p class="text-xs text-slate-400 mt-1">Scheduled downtime status page</p></div>
+            </a>
+            <!-- 404 -->
+            <a href="/pages/404.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+              <div class="h-36 bg-gradient-to-br from-red-900 to-rose-950 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(248,113,113,0.5),transparent)]"></div>
+                <i data-lucide="file-x" class="w-10 h-10 text-red-400 relative z-10"></i>
+              </div>
+              <div class="p-4"><h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">404 Not Found</h3><p class="text-xs text-slate-400 mt-1">Beautiful error page with navigation</p></div>
+            </a>
+          </div>
         </div>
 
         <!-- Footer -->

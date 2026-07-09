@@ -123,9 +123,9 @@
             <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i> Filter
           </button>
           <div id="notif-sort-dd" data-dropdown class="hidden absolute right-0 mt-1 z-50 w-44 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
-            <button onclick="window.NexusComponents?.toast('Filtered','info')" class="w-full text-left px-3 py-2 hover:bg-slate-700 text-sm text-slate-300 transition flex items-center gap-2"><i data-lucide="circle" class="w-3 h-3 text-violet-400"></i> All</button>
-            <button onclick="window.NexusComponents?.toast('Filtered','info')" class="w-full text-left px-3 py-2 hover:bg-slate-700 text-sm text-slate-300 transition flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-violet-400"></i> Unread only</button>
-            <button onclick="window.NexusComponents?.toast('Filtered','info')" class="w-full text-left px-3 py-2 hover:bg-slate-700 text-sm text-slate-300 transition flex items-center gap-2"><i data-lucide="check-circle" class="w-3 h-3 text-slate-500"></i> Read only</button>
+            <button data-read="all" onclick="setReadFilter('all')" class="notif-read-opt w-full text-left px-3 py-2 hover:bg-slate-700 text-sm text-slate-300 transition flex items-center gap-2"><i data-lucide="circle" class="w-3 h-3 text-violet-400"></i> All <i data-lucide="check" class="notif-read-check w-3.5 h-3.5 text-violet-400 ml-auto"></i></button>
+            <button data-read="unread" onclick="setReadFilter('unread')" class="notif-read-opt w-full text-left px-3 py-2 hover:bg-slate-700 text-sm text-slate-300 transition flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-violet-400"></i> Unread only <i data-lucide="check" class="notif-read-check w-3.5 h-3.5 text-violet-400 ml-auto hidden"></i></button>
+            <button data-read="read" onclick="setReadFilter('read')" class="notif-read-opt w-full text-left px-3 py-2 hover:bg-slate-700 text-sm text-slate-300 transition flex items-center gap-2"><i data-lucide="check-circle" class="w-3 h-3 text-slate-500"></i> Read only <i data-lucide="check" class="notif-read-check w-3.5 h-3.5 text-violet-400 ml-auto hidden"></i></button>
           </div>
         </div>
         <button onclick="markAllRead()" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
@@ -259,7 +259,7 @@
           </p>
           <p class="text-xs text-slate-400 mt-1">Infrastructure and deployment discussions · 14 members</p>
           <div class="flex items-center gap-2 mt-2.5">
-            <button onclick="window.NexusComponents?.toast('Joined #platform-infra!', 'success'); this.closest('.notif-item').classList.remove('unread','border-violet-500','bg-violet-950/20'); this.closest('.notif-item').classList.add('border-transparent');" class="px-3 py-1.5 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition">Accept</button>
+            <button onclick="window.NexusComponents?.toast('Joined #platform-infra!', 'success'); this.closest('.notif-item').classList.remove('unread','border-violet-500','bg-violet-950/20'); this.closest('.notif-item').classList.add('border-transparent'); this.closest('.notif-item').querySelector('.bg-violet-500.rounded-full')?.remove(); updateUnreadCount(); applyFilters();" class="px-3 py-1.5 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition">Accept</button>
             <button onclick="dismissNotif(this.closest('.notif-item').querySelector('[onclick*=dismiss]') || this)" class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs font-medium rounded-lg transition">Decline</button>
             <span class="text-xs text-slate-500 ml-1">8:55 AM</span>
           </div>
@@ -466,7 +466,8 @@
 <script>
 window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
 
-let currentFilter = 'all';
+let currentFilter = 'all';   // category: all | mention | reaction | thread | invite | app
+let currentRead = 'all';     // read state: all | unread | read
 
 function setFilter(filter) {
   currentFilter = filter;
@@ -479,13 +480,30 @@ function setFilter(filter) {
     btn.classList.toggle('hover:text-slate-100', !isActive);
     btn.classList.toggle('hover:bg-slate-800', !isActive);
   });
+  applyFilters();
+}
 
-  // Filter items
+function setReadFilter(read) {
+  currentRead = read;
+  // Move the ✓ indicator to the active option
+  document.querySelectorAll('.notif-read-opt').forEach(opt => {
+    opt.querySelector('.notif-read-check')?.classList.toggle('hidden', opt.getAttribute('data-read') !== read);
+  });
+  document.getElementById('notif-sort-dd')?.classList.add('hidden');
+  applyFilters();
+  const label = { all: 'all notifications', unread: 'unread only', read: 'read only' }[read];
+  window.NexusComponents?.toast('Showing ' + label, 'info', 1800);
+}
+
+function applyFilters() {
   const items = document.querySelectorAll('.notif-item');
   let visibleCount = 0;
   items.forEach(item => {
     const type = item.getAttribute('data-type');
-    const visible = filter === 'all' || type === filter;
+    const isUnread = item.classList.contains('unread');
+    const matchType = currentFilter === 'all' || type === currentFilter;
+    const matchRead = currentRead === 'all' || (currentRead === 'unread' && isUnread) || (currentRead === 'read' && !isUnread);
+    const visible = matchType && matchRead;
     item.style.display = visible ? '' : 'none';
     if (visible) visibleCount++;
   });
@@ -495,12 +513,12 @@ function setFilter(filter) {
     all: 'All Notifications', mention: 'Mentions (@you)', reaction: 'Reactions',
     thread: 'Thread Replies', invite: 'Channel Invites', app: 'App Notifications'
   };
-  document.getElementById('feed-title').textContent = titles[filter] || 'Notifications';
-  document.getElementById('feed-subtitle').textContent = visibleCount + ' notification' + (visibleCount !== 1 ? 's' : '');
+  const readSuffix = { all: '', unread: ' · Unread only', read: ' · Read only' }[currentRead];
+  document.getElementById('feed-title').textContent = titles[currentFilter] || 'Notifications';
+  document.getElementById('feed-subtitle').textContent = visibleCount + ' notification' + (visibleCount !== 1 ? 's' : '') + readSuffix;
 
-  // Toggle date groups visibility
+  // Toggle date groups visibility — hide a group with no visible items beneath it
   document.querySelectorAll('.notif-date-group').forEach(group => {
-    // Show if any sibling notif items are visible
     let sibling = group.nextElementSibling;
     let hasVisible = false;
     while (sibling && !sibling.classList.contains('notif-date-group')) {
@@ -527,6 +545,7 @@ function dismissNotif(btn) {
     item.remove();
     window.NexusComponents?.toast('Notification dismissed', 'info', 2000);
     updateUnreadCount();
+    applyFilters();
   }, 200);
 }
 
@@ -542,6 +561,7 @@ function markAllRead() {
     item.querySelectorAll('span.text-slate-100').forEach(el => { el.classList.replace('text-slate-100', 'text-slate-300'); });
   });
   updateUnreadCount();
+  applyFilters();
   window.NexusComponents?.toast('All notifications marked as read', 'success');
 }
 

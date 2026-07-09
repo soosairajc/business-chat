@@ -104,7 +104,7 @@
     <div id="profile-rail-dd" data-dropdown class="hidden absolute left-14 bottom-3 z-50 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
       <div class="flex items-center gap-3 px-3 py-2 border-b border-slate-700 mb-1">
         <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="" class="w-8 h-8 rounded-lg bg-slate-700" />
-        <div><p class="text-sm font-semibold text-slate-100">You</p><p class="text-xs text-green-400">● Active</p></div>
+        <div><p class="text-sm font-semibold text-slate-100">You</p><p id="me-status-profile" class="text-xs text-green-400">● Available</p></div>
       </div>
       <a href="/pages/profile.html" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300"><i data-lucide="user" class="w-4 h-4 opacity-60"></i>View Profile</a>
       <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Set Status</button>
@@ -290,22 +290,24 @@
       <button data-dropdown-trigger="status-dd" class="w-full flex items-center gap-2 hover:bg-slate-800 rounded-lg px-1 py-1 -mx-1 transition">
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-7 h-7 rounded-lg bg-slate-700" />
-          <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border border-slate-900"></span>
+          <span id="me-status-dot" class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border border-slate-900"></span>
         </div>
         <div class="flex-1 min-w-0 text-left">
           <p class="text-xs font-semibold text-slate-100 truncate">You</p>
-          <p class="text-[10px] text-slate-500 truncate">🚀 In the zone</p>
+          <p id="me-status-text" class="text-[10px] text-slate-500 truncate">🚀 In the zone</p>
         </div>
         <i data-lucide="chevrons-up-down" class="w-3.5 h-3.5 text-slate-500 shrink-0"></i>
       </button>
       <div id="status-dd" data-dropdown class="hidden absolute left-2 bottom-14 z-50 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
         <p class="px-3 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">Set Status</p>
-        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🟢 Active</button>
-        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🌙 Do not disturb</button>
-        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🚶 Away</button>
-        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">⛔ Offline</button>
+        <button onclick="setStatus('available')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🟢 Available</button>
+        <button onclick="setStatus('busy')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🔴 Busy</button>
+        <button onclick="setStatus('meeting')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">📅 In a Meeting</button>
+        <button onclick="setStatus('away')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🚶 Away</button>
+        <button onclick="setStatus('dnd')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🌙 Do Not Disturb</button>
+        <button onclick="setStatus('offline')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">⚪ Offline</button>
         <div class="border-t border-slate-700 my-1"></div>
-        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Custom Status…</button>
+        <button onclick="openCustomStatus()" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Custom Status…</button>
       </div>
     </div>
 
@@ -662,7 +664,19 @@ Authorization: Bearer &lt;token&gt;
             <span class="text-[10px] font-bold leading-none">GIF</span>
           </button>
           <button data-picker="sticker" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Sticker" title="Sticker"><i data-lucide="sticker" class="w-4 h-4"></i></button>
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Mention" title="Mention"><i data-lucide="at-sign" class="w-4 h-4"></i></button>
+          <div class="relative">
+            <button type="button" onclick="toggleMentionPopup(event)" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Mention" title="Mention someone"><i data-lucide="at-sign" class="w-4 h-4"></i></button>
+            <!-- Mention members popup -->
+            <div id="mention-popup" class="hidden absolute bottom-full left-0 mb-2 w-64 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden z-50 fade-in">
+              <div class="p-2 border-b border-slate-700">
+                <div class="relative">
+                  <i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2"></i>
+                  <input id="mention-search" type="text" oninput="renderMentionList(this.value)" onkeydown="mentionKeydown(event)" placeholder="Mention someone" aria-label="Search members to mention" class="w-full bg-slate-900 border border-slate-700 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-violet-500" />
+                </div>
+              </div>
+              <div id="mention-list" role="listbox" class="max-h-56 overflow-y-auto p-1"></div>
+            </div>
+          </div>
           <button data-file-trigger data-attachments="#attachment-bar" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file" title="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
           <button data-file-trigger data-accept="image/*" data-attachments="#attachment-bar" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Upload image" title="Upload image"><i data-lucide="image" class="w-4 h-4"></i></button>
           <div class="flex-1"></div>
@@ -1050,6 +1064,57 @@ Authorization: Bearer &lt;token&gt;
   <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
 </div>
 
+<!-- Custom Status Modal -->
+<div id="custom-status-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <h2 class="font-bold text-slate-100 flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-violet-400"></i>Set a Custom Status</h2>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="p-5 space-y-4">
+      <!-- Message input with emoji -->
+      <div>
+        <label class="block text-xs font-semibold text-slate-400 mb-1.5">Status message</label>
+        <div class="flex items-center gap-2 bg-slate-800 border border-slate-700 rounded-xl px-3 focus-within:border-violet-500 transition">
+          <button type="button" id="cs-emoji-btn" onclick="cycleStatusEmoji()" class="text-lg leading-none shrink-0" title="Change emoji">🚀</button>
+          <input id="cs-input" type="text" maxlength="80" placeholder="What's your status?" class="flex-1 bg-transparent py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none" />
+        </div>
+        <p class="text-[10px] text-slate-500 mt-1">Tip: click the emoji to change it.</p>
+      </div>
+      <!-- Quick presets -->
+      <div>
+        <p class="text-xs font-semibold text-slate-400 mb-2">Quick statuses</p>
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" onclick="pickCustomPreset('available')" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left text-sm text-slate-200 transition"><span>🟢</span> Available</button>
+          <button type="button" onclick="pickCustomPreset('busy')" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left text-sm text-slate-200 transition"><span>🔴</span> Busy</button>
+          <button type="button" onclick="pickCustomPreset('meeting')" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left text-sm text-slate-200 transition"><span>📅</span> In a Meeting</button>
+          <button type="button" onclick="pickCustomPreset('away')" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left text-sm text-slate-200 transition"><span>🚶</span> Away</button>
+          <button type="button" onclick="pickCustomPreset('dnd')" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left text-sm text-slate-200 transition"><span>🌙</span> Do Not Disturb</button>
+          <button type="button" onclick="pickCustomPreset('offline')" class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-left text-sm text-slate-200 transition"><span>⚪</span> Offline</button>
+        </div>
+      </div>
+      <!-- Presence dot picker -->
+      <div>
+        <p class="text-xs font-semibold text-slate-400 mb-2">Show as</p>
+        <div id="cs-presence" class="flex items-center gap-2">
+          <button type="button" data-presence="bg-green-400" onclick="pickPresence('bg-green-400')" class="cs-presence-opt w-7 h-7 rounded-full bg-green-400 ring-2 ring-white/70" aria-label="Available"></button>
+          <button type="button" data-presence="bg-amber-400" onclick="pickPresence('bg-amber-400')" class="cs-presence-opt w-7 h-7 rounded-full bg-amber-400 ring-2 ring-transparent" aria-label="Away"></button>
+          <button type="button" data-presence="bg-red-500" onclick="pickPresence('bg-red-500')" class="cs-presence-opt w-7 h-7 rounded-full bg-red-500 ring-2 ring-transparent" aria-label="Busy"></button>
+          <button type="button" data-presence="bg-slate-500" onclick="pickPresence('bg-slate-500')" class="cs-presence-opt w-7 h-7 rounded-full bg-slate-500 ring-2 ring-transparent" aria-label="Offline"></button>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-between gap-2 px-5 py-4 border-t border-slate-800">
+      <button type="button" onclick="clearStatus()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 border border-slate-700 transition">Clear status</button>
+      <div class="flex gap-2">
+        <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+        <button type="button" onclick="saveCustomStatus()" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Save status</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Voice Message Recorder Modal -->
 <div id="voice-recorder-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
   <div data-modal-panel class="w-full max-w-sm bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
@@ -1379,6 +1444,193 @@ Authorization: Bearer &lt;token&gt;
     clearInterval(voiceTicker); clearInterval(voicePlayTicker);
   }
   window.stopVoiceTicker = stopVoiceTicker;
+
+  /* ═══════════════════════════════════════════════════════════
+     Custom Status — presets, custom message, localStorage
+  ═══════════════════════════════════════════════════════════ */
+  const STATUS_PRESETS = {
+    available: { label: 'Available',      emoji: '🟢', dot: 'bg-green-400' },
+    busy:      { label: 'Busy',           emoji: '🔴', dot: 'bg-red-500'   },
+    meeting:   { label: 'In a Meeting',   emoji: '📅', dot: 'bg-rose-500'  },
+    away:      { label: 'Away',           emoji: '🚶', dot: 'bg-amber-400' },
+    dnd:       { label: 'Do Not Disturb', emoji: '🌙', dot: 'bg-red-500'   },
+    offline:   { label: 'Offline',        emoji: '⚪', dot: 'bg-slate-500' },
+  };
+  const DOT_TEXT = { 'bg-green-400': 'text-green-400', 'bg-amber-400': 'text-amber-400', 'bg-rose-500': 'text-rose-400', 'bg-red-500': 'text-red-400', 'bg-slate-500': 'text-slate-400' };
+  const STATUS_KEY = 'nexus-user-status';
+  let currentStatus = { emoji: '🚀', label: 'In the zone', message: 'In the zone', dot: 'bg-green-400' };
+
+  function applyStatus(s) {
+    currentStatus = s;
+    const text = (s.emoji ? s.emoji + ' ' : '') + (s.message || s.label);
+    const line = document.getElementById('me-status-text');
+    if (line) line.textContent = text;
+    const dot = document.getElementById('me-status-dot');
+    if (dot) dot.className = 'absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ' + s.dot + ' border border-slate-900';
+    const prof = document.getElementById('me-status-profile');
+    if (prof) { prof.className = 'text-xs ' + (DOT_TEXT[s.dot] || 'text-green-400'); prof.textContent = '● ' + (s.message || s.label); }
+    try { localStorage.setItem(STATUS_KEY, JSON.stringify(s)); } catch (e) {}
+  }
+  function loadUserStatus() {
+    try { const saved = JSON.parse(localStorage.getItem(STATUS_KEY) || 'null'); if (saved && saved.dot) applyStatus(saved); } catch (e) {}
+  }
+
+  function setStatus(key) {
+    const p = STATUS_PRESETS[key];
+    if (!p) return;
+    applyStatus({ emoji: p.emoji, label: p.label, message: p.label, dot: p.dot });
+    document.getElementById('status-dd')?.classList.add('hidden');
+    window.NexusComponents?.toast('Status set to “' + p.label + '”', 'success', 2000);
+  }
+  window.setStatus = setStatus;
+
+  // ── Custom status modal ──
+  const CS_EMOJIS = ['🚀', '💬', '🎧', '☕', '🌴', '🍜', '🏠', '🤒', '📚', '🎯', '🔥', '🟢'];
+  let csEmojiIdx = 0, csPresence = 'bg-green-400';
+
+  function openCustomStatus() {
+    document.getElementById('status-dd')?.classList.add('hidden');
+    document.getElementById('cs-input').value = currentStatus.message || '';
+    document.getElementById('cs-emoji-btn').textContent = currentStatus.emoji || '🚀';
+    csEmojiIdx = Math.max(0, CS_EMOJIS.indexOf(currentStatus.emoji || '🚀'));
+    pickPresence(currentStatus.dot || 'bg-green-400');
+    window.NexusComponents?.openModal('custom-status-modal');
+    if (window.lucide) lucide.createIcons();
+    setTimeout(() => document.getElementById('cs-input')?.focus(), 0);
+  }
+  window.openCustomStatus = openCustomStatus;
+
+  function cycleStatusEmoji() {
+    csEmojiIdx = (csEmojiIdx + 1) % CS_EMOJIS.length;
+    document.getElementById('cs-emoji-btn').textContent = CS_EMOJIS[csEmojiIdx];
+  }
+  window.cycleStatusEmoji = cycleStatusEmoji;
+
+  function pickCustomPreset(key) {
+    const p = STATUS_PRESETS[key];
+    if (!p) return;
+    document.getElementById('cs-input').value = p.label;
+    document.getElementById('cs-emoji-btn').textContent = p.emoji;
+    csEmojiIdx = Math.max(0, CS_EMOJIS.indexOf(p.emoji));
+    pickPresence(p.dot);
+  }
+  window.pickCustomPreset = pickCustomPreset;
+
+  function pickPresence(dot) {
+    csPresence = dot;
+    document.querySelectorAll('.cs-presence-opt').forEach(b => {
+      const on = b.getAttribute('data-presence') === dot;
+      b.classList.toggle('ring-white/70', on);
+      b.classList.toggle('ring-transparent', !on);
+    });
+  }
+  window.pickPresence = pickPresence;
+
+  function saveCustomStatus() {
+    const msg = document.getElementById('cs-input').value.trim();
+    const emoji = document.getElementById('cs-emoji-btn').textContent;
+    applyStatus({ emoji, label: msg || 'Available', message: msg || 'Available', dot: csPresence });
+    window.NexusComponents?.closeModal('custom-status-modal');
+    window.NexusComponents?.toast('Custom status saved', 'success', 2000);
+  }
+  window.saveCustomStatus = saveCustomStatus;
+
+  function clearStatus() {
+    applyStatus({ emoji: '🟢', label: 'Available', message: 'Available', dot: 'bg-green-400' });
+    window.NexusComponents?.closeModal('custom-status-modal');
+    window.NexusComponents?.toast('Status cleared', 'info', 2000);
+  }
+  window.clearStatus = clearStatus;
+
+  /* ═══════════════════════════════════════════════════════════
+     @ Mention — searchable member popup with keyboard nav
+  ═══════════════════════════════════════════════════════════ */
+  const MENTION_MEMBERS = [
+    { name: 'Alice Chen',    seed: 'alice',  role: 'Design Lead', dot: 'bg-green-400' },
+    { name: 'Bob Martinez',  seed: 'bob',    role: 'Engineer',    dot: 'bg-amber-400' },
+    { name: 'Carol Wu',      seed: 'carol',  role: 'Product',     dot: 'bg-red-500'   },
+    { name: 'David Kim',     seed: 'david',  role: 'Marketing',   dot: 'bg-green-400' },
+    { name: 'Priya Sharma',  seed: 'priya',  role: 'Engineer',    dot: 'bg-slate-500' },
+    { name: 'Sarah Lee',     seed: 'sarah',  role: 'Designer',    dot: 'bg-green-400' },
+    { name: 'Tom Wilson',    seed: 'tom',    role: 'DevOps',      dot: 'bg-slate-500' },
+    { name: 'Mike Johnson',  seed: 'mike',   role: 'CEO',         dot: 'bg-amber-400' },
+  ];
+  let mentionFiltered = [], mentionActive = 0;
+
+  function toggleMentionPopup(e) {
+    e.stopPropagation();
+    const popup = document.getElementById('mention-popup');
+    const willOpen = popup.classList.contains('hidden');
+    popup.classList.toggle('hidden');
+    if (willOpen) {
+      const search = document.getElementById('mention-search');
+      search.value = '';
+      mentionActive = 0;
+      renderMentionList('');
+      setTimeout(() => search.focus(), 0);
+    }
+  }
+  window.toggleMentionPopup = toggleMentionPopup;
+
+  function renderMentionList(filter) {
+    const q = (filter || '').trim().toLowerCase();
+    mentionFiltered = MENTION_MEMBERS.filter(m => m.name.toLowerCase().includes(q) || m.role.toLowerCase().includes(q));
+    if (mentionActive >= mentionFiltered.length) mentionActive = Math.max(0, mentionFiltered.length - 1);
+    const list = document.getElementById('mention-list');
+    if (!mentionFiltered.length) { list.innerHTML = '<p class="text-center text-xs text-slate-500 py-6">No members found</p>'; return; }
+    list.innerHTML = '';
+    mentionFiltered.forEach((m, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('role', 'option');
+      b.setAttribute('aria-selected', String(i === mentionActive));
+      b.className = 'w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-left transition ' + (i === mentionActive ? 'bg-slate-700' : 'hover:bg-slate-700');
+      b.innerHTML = `
+        <span class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=${m.seed}" alt="" class="w-7 h-7 rounded-lg bg-slate-700" />
+          <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ${m.dot} border-2 border-slate-800"></span>
+        </span>
+        <span class="min-w-0"><span class="block text-xs font-semibold text-slate-100 truncate">${m.name}</span><span class="block text-[10px] text-slate-500">${m.role}</span></span>`;
+      b.addEventListener('click', () => selectMention(m));
+      b.addEventListener('mousemove', () => { if (mentionActive !== i) { mentionActive = i; renderMentionList(document.getElementById('mention-search').value); } });
+      list.appendChild(b);
+    });
+    list.children[mentionActive]?.scrollIntoView({ block: 'nearest' });
+  }
+  window.renderMentionList = renderMentionList;
+
+  function mentionKeydown(e) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); if (mentionFiltered.length) { mentionActive = (mentionActive + 1) % mentionFiltered.length; renderMentionList(e.target.value); } }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); if (mentionFiltered.length) { mentionActive = (mentionActive - 1 + mentionFiltered.length) % mentionFiltered.length; renderMentionList(e.target.value); } }
+    else if (e.key === 'Enter') { e.preventDefault(); if (mentionFiltered[mentionActive]) selectMention(mentionFiltered[mentionActive]); }
+    else if (e.key === 'Escape') { e.preventDefault(); document.getElementById('mention-popup').classList.add('hidden'); }
+  }
+  window.mentionKeydown = mentionKeydown;
+
+  function selectMention(m) {
+    const ta = document.getElementById('composer-input');
+    if (ta) {
+      const text = '@' + m.name.split(' ')[0] + ' ';
+      const s = ta.selectionStart ?? ta.value.length, en = ta.selectionEnd ?? ta.value.length;
+      ta.value = ta.value.slice(0, s) + text + ta.value.slice(en);
+      ta.focus();
+      const pos = s + text.length;
+      ta.setSelectionRange(pos, pos);
+      ta.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    document.getElementById('mention-popup').classList.add('hidden');
+  }
+
+  // Close the mention popup when clicking outside it
+  document.addEventListener('click', e => {
+    const popup = document.getElementById('mention-popup');
+    if (popup && !popup.classList.contains('hidden') && !popup.parentElement.contains(e.target)) {
+      popup.classList.add('hidden');
+    }
+  });
+
+  // Restore persisted status on load
+  loadUserStatus();
 </script>
 
 </body>

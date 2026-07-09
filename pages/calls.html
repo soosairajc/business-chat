@@ -554,6 +554,167 @@
   </div>
 </div>
 
+<!-- ══ VIEW PROFILE MODAL ══ -->
+<div id="profile-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('profile-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[24rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="relative h-24 bg-gradient-to-br from-violet-900 to-indigo-900 flex items-end">
+      <div class="absolute inset-0 opacity-30" style="background:radial-gradient(circle at 50% 100%, #7c3aed, transparent 70%)"></div>
+      <button onclick="closeMoreModal('profile-modal')" aria-label="Close" class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/30 hover:bg-black/50 flex items-center justify-center text-slate-200 transition z-10"><i data-lucide="x" class="w-4 h-4"></i></button>
+      <div class="relative flex items-end gap-3 px-6 -mb-8 z-10">
+        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-20 h-20 rounded-2xl bg-slate-700 ring-4 ring-slate-900 shadow-lg" />
+      </div>
+    </div>
+    <div class="pt-10 px-6 pb-6">
+      <div class="flex items-center gap-2">
+        <h3 class="text-xl font-bold text-slate-100">Alice Chen</h3>
+        <span class="flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-500/15 text-green-400"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>Online</span>
+      </div>
+      <p class="text-sm text-slate-400 mt-0.5">Lead Product Designer · Nexus HQ</p>
+      <div class="mt-4 space-y-2.5">
+        <div class="flex items-center gap-3 text-sm"><i data-lucide="mail" class="w-4 h-4 text-slate-500 shrink-0"></i><span class="text-slate-300">alice.chen@nexus.io</span></div>
+        <div class="flex items-center gap-3 text-sm"><i data-lucide="at-sign" class="w-4 h-4 text-slate-500 shrink-0"></i><span class="text-slate-300">@alicechen</span></div>
+        <div class="flex items-center gap-3 text-sm"><i data-lucide="map-pin" class="w-4 h-4 text-slate-500 shrink-0"></i><span class="text-slate-300">San Francisco, CA · 10:24 AM local</span></div>
+        <div class="flex items-center gap-3 text-sm"><i data-lucide="briefcase" class="w-4 h-4 text-slate-500 shrink-0"></i><span class="text-slate-300">Design · Reports to Mike Johnson</span></div>
+      </div>
+      <div class="mt-5 grid grid-cols-3 gap-2">
+        <button onclick="closeMoreModal('profile-modal');window.NexusComponents?.toast('Starting voice call with Alice…','success')" class="flex flex-col items-center gap-1.5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 transition"><i data-lucide="phone" class="w-4 h-4 text-green-400"></i><span class="text-[11px] font-semibold text-slate-300">Call</span></button>
+        <button onclick="closeMoreModal('profile-modal');toggleCallChat()" class="flex flex-col items-center gap-1.5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 transition"><i data-lucide="message-circle" class="w-4 h-4 text-violet-400"></i><span class="text-[11px] font-semibold text-slate-300">Message</span></button>
+        <button onclick="closeMoreModal('profile-modal');window.NexusComponents?.toast('Profile page coming soon','info')" class="flex flex-col items-center gap-1.5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 transition"><i data-lucide="user" class="w-4 h-4 text-sky-400"></i><span class="text-[11px] font-semibold text-slate-300">Full Profile</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CALL DETAILS MODAL ══ -->
+<div id="details-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('details-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[24rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2.5"><span class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center"><i data-lucide="info" class="w-4 h-4 text-violet-400"></i></span><h3 class="text-base font-bold text-slate-100">Call Details</h3></div>
+      <button onclick="closeMoreModal('details-modal')" aria-label="Close" class="w-8 h-8 rounded-lg hover:bg-slate-800 flex items-center justify-center text-slate-400 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="px-6 py-5 space-y-3">
+      <div class="flex items-center justify-between text-sm"><span class="text-slate-400">Channel</span><span class="font-medium text-slate-200">#design-sync</span></div>
+      <div class="flex items-center justify-between text-sm"><span class="text-slate-400">Type</span><span class="font-medium text-slate-200 flex items-center gap-1.5"><i data-lucide="video" class="w-3.5 h-3.5 text-violet-400"></i>Video call</span></div>
+      <div class="flex items-center justify-between text-sm"><span class="text-slate-400">Started</span><span class="font-medium text-slate-200">Today · 10:01 AM</span></div>
+      <div class="flex items-center justify-between text-sm"><span class="text-slate-400">Duration</span><span id="details-duration" class="font-medium text-slate-200 tabular-nums">23:47</span></div>
+      <div class="flex items-center justify-between text-sm"><span class="text-slate-400">Participants</span><span class="font-medium text-slate-200">5 people</span></div>
+      <div class="flex items-center justify-between text-sm"><span class="text-slate-400">Host</span><span class="font-medium text-slate-200">Mike Johnson</span></div>
+      <div class="flex items-center justify-between text-sm"><span class="text-slate-400">Connection</span><span class="font-medium text-green-400 flex items-center gap-1.5"><i data-lucide="signal" class="w-3.5 h-3.5"></i>Excellent</span></div>
+      <div class="flex items-center justify-between text-sm"><span class="text-slate-400">Encryption</span><span class="font-medium text-slate-200 flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 text-green-400"></i>End-to-end</span></div>
+      <div class="flex items-center justify-between text-sm"><span class="text-slate-400">Recording</span><span class="font-medium text-slate-400">Off</span></div>
+    </div>
+    <div class="px-6 py-4 border-t border-slate-800 flex justify-end">
+      <button onclick="closeMoreModal('details-modal')" class="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-xl transition">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ADD PEOPLE MODAL ══ -->
+<div id="add-people-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('add-people-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[24rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2.5"><span class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center"><i data-lucide="user-plus" class="w-4 h-4 text-violet-400"></i></span><h3 class="text-base font-bold text-slate-100">Add People</h3></div>
+      <button onclick="closeMoreModal('add-people-modal')" aria-label="Close" class="w-8 h-8 rounded-lg hover:bg-slate-800 flex items-center justify-center text-slate-400 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="px-6 pt-4">
+      <div class="relative">
+        <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2"></i>
+        <input id="add-people-search" oninput="renderAddPeople(this.value)" type="text" placeholder="Search people to add…" class="w-full pl-9 pr-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition" />
+      </div>
+    </div>
+    <div id="add-people-list" class="px-3 py-3 max-h-64 overflow-y-auto"></div>
+    <div class="px-6 py-4 border-t border-slate-800 flex items-center justify-between">
+      <span id="add-people-count" class="text-xs text-slate-500">0 selected</span>
+      <div class="flex gap-2">
+        <button onclick="closeMoreModal('add-people-modal')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-xl border border-slate-700 transition">Cancel</button>
+        <button onclick="confirmAddPeople()" class="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-xl transition">Add to Call</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RECORD CALL CONFIRM MODAL ══ -->
+<div id="record-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('record-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[22rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="px-6 pt-6 text-center">
+      <div class="w-14 h-14 mx-auto rounded-full bg-red-500/15 flex items-center justify-center mb-4"><i data-lucide="circle-dot" class="w-7 h-7 text-red-400"></i></div>
+      <h3 class="text-lg font-bold text-slate-100">Record this call?</h3>
+      <p class="text-sm text-slate-400 mt-2">Everyone will be notified that recording has started. The recording will be saved to <span class="text-slate-200 font-medium">#design-sync</span> when the call ends.</p>
+      <div class="mt-4 flex items-start gap-2.5 text-left p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+        <i data-lucide="shield-check" class="w-4 h-4 text-green-400 shrink-0 mt-0.5"></i>
+        <p class="text-xs text-slate-400">Recordings are end-to-end encrypted and only visible to channel members.</p>
+      </div>
+    </div>
+    <div class="px-6 py-5 flex gap-2">
+      <button onclick="closeMoreModal('record-modal')" class="flex-1 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-xl border border-slate-700 transition">Cancel</button>
+      <button onclick="startRecording()" class="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold rounded-xl transition flex items-center justify-center gap-2"><i data-lucide="circle-dot" class="w-4 h-4"></i>Start Recording</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CALL SETTINGS MODAL ══ -->
+<div id="settings-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('settings-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[24rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2.5"><span class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center"><i data-lucide="settings" class="w-4 h-4 text-violet-400"></i></span><h3 class="text-base font-bold text-slate-100">Call Settings</h3></div>
+      <button onclick="closeMoreModal('settings-modal')" aria-label="Close" class="w-8 h-8 rounded-lg hover:bg-slate-800 flex items-center justify-center text-slate-400 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="px-6 py-4 space-y-1">
+      <div class="py-2.5">
+        <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Microphone</label>
+        <select class="mt-1.5 w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-sm text-slate-200 focus:outline-none focus:border-violet-500 transition">
+          <option>MacBook Pro Microphone</option><option>AirPods Pro</option><option>External USB Mic</option>
+        </select>
+      </div>
+      <div class="py-2.5">
+        <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Speaker</label>
+        <select class="mt-1.5 w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-sm text-slate-200 focus:outline-none focus:border-violet-500 transition">
+          <option>MacBook Pro Speakers</option><option>AirPods Pro</option><option>Studio Display</option>
+        </select>
+      </div>
+      <div class="py-2.5">
+        <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Camera</label>
+        <select class="mt-1.5 w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-sm text-slate-200 focus:outline-none focus:border-violet-500 transition">
+          <option>FaceTime HD Camera</option><option>Logitech Brio 4K</option><option>iPhone Continuity Camera</option>
+        </select>
+      </div>
+      <label class="flex items-center justify-between py-3 border-t border-slate-800 cursor-pointer">
+        <span class="flex items-center gap-2.5 text-sm text-slate-200"><i data-lucide="waves" class="w-4 h-4 text-slate-500"></i>Noise Cancellation</span>
+        <input type="checkbox" checked class="settings-toggle sr-only peer"><span class="relative w-10 h-5.5 rounded-full bg-slate-700 peer-checked:bg-violet-600 transition after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-4.5 after:h-4.5 after:rounded-full after:bg-white after:transition peer-checked:after:translate-x-[18px]" style="height:1.375rem;width:2.5rem"></span>
+      </label>
+      <label class="flex items-center justify-between py-3 border-t border-slate-800 cursor-pointer">
+        <span class="flex items-center gap-2.5 text-sm text-slate-200"><i data-lucide="bell" class="w-4 h-4 text-slate-500"></i>Notifications</span>
+        <input type="checkbox" checked class="settings-toggle sr-only peer"><span class="relative w-10 h-5.5 rounded-full bg-slate-700 peer-checked:bg-violet-600 transition after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:w-4.5 after:h-4.5 after:rounded-full after:bg-white after:transition peer-checked:after:translate-x-[18px]" style="height:1.375rem;width:2.5rem"></span>
+      </label>
+    </div>
+    <div class="px-6 py-4 border-t border-slate-800 flex justify-end gap-2">
+      <button onclick="closeMoreModal('settings-modal')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-xl border border-slate-700 transition">Cancel</button>
+      <button onclick="closeMoreModal('settings-modal');window.NexusComponents?.toast('Call settings saved','success')" class="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-xl transition">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BLOCK PARTICIPANT CONFIRM MODAL ══ -->
+<div id="block-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('block-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[22rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="px-6 pt-6 text-center">
+      <div class="w-14 h-14 mx-auto rounded-full bg-red-500/15 flex items-center justify-center mb-4"><i data-lucide="ban" class="w-7 h-7 text-red-400"></i></div>
+      <h3 class="text-lg font-bold text-slate-100">Block Alice Chen?</h3>
+      <p class="text-sm text-slate-400 mt-2">They will be removed from this call and won't be able to rejoin. They won't be notified that you blocked them.</p>
+    </div>
+    <div class="px-6 py-5 flex gap-2">
+      <button onclick="closeMoreModal('block-modal')" class="flex-1 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-xl border border-slate-700 transition">Cancel</button>
+      <button onclick="confirmBlock()" class="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold rounded-xl transition flex items-center justify-center gap-2"><i data-lucide="ban" class="w-4 h-4"></i>Block</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ INCOMING CALL MODAL ══ -->
 <div id="incoming-call-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
   <div data-modal-backdrop class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
