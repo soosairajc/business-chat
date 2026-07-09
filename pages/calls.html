@@ -122,10 +122,10 @@
       <div class="flex flex-1 overflow-hidden">
 
         <!-- Main grid area -->
-        <div class="flex-1 p-4 grid grid-rows-2 grid-cols-2 gap-3 overflow-hidden">
+        <div id="video-grid" class="flex-1 p-4 grid grid-cols-2 auto-rows-fr gap-3 overflow-hidden">
 
           <!-- Tile 1: Alice (speaking) -->
-          <div class="relative rounded-2xl bg-gradient-to-br from-violet-950 to-slate-900 overflow-hidden group">
+          <div data-tile="alice" data-name="Alice Chen" class="video-tile relative rounded-2xl bg-gradient-to-br from-violet-950 to-slate-900 overflow-hidden group">
             <div class="absolute inset-0 flex items-center justify-center">
               <div class="relative">
                 <div class="absolute inset-0 rounded-full speaking-ring bg-violet-500/30 scale-150"></div>
@@ -138,15 +138,22 @@
                 <span class="text-xs font-medium text-slate-100">Alice Chen</span>
               </div>
             </div>
-            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition">
-              <div class="w-2 h-2 rounded-full bg-violet-500 speaking-ring"></div>
+            <!-- Pin / Spotlight badges -->
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="tile-pin-badge hidden items-center gap-1 px-2 py-0.5 rounded-lg bg-amber-500/90 text-slate-900 text-[10px] font-bold"><i data-lucide="pin" class="w-3 h-3"></i>Pinned</span>
+              <span class="tile-spot-badge hidden items-center gap-1 px-2 py-0.5 rounded-lg bg-sky-500/90 text-white text-[10px] font-bold"><i data-lucide="sun" class="w-3 h-3"></i>Spotlight</span>
+            </div>
+            <!-- Hover controls -->
+            <div class="absolute top-3 right-3 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition">
+              <button onclick="togglePin('alice')" title="Pin participant" aria-label="Pin Alice Chen" class="tile-pin-btn w-7 h-7 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-slate-200 transition"><i data-lucide="pin" class="w-3.5 h-3.5"></i></button>
+              <button onclick="toggleSpotlight('alice')" title="Spotlight for everyone" aria-label="Spotlight Alice Chen" class="tile-spot-btn w-7 h-7 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-slate-200 transition"><i data-lucide="sun" class="w-3.5 h-3.5"></i></button>
             </div>
             <!-- Speaking indicator glow -->
-            <div class="absolute inset-0 rounded-2xl ring-2 ring-violet-500/60 pointer-events-none"></div>
+            <div class="tile-speaking-glow absolute inset-0 rounded-2xl ring-2 ring-violet-500/60 pointer-events-none"></div>
           </div>
 
           <!-- Tile 2: Bob -->
-          <div class="relative rounded-2xl bg-gradient-to-br from-blue-950 to-slate-900 overflow-hidden group">
+          <div data-tile="bob" data-name="Bob Martinez" class="video-tile relative rounded-2xl bg-gradient-to-br from-blue-950 to-slate-900 overflow-hidden group">
             <div class="absolute inset-0 flex items-center justify-center">
               <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-20 h-20 rounded-full bg-slate-700" />
             </div>
@@ -156,10 +163,18 @@
                 <span class="text-xs font-medium text-slate-100">Bob Martinez</span>
               </div>
             </div>
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="tile-pin-badge hidden items-center gap-1 px-2 py-0.5 rounded-lg bg-amber-500/90 text-slate-900 text-[10px] font-bold"><i data-lucide="pin" class="w-3 h-3"></i>Pinned</span>
+              <span class="tile-spot-badge hidden items-center gap-1 px-2 py-0.5 rounded-lg bg-sky-500/90 text-white text-[10px] font-bold"><i data-lucide="sun" class="w-3 h-3"></i>Spotlight</span>
+            </div>
+            <div class="absolute top-3 right-3 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition">
+              <button onclick="togglePin('bob')" title="Pin participant" aria-label="Pin Bob Martinez" class="tile-pin-btn w-7 h-7 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-slate-200 transition"><i data-lucide="pin" class="w-3.5 h-3.5"></i></button>
+              <button onclick="toggleSpotlight('bob')" title="Spotlight for everyone" aria-label="Spotlight Bob Martinez" class="tile-spot-btn w-7 h-7 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-slate-200 transition"><i data-lucide="sun" class="w-3.5 h-3.5"></i></button>
+            </div>
           </div>
 
           <!-- Tile 3: Carol -->
-          <div class="relative rounded-2xl bg-gradient-to-br from-emerald-950 to-slate-900 overflow-hidden group">
+          <div data-tile="carol" data-name="Carol Wu" class="video-tile relative rounded-2xl bg-gradient-to-br from-emerald-950 to-slate-900 overflow-hidden group">
             <div class="absolute inset-0 flex items-center justify-center">
               <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-20 h-20 rounded-full bg-slate-700" />
             </div>
@@ -169,10 +184,18 @@
                 <span class="text-xs font-medium text-slate-100">Carol Wu</span>
               </div>
             </div>
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="tile-pin-badge hidden items-center gap-1 px-2 py-0.5 rounded-lg bg-amber-500/90 text-slate-900 text-[10px] font-bold"><i data-lucide="pin" class="w-3 h-3"></i>Pinned</span>
+              <span class="tile-spot-badge hidden items-center gap-1 px-2 py-0.5 rounded-lg bg-sky-500/90 text-white text-[10px] font-bold"><i data-lucide="sun" class="w-3 h-3"></i>Spotlight</span>
+            </div>
+            <div class="absolute top-3 right-3 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition">
+              <button onclick="togglePin('carol')" title="Pin participant" aria-label="Pin Carol Wu" class="tile-pin-btn w-7 h-7 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-slate-200 transition"><i data-lucide="pin" class="w-3.5 h-3.5"></i></button>
+              <button onclick="toggleSpotlight('carol')" title="Spotlight for everyone" aria-label="Spotlight Carol Wu" class="tile-spot-btn w-7 h-7 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-slate-200 transition"><i data-lucide="sun" class="w-3.5 h-3.5"></i></button>
+            </div>
           </div>
 
           <!-- Tile 4: You (self view, bottom right) -->
-          <div class="relative rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden group ring-2 ring-violet-600/40">
+          <div data-tile="you" data-name="You" class="video-tile relative rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden group ring-2 ring-violet-600/40">
             <div class="absolute inset-0 flex items-center justify-center">
               <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-20 h-20 rounded-full bg-slate-700" />
             </div>
@@ -182,7 +205,17 @@
                 <span class="text-xs font-medium text-violet-300">You</span>
               </div>
             </div>
-            <div class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-violet-600 text-white text-[9px] font-bold">YOU</div>
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="tile-pin-badge hidden items-center gap-1 px-2 py-0.5 rounded-lg bg-amber-500/90 text-slate-900 text-[10px] font-bold"><i data-lucide="pin" class="w-3 h-3"></i>Pinned</span>
+              <span class="tile-spot-badge hidden items-center gap-1 px-2 py-0.5 rounded-lg bg-sky-500/90 text-white text-[10px] font-bold"><i data-lucide="sun" class="w-3 h-3"></i>Spotlight</span>
+            </div>
+            <div class="absolute top-3 right-3 flex items-center gap-1.5">
+              <div class="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition">
+                <button onclick="togglePin('you')" title="Pin participant" aria-label="Pin your video" class="tile-pin-btn w-7 h-7 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-slate-200 transition"><i data-lucide="pin" class="w-3.5 h-3.5"></i></button>
+                <button onclick="toggleSpotlight('you')" title="Spotlight for everyone" aria-label="Spotlight your video" class="tile-spot-btn w-7 h-7 rounded-lg bg-black/60 hover:bg-black/80 backdrop-blur-sm flex items-center justify-center text-slate-200 transition"><i data-lucide="sun" class="w-3.5 h-3.5"></i></button>
+              </div>
+              <span class="px-2 py-0.5 rounded-full bg-violet-600 text-white text-[9px] font-bold">YOU</span>
+            </div>
           </div>
         </div>
 
@@ -237,6 +270,17 @@
             </button>
           </div>
         </aside>
+      </div>
+
+      <!-- Live Captions overlay -->
+      <div id="captions-overlay" class="hidden absolute left-1/2 -translate-x-1/2 bottom-28 z-20 w-[min(90%,42rem)] pointer-events-none">
+        <div class="rounded-2xl bg-black/75 backdrop-blur-sm border border-slate-700/60 px-4 py-3 shadow-2xl">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-sky-400"><i data-lucide="captions" class="w-3.5 h-3.5"></i>Live Captions</span>
+            <span class="text-[10px] text-slate-500">Auto · English</span>
+          </div>
+          <div id="captions-lines" class="space-y-1 text-sm leading-relaxed"></div>
+        </div>
       </div>
 
       <!-- Call Controls Bar -->
@@ -318,6 +362,11 @@
             <button onclick="moreAction('add')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i>Add People</button>
             <button onclick="moreAction('record')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="circle-dot" class="w-4 h-4 opacity-60"></i>Record Call</button>
             <button onclick="moreAction('settings')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="settings" class="w-4 h-4 opacity-60"></i>Call Settings</button>
+            <div class="border-t border-slate-700 my-1"></div>
+            <button onclick="moreAction('whiteboard')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="pen-tool" class="w-4 h-4 opacity-60"></i>Whiteboard</button>
+            <button onclick="moreAction('captions')" class="w-full flex items-center justify-between gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><span class="flex items-center gap-2.5"><i data-lucide="captions" class="w-4 h-4 opacity-60"></i>Live Captions</span><span id="cc-menu-state" class="text-[10px] font-bold text-slate-500 uppercase">Off</span></button>
+            <button onclick="moreAction('fullscreen')" class="w-full flex items-center justify-between gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><span class="flex items-center gap-2.5"><i data-lucide="maximize" class="w-4 h-4 opacity-60" id="fs-menu-icon"></i><span id="fs-menu-label">Full Screen</span></span></button>
+            <button onclick="moreAction('stats')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="activity" class="w-4 h-4 opacity-60"></i>Network Statistics</button>
             <div class="border-t border-slate-700 my-1"></div>
             <button onclick="moreAction('report')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="flag" class="w-4 h-4 opacity-60"></i>Report a Problem</button>
             <button onclick="moreAction('block')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left transition"><i data-lucide="ban" class="w-4 h-4 opacity-60"></i>Block Participant</button>
@@ -784,6 +833,102 @@
   </div>
 </div>
 
+<!-- ══ WHITEBOARD MODAL ══ -->
+<div id="whiteboard-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeWhiteboard()" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[54rem] max-w-[calc(100vw-2rem)] h-[min(88vh,40rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in flex flex-col">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-5 py-3 border-b border-slate-800 shrink-0">
+      <div class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center"><i data-lucide="pen-tool" class="w-4 h-4 text-violet-400"></i></span>
+        <div>
+          <h3 class="text-base font-bold text-slate-100 leading-tight">Whiteboard</h3>
+          <p class="text-[11px] text-slate-500 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>Collaborating with 4 others</p>
+        </div>
+      </div>
+      <button onclick="closeWhiteboard()" aria-label="Close" class="w-8 h-8 rounded-lg hover:bg-slate-800 flex items-center justify-center text-slate-400 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <!-- Toolbar -->
+    <div class="flex items-center gap-2 px-4 py-2.5 border-b border-slate-800 shrink-0 flex-wrap">
+      <!-- Tools -->
+      <div class="flex items-center gap-1 p-1 rounded-xl bg-slate-800 border border-slate-700">
+        <button onclick="setWbTool('pen')" data-wb-tool="pen" class="wb-tool w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 transition" title="Pen"><i data-lucide="pencil" class="w-4 h-4"></i></button>
+        <button onclick="setWbTool('line')" data-wb-tool="line" class="wb-tool w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 transition" title="Line"><i data-lucide="minus" class="w-4 h-4"></i></button>
+        <button onclick="setWbTool('rect')" data-wb-tool="rect" class="wb-tool w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 transition" title="Rectangle"><i data-lucide="square" class="w-4 h-4"></i></button>
+        <button onclick="setWbTool('ellipse')" data-wb-tool="ellipse" class="wb-tool w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 transition" title="Ellipse"><i data-lucide="circle" class="w-4 h-4"></i></button>
+        <button onclick="setWbTool('arrow')" data-wb-tool="arrow" class="wb-tool w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 transition" title="Arrow"><i data-lucide="move-up-right" class="w-4 h-4"></i></button>
+        <button onclick="setWbTool('text')" data-wb-tool="text" class="wb-tool w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 transition" title="Text"><i data-lucide="type" class="w-4 h-4"></i></button>
+        <button onclick="setWbTool('eraser')" data-wb-tool="eraser" class="wb-tool w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 transition" title="Eraser"><i data-lucide="eraser" class="w-4 h-4"></i></button>
+      </div>
+      <!-- Colors -->
+      <div id="wb-colors" class="flex items-center gap-1.5 px-2">
+        <button onclick="setWbColor('#f8fafc', this)" class="wb-color w-6 h-6 rounded-full ring-2 ring-offset-2 ring-offset-slate-900 transition" style="background:#f8fafc" title="White"></button>
+        <button onclick="setWbColor('#8b5cf6', this)" class="wb-color w-6 h-6 rounded-full ring-2 ring-offset-2 ring-offset-slate-900 transition" style="background:#8b5cf6" title="Violet"></button>
+        <button onclick="setWbColor('#38bdf8', this)" class="wb-color w-6 h-6 rounded-full ring-2 ring-offset-2 ring-offset-slate-900 transition" style="background:#38bdf8" title="Blue"></button>
+        <button onclick="setWbColor('#34d399', this)" class="wb-color w-6 h-6 rounded-full ring-2 ring-offset-2 ring-offset-slate-900 transition" style="background:#34d399" title="Green"></button>
+        <button onclick="setWbColor('#fbbf24', this)" class="wb-color w-6 h-6 rounded-full ring-2 ring-offset-2 ring-offset-slate-900 transition" style="background:#fbbf24" title="Amber"></button>
+        <button onclick="setWbColor('#f87171', this)" class="wb-color w-6 h-6 rounded-full ring-2 ring-offset-2 ring-offset-slate-900 transition" style="background:#f87171" title="Red"></button>
+      </div>
+      <!-- Stroke width -->
+      <div class="flex items-center gap-2 px-2 border-l border-slate-700">
+        <i data-lucide="minus" class="w-3.5 h-3.5 text-slate-500"></i>
+        <input id="wb-width" type="range" min="1" max="24" value="4" oninput="setWbWidth(this.value)" class="w-24 accent-violet-500" />
+        <span id="wb-width-label" class="text-xs text-slate-400 w-6 tabular-nums">4</span>
+      </div>
+      <!-- Actions -->
+      <div class="ml-auto flex items-center gap-2">
+        <button onclick="undoWhiteboard()" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition" title="Undo"><i data-lucide="undo-2" class="w-3.5 h-3.5"></i>Undo</button>
+        <button onclick="clearWhiteboard()" class="flex items-center gap-1.5 px-3 py-1.5 bg-red-600/15 hover:bg-red-600/25 text-red-400 text-xs font-medium rounded-lg border border-red-800/50 transition" title="Clear canvas"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i>Clear</button>
+      </div>
+    </div>
+    <!-- Canvas -->
+    <div class="flex-1 p-3 overflow-hidden bg-slate-950">
+      <div class="relative w-full h-full rounded-2xl overflow-hidden border border-slate-800" style="background:#0f172a">
+        <canvas id="wb-canvas" class="absolute inset-0 w-full h-full cursor-crosshair touch-none"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NETWORK STATISTICS MODAL ══ -->
+<div id="stats-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('stats-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[26rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2.5"><span class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center"><i data-lucide="activity" class="w-4 h-4 text-violet-400"></i></span><h3 class="text-base font-bold text-slate-100">Network Statistics</h3></div>
+      <button onclick="closeMoreModal('stats-modal')" aria-label="Close" class="w-8 h-8 rounded-lg hover:bg-slate-800 flex items-center justify-center text-slate-400 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <!-- Overall quality -->
+    <div class="px-6 pt-4">
+      <div class="flex items-center justify-between p-3.5 rounded-2xl bg-green-500/10 border border-green-500/30">
+        <div class="flex items-center gap-2.5">
+          <span class="w-9 h-9 rounded-xl bg-green-500/20 flex items-center justify-center"><i data-lucide="wifi" class="w-4 h-4 text-green-400"></i></span>
+          <div><p class="text-sm font-semibold text-slate-100">Network Quality</p><p class="text-[11px] text-slate-400">Stable connection</p></div>
+        </div>
+        <span id="stat-quality" class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-green-500/20 text-green-400 text-xs font-bold">Excellent</span>
+      </div>
+    </div>
+    <!-- Stat grid -->
+    <div class="px-6 py-4 grid grid-cols-2 gap-2.5">
+      <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60"><p class="text-[11px] text-slate-500 flex items-center gap-1.5"><i data-lucide="timer" class="w-3.5 h-3.5"></i>Latency</p><p class="mt-1 text-lg font-bold text-slate-100 tabular-nums"><span id="stat-latency">28</span> <span class="text-xs font-normal text-slate-500">ms</span></p></div>
+      <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60"><p class="text-[11px] text-slate-500 flex items-center gap-1.5"><i data-lucide="waves" class="w-3.5 h-3.5"></i>Jitter</p><p class="mt-1 text-lg font-bold text-slate-100 tabular-nums"><span id="stat-jitter">6</span> <span class="text-xs font-normal text-slate-500">ms</span></p></div>
+      <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60"><p class="text-[11px] text-slate-500 flex items-center gap-1.5"><i data-lucide="package-x" class="w-3.5 h-3.5"></i>Packet Loss</p><p class="mt-1 text-lg font-bold text-slate-100 tabular-nums"><span id="stat-loss">0.2</span> <span class="text-xs font-normal text-slate-500">%</span></p></div>
+      <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60"><p class="text-[11px] text-slate-500 flex items-center gap-1.5"><i data-lucide="gauge" class="w-3.5 h-3.5"></i>Bitrate</p><p class="mt-1 text-lg font-bold text-slate-100 tabular-nums"><span id="stat-bitrate">1.8</span> <span class="text-xs font-normal text-slate-500">Mbps</span></p></div>
+      <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60"><p class="text-[11px] text-slate-500 flex items-center gap-1.5"><i data-lucide="upload" class="w-3.5 h-3.5"></i>Upload</p><p class="mt-1 text-lg font-bold text-slate-100 tabular-nums"><span id="stat-up">12.4</span> <span class="text-xs font-normal text-slate-500">Mbps</span></p></div>
+      <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60"><p class="text-[11px] text-slate-500 flex items-center gap-1.5"><i data-lucide="download" class="w-3.5 h-3.5"></i>Download</p><p class="mt-1 text-lg font-bold text-slate-100 tabular-nums"><span id="stat-down">48.7</span> <span class="text-xs font-normal text-slate-500">Mbps</span></p></div>
+    </div>
+    <!-- Media quality -->
+    <div class="px-6 pb-2 space-y-2">
+      <div class="flex items-center justify-between text-sm"><span class="flex items-center gap-2 text-slate-400"><i data-lucide="mic" class="w-4 h-4 text-slate-500"></i>Audio Quality</span><span class="flex items-center gap-2"><span class="font-medium text-slate-200">48 kHz · Opus</span><span class="px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 text-[10px] font-bold">HD</span></span></div>
+      <div class="flex items-center justify-between text-sm"><span class="flex items-center gap-2 text-slate-400"><i data-lucide="video" class="w-4 h-4 text-slate-500"></i>Video Quality</span><span class="flex items-center gap-2"><span id="stat-res" class="font-medium text-slate-200">1080p · 30fps</span><span class="px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 text-[10px] font-bold">HD</span></span></div>
+    </div>
+    <div class="px-6 py-4 border-t border-slate-800 flex items-center justify-between">
+      <span class="text-[11px] text-slate-500 flex items-center gap-1.5"><i data-lucide="server" class="w-3.5 h-3.5"></i>Relay · San Francisco (US-West)</span>
+      <button onclick="refreshStats()" class="flex items-center gap-1.5 px-3 py-1.5 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>Refresh</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ INCOMING CALL MODAL ══ -->
 <div id="incoming-call-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
   <div data-modal-backdrop class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
@@ -1102,6 +1247,10 @@ function moreAction(kind) {
     case 'settings': openMoreModal('settings-modal'); break;
     case 'report':   openReport(); break;
     case 'block':    openMoreModal('block-modal'); break;
+    case 'whiteboard': openWhiteboard(); break;
+    case 'captions':   toggleCaptions(); break;
+    case 'fullscreen': toggleFullscreen(); break;
+    case 'stats':      refreshStats(); openMoreModal('stats-modal'); break;
   }
 }
 
@@ -1233,6 +1382,285 @@ function submitReport() {
   window.NexusComponents?.toast('Report submitted — thank you', 'success');
 }
 
+/* ═══════════════════════════════════════════════════════
+   PREMIUM CALL FEATURES
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Pin Participant ── */
+let pinnedTile = null;
+function togglePin(id) {
+  const tile = document.querySelector(`.video-tile[data-tile="${id}"]`);
+  if (!tile) return;
+  if (pinnedTile === id) { applyPin(null); window.NexusComponents?.toast('Unpinned', 'info', 1500); }
+  else { applyPin(id); window.NexusComponents?.toast(`Pinned ${tile.getAttribute('data-name')}'s video`, 'success', 1800); }
+}
+function applyPin(id) {
+  pinnedTile = id;
+  document.querySelectorAll('.video-tile').forEach(t => {
+    const isPinned = t.getAttribute('data-tile') === id;
+    t.classList.toggle('col-span-2', isPinned);
+    t.classList.toggle('row-span-2', isPinned);
+    t.classList.toggle('order-first', isPinned);
+    t.querySelector('.tile-pin-badge')?.classList.toggle('hidden', !isPinned);
+    t.querySelector('.tile-pin-badge')?.classList.toggle('flex', isPinned);
+    // active state on the pin button
+    t.querySelectorAll('.tile-pin-btn').forEach(b => {
+      b.classList.toggle('bg-amber-500', isPinned);
+      b.classList.toggle('text-slate-900', isPinned);
+      b.classList.toggle('bg-black/60', !isPinned);
+    });
+  });
+  if (window.lucide) lucide.createIcons();
+}
+
+/* ── Spotlight Speaker (broadcast to everyone) ── */
+let spotlightTile = null;
+function toggleSpotlight(id) {
+  const tile = document.querySelector(`.video-tile[data-tile="${id}"]`);
+  if (!tile) return;
+  if (spotlightTile === id) { applySpotlight(null); window.NexusComponents?.toast('Spotlight removed for everyone', 'info', 1800); }
+  else { applySpotlight(id); window.NexusComponents?.toast(`You spotlighted ${tile.getAttribute('data-name')} for everyone`, 'success', 2200); }
+}
+function applySpotlight(id) {
+  spotlightTile = id;
+  document.querySelectorAll('.video-tile').forEach(t => {
+    const on = t.getAttribute('data-tile') === id;
+    t.classList.toggle('ring-4', on);
+    t.classList.toggle('ring-sky-400', on);
+    t.querySelector('.tile-spot-badge')?.classList.toggle('hidden', !on);
+    t.querySelector('.tile-spot-badge')?.classList.toggle('flex', on);
+    t.querySelectorAll('.tile-spot-btn').forEach(b => {
+      b.classList.toggle('bg-sky-500', on);
+      b.classList.toggle('text-white', on);
+      b.classList.toggle('bg-black/60', !on);
+    });
+  });
+  if (window.lucide) lucide.createIcons();
+}
+
+/* ── Full Screen (Fullscreen API) ── */
+function toggleFullscreen() {
+  const el = document.getElementById('view-active');
+  if (!document.fullscreenElement) {
+    (el.requestFullscreen || el.webkitRequestFullscreen)?.call(el);
+  } else {
+    (document.exitFullscreen || document.webkitExitFullscreen)?.call(document);
+  }
+}
+document.addEventListener('fullscreenchange', () => {
+  const active = !!document.fullscreenElement;
+  const icon = document.getElementById('fs-menu-icon');
+  const label = document.getElementById('fs-menu-label');
+  if (icon) { icon.setAttribute('data-lucide', active ? 'minimize' : 'maximize'); }
+  if (label) label.textContent = active ? 'Exit Full Screen' : 'Full Screen';
+  if (window.lucide) lucide.createIcons();
+  window.NexusComponents?.toast(active ? 'Entered full screen' : 'Exited full screen', 'info', 1500);
+});
+
+/* ── Live Captions ── */
+let captionsOn = false;
+let captionsTimer = null;
+const CAPTION_SCRIPT = [
+  { who: 'Alice Chen',    color: 'text-violet-300', text: "Okay, so for the new dashboard I think we should lead with the metrics cards." },
+  { who: 'Carol Wu',      color: 'text-emerald-300', text: "Agreed — but let's keep the activity feed one click away, not on the main view." },
+  { who: 'Bob Martinez',  color: 'text-blue-300', text: "I can have the responsive layout ready by Thursday if that works for everyone." },
+  { who: 'You',           color: 'text-sky-300', text: "Sounds good. I'll sync the design tokens so the spacing stays consistent." },
+  { who: 'Alice Chen',    color: 'text-violet-300', text: "Perfect. Let's also make sure dark mode contrast passes accessibility checks." },
+  { who: 'Carol Wu',      color: 'text-emerald-300', text: "Great point. I'll add that to the QA checklist before we ship." },
+];
+let captionIndex = 0;
+function toggleCaptions() {
+  captionsOn = !captionsOn;
+  const overlay = document.getElementById('captions-overlay');
+  const state = document.getElementById('cc-menu-state');
+  overlay?.classList.toggle('hidden', !captionsOn);
+  if (state) { state.textContent = captionsOn ? 'On' : 'Off'; state.classList.toggle('text-sky-400', captionsOn); state.classList.toggle('text-slate-500', !captionsOn); }
+  if (captionsOn) {
+    captionIndex = 0;
+    document.getElementById('captions-lines').innerHTML = '';
+    pushCaption();
+    captionsTimer = setInterval(pushCaption, 3200);
+    window.NexusComponents?.toast('Live captions on', 'success', 1500);
+  } else {
+    clearInterval(captionsTimer);
+    window.NexusComponents?.toast('Live captions off', 'info', 1500);
+  }
+  if (window.lucide) lucide.createIcons();
+}
+function pushCaption() {
+  const box = document.getElementById('captions-lines');
+  if (!box) return;
+  const c = CAPTION_SCRIPT[captionIndex % CAPTION_SCRIPT.length];
+  captionIndex++;
+  const line = document.createElement('p');
+  line.className = 'fade-in';
+  line.innerHTML = `<span class="font-semibold ${c.color}">${c.who}:</span> <span class="text-slate-100">${c.text}</span>`;
+  box.appendChild(line);
+  // keep only the last 2 lines visible
+  while (box.children.length > 2) box.removeChild(box.firstChild);
+}
+
+/* ── Network Statistics ── */
+function refreshStats() {
+  const jitter = (base, spread, dp = 0) => (base + (Math.random() - 0.5) * spread).toFixed(dp);
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  set('stat-latency', jitter(28, 12));
+  set('stat-jitter', jitter(6, 4));
+  set('stat-loss', jitter(0.3, 0.4, 1));
+  set('stat-bitrate', jitter(1.8, 0.6, 1));
+  set('stat-up', jitter(12.4, 3, 1));
+  set('stat-down', jitter(48.7, 8, 1));
+  if (window.lucide) lucide.createIcons();
+}
+
+/* ── Whiteboard ── */
+let wbCtx = null, wbCanvas = null;
+let wbTool = 'pen', wbColor = '#8b5cf6', wbWidth = 4;
+let wbDrawing = false, wbStartX = 0, wbStartY = 0;
+let wbSnapshot = null;              // canvas image data for shape preview
+const wbHistory = [];               // stack of ImageData for undo
+
+function openWhiteboard() {
+  openMoreModal('whiteboard-modal');
+  // Defer so the modal has real layout dimensions
+  setTimeout(initWhiteboard, 30);
+}
+function closeWhiteboard() { closeMoreModal('whiteboard-modal'); }
+
+function initWhiteboard() {
+  wbCanvas = document.getElementById('wb-canvas');
+  if (!wbCanvas) return;
+  const rect = wbCanvas.getBoundingClientRect();
+  // Only (re)size if dimensions changed to preserve drawing across reopens
+  if (wbCanvas.width !== Math.round(rect.width) || wbCanvas.height !== Math.round(rect.height)) {
+    wbCanvas.width = Math.round(rect.width);
+    wbCanvas.height = Math.round(rect.height);
+  }
+  wbCtx = wbCanvas.getContext('2d');
+  wbCtx.lineCap = 'round';
+  wbCtx.lineJoin = 'round';
+  setWbTool(wbTool);
+  // Initialise default color selection ring
+  const first = document.querySelector('#wb-colors .wb-color');
+  if (first && !document.querySelector('#wb-colors .wb-color.ring-white')) setWbColor(wbColor, first);
+  if (!wbCanvas.dataset.bound) bindWhiteboard();
+}
+
+function bindWhiteboard() {
+  wbCanvas.dataset.bound = '1';
+  const pos = e => {
+    const r = wbCanvas.getBoundingClientRect();
+    const p = e.touches ? e.touches[0] : e;
+    return { x: p.clientX - r.left, y: p.clientY - r.top };
+  };
+  const start = e => {
+    e.preventDefault();
+    const { x, y } = pos(e);
+    if (wbTool === 'text') { placeWbText(x, y); return; }
+    wbDrawing = true; wbStartX = x; wbStartY = y;
+    pushWbHistory();
+    wbSnapshot = wbCtx.getImageData(0, 0, wbCanvas.width, wbCanvas.height);
+    if (wbTool === 'pen' || wbTool === 'eraser') {
+      wbCtx.beginPath();
+      wbCtx.moveTo(x, y);
+    }
+  };
+  const move = e => {
+    if (!wbDrawing) return;
+    e.preventDefault();
+    const { x, y } = pos(e);
+    applyWbStroke();
+    if (wbTool === 'pen' || wbTool === 'eraser') {
+      wbCtx.lineTo(x, y); wbCtx.stroke();
+    } else {
+      wbCtx.putImageData(wbSnapshot, 0, 0);
+      drawWbShape(wbStartX, wbStartY, x, y);
+    }
+  };
+  const end = () => { wbDrawing = false; wbCtx.globalCompositeOperation = 'source-over'; };
+  wbCanvas.addEventListener('mousedown', start);
+  wbCanvas.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  wbCanvas.addEventListener('touchstart', start, { passive: false });
+  wbCanvas.addEventListener('touchmove', move, { passive: false });
+  wbCanvas.addEventListener('touchend', end);
+}
+
+function applyWbStroke() {
+  wbCtx.lineWidth = wbTool === 'eraser' ? wbWidth * 3 : wbWidth;
+  wbCtx.strokeStyle = wbColor;
+  wbCtx.fillStyle = wbColor;
+  wbCtx.globalCompositeOperation = wbTool === 'eraser' ? 'destination-out' : 'source-over';
+}
+
+function drawWbShape(x1, y1, x2, y2) {
+  wbCtx.beginPath();
+  if (wbTool === 'line') { wbCtx.moveTo(x1, y1); wbCtx.lineTo(x2, y2); wbCtx.stroke(); }
+  else if (wbTool === 'rect') { wbCtx.strokeRect(x1, y1, x2 - x1, y2 - y1); }
+  else if (wbTool === 'ellipse') {
+    wbCtx.ellipse((x1 + x2) / 2, (y1 + y2) / 2, Math.abs(x2 - x1) / 2, Math.abs(y2 - y1) / 2, 0, 0, Math.PI * 2);
+    wbCtx.stroke();
+  } else if (wbTool === 'arrow') {
+    wbCtx.moveTo(x1, y1); wbCtx.lineTo(x2, y2); wbCtx.stroke();
+    const ang = Math.atan2(y2 - y1, x2 - x1), head = 10 + wbWidth * 1.5;
+    wbCtx.beginPath();
+    wbCtx.moveTo(x2, y2);
+    wbCtx.lineTo(x2 - head * Math.cos(ang - Math.PI / 6), y2 - head * Math.sin(ang - Math.PI / 6));
+    wbCtx.moveTo(x2, y2);
+    wbCtx.lineTo(x2 - head * Math.cos(ang + Math.PI / 6), y2 - head * Math.sin(ang + Math.PI / 6));
+    wbCtx.stroke();
+  }
+}
+
+function placeWbText(x, y) {
+  const text = prompt('Enter text:');
+  if (!text) return;
+  pushWbHistory();
+  wbCtx.globalCompositeOperation = 'source-over';
+  wbCtx.fillStyle = wbColor;
+  wbCtx.font = `${12 + wbWidth * 3}px Inter, sans-serif`;
+  wbCtx.textBaseline = 'top';
+  wbCtx.fillText(text, x, y);
+}
+
+function setWbTool(tool) {
+  wbTool = tool;
+  document.querySelectorAll('.wb-tool').forEach(b => {
+    const on = b.getAttribute('data-wb-tool') === tool;
+    b.classList.toggle('bg-violet-600', on);
+    b.classList.toggle('text-white', on);
+    b.classList.toggle('text-slate-300', !on);
+  });
+  if (wbCanvas) wbCanvas.style.cursor = tool === 'text' ? 'text' : 'crosshair';
+}
+function setWbColor(color, el) {
+  wbColor = color;
+  document.querySelectorAll('#wb-colors .wb-color').forEach(b => { b.classList.remove('ring-white'); b.classList.add('ring-transparent'); });
+  if (el) { el.classList.add('ring-white'); el.classList.remove('ring-transparent'); }
+  // Choosing a color while erasing switches back to pen
+  if (wbTool === 'eraser') setWbTool('pen');
+}
+function setWbWidth(w) {
+  wbWidth = +w;
+  const label = document.getElementById('wb-width-label');
+  if (label) label.textContent = w;
+}
+function pushWbHistory() {
+  if (!wbCtx) return;
+  wbHistory.push(wbCtx.getImageData(0, 0, wbCanvas.width, wbCanvas.height));
+  if (wbHistory.length > 30) wbHistory.shift();
+}
+function undoWhiteboard() {
+  if (!wbCtx || !wbHistory.length) { window.NexusComponents?.toast('Nothing to undo', 'info', 1200); return; }
+  wbCtx.putImageData(wbHistory.pop(), 0, 0);
+}
+function clearWhiteboard() {
+  if (!wbCtx) return;
+  pushWbHistory();
+  wbCtx.clearRect(0, 0, wbCanvas.width, wbCanvas.height);
+  window.NexusComponents?.toast('Canvas cleared', 'info', 1200);
+}
+
 // Close popovers on outside click / Escape.
 document.addEventListener('click', e => {
   if (!e.target.closest('#react-picker') && !e.target.closest('[onclick*="toggleReactPicker"]') &&
@@ -1243,7 +1671,7 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeCallPopovers();
-    ['profile-modal','details-modal','add-people-modal','record-modal','settings-modal','block-modal']
+    ['profile-modal','details-modal','add-people-modal','record-modal','settings-modal','block-modal','whiteboard-modal','stats-modal']
       .forEach(id => closeMoreModal(id));
     if (!document.getElementById('report-modal')?.classList.contains('hidden')) closeReport();
   }
