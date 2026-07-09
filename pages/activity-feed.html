@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activity Feed — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/notifications.html" aria-label="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <a href="/pages/activity-feed.html" aria-label="Activity" class="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition"><i data-lucide="activity" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <a href="/pages/bookmarks.html" aria-label="Bookmarks" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="bookmark" class="w-4 h-4"></i></a>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="align-right" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    <!-- Header + Filter Tabs -->
+    <div class="border-b border-slate-800 bg-slate-900 shrink-0">
+      <div class="flex items-center gap-3 px-6 py-4">
+        <div>
+          <h1 class="text-base font-bold text-slate-100">Activity Feed</h1>
+          <p class="text-xs text-slate-500 mt-0.5">What's happening across your workspace</p>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-slate-300 focus:outline-none focus:border-violet-500 cursor-pointer">
+            <option>All Channels</option>
+            <option>#general</option>
+            <option>#design</option>
+            <option>#engineering</option>
+            <option>#product</option>
+          </select>
+          <button aria-label="Mark all read" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition">
+            <i data-lucide="check-check" class="w-4 h-4"></i>
+            <span class="hidden sm:inline">Mark all read</span>
+          </button>
+        </div>
+      </div>
+      <!-- Filter tabs -->
+      <div class="flex items-center gap-0 px-6 overflow-x-auto">
+        <button data-tab="all" data-tab-group="activity" class="activity-tab px-4 py-2.5 text-sm font-medium text-violet-400 border-b-2 border-violet-400 whitespace-nowrap transition">All</button>
+        <button data-tab="reactions" data-tab-group="activity" class="activity-tab px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-slate-100 border-b-2 border-transparent whitespace-nowrap transition">Reactions</button>
+        <button data-tab="mentions" data-tab-group="activity" class="activity-tab px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-slate-100 border-b-2 border-transparent whitespace-nowrap transition">Mentions</button>
+        <button data-tab="joins" data-tab-group="activity" class="activity-tab px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-slate-100 border-b-2 border-transparent whitespace-nowrap transition">Joins</button>
+        <button data-tab="files" data-tab-group="activity" class="activity-tab px-4 py-2.5 text-sm font-medium text-slate-400 hover:text-slate-100 border-b-2 border-transparent whitespace-nowrap transition">Files</button>
+      </div>
+    </div>
+
+    <!-- Feed -->
+    <div class="flex-1 overflow-y-auto">
+      <div class="max-w-2xl mx-auto px-4 py-6 space-y-1">
+
+        <!-- Date divider -->
+        <div class="flex items-center gap-3 py-2">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-2">Today</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+
+        <!-- Activity: Message sent -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-violet-600 flex items-center justify-center border-2 border-slate-950">
+              <i data-lucide="message-square" class="w-2.5 h-2.5 text-white"></i>
+            </span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Alice Chen</span> sent a message in <span class="text-violet-400 font-medium">#design</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">2 minutes ago</p>
+            <div class="mt-2 p-3 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 line-clamp-2">
+              Just pushed the new design tokens to Figma — dark mode variables locked in!
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity: Reaction -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center border-2 border-slate-950 text-[10px]">🔥</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Bob Martinez</span> reacted 🔥 to <span class="font-semibold text-slate-100">Alice Chen</span>'s message in <span class="text-violet-400 font-medium">#design</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">5 minutes ago</p>
+          </div>
+        </div>
+
+        <!-- Activity: File shared -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-sky-600 flex items-center justify-center border-2 border-slate-950">
+              <i data-lucide="paperclip" class="w-2.5 h-2.5 text-white"></i>
+            </span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Carol Wu</span> shared a file in <span class="text-violet-400 font-medium">#general</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">18 minutes ago</p>
+            <div class="mt-2 flex items-center gap-3 p-3 rounded-lg bg-slate-800 border border-slate-700">
+              <div class="w-10 h-10 rounded-lg bg-red-900/40 flex items-center justify-center shrink-0">
+                <i data-lucide="file-text" class="w-5 h-5 text-red-400"></i>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-slate-100">Q4-Report-2024.pdf</p>
+                <p class="text-xs text-slate-500">2.4 MB · PDF</p>
+              </div>
+              <button class="ml-auto p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-100 transition" aria-label="Download">
+                <i data-lucide="download" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity: Mention -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group bg-violet-600/5 border border-violet-500/10">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David Kim" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-violet-600 flex items-center justify-center border-2 border-slate-950 text-[10px] font-bold text-white">@</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">David Kim</span> mentioned you in <span class="text-violet-400 font-medium">#marketing</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">34 minutes ago</p>
+            <div class="mt-2 p-3 rounded-lg bg-slate-800 border border-violet-500/20 text-sm text-slate-300">
+              Hey <span class="mention">@you</span> can you review the new campaign assets before end of day? Deadline is tomorrow morning.
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity: Reaction 2 -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center border-2 border-slate-950 text-[10px]">👍</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Priya Sharma</span> reacted 👍 to your message in <span class="text-violet-400 font-medium">#engineering</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">1 hour ago</p>
+          </div>
+        </div>
+
+        <!-- Date divider -->
+        <div class="flex items-center gap-3 py-2 mt-4">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-2">Yesterday</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+
+        <!-- Activity: Member joined -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=nina" alt="Nina Torres" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-green-600 flex items-center justify-center border-2 border-slate-950">
+              <i data-lucide="user-plus" class="w-2.5 h-2.5 text-white"></i>
+            </span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Nina Torres</span> joined the workspace</p>
+            <p class="text-xs text-slate-500 mt-0.5">Yesterday at 9:14 AM</p>
+            <div class="mt-2 flex items-center gap-3">
+              <span class="px-2 py-1 rounded-lg bg-green-900/30 text-green-400 text-xs font-medium">New Member</span>
+              <a href="/pages/dm.html" class="text-xs text-violet-400 hover:text-violet-300 transition">Send a welcome DM →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity: Channel created -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="w-9 h-9 rounded-xl bg-indigo-900/40 flex items-center justify-center shrink-0">
+            <i data-lucide="hash" class="w-4 h-4 text-indigo-400"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Bob Martinez</span> created channel <span class="text-violet-400 font-medium">#api-v3-discussion</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">Yesterday at 2:30 PM</p>
+            <div class="mt-2">
+              <a href="/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs transition">
+                <i data-lucide="arrow-right" class="w-3 h-3"></i> Join channel
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity: File shared -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-sky-600 flex items-center justify-center border-2 border-slate-950">
+              <i data-lucide="paperclip" class="w-2.5 h-2.5 text-white"></i>
+            </span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Alice Chen</span> shared a file in <span class="text-violet-400 font-medium">#design</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">Yesterday at 4:11 PM</p>
+            <div class="mt-2 flex items-center gap-3 p-3 rounded-lg bg-slate-800 border border-slate-700">
+              <div class="w-10 h-10 rounded-lg bg-fuchsia-900/40 flex items-center justify-center shrink-0">
+                <i data-lucide="pen-tool" class="w-5 h-5 text-fuchsia-400"></i>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-slate-100">nexus-design-system.fig</p>
+                <p class="text-xs text-slate-500">12.8 MB · Figma</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity: Reaction 3 -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah Lee" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center border-2 border-slate-950 text-[10px]">🎉</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Sarah Lee</span> reacted 🎉 to your message in <span class="text-violet-400 font-medium">#general</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">Yesterday at 5:00 PM</p>
+          </div>
+        </div>
+
+        <!-- Date divider -->
+        <div class="flex items-center gap-3 py-2 mt-4">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-2">Monday</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+
+        <!-- Activity: Message sent -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=tom" alt="Tom Wilson" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-violet-600 flex items-center justify-center border-2 border-slate-950">
+              <i data-lucide="message-square" class="w-2.5 h-2.5 text-white"></i>
+            </span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Tom Wilson</span> sent a message in <span class="text-violet-400 font-medium">#engineering</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">Monday at 11:22 AM</p>
+            <div class="mt-2 p-3 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 line-clamp-2">
+              Deployed new monitoring stack — Datadog dashboards are up and alerting. P95 latency is looking great.
+            </div>
+          </div>
+        </div>
+
+        <!-- Member joined 2 -->
+        <div class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=marcus" alt="Marcus Reid" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-green-600 flex items-center justify-center border-2 border-slate-950">
+              <i data-lucide="user-plus" class="w-2.5 h-2.5 text-white"></i>
+            </span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Marcus Reid</span> joined <span class="text-violet-400 font-medium">#engineering</span></p>
+            <p class="text-xs text-slate-500 mt-0.5">Monday at 9:00 AM</p>
+          </div>
+        </div>
+
+        <!-- Load more -->
+        <div class="flex justify-center pt-6 pb-2">
+          <button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+            Load older activity
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+document.querySelectorAll('.activity-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.activity-tab').forEach(t => {
+      t.classList.remove('text-violet-400', 'border-violet-400');
+      t.classList.add('text-slate-400', 'border-transparent');
+    });
+    tab.classList.add('text-violet-400', 'border-violet-400');
+    tab.classList.remove('text-slate-400', 'border-transparent');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Directory — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" data-tooltip="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/notifications.html" aria-label="Mentions" data-tooltip="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" data-tooltip="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" data-tooltip="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" data-tooltip="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" data-tooltip="Team Directory" class="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <a href="/pages/activity-feed.html" aria-label="Activity" data-tooltip="Activity" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="activity" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <a href="/pages/bookmarks.html" aria-label="Bookmarks" data-tooltip="Bookmarks" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="bookmark" class="w-4 h-4"></i></a>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="align-right" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" data-tooltip="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    <!-- Top bar -->
+    <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-800 bg-slate-900 shrink-0 flex-wrap gap-y-3">
+      <div>
+        <h1 class="text-lg font-bold text-slate-100">Team Directory</h1>
+        <p class="text-xs text-slate-500">48 members across 6 departments</p>
+      </div>
+      <div class="flex items-center gap-3 ml-auto flex-wrap gap-y-2">
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+          <input type="search" placeholder="Search members…" class="bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition w-56" />
+        </div>
+        <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 focus:outline-none focus:border-violet-500 cursor-pointer">
+          <option value="">All Departments</option>
+          <option>Design</option>
+          <option>Engineering</option>
+          <option>Product</option>
+          <option>Marketing</option>
+          <option>Operations</option>
+          <option>Leadership</option>
+        </select>
+        <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 focus:outline-none focus:border-violet-500 cursor-pointer">
+          <option value="">All Status</option>
+          <option>Online</option>
+          <option>Away</option>
+          <option>Do Not Disturb</option>
+          <option>Offline</option>
+        </select>
+        <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 focus:outline-none focus:border-violet-500 cursor-pointer">
+          <option>Sort: Name A-Z</option>
+          <option>Sort: Recently Active</option>
+          <option>Sort: Department</option>
+          <option>Sort: Role</option>
+        </select>
+        <a href="/pages/invite.html" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Invite</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="flex-1 overflow-y-auto p-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+        <!-- Mike Johnson - CEO -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-red-400 border-2 border-slate-900" title="Do Not Disturb"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Mike Johnson</h3>
+              <p class="text-sm text-slate-400 truncate">Chief Executive Officer</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-violet-500/15 text-violet-400">Leadership</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Visionary leader with 15+ years building product companies. Passionate about team culture and innovation.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> San Francisco, CA
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Alice Chen - Design Lead -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-slate-900" title="Online"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Alice Chen</h3>
+              <p class="text-sm text-slate-400 truncate">Design Lead</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-fuchsia-500/15 text-fuchsia-400">Design</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">UI/UX expert specializing in design systems and interaction design. 8 years crafting delightful product experiences.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> New York, NY
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Bob Martinez - Engineer -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-slate-900" title="Away"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Bob Martinez</h3>
+              <p class="text-sm text-slate-400 truncate">Senior Engineer</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-blue-500/15 text-blue-400">Engineering</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Full-stack engineer focused on scalable architecture. Loves TypeScript, distributed systems, and strong coffee.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Austin, TX
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Carol Wu - Product -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-slate-900" title="Away"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Carol Wu</h3>
+              <p class="text-sm text-slate-400 truncate">Product Manager</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/15 text-emerald-400">Product</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Data-driven PM with a background in UX research. Champions user needs and drives roadmap strategy.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Seattle, WA
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- David Kim - Marketing -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David Kim" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-slate-900" title="Online"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">David Kim</h3>
+              <p class="text-sm text-slate-400 truncate">Marketing Lead</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-orange-500/15 text-orange-400">Marketing</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Growth marketer with expertise in content, SEO, and brand storytelling. Loves data-backed creative campaigns.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Los Angeles, CA
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Priya Sharma - Engineering -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-slate-500 border-2 border-slate-900" title="Offline"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Priya Sharma</h3>
+              <p class="text-sm text-slate-400 truncate">Backend Engineer</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-blue-500/15 text-blue-400">Engineering</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Specializes in distributed systems, Kubernetes, and cloud-native architecture. Python and Go enthusiast.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Chicago, IL
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Sarah Lee - Designer -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah Lee" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-slate-900" title="Online"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Sarah Lee</h3>
+              <p class="text-sm text-slate-400 truncate">Senior Designer</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-fuchsia-500/15 text-fuchsia-400">Design</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Motion design and illustration specialist. Creates brand identities that tell compelling visual stories.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Portland, OR
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Tom Wilson - DevOps -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=tom" alt="Tom Wilson" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-slate-500 border-2 border-slate-900" title="Offline"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Tom Wilson</h3>
+              <p class="text-sm text-slate-400 truncate">DevOps Engineer</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-cyan-500/15 text-cyan-400">Operations</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Infrastructure specialist keeping the lights on. Expert in CI/CD pipelines, AWS, and incident response.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Denver, CO
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- James Park - Engineering -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=james" alt="James Park" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-slate-900" title="Online"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">James Park</h3>
+              <p class="text-sm text-slate-400 truncate">Frontend Engineer</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-blue-500/15 text-blue-400">Engineering</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">React & TypeScript specialist. Passionate about performance, accessibility, and beautiful component APIs.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Boston, MA
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Nina Torres - Product -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=nina" alt="Nina Torres" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-slate-900" title="Away"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Nina Torres</h3>
+              <p class="text-sm text-slate-400 truncate">Associate PM</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/15 text-emerald-400">Product</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Bringing user research and agile methodology together. Leads sprint planning and stakeholder communications.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Miami, FL
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Ryan Cooper - Marketing -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=ryan" alt="Ryan Cooper" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-slate-900" title="Online"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Ryan Cooper</h3>
+              <p class="text-sm text-slate-400 truncate">Content Strategist</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-orange-500/15 text-orange-400">Marketing</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Storyteller at heart. Crafts blog posts, case studies, and social campaigns that drive organic growth.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Nashville, TN
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Elena Vasquez - Operations -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=elena" alt="Elena Vasquez" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-slate-900" title="Online"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Elena Vasquez</h3>
+              <p class="text-sm text-slate-400 truncate">Head of Operations</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-cyan-500/15 text-cyan-400">Operations</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Optimizes processes and keeps teams aligned. Expert in OKRs, vendor management, and cross-functional collaboration.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Atlanta, GA
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Marcus Reid - Engineering -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=marcus" alt="Marcus Reid" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-slate-500 border-2 border-slate-900" title="Offline"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Marcus Reid</h3>
+              <p class="text-sm text-slate-400 truncate">ML Engineer</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-blue-500/15 text-blue-400">Engineering</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Machine learning and data pipeline specialist. Building the AI features that make Nexus smarter every day.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> Toronto, Canada
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Sophia Nguyen - Design -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sophia" alt="Sophia Nguyen" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-green-400 border-2 border-slate-900" title="Online"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Sophia Nguyen</h3>
+              <p class="text-sm text-slate-400 truncate">UI Designer</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-fuchsia-500/15 text-fuchsia-400">Design</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Pixel-perfect UI specialist with a keen eye for typography and color. Loves crafting accessible design tokens.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> San Jose, CA
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+        <!-- Derek Osei - Leadership -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:shadow-lg transition group">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=derek" alt="Derek Osei" class="w-14 h-14 rounded-xl bg-slate-700" />
+              <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-slate-900" title="Away"></span>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-slate-100 truncate">Derek Osei</h3>
+              <p class="text-sm text-slate-400 truncate">VP of Engineering</p>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-violet-500/15 text-violet-400">Leadership</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-500 line-clamp-2 mb-4">Engineering leader scaling teams and systems. Former Google and Stripe engineer passionate about developer experience.</p>
+          <div class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+            <i data-lucide="map-pin" class="w-3 h-3"></i> New York, NY
+          </div>
+          <div class="flex gap-2">
+            <a href="/pages/dm.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-slate-100 text-xs font-medium transition">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Message
+            </a>
+            <a href="/pages/profile.html" class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg bg-violet-600/15 hover:bg-violet-600/25 text-violet-400 text-xs font-medium transition">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i> Profile
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex items-center justify-between mt-8 pt-4 border-t border-slate-800">
+        <p class="text-sm text-slate-500">Showing 16 of 48 members</p>
+        <div class="flex items-center gap-1">
+          <button class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">Prev</button>
+          <button class="px-3 py-1.5 rounded-lg text-sm bg-violet-600 text-white">1</button>
+          <button class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">2</button>
+          <button class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">3</button>
+          <button class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+<script>window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });</script>
+</body>
+</html>

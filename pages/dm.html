@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Direct Messages — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+
+<div class="flex h-full overflow-hidden">
+
+  <!-- ─── Icon Rail ───────────────────────────────────────────── -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <!-- Workspace Switcher -->
+    <button data-dropdown-trigger="ws-dropdown" class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Switch workspace" aria-haspopup="true">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div id="ws-dropdown" data-dropdown class="hidden absolute left-14 top-3 z-50 w-64 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
+      <div class="px-3 py-2 border-b border-slate-700 mb-1">
+        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Workspaces</p>
+      </div>
+      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shrink-0"><span class="text-white font-bold text-xs">N</span></div>
+        <div><p class="text-sm font-semibold text-slate-100">Nexus HQ</p><p class="text-xs text-slate-400">nexus-hq.com · 48 members</p></div>
+        <i data-lucide="check" class="w-4 h-4 text-violet-400 ml-auto"></i>
+      </button>
+      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center shrink-0"><span class="text-white font-bold text-xs">D</span></div>
+        <div><p class="text-sm font-semibold text-slate-100">Design Studio</p><p class="text-xs text-slate-400">design.io · 12 members</p></div>
+      </button>
+      <div class="border-t border-slate-700 mt-1 pt-1">
+        <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left text-sm text-slate-400">
+          <div class="w-8 h-8 rounded-lg border-2 border-dashed border-slate-600 flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4"></i></div>
+          Add a workspace
+        </button>
+      </div>
+    </div>
+
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+
+    <a href="/" aria-label="Home" data-tooltip="Home" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="home" class="w-4 h-4"></i>
+    </a>
+    <a href="/pages/threads.html" aria-label="Threads" data-tooltip="Threads" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition relative">
+      <i data-lucide="message-square-text" class="w-4 h-4"></i>
+      <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-violet-600 text-white text-[9px] font-bold flex items-center justify-center">4</span>
+    </a>
+    <a href="/pages/notifications.html" aria-label="Mentions" data-tooltip="Mentions &amp; Reactions" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="at-sign" class="w-4 h-4"></i>
+    </a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" data-tooltip="Direct Messages" class="group w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition relative">
+      <i data-lucide="message-circle" class="w-4 h-4"></i>
+      <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-red-500 text-white text-[9px] font-bold flex items-center justify-center">3</span>
+    </a>
+    <a href="/pages/calls.html" aria-label="Calls" data-tooltip="Calls" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="phone" class="w-4 h-4"></i>
+    </a>
+    <a href="/pages/files.html" aria-label="Files" data-tooltip="Files" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="folder" class="w-4 h-4"></i>
+    </a>
+    <a href="/pages/team-directory.html" aria-label="Team" data-tooltip="Team Directory" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="users" class="w-4 h-4"></i>
+    </a>
+
+    <div class="flex-1"></div>
+
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" data-tooltip="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="sun" data-theme-icon class="w-4 h-4"></i>
+    </button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" data-tooltip="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="align-right" data-dir-icon class="w-4 h-4"></i>
+    </button>
+    <a href="/pages/settings.html" aria-label="Settings" data-tooltip="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="settings" class="w-4 h-4"></i>
+    </a>
+    <button data-dropdown-trigger="profile-rail-dd" aria-label="Your profile" class="relative mt-1">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div id="profile-rail-dd" data-dropdown class="hidden absolute left-14 bottom-3 z-50 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
+      <div class="flex items-center gap-3 px-3 py-2 border-b border-slate-700 mb-1">
+        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="" class="w-8 h-8 rounded-lg bg-slate-700" />
+        <div><p class="text-sm font-semibold text-slate-100">You</p><p class="text-xs text-green-400">● Active</p></div>
+      </div>
+      <a href="/pages/profile.html" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300"><i data-lucide="user" class="w-4 h-4 opacity-60"></i>View Profile</a>
+      <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Set Status</button>
+      <a href="/pages/settings.html" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300"><i data-lucide="settings" class="w-4 h-4 opacity-60"></i>Preferences</a>
+      <div class="border-t border-slate-700 my-1"></div>
+      <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Sign Out</button>
+    </div>
+  </nav>
+
+  <!-- ─── DM List Panel ────────────────────────────────────────── -->
+  <aside id="dm-list-panel" aria-label="Direct messages list" class="flex flex-col w-72 shrink-0 bg-slate-900 border-r border-slate-800 overflow-hidden">
+
+    <!-- Header -->
+    <div class="flex items-center gap-2 px-4 py-3.5 border-b border-slate-800 shrink-0">
+      <h1 class="text-sm font-bold text-slate-100 flex-1">Messages</h1>
+      <button onclick="window.NexusComponents?.openModal('new-dm-modal')" aria-label="New message" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="New message">
+        <i data-lucide="edit" class="w-4 h-4"></i>
+      </button>
+      <button aria-label="Filter" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Filter">
+        <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
+      </button>
+    </div>
+
+    <!-- Search -->
+    <div class="px-3 py-2.5 shrink-0">
+      <div class="relative">
+        <i data-lucide="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500 pointer-events-none"></i>
+        <input type="search" placeholder="Search conversations…" aria-label="Search conversations" class="w-full bg-slate-800 border border-slate-700 text-slate-300 placeholder-slate-500 text-sm rounded-xl pl-8 pr-3 py-2 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/20 transition" />
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex items-center border-b border-slate-800 px-3 shrink-0 gap-1">
+      <button data-dm-tab="all" onclick="switchDMTab('all',this)" class="dm-tab-btn text-xs font-medium py-2.5 px-2.5 border-b-2 border-violet-400 text-violet-400 transition whitespace-nowrap">All</button>
+      <button data-dm-tab="unread" onclick="switchDMTab('unread',this)" class="dm-tab-btn text-xs font-medium py-2.5 px-2.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition whitespace-nowrap">Unread <span class="ml-1 text-[9px] bg-violet-600/30 text-violet-400 px-1.5 py-0.5 rounded-full font-bold">3</span></button>
+      <button data-dm-tab="favorites" onclick="switchDMTab('favorites',this)" class="dm-tab-btn text-xs font-medium py-2.5 px-2.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition whitespace-nowrap">Favorites</button>
+      <button data-dm-tab="groups" onclick="switchDMTab('groups',this)" class="dm-tab-btn text-xs font-medium py-2.5 px-2.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition whitespace-nowrap">Groups</button>
+    </div>
+
+    <!-- Conversation List -->
+    <div class="flex-1 overflow-y-auto py-2">
+
+      <!-- Favorites section -->
+      <div class="mb-1">
+        <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-4 py-1.5">⭐ Favorites</p>
+        <!-- Alice (active) -->
+        <button onclick="activateDM('alice')" id="dm-btn-alice" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl bg-slate-800 text-left transition group relative" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-slate-900"></span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-100 truncate">Alice Chen</p>
+              <span class="text-[10px] text-slate-500 shrink-0 ml-1">2:14 PM</span>
+            </div>
+            <p class="text-xs text-slate-400 truncate">Can you review the Figma file before the standup?</p>
+          </div>
+          <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-amber-400 hidden group-[.has-star]:block"></span>
+        </button>
+
+        <!-- Mike (DND) -->
+        <button onclick="activateDM('mike')" id="dm-btn-mike" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-red-500 border-2 border-slate-900"></span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-100 truncate">Mike Johnson</p>
+              <span class="text-[10px] text-slate-500 shrink-0 ml-1">11:48 AM</span>
+            </div>
+            <p class="text-xs text-slate-400 truncate">Let's sync after the board meeting 👍</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- All conversations -->
+      <div>
+        <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-4 py-1.5">Recent</p>
+
+        <!-- Bob — unread -->
+        <button onclick="activateDM('bob')" id="dm-btn-bob" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-slate-900"></span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-100 truncate">Bob Martinez</p>
+              <span class="text-[10px] text-slate-400 shrink-0 ml-1">10:03 AM</span>
+            </div>
+            <p class="text-xs text-violet-300 font-medium truncate">The API endpoint is now live on staging 🚀</p>
+          </div>
+          <span class="w-5 h-5 rounded-full bg-violet-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
+        </button>
+
+        <!-- Carol — away -->
+        <button onclick="activateDM('carol')" id="dm-btn-carol" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-slate-900"></span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-100 truncate">Carol Wu</p>
+              <span class="text-[10px] text-slate-500 shrink-0 ml-1">Yesterday</span>
+            </div>
+            <p class="text-xs text-slate-400 truncate">You: Sounds good, I'll draft the PRD tonight</p>
+          </div>
+        </button>
+
+        <!-- David — online -->
+        <button onclick="activateDM('david')" id="dm-btn-david" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David Kim" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-slate-900"></span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-100 truncate">David Kim</p>
+              <span class="text-[10px] text-slate-500 shrink-0 ml-1">Yesterday</span>
+            </div>
+            <p class="text-xs text-slate-400 truncate">Great campaign metrics this week 📈</p>
+          </div>
+          <span class="w-5 h-5 rounded-full bg-violet-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
+        </button>
+
+        <!-- Priya — offline -->
+        <button onclick="activateDM('priya')" id="dm-btn-priya" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-9 h-9 rounded-xl bg-slate-700 opacity-70" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-slate-600 border-2 border-slate-900"></span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-400 truncate">Priya Sharma</p>
+              <span class="text-[10px] text-slate-500 shrink-0 ml-1">Mon</span>
+            </div>
+            <p class="text-xs text-slate-500 truncate">You: Thanks for the voice note, super helpful!</p>
+          </div>
+        </button>
+
+        <!-- Sarah — online -->
+        <button onclick="activateDM('sarah')" id="dm-btn-sarah" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah Lee" class="w-9 h-9 rounded-xl bg-slate-700" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-slate-900"></span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-100 truncate">Sarah Lee</p>
+              <span class="text-[10px] text-slate-500 shrink-0 ml-1">Mon</span>
+            </div>
+            <p class="text-xs text-slate-400 truncate">Did you see the new icon set I pushed?</p>
+          </div>
+        </button>
+
+        <!-- Tom — offline -->
+        <button onclick="activateDM('tom')" id="dm-btn-tom" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=tom" alt="Tom Wilson" class="w-9 h-9 rounded-xl bg-slate-700 opacity-70" />
+            <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-slate-600 border-2 border-slate-900"></span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-400 truncate">Tom Wilson</p>
+              <span class="text-[10px] text-slate-500 shrink-0 ml-1">Sun</span>
+            </div>
+            <p class="text-xs text-slate-500 truncate">CI/CD pipeline is green, deploys are fast ✅</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- Groups Section -->
+      <div class="mt-1">
+        <p class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider px-4 py-1.5">Group Chats</p>
+
+        <!-- Design Squad -->
+        <button onclick="activateDM('design-squad')" id="dm-btn-design-squad" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0 w-9 h-9">
+            <div class="w-9 h-9 rounded-xl overflow-hidden grid grid-cols-2 gap-px bg-slate-700">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="" class="w-full h-full object-cover" />
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="" class="w-full h-full object-cover" />
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="" class="w-full h-full object-cover" />
+              <div class="w-full h-full bg-violet-700 flex items-center justify-center"><span class="text-[8px] text-white font-bold">+2</span></div>
+            </div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-100 truncate">Design Squad</p>
+              <span class="text-[10px] text-slate-400 shrink-0 ml-1">1:52 PM</span>
+            </div>
+            <p class="text-xs text-violet-300 font-medium truncate">Alice: Ready to review the new components</p>
+          </div>
+          <span class="w-5 h-5 rounded-full bg-violet-600 text-white text-[10px] font-bold flex items-center justify-center shrink-0">5</span>
+        </button>
+
+        <!-- Eng Leads -->
+        <button onclick="activateDM('eng-leads')" id="dm-btn-eng-leads" class="dm-item w-full flex items-center gap-3 px-3 py-2.5 mx-1 rounded-xl hover:bg-slate-800/60 text-left transition" style="width:calc(100% - 8px)">
+          <div class="relative shrink-0 w-9 h-9">
+            <div class="w-9 h-9 rounded-xl overflow-hidden grid grid-cols-2 gap-px bg-slate-700">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="" class="w-full h-full object-cover" />
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="" class="w-full h-full object-cover" />
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=tom" alt="" class="w-full h-full object-cover" />
+              <div class="w-full h-full bg-emerald-800 flex items-center justify-center"><span class="text-[8px] text-white font-bold">+1</span></div>
+            </div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-100 truncate">Eng Leads</p>
+              <span class="text-[10px] text-slate-500 shrink-0 ml-1">Yesterday</span>
+            </div>
+            <p class="text-xs text-slate-400 truncate">Tom: Rollout is scheduled for midnight UTC</p>
+          </div>
+        </button>
+
+        <!-- New DM button -->
+        <button onclick="window.NexusComponents?.openModal('new-dm-modal')" class="w-full flex items-center gap-2 px-4 py-2.5 text-slate-500 hover:text-slate-300 transition text-sm">
+          <i data-lucide="plus" class="w-3.5 h-3.5 shrink-0"></i> New direct message
+        </button>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ─── DM Chat Area ─────────────────────────────────────────── -->
+  <main class="flex flex-col flex-1 min-w-0 bg-slate-950 overflow-hidden">
+
+    <!-- DM Header -->
+    <header class="flex items-center gap-3 px-4 py-3 bg-slate-900/80 backdrop-blur border-b border-slate-800 shrink-0">
+      <button onclick="window.NexusComponents?.openModal('contact-info-modal')" class="flex items-center gap-3 hover:bg-slate-800 rounded-xl px-2 py-1.5 -mx-2 -my-1.5 transition group min-w-0">
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" id="dm-header-avatar" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
+          <span id="dm-header-status" class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <h2 id="dm-header-name" class="font-bold text-slate-100 text-sm">Alice Chen</h2>
+            <span class="text-xs bg-violet-600/20 text-violet-400 px-1.5 py-0.5 rounded font-medium hidden sm:block">Design Lead</span>
+          </div>
+          <p id="dm-header-sub" class="text-xs text-green-400">● Active now</p>
+        </div>
+      </button>
+
+      <div class="ml-auto flex items-center gap-0.5">
+        <a href="/pages/calls.html" aria-label="Voice call" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Voice call">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+        </a>
+        <a href="/pages/calls.html" aria-label="Video call" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Video call">
+          <i data-lucide="video" class="w-4 h-4"></i>
+        </a>
+        <button aria-label="Search messages" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Search">
+          <i data-lucide="search" class="w-4 h-4"></i>
+        </button>
+        <button id="contact-sidebar-toggle" aria-label="Toggle contact info" onclick="document.getElementById('contact-sidebar').classList.toggle('hidden')" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Contact info">
+          <i data-lucide="panel-right" class="w-4 h-4"></i>
+        </button>
+        <button aria-label="More actions" data-dropdown-trigger="dm-header-dd" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+          <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+        </button>
+        <div id="dm-header-dd" data-dropdown class="hidden absolute right-4 top-14 z-50 w-52 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in text-sm">
+          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="star" class="w-4 h-4 opacity-60"></i>Add to Favorites</button>
+          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bell-off" class="w-4 h-4 opacity-60"></i>Mute Conversation</button>
+          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="archive" class="w-4 h-4 opacity-60"></i>Archive</button>
+          <div class="border-t border-slate-700 my-1"></div>
+          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="ban" class="w-4 h-4 opacity-60"></i>Block User</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Messages -->
+    <div id="dm-message-list" class="flex-1 overflow-y-auto py-4 space-y-0.5">
+
+      <!-- Conversation start -->
+      <div class="flex flex-col items-center py-8 px-6 text-center">
+        <div class="relative mb-4">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-20 h-20 rounded-2xl bg-slate-800 shadow-xl border border-slate-700" />
+          <span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-400 border-2 border-slate-950"></span>
+        </div>
+        <h3 class="font-bold text-slate-100 text-lg">Alice Chen</h3>
+        <p class="text-sm text-slate-400 mt-1">Design Lead · Nexus HQ</p>
+        <p class="text-xs text-slate-500 mt-2 max-w-xs">This is the beginning of your conversation with Alice. Say hi! 👋</p>
+        <div class="flex gap-2 mt-4">
+          <a href="/pages/calls.html" class="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition border border-slate-700">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i>Call
+          </a>
+          <a href="/pages/profile.html" class="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition border border-slate-700">
+            <i data-lucide="user" class="w-3.5 h-3.5"></i>View Profile
+          </a>
+        </div>
+      </div>
+
+      <!-- Date divider -->
+      <div class="flex items-center gap-3 px-6 py-3">
+        <div class="flex-1 h-px bg-slate-800"></div>
+        <span class="text-xs font-medium text-slate-500 px-2 py-0.5 rounded-full border border-slate-800 bg-slate-900">Monday, July 7</span>
+        <div class="flex-1 h-px bg-slate-800"></div>
+      </div>
+
+      <!-- Message 1 from Alice -->
+      <div class="message-row group relative flex gap-3 px-4 py-1.5 hover:bg-slate-800/40 rounded-lg mx-2 transition">
+        <button class="shrink-0 mt-0.5" aria-label="View Alice's profile" onclick="window.NexusComponents?.openModal('contact-info-modal')">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">Alice Chen</button>
+            <span class="text-xs text-slate-500">9:14 AM</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Hey! Morning 👋 Did you get a chance to look at the new design mockups I sent over?</p>
+        </div>
+        <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React" title="Add reaction"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply" title="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More" title="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- My reply -->
+      <div class="message-row group relative flex gap-3 px-4 py-1.5 hover:bg-slate-800/40 rounded-lg mx-2 transition">
+        <button class="shrink-0 mt-0.5" aria-label="Your profile">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">You</button>
+            <span class="text-xs text-slate-500">9:19 AM</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Yes! Just finished reviewing them. The onboarding flow looks amazing 🔥 I have a few minor comments on the button hierarchy in screen 4.</p>
+          <div class="flex flex-wrap gap-1 mt-1.5">
+            <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition reaction-active text-violet-300 border-violet-700 bg-violet-900/30">
+              🔥 <span data-count>1</span>
+            </button>
+          </div>
+        </div>
+        <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- Continued same thread — no avatar -->
+      <div class="message-row group relative flex gap-3 px-4 py-0.5 hover:bg-slate-800/40 rounded-lg mx-2 transition">
+        <div class="w-9 shrink-0 flex justify-end pt-1"><span class="text-[10px] text-slate-600 opacity-0 group-hover:opacity-100 transition">9:20</span></div>
+        <div class="flex-1 min-w-0">
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Specifically on the CTA button — I think we should bump it to 48px height and use the filled violet style rather than outlined. Makes it much more prominent.</p>
+        </div>
+        <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- Image from Alice -->
+      <div class="message-row group relative flex gap-3 px-4 py-1.5 hover:bg-slate-800/40 rounded-lg mx-2 transition">
+        <button class="shrink-0 mt-0.5" aria-label="Alice's profile">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">Alice Chen</button>
+            <span class="text-xs text-slate-500">9:32 AM</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed mb-2">Good call on the button! Here's the updated version:</p>
+          <!-- Image attachment -->
+          <div class="max-w-sm rounded-xl overflow-hidden border border-slate-700 group/img">
+            <div class="bg-gradient-to-br from-violet-900 via-indigo-900 to-slate-900 h-44 flex items-center justify-center relative">
+              <i data-lucide="image" class="w-12 h-12 text-slate-500"></i>
+              <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover/img:opacity-100 transition flex items-center justify-center gap-2">
+                <button class="p-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition"><i data-lucide="expand" class="w-4 h-4"></i></button>
+                <button class="p-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition"><i data-lucide="download" class="w-4 h-4"></i></button>
+              </div>
+            </div>
+            <div class="px-3 py-1.5 bg-slate-800/50 text-xs text-slate-500">onboarding-cta-updated.figma.png · 890 KB</div>
+          </div>
+          <div class="flex flex-wrap gap-1 mt-1.5">
+            <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition">
+              👀 <span data-count>1</span>
+            </button>
+            <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition">
+              ✅ <span data-count>1</span>
+            </button>
+          </div>
+        </div>
+        <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- File share -->
+      <div class="message-row group relative flex gap-3 px-4 py-1.5 hover:bg-slate-800/40 rounded-lg mx-2 transition">
+        <button class="shrink-0 mt-0.5" aria-label="Your profile">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">You</button>
+            <span class="text-xs text-slate-500">10:01 AM</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed mb-2">Perfect! Sending over the full component spec doc too:</p>
+          <div class="flex items-center gap-3 bg-slate-800 border border-slate-700 rounded-xl p-3 max-w-sm hover:border-slate-600 transition">
+            <div class="w-10 h-10 rounded-lg bg-red-900/40 flex items-center justify-center shrink-0">
+              <i data-lucide="file-text" class="w-5 h-5 text-red-400"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-200 truncate">Component-Spec-v3.pdf</p>
+              <p class="text-xs text-slate-500">2.1 MB · PDF · 10:01 AM</p>
+            </div>
+            <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition shrink-0" aria-label="Download">
+              <i data-lucide="download" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- Voice note from Alice -->
+      <div class="message-row group relative flex gap-3 px-4 py-1.5 hover:bg-slate-800/40 rounded-lg mx-2 transition">
+        <button class="shrink-0 mt-0.5" aria-label="Alice's profile">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">Alice Chen</button>
+            <span class="text-xs text-slate-500">10:22 AM</span>
+          </div>
+          <div class="flex items-center gap-3 bg-slate-800 border border-slate-700 rounded-xl p-3 max-w-xs">
+            <button class="w-8 h-8 rounded-full bg-violet-600 hover:bg-violet-500 flex items-center justify-center shrink-0 transition"><i data-lucide="play" class="w-3.5 h-3.5 text-white ml-0.5"></i></button>
+            <div class="flex-1">
+              <div class="h-1.5 bg-slate-700 rounded-full overflow-hidden"><div class="h-full w-2/5 bg-violet-500 rounded-full"></div></div>
+              <div class="flex justify-between mt-1"><span class="text-xs text-slate-500">0:31</span><span class="text-xs text-slate-500">1:18</span></div>
+            </div>
+            <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+          </div>
+        </div>
+        <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- New messages divider -->
+      <div class="flex items-center gap-3 px-6 py-2">
+        <div class="flex-1 h-px bg-red-500/40"></div>
+        <span class="text-xs font-medium text-red-400 px-2 py-0.5 rounded-full border border-red-500/30 bg-red-900/20">New Messages</span>
+        <div class="flex-1 h-px bg-red-500/40"></div>
+      </div>
+
+      <!-- Date divider: Today -->
+      <div class="flex items-center gap-3 px-6 py-1">
+        <div class="flex-1 h-px bg-slate-800"></div>
+        <span class="text-xs font-medium text-slate-500 px-2 py-0.5 rounded-full border border-slate-800 bg-slate-900">Today</span>
+        <div class="flex-1 h-px bg-slate-800"></div>
+      </div>
+
+      <!-- Latest from Alice -->
+      <div class="message-row group relative flex gap-3 px-4 py-1.5 hover:bg-slate-800/40 rounded-lg mx-2 transition">
+        <button class="shrink-0 mt-0.5" aria-label="Alice's profile">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">Alice Chen</button>
+            <span class="text-xs text-slate-500">2:14 PM</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Hey, can you review the Figma file before the standup? I want to make sure we're aligned on the component naming before we share with the team 🙏</p>
+          <!-- Thread reply preview -->
+          <button class="mt-1.5 flex items-center gap-1.5 text-xs text-violet-400 hover:text-violet-300 transition">
+            <div class="flex -space-x-1">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="" class="w-4 h-4 rounded-full bg-slate-700 border border-slate-900" />
+            </div>
+            <span>1 reply · Today at 2:18 PM</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+        <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- Typing indicator -->
+      <div class="flex gap-3 px-6 py-2">
+        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="" class="w-5 h-5 rounded-full bg-slate-700 shrink-0 self-end mb-1" />
+        <div class="flex items-center gap-1 bg-slate-800 border border-slate-700 px-3 py-2 rounded-2xl rounded-bl-sm">
+          <span class="typing-dot w-1.5 h-1.5 rounded-full bg-slate-400 block"></span>
+          <span class="typing-dot w-1.5 h-1.5 rounded-full bg-slate-400 block"></span>
+          <span class="typing-dot w-1.5 h-1.5 rounded-full bg-slate-400 block"></span>
+        </div>
+        <span class="text-xs text-slate-500 self-end mb-1">Alice is typing…</span>
+      </div>
+
+    </div><!-- /dm-message-list -->
+
+    <!-- DM Composer -->
+    <div class="shrink-0 px-4 pb-4 pt-2">
+      <div class="flex items-center gap-0.5 mb-1.5 px-2">
+        <button class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Bold"><i data-lucide="bold" class="w-3.5 h-3.5"></i></button>
+        <button class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Italic"><i data-lucide="italic" class="w-3.5 h-3.5"></i></button>
+        <button class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Code"><i data-lucide="code" class="w-3.5 h-3.5"></i></button>
+        <button class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Link"><i data-lucide="link" class="w-3.5 h-3.5"></i></button>
+        <div class="w-px h-4 bg-slate-700 mx-1"></div>
+        <button class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="List"><i data-lucide="list" class="w-3.5 h-3.5"></i></button>
+        <button class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Quote"><i data-lucide="quote" class="w-3.5 h-3.5"></i></button>
+        <div class="ml-auto text-xs text-slate-600" id="dm-char-counter">0 / 4000</div>
+      </div>
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl focus-within:border-violet-500/60 focus-within:ring-1 focus-within:ring-violet-500/20 transition">
+        <div class="flex items-end gap-2 px-4 py-3">
+          <div class="flex-1">
+            <textarea
+              id="dm-composer-input"
+              data-auto-resize
+              rows="1"
+              placeholder="Message Alice Chen…"
+              aria-label="Message input"
+              class="w-full bg-transparent text-sm text-slate-100 placeholder-slate-500 focus:outline-none resize-none leading-relaxed max-h-40"
+              oninput="const c=document.getElementById('dm-char-counter');if(c)c.textContent=this.value.length+' / 4000';"
+            ></textarea>
+          </div>
+        </div>
+        <div class="flex items-center gap-1 px-3 pb-2.5">
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Emoji" title="Emoji"><i data-lucide="smile" class="w-4 h-4"></i></button>
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="GIF" title="GIF"><span class="text-[10px] font-bold leading-none">GIF</span></button>
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Mention" title="Mention"><i data-lucide="at-sign" class="w-4 h-4"></i></button>
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file" title="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Upload image"><i data-lucide="image" class="w-4 h-4"></i></button>
+          <div class="flex-1"></div>
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Voice message"><i data-lucide="mic" class="w-4 h-4"></i></button>
+          <button id="dm-send-btn" aria-label="Send message" onclick="sendDMMessage()" class="w-8 h-8 rounded-xl bg-violet-600 hover:bg-violet-500 active:scale-95 transition flex items-center justify-center ml-1">
+            <i data-lucide="send" class="w-3.5 h-3.5 text-white"></i>
+          </button>
+        </div>
+      </div>
+      <p class="text-xs text-slate-600 mt-1.5 text-center">
+        <kbd class="px-1 py-0.5 rounded bg-slate-800 text-slate-400 font-mono text-[10px]">Enter</kbd> to send ·
+        <kbd class="px-1 py-0.5 rounded bg-slate-800 text-slate-400 font-mono text-[10px]">Shift+Enter</kbd> for new line
+      </p>
+    </div>
+
+  </main>
+
+  <!-- ─── Contact Info Sidebar ─────────────────────────────────── -->
+  <aside id="contact-sidebar" aria-label="Contact information" class="flex flex-col w-64 shrink-0 bg-slate-900 border-l border-slate-800 overflow-hidden">
+
+    <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800 shrink-0">
+      <h2 class="text-sm font-bold text-slate-100">Contact Info</h2>
+      <button onclick="document.getElementById('contact-sidebar').classList.add('hidden')" aria-label="Close contact info" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto">
+      <!-- Profile card -->
+      <div class="p-4 border-b border-slate-800">
+        <div class="flex flex-col items-center text-center py-2">
+          <div class="relative mb-3">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-16 h-16 rounded-2xl bg-slate-800 shadow-lg border border-slate-700" />
+            <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-400 border-2 border-slate-900"></span>
+          </div>
+          <h3 class="font-bold text-slate-100">Alice Chen</h3>
+          <p class="text-xs text-violet-400 font-medium mt-0.5">Design Lead</p>
+          <p class="text-xs text-slate-500 mt-1">🚀 Shipping features · Active now</p>
+          <div class="flex gap-2 mt-3 w-full">
+            <a href="/pages/calls.html" class="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-300 transition border border-slate-700">
+              <i data-lucide="phone" class="w-3 h-3"></i>Call
+            </a>
+            <a href="/pages/calls.html" class="flex-1 flex items-center justify-center gap-1 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-300 transition border border-slate-700">
+              <i data-lucide="video" class="w-3 h-3"></i>Video
+            </a>
+          </div>
+        </div>
+        <div class="space-y-2.5 mt-3 text-sm">
+          <div class="flex items-center gap-2 text-slate-400"><i data-lucide="mail" class="w-3.5 h-3.5 text-slate-500 shrink-0"></i><span class="text-xs truncate">alice@nexushq.com</span></div>
+          <div class="flex items-center gap-2 text-slate-400"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-500 shrink-0"></i><span class="text-xs">San Francisco, CA</span></div>
+          <div class="flex items-center gap-2 text-slate-400"><i data-lucide="clock" class="w-3.5 h-3.5 text-slate-500 shrink-0"></i><span class="text-xs">2:14 PM local time</span></div>
+          <div class="flex items-center gap-2 text-slate-400"><i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-500 shrink-0"></i><span class="text-xs">Joined Jan 2024</span></div>
+        </div>
+      </div>
+
+      <!-- Shared Media -->
+      <div class="p-4 border-b border-slate-800">
+        <div class="flex items-center justify-between mb-2.5">
+          <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Shared Media</h3>
+          <button class="text-xs text-violet-400 hover:text-violet-300 transition">See all</button>
+        </div>
+        <div class="grid grid-cols-4 gap-1">
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-violet-900 to-indigo-900 flex items-center justify-center border border-slate-700 hover:border-slate-500 transition cursor-pointer overflow-hidden">
+            <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+          </div>
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center border border-slate-700 hover:border-slate-500 transition cursor-pointer overflow-hidden">
+            <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+          </div>
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-indigo-900 to-purple-900 flex items-center justify-center border border-slate-700 hover:border-slate-500 transition cursor-pointer overflow-hidden">
+            <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+          </div>
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-violet-800 to-slate-800 flex items-center justify-center border border-slate-700 hover:border-slate-500 transition cursor-pointer overflow-hidden">
+            <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+          </div>
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center border border-slate-700 hover:border-slate-500 transition cursor-pointer overflow-hidden">
+            <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+          </div>
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-purple-900 to-violet-800 flex items-center justify-center border border-slate-700 hover:border-slate-500 transition cursor-pointer overflow-hidden">
+            <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+          </div>
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-indigo-800 to-slate-800 flex items-center justify-center border border-slate-700 hover:border-slate-500 transition cursor-pointer overflow-hidden">
+            <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+          </div>
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-slate-800 to-violet-900 flex items-center justify-center border border-slate-700 hover:border-slate-500 transition cursor-pointer overflow-hidden">
+            <i data-lucide="image" class="w-4 h-4 text-slate-500"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shared Files -->
+      <div class="p-4 border-b border-slate-800">
+        <div class="flex items-center justify-between mb-2.5">
+          <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Shared Files</h3>
+          <button class="text-xs text-violet-400 hover:text-violet-300 transition">See all</button>
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition cursor-pointer group">
+            <div class="w-7 h-7 rounded-lg bg-red-900/40 flex items-center justify-center shrink-0"><i data-lucide="file-text" class="w-3.5 h-3.5 text-red-400"></i></div>
+            <div class="min-w-0 flex-1"><p class="text-xs font-medium text-slate-200 truncate">Component-Spec-v3.pdf</p><p class="text-[10px] text-slate-500">2.1 MB · Today</p></div>
+            <button class="text-slate-500 hover:text-slate-300 transition opacity-0 group-hover:opacity-100"><i data-lucide="download" class="w-3.5 h-3.5"></i></button>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition cursor-pointer group">
+            <div class="w-7 h-7 rounded-lg bg-blue-900/40 flex items-center justify-center shrink-0"><i data-lucide="figma" class="w-3.5 h-3.5 text-blue-400"></i></div>
+            <div class="min-w-0 flex-1"><p class="text-xs font-medium text-slate-200 truncate">Design-System-v2.fig</p><p class="text-[10px] text-slate-500">8.6 MB · Yesterday</p></div>
+            <button class="text-slate-500 hover:text-slate-300 transition opacity-0 group-hover:opacity-100"><i data-lucide="download" class="w-3.5 h-3.5"></i></button>
+          </div>
+          <div class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition cursor-pointer group">
+            <div class="w-7 h-7 rounded-lg bg-green-900/40 flex items-center justify-center shrink-0"><i data-lucide="table" class="w-3.5 h-3.5 text-green-400"></i></div>
+            <div class="min-w-0 flex-1"><p class="text-xs font-medium text-slate-200 truncate">Brand-Guidelines.xlsx</p><p class="text-[10px] text-slate-500">340 KB · Mon</p></div>
+            <button class="text-slate-500 hover:text-slate-300 transition opacity-0 group-hover:opacity-100"><i data-lucide="download" class="w-3.5 h-3.5"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shared Links -->
+      <div class="p-4 border-b border-slate-800">
+        <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2.5">Shared Links</h3>
+        <div class="space-y-2">
+          <a href="#" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition group">
+            <div class="w-7 h-7 rounded-lg bg-slate-700 flex items-center justify-center shrink-0"><i data-lucide="link" class="w-3.5 h-3.5 text-slate-400"></i></div>
+            <div class="min-w-0 flex-1"><p class="text-xs font-medium text-violet-400 truncate hover:underline">figma.com/design/nexus-ds</p><p class="text-[10px] text-slate-500">Shared 2h ago</p></div>
+          </a>
+          <a href="#" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition group">
+            <div class="w-7 h-7 rounded-lg bg-slate-700 flex items-center justify-center shrink-0"><i data-lucide="link" class="w-3.5 h-3.5 text-slate-400"></i></div>
+            <div class="min-w-0 flex-1"><p class="text-xs font-medium text-violet-400 truncate hover:underline">notion.so/design-review-q3</p><p class="text-[10px] text-slate-500">Shared yesterday</p></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="p-4 space-y-3">
+        <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Settings</h3>
+        <!-- Notification toggle -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i data-lucide="bell" class="w-4 h-4 text-slate-400"></i>
+            <span class="text-sm text-slate-300">Notifications</span>
+          </div>
+          <button id="notif-toggle" onclick="toggleNotif()" aria-label="Toggle notifications" class="w-10 h-5 rounded-full bg-violet-600 transition-colors relative shrink-0">
+            <span id="notif-thumb" class="absolute top-0.5 left-5 w-4 h-4 rounded-full bg-white shadow transition-transform"></span>
+          </button>
+        </div>
+        <!-- Mute toggle -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i data-lucide="bell-off" class="w-4 h-4 text-slate-400"></i>
+            <span class="text-sm text-slate-300">Mute</span>
+          </div>
+          <button id="mute-toggle" onclick="toggleMute()" aria-label="Toggle mute" class="w-10 h-5 rounded-full bg-slate-700 transition-colors relative shrink-0">
+            <span id="mute-thumb" class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform"></span>
+          </button>
+        </div>
+        <div class="pt-1 space-y-1">
+          <button onclick="window.NexusComponents?.toast('Blocked user','warning')" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-800 transition text-sm text-red-400 text-left">
+            <i data-lucide="ban" class="w-4 h-4"></i>Block Alice
+          </button>
+          <button onclick="window.NexusComponents?.toast('Conversation reported','warning')" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-800 transition text-sm text-slate-400 hover:text-slate-200 text-left">
+            <i data-lucide="flag" class="w-4 h-4"></i>Report
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+</div><!-- /app shell -->
+
+<!-- New DM Modal -->
+<div id="new-dm-modal" data-modal class="hidden fixed inset-0 z-50 flex items-start justify-center pt-16 px-4 modal-backdrop">
+  <div data-modal-panel class="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <h2 class="font-bold text-slate-100">New Message</h2>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="p-4">
+      <div class="relative mb-3">
+        <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500"></i>
+        <input type="search" placeholder="Search people…" aria-label="Search people" autofocus class="w-full bg-slate-800 border border-slate-700 rounded-xl pl-10 pr-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition" />
+      </div>
+      <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider px-1 mb-2">Suggested</p>
+      <div class="space-y-1">
+        <button onclick="window.NexusComponents?.closeModal('new-dm-modal')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800 transition text-left">
+          <div class="relative shrink-0"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob" class="w-8 h-8 rounded-xl bg-slate-700" /><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-slate-900"></span></div>
+          <div><p class="text-sm font-semibold text-slate-100">Bob Martinez</p><p class="text-xs text-slate-500">Engineer · Away</p></div>
+        </button>
+        <button onclick="window.NexusComponents?.closeModal('new-dm-modal')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800 transition text-left">
+          <div class="relative shrink-0"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol" class="w-8 h-8 rounded-xl bg-slate-700" /><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-slate-900"></span></div>
+          <div><p class="text-sm font-semibold text-slate-100">Carol Wu</p><p class="text-xs text-slate-500">Product · Away</p></div>
+        </button>
+        <button onclick="window.NexusComponents?.closeModal('new-dm-modal')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800 transition text-left">
+          <div class="relative shrink-0"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David" class="w-8 h-8 rounded-xl bg-slate-700" /><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border-2 border-slate-900"></span></div>
+          <div><p class="text-sm font-semibold text-slate-100">David Kim</p><p class="text-xs text-slate-500">Marketing · Active</p></div>
+        </button>
+      </div>
+    </div>
+    <div class="flex justify-end gap-2 px-5 py-3 border-t border-slate-800">
+      <button data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+      <button onclick="window.NexusComponents?.closeModal('new-dm-modal');window.NexusComponents?.toast('Conversation opened','success')" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Open</button>
+    </div>
+  </div>
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+</div>
+
+<!-- Contact Info Modal (full profile) -->
+<div id="contact-info-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-panel class="w-full max-w-sm bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="h-24 bg-gradient-to-br from-violet-700 via-indigo-700 to-purple-800 relative">
+      <button data-modal-close class="absolute top-3 right-3 p-1.5 rounded-lg bg-black/20 text-white hover:bg-black/40 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="px-5 pb-5">
+      <div class="flex items-end justify-between -mt-10 mb-3">
+        <div class="relative">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-16 h-16 rounded-2xl bg-slate-700 border-4 border-slate-900 shadow-xl" />
+          <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-green-400 border-2 border-slate-900"></span>
+        </div>
+        <button class="px-3 py-1.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-xs font-semibold text-white transition" onclick="window.NexusComponents?.closeModal('contact-info-modal')">Message</button>
+      </div>
+      <h2 class="font-bold text-slate-100 text-lg">Alice Chen</h2>
+      <p class="text-xs text-violet-400 font-medium mb-1">Design Lead</p>
+      <p class="text-xs text-slate-400">🚀 Shipping features · Active now</p>
+      <div class="mt-4 space-y-2 text-sm">
+        <div class="flex items-center gap-2 text-slate-400"><i data-lucide="mail" class="w-4 h-4 text-slate-500"></i>alice@nexushq.com</div>
+        <div class="flex items-center gap-2 text-slate-400"><i data-lucide="map-pin" class="w-4 h-4 text-slate-500"></i>San Francisco, CA</div>
+        <div class="flex items-center gap-2 text-slate-400"><i data-lucide="clock" class="w-4 h-4 text-slate-500"></i>2:14 PM local time</div>
+      </div>
+      <div class="flex gap-2 mt-4">
+        <a href="/pages/calls.html" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 text-center transition flex items-center justify-center gap-1"><i data-lucide="phone" class="w-3.5 h-3.5"></i>Call</a>
+        <a href="/pages/calls.html" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 text-center transition flex items-center justify-center gap-1"><i data-lucide="video" class="w-3.5 h-3.5"></i>Video</a>
+        <a href="/pages/profile.html" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 text-center transition flex items-center justify-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5"></i>Profile</a>
+      </div>
+    </div>
+  </div>
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+<script>
+  function switchDMTab(tab, btn) {
+    document.querySelectorAll('.dm-tab-btn').forEach(b => {
+      b.classList.remove('border-violet-400','text-violet-400');
+      b.classList.add('border-transparent','text-slate-400');
+    });
+    btn.classList.add('border-violet-400','text-violet-400');
+    btn.classList.remove('border-transparent','text-slate-400');
+  }
+
+  function activateDM(id) {
+    document.querySelectorAll('.dm-item').forEach(el => {
+      el.classList.remove('bg-slate-800');
+      el.classList.add('hover:bg-slate-800/60');
+    });
+    const btn = document.getElementById('dm-btn-' + id);
+    if (btn) {
+      btn.classList.add('bg-slate-800');
+      btn.classList.remove('hover:bg-slate-800/60');
+    }
+    window.NexusComponents?.toast('Opening conversation…','info',1500);
+  }
+
+  let notifOn = true, muteOn = false;
+  function toggleNotif() {
+    notifOn = !notifOn;
+    const btn = document.getElementById('notif-toggle');
+    const thumb = document.getElementById('notif-thumb');
+    if (notifOn) {
+      btn.classList.replace('bg-slate-700','bg-violet-600');
+      thumb.classList.replace('left-0.5','left-5');
+    } else {
+      btn.classList.replace('bg-violet-600','bg-slate-700');
+      thumb.classList.replace('left-5','left-0.5');
+    }
+  }
+  function toggleMute() {
+    muteOn = !muteOn;
+    const btn = document.getElementById('mute-toggle');
+    const thumb = document.getElementById('mute-thumb');
+    if (muteOn) {
+      btn.classList.replace('bg-slate-700','bg-violet-600');
+      thumb.classList.replace('left-0.5','left-5');
+    } else {
+      btn.classList.replace('bg-violet-600','bg-slate-700');
+      thumb.classList.replace('left-5','left-0.5');
+    }
+  }
+
+  function sendDMMessage() {
+    const input = document.getElementById('dm-composer-input');
+    const text = input?.value.trim();
+    if (!text) return;
+    const list = document.getElementById('dm-message-list');
+    const time = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    const row = document.createElement('div');
+    row.className = 'message-row group relative flex gap-3 px-4 py-1.5 hover:bg-slate-800/40 rounded-lg mx-2 transition fade-in';
+    row.innerHTML = `
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-slate-700" />
+      <div class="flex-1 min-w-0">
+        <div class="flex items-baseline gap-2 mb-1">
+          <span class="text-sm font-semibold text-slate-100">You</span>
+          <span class="text-xs text-slate-500">${time}</span>
+        </div>
+        <p class="msg-body text-sm text-slate-300 leading-relaxed">${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>
+      </div>
+      <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+        <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+        <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+      </div>
+    `;
+    // Remove typing indicator temporarily and append
+    const typingRow = list.querySelector('.flex.gap-3.px-6.py-2');
+    list.insertBefore(row, typingRow || null);
+    if (!typingRow) list.appendChild(row);
+    input.value = '';
+    input.style.height = 'auto';
+    document.getElementById('dm-char-counter').textContent = '0 / 4000';
+    list.scrollTop = list.scrollHeight;
+    if (window.lucide) lucide.createIcons();
+  }
+
+  document.getElementById('dm-composer-input')?.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendDMMessage(); }
+  });
+</script>
+<script>window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });</script>
+</body>
+</html>

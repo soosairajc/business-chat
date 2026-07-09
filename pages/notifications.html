@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notifications — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+
+<div class="flex h-full overflow-hidden">
+
+  <!-- ─── Icon Rail ─────────────────────────────────────────── -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Nexus HQ workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="relative w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="message-square-text" class="w-4 h-4"></i>
+      <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-violet-600 text-white text-[9px] font-bold flex items-center justify-center">4</span>
+    </a>
+    <a href="/pages/notifications.html" aria-label="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition relative">
+      <i data-lucide="at-sign" class="w-4 h-4"></i>
+      <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-violet-600 text-white text-[9px] font-bold flex items-center justify-center">9</span>
+    </a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="sun" data-theme-icon class="w-4 h-4"></i>
+    </button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="align-right" data-dir-icon class="w-4 h-4"></i>
+    </button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <button aria-label="Your profile" class="relative mt-1">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+  </nav>
+
+  <!-- ─── Notification Filters Sidebar ──────────────────────── -->
+  <aside aria-label="Notification filters" class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto">
+    <div class="px-4 py-4 border-b border-slate-800 shrink-0">
+      <h1 class="text-base font-bold text-slate-100">Notifications</h1>
+      <p class="text-xs text-slate-500 mt-0.5">9 unread</p>
+    </div>
+
+    <nav class="flex-1 px-2 py-3 space-y-0.5" aria-label="Notification filters">
+      <button data-filter="all" onclick="setFilter('all')" class="notif-filter w-full flex items-center justify-between gap-2.5 px-3 py-2 rounded-lg text-sm bg-violet-600/20 text-violet-400 transition text-left">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="bell" class="w-4 h-4 shrink-0"></i>
+          <span>All Notifications</span>
+        </div>
+        <span class="text-[10px] font-bold bg-violet-600 text-white rounded-full px-1.5 py-0.5 min-w-[18px] text-center">9</span>
+      </button>
+      <button data-filter="mention" onclick="setFilter('mention')" class="notif-filter w-full flex items-center justify-between gap-2.5 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition text-left">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="at-sign" class="w-4 h-4 shrink-0"></i>
+          <span>Mentions</span>
+        </div>
+        <span class="text-[10px] font-bold bg-violet-600 text-white rounded-full px-1.5 py-0.5 min-w-[18px] text-center">3</span>
+      </button>
+      <button data-filter="reaction" onclick="setFilter('reaction')" class="notif-filter w-full flex items-center justify-between gap-2.5 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition text-left">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="smile" class="w-4 h-4 shrink-0"></i>
+          <span>Reactions</span>
+        </div>
+        <span class="text-[10px] font-bold bg-slate-700 text-slate-300 rounded-full px-1.5 py-0.5 min-w-[18px] text-center">2</span>
+      </button>
+      <button data-filter="thread" onclick="setFilter('thread')" class="notif-filter w-full flex items-center justify-between gap-2.5 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition text-left">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="message-square-text" class="w-4 h-4 shrink-0"></i>
+          <span>Thread Replies</span>
+        </div>
+        <span class="text-[10px] font-bold bg-violet-600 text-white rounded-full px-1.5 py-0.5 min-w-[18px] text-center">4</span>
+      </button>
+      <button data-filter="invite" onclick="setFilter('invite')" class="notif-filter w-full flex items-center justify-between gap-2.5 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition text-left">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="user-plus" class="w-4 h-4 shrink-0"></i>
+          <span>Channel Invites</span>
+        </div>
+      </button>
+      <button data-filter="app" onclick="setFilter('app')" class="notif-filter w-full flex items-center justify-between gap-2.5 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition text-left">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="zap" class="w-4 h-4 shrink-0"></i>
+          <span>App Notifications</span>
+        </div>
+      </button>
+    </nav>
+
+    <!-- Settings link -->
+    <div class="border-t border-slate-800 p-3">
+      <a href="/pages/settings.html" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+        <i data-lucide="settings-2" class="w-4 h-4 shrink-0"></i> Notification Settings
+      </a>
+    </div>
+  </aside>
+
+  <!-- ─── Notification Feed ──────────────────────────────────── -->
+  <main class="flex-1 flex flex-col overflow-hidden bg-slate-950">
+
+    <!-- Feed header -->
+    <div class="flex items-center justify-between px-5 py-3 bg-slate-900 border-b border-slate-800 shrink-0">
+      <div>
+        <h2 class="text-sm font-semibold text-slate-100" id="feed-title">All Notifications</h2>
+        <p class="text-xs text-slate-500" id="feed-subtitle">Showing all notifications</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <!-- Filter dropdown -->
+        <div class="relative">
+          <button data-dropdown-trigger="notif-sort-dd" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition" aria-haspopup="true">
+            <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i> Filter
+          </button>
+          <div id="notif-sort-dd" data-dropdown class="hidden absolute right-0 mt-1 z-50 w-44 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
+            <button class="w-full text-left px-3 py-2 hover:bg-slate-700 text-sm text-slate-300 transition flex items-center gap-2"><i data-lucide="circle" class="w-3 h-3 text-violet-400"></i> All</button>
+            <button class="w-full text-left px-3 py-2 hover:bg-slate-700 text-sm text-slate-300 transition flex items-center gap-2"><i data-lucide="circle-dot" class="w-3 h-3 text-violet-400"></i> Unread only</button>
+            <button class="w-full text-left px-3 py-2 hover:bg-slate-700 text-sm text-slate-300 transition flex items-center gap-2"><i data-lucide="check-circle" class="w-3 h-3 text-slate-500"></i> Read only</button>
+          </div>
+        </div>
+        <button onclick="markAllRead()" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+          <i data-lucide="check-check" class="w-3.5 h-3.5 text-violet-400"></i> Mark all read
+        </button>
+      </div>
+    </div>
+
+    <!-- Scrollable feed -->
+    <div class="flex-1 overflow-y-auto" id="notif-feed">
+
+      <!-- ─── TODAY ─── -->
+      <div class="notif-date-group px-5 pt-5 pb-2">
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Today</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+      </div>
+
+      <!-- MENTION — unread -->
+      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="mention">
+        <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0" aria-label="Unread"></div>
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-10 h-10 rounded-xl bg-slate-700" />
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-violet-600 border-2 border-slate-950 flex items-center justify-center text-[10px]">@</div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-200 leading-snug">
+            <span class="font-semibold text-slate-100">Carol Wu</span> mentioned you in <span class="text-violet-400 font-medium">#product</span>
+          </p>
+          <div class="mt-1.5 p-2.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 leading-relaxed">
+            <span class="mention">@Alice</span> can you share the updated wireframes for the onboarding flow before Friday's sprint planning?
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-500">11:42 AM</span>
+            <a href="/" class="text-xs text-violet-400 hover:text-violet-300 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> Go to message</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss notification" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition shrink-0">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- THREAD REPLY — unread -->
+      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="thread">
+        <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-10 h-10 rounded-xl bg-slate-700" />
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-blue-600 border-2 border-slate-950 flex items-center justify-center">
+            <i data-lucide="message-square-text" class="w-2.5 h-2.5 text-white"></i>
+          </div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-200 leading-snug">
+            <span class="font-semibold text-slate-100">Bob Martinez</span> replied to your thread in <span class="text-violet-400 font-medium">#design</span>
+          </p>
+          <div class="mt-1.5 p-2.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 leading-relaxed">
+            Great question! The new API supports pagination — I'll add the docs link to the thread now. 🔗
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-500">10:58 AM</span>
+            <a href="/pages/threads.html" class="text-xs text-violet-400 hover:text-violet-300 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> Open thread</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- REACTION — unread -->
+      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="reaction">
+        <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David Kim" class="w-10 h-10 rounded-xl bg-slate-700" />
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-amber-500 border-2 border-slate-950 flex items-center justify-center text-[10px]">🔥</div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-200 leading-snug">
+            <span class="font-semibold text-slate-100">David Kim</span> and <span class="font-semibold text-slate-100">3 others</span> reacted 🔥 to your message in <span class="text-violet-400 font-medium">#general</span>
+          </p>
+          <div class="mt-1.5 p-2.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-400 italic leading-relaxed">
+            "The new design system tokens are now live in Figma! Please update your local libraries 🎨"
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-500">10:15 AM</span>
+            <a href="/" class="text-xs text-violet-400 hover:text-violet-300 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> See message</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- MENTION — unread #2 -->
+      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="mention">
+        <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-10 h-10 rounded-xl bg-slate-700" />
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-violet-600 border-2 border-slate-950 flex items-center justify-center text-[10px]">@</div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-200 leading-snug">
+            <span class="font-semibold text-slate-100">Mike Johnson</span> mentioned you in <span class="text-violet-400 font-medium">#announcements</span>
+          </p>
+          <div class="mt-1.5 p-2.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 leading-relaxed">
+            Huge shoutout to <span class="mention">@Alice</span> for leading the Q3 design system revamp. The team looks incredible! 🚀
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-500">9:30 AM</span>
+            <a href="/" class="text-xs text-violet-400 hover:text-violet-300 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> Go to message</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- CHANNEL INVITE — unread -->
+      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="invite">
+        <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-10 h-10 rounded-xl bg-slate-700" />
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-600 border-2 border-slate-950 flex items-center justify-center">
+            <i data-lucide="user-plus" class="w-2.5 h-2.5 text-white"></i>
+          </div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-200 leading-snug">
+            <span class="font-semibold text-slate-100">Priya Sharma</span> invited you to join <span class="text-violet-400 font-medium">#platform-infra</span>
+          </p>
+          <p class="text-xs text-slate-400 mt-1">Infrastructure and deployment discussions · 14 members</p>
+          <div class="flex items-center gap-2 mt-2.5">
+            <button onclick="window.NexusComponents?.toast('Joined #platform-infra!', 'success'); this.closest('.notif-item').classList.remove('unread','border-violet-500','bg-violet-950/20'); this.closest('.notif-item').classList.add('border-transparent');" class="px-3 py-1.5 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition">Accept</button>
+            <button onclick="dismissNotif(this.closest('.notif-item').querySelector('[onclick*=dismiss]') || this)" class="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 text-xs font-medium rounded-lg transition">Decline</button>
+            <span class="text-xs text-slate-500 ml-1">8:55 AM</span>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- ─── YESTERDAY ─── -->
+      <div class="notif-date-group px-5 pt-5 pb-2">
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Yesterday</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+      </div>
+
+      <!-- THREAD REPLY — unread -->
+      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="thread">
+        <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah Lee" class="w-10 h-10 rounded-xl bg-slate-700" />
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-blue-600 border-2 border-slate-950 flex items-center justify-center">
+            <i data-lucide="message-square-text" class="w-2.5 h-2.5 text-white"></i>
+          </div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-200 leading-snug">
+            <span class="font-semibold text-slate-100">Sarah Lee</span> replied to your thread in <span class="text-violet-400 font-medium">#design-ops</span>
+          </p>
+          <div class="mt-1.5 p-2.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-300 leading-relaxed">
+            Added the component to our shared Figma library. Let me know if you need the link! 🔗
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-500">3:22 PM</span>
+            <a href="/pages/threads.html" class="text-xs text-violet-400 hover:text-violet-300 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> Open thread</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- REACTION — read -->
+      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="reaction">
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=tom" alt="Tom Wilson" class="w-10 h-10 rounded-xl bg-slate-700 opacity-75" />
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-amber-500 border-2 border-slate-950 flex items-center justify-center text-[10px]">❤️</div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-400 leading-snug">
+            <span class="font-medium text-slate-300">Tom Wilson</span> reacted ❤️ to your message in <span class="text-slate-400 font-medium">#general</span>
+          </p>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-600">11:05 AM</span>
+            <a href="/" class="text-xs text-slate-500 hover:text-violet-400 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> See message</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- THREAD REPLY — read -->
+      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="thread">
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-10 h-10 rounded-xl bg-slate-700 opacity-75" />
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-blue-600 border-2 border-slate-950 flex items-center justify-center">
+            <i data-lucide="message-square-text" class="w-2.5 h-2.5 text-white"></i>
+          </div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-400 leading-snug">
+            <span class="font-medium text-slate-300">Carol Wu</span> replied to a thread you follow in <span class="text-slate-400 font-medium">#product</span>
+          </p>
+          <div class="mt-1.5 p-2.5 rounded-lg bg-slate-800/60 border border-slate-800 text-sm text-slate-500 leading-relaxed">
+            I'll have the competitive analysis ready for the Monday review session.
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-600">9:50 AM</span>
+            <a href="/pages/threads.html" class="text-xs text-slate-500 hover:text-violet-400 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> Open thread</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- ─── THIS WEEK ─── -->
+      <div class="notif-date-group px-5 pt-5 pb-2">
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">This Week</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+      </div>
+
+      <!-- THREAD REPLIES — unread (multiple) -->
+      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="thread">
+        <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
+        <div class="relative shrink-0">
+          <div class="flex -space-x-2">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob" class="w-10 h-10 rounded-xl bg-slate-700 ring-2 ring-slate-950" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah" class="w-10 h-10 rounded-xl bg-slate-700 ring-2 ring-slate-950" />
+          </div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-200 leading-snug">
+            <span class="font-semibold text-slate-100">Bob Martinez</span>, <span class="font-semibold text-slate-100">Sarah Lee</span> and <span class="font-semibold text-slate-100">2 others</span> replied to your thread in <span class="text-violet-400 font-medium">#engineering</span>
+          </p>
+          <p class="text-xs text-slate-400 mt-1">4 new replies since you last checked</p>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-500">Mon, Feb 5</span>
+            <a href="/pages/threads.html" class="text-xs text-violet-400 hover:text-violet-300 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> Open thread</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- SYSTEM — read -->
+      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="app">
+        <div class="relative shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center">
+            <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i>
+          </div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-400 leading-snug">
+            <span class="font-medium text-slate-300">Security Alert</span> — New sign-in from MacBook Pro on Chrome
+          </p>
+          <p class="text-xs text-slate-500 mt-1">San Francisco, CA · If this was you, no action needed.</p>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-600">Mon, Feb 5 · 9:00 AM</span>
+            <a href="/pages/settings.html" class="text-xs text-slate-500 hover:text-violet-400 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> Review security</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- APP NOTIFICATION — read -->
+      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="app">
+        <div class="relative shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-700/30 flex items-center justify-center">
+            <span class="text-base">Jr</span>
+          </div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-400 leading-snug">
+            <span class="font-medium text-slate-300">Jira</span> — Issue <span class="font-mono text-slate-300 text-xs">NX-1842</span> was assigned to you
+          </p>
+          <p class="text-xs text-slate-500 mt-1">Refactor design token pipeline · High priority</p>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-600">Sun, Feb 4 · 2:15 PM</span>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- MENTION — read -->
+      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="mention">
+        <div class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David Kim" class="w-10 h-10 rounded-xl bg-slate-700 opacity-75" />
+          <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-violet-600 border-2 border-slate-950 flex items-center justify-center text-[10px]">@</div>
+        </div>
+        <div class="flex-1 min-w-0 pr-8">
+          <p class="text-sm text-slate-400 leading-snug">
+            <span class="font-medium text-slate-300">David Kim</span> mentioned you in <span class="text-slate-400 font-medium">#marketing</span>
+          </p>
+          <div class="mt-1.5 p-2.5 rounded-lg bg-slate-800/60 border border-slate-800 text-sm text-slate-500 leading-relaxed">
+            <span class="text-slate-400">@Alice</span> the brand guidelines doc needs the updated typography section — can you share the Figma link?
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-xs text-slate-600">Sat, Feb 3 · 4:45 PM</span>
+            <a href="/" class="text-xs text-slate-500 hover:text-violet-400 transition flex items-center gap-1"><i data-lucide="arrow-right" class="w-3 h-3"></i> Go to message</a>
+          </div>
+        </div>
+        <button onclick="dismissNotif(this)" aria-label="Dismiss" class="absolute top-4 right-5 opacity-0 group-hover:opacity-100 w-6 h-6 rounded-lg bg-slate-700 hover:bg-slate-600 flex items-center justify-center transition">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+      </div>
+
+      <!-- Empty state (hidden by default) -->
+      <div id="empty-state" class="hidden flex flex-col items-center justify-center py-24 px-8 text-center">
+        <div class="w-16 h-16 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-4">
+          <i data-lucide="bell-off" class="w-7 h-7 text-slate-500"></i>
+        </div>
+        <p class="text-base font-semibold text-slate-300 mb-1">All caught up!</p>
+        <p class="text-sm text-slate-500">No notifications to show.</p>
+      </div>
+
+      <div class="h-8"></div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+
+let currentFilter = 'all';
+
+function setFilter(filter) {
+  currentFilter = filter;
+  // Update sidebar active state
+  document.querySelectorAll('.notif-filter').forEach(btn => {
+    const isActive = btn.getAttribute('data-filter') === filter;
+    btn.classList.toggle('bg-violet-600/20', isActive);
+    btn.classList.toggle('text-violet-400', isActive);
+    btn.classList.toggle('text-slate-400', !isActive);
+    btn.classList.toggle('hover:text-slate-100', !isActive);
+    btn.classList.toggle('hover:bg-slate-800', !isActive);
+  });
+
+  // Filter items
+  const items = document.querySelectorAll('.notif-item');
+  let visibleCount = 0;
+  items.forEach(item => {
+    const type = item.getAttribute('data-type');
+    const visible = filter === 'all' || type === filter;
+    item.style.display = visible ? '' : 'none';
+    if (visible) visibleCount++;
+  });
+
+  // Update header
+  const titles = {
+    all: 'All Notifications', mention: 'Mentions (@you)', reaction: 'Reactions',
+    thread: 'Thread Replies', invite: 'Channel Invites', app: 'App Notifications'
+  };
+  document.getElementById('feed-title').textContent = titles[filter] || 'Notifications';
+  document.getElementById('feed-subtitle').textContent = visibleCount + ' notification' + (visibleCount !== 1 ? 's' : '');
+
+  // Toggle date groups visibility
+  document.querySelectorAll('.notif-date-group').forEach(group => {
+    // Show if any sibling notif items are visible
+    let sibling = group.nextElementSibling;
+    let hasVisible = false;
+    while (sibling && !sibling.classList.contains('notif-date-group')) {
+      if (sibling.classList.contains('notif-item') && sibling.style.display !== 'none') {
+        hasVisible = true; break;
+      }
+      sibling = sibling.nextElementSibling;
+    }
+    group.style.display = hasVisible ? '' : 'none';
+  });
+
+  // Empty state
+  document.getElementById('empty-state').classList.toggle('hidden', visibleCount > 0);
+  document.getElementById('empty-state').classList.toggle('flex', visibleCount === 0);
+}
+
+function dismissNotif(btn) {
+  const item = btn.closest('.notif-item');
+  if (!item) return;
+  item.style.transition = 'opacity 0.2s, transform 0.2s';
+  item.style.opacity = '0';
+  item.style.transform = 'translateX(20px)';
+  setTimeout(() => {
+    item.remove();
+    window.NexusComponents?.toast('Notification dismissed', 'info', 2000);
+    updateUnreadCount();
+  }, 200);
+}
+
+function markAllRead() {
+  document.querySelectorAll('.notif-item.unread').forEach(item => {
+    item.classList.remove('unread', 'border-violet-500', 'bg-violet-950/20', 'hover:bg-violet-950/30');
+    item.classList.add('border-transparent', 'hover:bg-slate-900/60');
+    item.querySelector('.w-2.h-2.rounded-full.bg-violet-500')?.remove();
+    const imgs = item.querySelectorAll('img');
+    imgs.forEach(img => img.classList.add('opacity-75'));
+    // Dim text
+    item.querySelectorAll('p.text-slate-200').forEach(el => { el.classList.replace('text-slate-200', 'text-slate-400'); });
+    item.querySelectorAll('span.text-slate-100').forEach(el => { el.classList.replace('text-slate-100', 'text-slate-300'); });
+  });
+  updateUnreadCount();
+  window.NexusComponents?.toast('All notifications marked as read', 'success');
+}
+
+function updateUnreadCount() {
+  const count = document.querySelectorAll('.notif-item.unread').length;
+  // Update sidebar badge
+  const allBadge = document.querySelector('[data-filter="all"] span.bg-violet-600');
+  if (allBadge) allBadge.textContent = count > 0 ? count : '';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookmarks — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/notifications.html" aria-label="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <a href="/pages/activity-feed.html" aria-label="Activity" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="activity" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <a href="/pages/bookmarks.html" aria-label="Bookmarks" class="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition"><i data-lucide="bookmark" class="w-4 h-4"></i></a>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="align-right" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Sidebar -->
+  <aside class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex">
+    <div class="px-4 py-4 border-b border-slate-800">
+      <h2 class="text-sm font-bold text-slate-100">Bookmarks</h2>
+      <p class="text-xs text-slate-500 mt-0.5">24 saved items</p>
+    </div>
+    <div class="flex-1 py-3 space-y-0.5 px-2">
+      <button class="bm-filter active w-full flex items-center gap-2.5 px-3 py-2 rounded-lg bg-violet-600/20 text-violet-300 text-sm text-left transition">
+        <i data-lucide="bookmark" class="w-4 h-4 shrink-0"></i> All Bookmarks <span class="ml-auto text-xs text-slate-500">24</span>
+      </button>
+      <div class="pt-3">
+        <p class="px-2 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">By Channel</p>
+        <button class="bm-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+          <span class="text-slate-500 text-xs">#</span> general <span class="ml-auto text-xs text-slate-500">8</span>
+        </button>
+        <button class="bm-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+          <span class="text-slate-500 text-xs">#</span> design <span class="ml-auto text-xs text-slate-500">6</span>
+        </button>
+        <button class="bm-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+          <span class="text-slate-500 text-xs">#</span> engineering <span class="ml-auto text-xs text-slate-500">5</span>
+        </button>
+        <button class="bm-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+          <span class="text-slate-500 text-xs">#</span> product <span class="ml-auto text-xs text-slate-500">5</span>
+        </button>
+      </div>
+      <div class="pt-3">
+        <p class="px-2 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">By Type</p>
+        <button class="bm-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+          <i data-lucide="message-square" class="w-4 h-4 shrink-0"></i> Messages <span class="ml-auto text-xs text-slate-500">14</span>
+        </button>
+        <button class="bm-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+          <i data-lucide="file" class="w-4 h-4 shrink-0"></i> Files <span class="ml-auto text-xs text-slate-500">6</span>
+        </button>
+        <button class="bm-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+          <i data-lucide="link" class="w-4 h-4 shrink-0"></i> Links <span class="ml-auto text-xs text-slate-500">4</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="flex-1 flex flex-col overflow-hidden">
+    <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-800 bg-slate-900 shrink-0">
+      <h1 class="text-base font-bold text-slate-100">All Bookmarks</h1>
+      <div class="ml-auto relative">
+        <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+        <input type="search" placeholder="Search bookmarks…" class="bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-3 py-1.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition w-52" />
+      </div>
+    </div>
+    <div class="flex-1 overflow-y-auto p-5 space-y-4 max-w-3xl mx-auto w-full">
+
+      <!-- Date group -->
+      <div class="flex items-center gap-3 py-1">
+        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Today</span>
+        <div class="flex-1 h-px bg-slate-800"></div>
+      </div>
+
+      <!-- Message Bookmark 1 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition group">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-400 text-[11px] font-semibold">MESSAGE</span>
+            <span class="text-xs text-slate-500"># general</span>
+          </div>
+          <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <button aria-label="Jump to message" class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 text-xs transition">
+              <i data-lucide="arrow-right" class="w-3 h-3"></i> Jump
+            </button>
+            <button aria-label="Remove bookmark" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-500 hover:text-red-400 transition">
+              <i data-lucide="bookmark-x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-8 h-8 rounded-lg bg-slate-700 shrink-0" />
+          <div>
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-sm font-semibold text-slate-100">Alice Chen</span>
+              <span class="text-xs text-slate-500">Today at 10:23 AM</span>
+            </div>
+            <p class="text-sm text-slate-300">Just pushed the new design tokens to Figma — we've got dark mode variables, spacing scale, and all the typography styles locked in. Let me know if anything needs adjusting before we hand off to engineering 🎨</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Bookmark 2 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition group">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-400 text-[11px] font-semibold">MESSAGE</span>
+            <span class="text-xs text-slate-500"># engineering</span>
+          </div>
+          <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <button aria-label="Jump to message" class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 text-xs transition">
+              <i data-lucide="arrow-right" class="w-3 h-3"></i> Jump
+            </button>
+            <button aria-label="Remove bookmark" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-500 hover:text-red-400 transition">
+              <i data-lucide="bookmark-x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-8 h-8 rounded-lg bg-slate-700 shrink-0" />
+          <div>
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-sm font-semibold text-slate-100">Bob Martinez</span>
+              <span class="text-xs text-slate-500">Today at 9:05 AM</span>
+            </div>
+            <p class="text-sm text-slate-300">The new API rate limiting is deployed to staging. We're handling 10k req/s with p99 latency under 50ms. Ready for load testing — can someone spin up k6 on the CI runner?</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- File Bookmark -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition group">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-400 text-[11px] font-semibold">FILE</span>
+            <span class="text-xs text-slate-500"># design</span>
+          </div>
+          <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <button aria-label="Download" class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 text-xs transition">
+              <i data-lucide="download" class="w-3 h-3"></i> Download
+            </button>
+            <button aria-label="Remove bookmark" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-500 hover:text-red-400 transition">
+              <i data-lucide="bookmark-x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-fuchsia-900 to-pink-950 flex items-center justify-center shrink-0">
+            <i data-lucide="pen-tool" class="w-7 h-7 text-fuchsia-400"></i>
+          </div>
+          <div>
+            <p class="font-medium text-slate-100">nexus-design-system.fig</p>
+            <p class="text-sm text-slate-400 mt-0.5">12.8 MB · Figma</p>
+            <div class="flex items-center gap-1.5 mt-1.5">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="" class="w-4 h-4 rounded-full bg-slate-700" />
+              <span class="text-xs text-slate-500">Alice Chen · 4 days ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Date group -->
+      <div class="flex items-center gap-3 py-1 mt-2">
+        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Yesterday</span>
+        <div class="flex-1 h-px bg-slate-800"></div>
+      </div>
+
+      <!-- Link Bookmark 1 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition group">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[11px] font-semibold">LINK</span>
+            <span class="text-xs text-slate-500"># general</span>
+          </div>
+          <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <a href="#" class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 text-xs transition">
+              <i data-lucide="external-link" class="w-3 h-3"></i> Open
+            </a>
+            <button aria-label="Remove bookmark" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-500 hover:text-red-400 transition">
+              <i data-lucide="bookmark-x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-lg bg-orange-900/40 flex items-center justify-center shrink-0 text-orange-400 font-bold text-sm">M</div>
+          <div>
+            <p class="font-medium text-slate-100">Tailwind CSS v4 Migration Guide</p>
+            <p class="text-sm text-slate-400 mt-0.5">tailwindcss.com/docs/upgrade-guide</p>
+            <p class="text-xs text-slate-500 mt-1">Shared by David Kim · Yesterday at 3:42 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Bookmark 3 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition group">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-400 text-[11px] font-semibold">MESSAGE</span>
+            <span class="text-xs text-slate-500"># product</span>
+          </div>
+          <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <button aria-label="Jump to message" class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 text-xs transition">
+              <i data-lucide="arrow-right" class="w-3 h-3"></i> Jump
+            </button>
+            <button aria-label="Remove bookmark" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-500 hover:text-red-400 transition">
+              <i data-lucide="bookmark-x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-8 h-8 rounded-lg bg-slate-700 shrink-0" />
+          <div>
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-sm font-semibold text-slate-100">Carol Wu</span>
+              <span class="text-xs text-slate-500">Yesterday at 2:15 PM</span>
+            </div>
+            <p class="text-sm text-slate-300">Updated the Q4 roadmap based on user research findings. We're prioritizing the notification center, file search, and team directory features. Pushing back the AI summarization to Q1.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- File Bookmark 2 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition group">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-400 text-[11px] font-semibold">FILE</span>
+            <span class="text-xs text-slate-500"># general</span>
+          </div>
+          <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <button aria-label="Download" class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 text-xs transition">
+              <i data-lucide="download" class="w-3 h-3"></i> Download
+            </button>
+            <button aria-label="Remove bookmark" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-500 hover:text-red-400 transition">
+              <i data-lucide="bookmark-x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-900 to-rose-950 flex items-center justify-center shrink-0">
+            <i data-lucide="file-text" class="w-7 h-7 text-red-400"></i>
+          </div>
+          <div>
+            <p class="font-medium text-slate-100">Q4-Report-2024.pdf</p>
+            <p class="text-sm text-slate-400 mt-0.5">2.4 MB · PDF</p>
+            <div class="flex items-center gap-1.5 mt-1.5">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="" class="w-4 h-4 rounded-full bg-slate-700" />
+              <span class="text-xs text-slate-500">Carol Wu · 2h ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Date group -->
+      <div class="flex items-center gap-3 py-1 mt-2">
+        <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">This Week</span>
+        <div class="flex-1 h-px bg-slate-800"></div>
+      </div>
+
+      <!-- Link Bookmark 2 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition group">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[11px] font-semibold">LINK</span>
+            <span class="text-xs text-slate-500"># engineering</span>
+          </div>
+          <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <a href="#" class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 text-xs transition">
+              <i data-lucide="external-link" class="w-3 h-3"></i> Open
+            </a>
+            <button aria-label="Remove bookmark" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-500 hover:text-red-400 transition">
+              <i data-lucide="bookmark-x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-lg bg-blue-900/40 flex items-center justify-center shrink-0 text-blue-400 font-bold text-sm">G</div>
+          <div>
+            <p class="font-medium text-slate-100">Building Scalable WebSocket Architecture with Node.js</p>
+            <p class="text-sm text-slate-400 mt-0.5">medium.com/@engineering/websocket-scale</p>
+            <p class="text-xs text-slate-500 mt-1">Shared by Bob Martinez · Wed at 11:22 AM</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Message Bookmark 4 -->
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition group">
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-400 text-[11px] font-semibold">MESSAGE</span>
+            <span class="text-xs text-slate-500"># general</span>
+          </div>
+          <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+            <button aria-label="Jump to message" class="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-slate-100 text-xs transition">
+              <i data-lucide="arrow-right" class="w-3 h-3"></i> Jump
+            </button>
+            <button aria-label="Remove bookmark" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-500 hover:text-red-400 transition">
+              <i data-lucide="bookmark-x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-8 h-8 rounded-lg bg-slate-700 shrink-0" />
+          <div>
+            <div class="flex items-baseline gap-2 mb-1">
+              <span class="text-sm font-semibold text-slate-100">Mike Johnson</span>
+              <span class="text-xs text-slate-500">Tuesday at 8:00 AM</span>
+            </div>
+            <p class="text-sm text-slate-300">🚀 Big news — we've just crossed 10,000 active workspaces! That's 10x growth in 6 months. Huge props to every single person on this team. Let's keep the momentum going into Q4!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+document.querySelectorAll('.bm-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.bm-filter').forEach(b => { b.classList.remove('bg-violet-600/20','text-violet-300'); b.classList.add('text-slate-400'); });
+    btn.classList.add('bg-violet-600/20','text-violet-300'); btn.classList.remove('text-slate-400');
+  });
+});
+</script>
+</body>
+</html>

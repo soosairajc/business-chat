@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Threads — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+
+<div class="flex h-full overflow-hidden">
+
+  <!-- ─── Icon Rail ───────────────────────────────────────────── -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button data-dropdown-trigger="ws-dropdown" class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Switch workspace" aria-haspopup="true">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div id="ws-dropdown" data-dropdown class="hidden absolute left-14 top-3 z-50 w-64 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
+      <div class="px-3 py-2 border-b border-slate-700 mb-1">
+        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Workspaces</p>
+      </div>
+      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shrink-0"><span class="text-white font-bold text-xs">N</span></div>
+        <div><p class="text-sm font-semibold text-slate-100">Nexus HQ</p><p class="text-xs text-slate-400">nexus-hq.com · 48 members</p></div>
+        <i data-lucide="check" class="w-4 h-4 text-violet-400 ml-auto"></i>
+      </button>
+      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center shrink-0"><span class="text-white font-bold text-xs">D</span></div>
+        <div><p class="text-sm font-semibold text-slate-100">Design Studio</p><p class="text-xs text-slate-400">design.io · 12 members</p></div>
+      </button>
+      <div class="border-t border-slate-700 mt-1 pt-1">
+        <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left text-sm text-slate-400">
+          <div class="w-8 h-8 rounded-lg border-2 border-dashed border-slate-600 flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4"></i></div>
+          Add a workspace
+        </button>
+      </div>
+    </div>
+
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+
+    <a href="/" aria-label="Home" data-tooltip="Home" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="home" class="w-4 h-4"></i>
+    </a>
+    <a href="/pages/threads.html" aria-label="Threads" data-tooltip="Threads" class="group w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition relative">
+      <i data-lucide="message-square-text" class="w-4 h-4"></i>
+      <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-violet-600 text-white text-[9px] font-bold flex items-center justify-center">4</span>
+    </a>
+    <a href="/pages/notifications.html" aria-label="Mentions" data-tooltip="Mentions &amp; Reactions" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="at-sign" class="w-4 h-4"></i>
+    </a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" data-tooltip="Direct Messages" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition relative">
+      <i data-lucide="message-circle" class="w-4 h-4"></i>
+      <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-red-500 text-white text-[9px] font-bold flex items-center justify-center">3</span>
+    </a>
+    <a href="/pages/calls.html" aria-label="Calls" data-tooltip="Calls" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="phone" class="w-4 h-4"></i>
+    </a>
+    <a href="/pages/files.html" aria-label="Files" data-tooltip="Files" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="folder" class="w-4 h-4"></i>
+    </a>
+    <a href="/pages/team-directory.html" aria-label="Team" data-tooltip="Team Directory" class="group w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="users" class="w-4 h-4"></i>
+    </a>
+
+    <div class="flex-1"></div>
+
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" data-tooltip="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="sun" data-theme-icon class="w-4 h-4"></i>
+    </button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" data-tooltip="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="align-right" data-dir-icon class="w-4 h-4"></i>
+    </button>
+    <a href="/pages/settings.html" aria-label="Settings" data-tooltip="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="settings" class="w-4 h-4"></i>
+    </a>
+    <button data-dropdown-trigger="profile-rail-dd" aria-label="Your profile" class="relative mt-1">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div id="profile-rail-dd" data-dropdown class="hidden absolute left-14 bottom-3 z-50 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
+      <div class="flex items-center gap-3 px-3 py-2 border-b border-slate-700 mb-1">
+        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="" class="w-8 h-8 rounded-lg bg-slate-700" />
+        <div><p class="text-sm font-semibold text-slate-100">You</p><p class="text-xs text-green-400">● Active</p></div>
+      </div>
+      <a href="/pages/profile.html" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300"><i data-lucide="user" class="w-4 h-4 opacity-60"></i>View Profile</a>
+      <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Set Status</button>
+      <a href="/pages/settings.html" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300"><i data-lucide="settings" class="w-4 h-4 opacity-60"></i>Preferences</a>
+      <div class="border-t border-slate-700 my-1"></div>
+      <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Sign Out</button>
+    </div>
+  </nav>
+
+  <!-- ─── Thread List Panel ────────────────────────────────────── -->
+  <aside id="thread-list-panel" aria-label="Thread list" class="flex flex-col w-80 shrink-0 bg-slate-900 border-r border-slate-800 overflow-hidden">
+
+    <!-- Header -->
+    <div class="flex items-center gap-2 px-4 py-3.5 border-b border-slate-800 shrink-0">
+      <h1 class="text-sm font-bold text-slate-100 flex-1">Threads</h1>
+      <button aria-label="Filter threads" data-dropdown-trigger="thread-filter-dd" class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 hover:bg-slate-800 px-2.5 py-1.5 rounded-lg transition border border-slate-700">
+        <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
+        Filter
+        <i data-lucide="chevron-down" class="w-3 h-3"></i>
+      </button>
+      <div id="thread-filter-dd" data-dropdown class="hidden absolute right-4 top-14 z-50 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in text-sm">
+        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check" class="w-4 h-4 text-violet-400"></i>All channels</button>
+        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><span class="w-4 h-4"></span>#general</button>
+        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><span class="w-4 h-4"></span>#design</button>
+        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><span class="w-4 h-4"></span>#engineering</button>
+        <div class="border-t border-slate-700 my-1"></div>
+        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="sort-desc" class="w-4 h-4 opacity-60"></i>Newest first</button>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex items-center border-b border-slate-800 px-3 shrink-0 gap-1">
+      <button data-thread-tab="all" onclick="switchThreadTab('all',this)" class="thread-tab-btn text-xs font-medium py-2.5 px-2.5 border-b-2 border-violet-400 text-violet-400 transition whitespace-nowrap">All</button>
+      <button data-thread-tab="unreplied" onclick="switchThreadTab('unreplied',this)" class="thread-tab-btn text-xs font-medium py-2.5 px-2.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition whitespace-nowrap">Unreplied</button>
+      <button data-thread-tab="following" onclick="switchThreadTab('following',this)" class="thread-tab-btn text-xs font-medium py-2.5 px-2.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition whitespace-nowrap">Following</button>
+      <button data-thread-tab="mentions" onclick="switchThreadTab('mentions',this)" class="thread-tab-btn text-xs font-medium py-2.5 px-2.5 border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition whitespace-nowrap">Mentions <span class="ml-1 text-[9px] bg-violet-600/30 text-violet-400 px-1.5 py-0.5 rounded-full font-bold">2</span></button>
+    </div>
+
+    <!-- Thread Items -->
+    <div class="flex-1 overflow-y-auto py-2 space-y-px">
+
+      <!-- Thread 1 — Active (API endpoint) -->
+      <button onclick="activateThread('thread-1')" id="tl-thread-1" class="thread-list-item w-full text-left px-3 py-3 hover:bg-slate-800/60 transition rounded-xl mx-1 bg-slate-800 relative" style="width:calc(100% - 8px)">
+        <div class="flex items-center gap-1.5 mb-1.5">
+          <span class="text-[10px] font-semibold text-slate-500 bg-slate-700/60 px-1.5 py-0.5 rounded">#engineering</span>
+          <span class="ml-auto text-[10px] text-slate-500">2:15 PM</span>
+          <span class="w-2 h-2 rounded-full bg-violet-400 shrink-0" title="Unread"></span>
+        </div>
+        <div class="flex items-start gap-2 mb-2">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob" class="w-6 h-6 rounded-full bg-slate-700 shrink-0 mt-0.5" />
+          <p class="text-xs text-slate-300 leading-relaxed line-clamp-2"><span class="font-semibold text-slate-200">Bob Martinez:</span> Just deployed the new API endpoint. Here's the endpoint structure for review — GET /api/v2/channels/:id/messages</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex -space-x-1.5">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+          </div>
+          <span class="text-[11px] text-violet-400 font-medium">5 replies</span>
+          <span class="text-[10px] text-slate-500 truncate ml-auto">Carol: Looks solid 👍</span>
+        </div>
+      </button>
+
+      <!-- Thread 2 — Design review -->
+      <button onclick="activateThread('thread-2')" id="tl-thread-2" class="thread-list-item w-full text-left px-3 py-3 hover:bg-slate-800/60 transition rounded-xl mx-1 relative" style="width:calc(100% - 8px)">
+        <div class="flex items-center gap-1.5 mb-1.5">
+          <span class="text-[10px] font-semibold text-slate-500 bg-slate-700/60 px-1.5 py-0.5 rounded">#design</span>
+          <span class="ml-auto text-[10px] text-slate-500">1:40 PM</span>
+        </div>
+        <div class="flex items-start gap-2 mb-2">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-6 h-6 rounded-full bg-slate-700 shrink-0 mt-0.5" />
+          <p class="text-xs text-slate-300 leading-relaxed line-clamp-2"><span class="font-semibold text-slate-200">Alice Chen:</span> Good morning team! Just pushed the updated design specs. Please take a look — especially the new component library updates.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex -space-x-1.5">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+          </div>
+          <span class="text-[11px] text-slate-400 font-medium">3 replies</span>
+          <span class="text-[10px] text-slate-500 truncate ml-auto">Sarah: Glassmorphism FTW ✨</span>
+        </div>
+      </button>
+
+      <!-- Thread 3 — Q3 Deck (mention) -->
+      <button onclick="activateThread('thread-3')" id="tl-thread-3" class="thread-list-item w-full text-left px-3 py-3 hover:bg-slate-800/60 bg-amber-500/5 border-l-2 border-amber-500/40 transition rounded-xl mx-1 relative" style="width:calc(100% - 8px)">
+        <div class="flex items-center gap-1.5 mb-1.5">
+          <span class="text-[10px] font-semibold text-slate-500 bg-slate-700/60 px-1.5 py-0.5 rounded">#general</span>
+          <span class="text-[10px] font-semibold text-amber-500 bg-amber-900/30 px-1.5 py-0.5 rounded">@mentioned</span>
+          <span class="ml-auto text-[10px] text-slate-500">10:47 AM</span>
+          <span class="w-2 h-2 rounded-full bg-violet-400 shrink-0" title="Unread"></span>
+        </div>
+        <div class="flex items-start gap-2 mb-2">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike" class="w-6 h-6 rounded-full bg-slate-700 shrink-0 mt-0.5" />
+          <p class="text-xs text-slate-300 leading-relaxed line-clamp-2"><span class="font-semibold text-slate-200">Mike Johnson:</span> <span class="mention">@you</span> can you update the roadmap doc before the 4 PM call? Need the Q4 preview section done.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex -space-x-1.5">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+          </div>
+          <span class="text-[11px] text-violet-400 font-medium">2 replies</span>
+          <span class="text-[10px] text-slate-500 truncate ml-auto">You: On it! 🚀</span>
+        </div>
+      </button>
+
+      <!-- Thread 4 — Voice note -->
+      <button onclick="activateThread('thread-4')" id="tl-thread-4" class="thread-list-item w-full text-left px-3 py-3 hover:bg-slate-800/60 transition rounded-xl mx-1 relative" style="width:calc(100% - 8px)">
+        <div class="flex items-center gap-1.5 mb-1.5">
+          <span class="text-[10px] font-semibold text-slate-500 bg-slate-700/60 px-1.5 py-0.5 rounded">#general</span>
+          <span class="ml-auto text-[10px] text-slate-500">Yesterday</span>
+        </div>
+        <div class="flex items-start gap-2 mb-2">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya" class="w-6 h-6 rounded-full bg-slate-700 shrink-0 mt-0.5" />
+          <p class="text-xs text-slate-300 leading-relaxed line-clamp-2"><span class="font-semibold text-slate-200">Priya Sharma:</span> Voice note for the standup catch-up 🎙️ <span class="text-slate-500">[1:04 audio]</span></p>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex -space-x-1.5">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+          </div>
+          <span class="text-[11px] text-slate-400 font-medium">4 replies</span>
+          <span class="text-[10px] text-slate-500 truncate ml-auto">Bob: Great summary!</span>
+        </div>
+      </button>
+
+      <!-- Thread 5 — Product question -->
+      <button onclick="activateThread('thread-5')" id="tl-thread-5" class="thread-list-item w-full text-left px-3 py-3 hover:bg-slate-800/60 transition rounded-xl mx-1 relative" style="width:calc(100% - 8px)">
+        <div class="flex items-center gap-1.5 mb-1.5">
+          <span class="text-[10px] font-semibold text-slate-500 bg-slate-700/60 px-1.5 py-0.5 rounded">#product</span>
+          <span class="ml-auto text-[10px] text-slate-500">Yesterday</span>
+        </div>
+        <div class="flex items-start gap-2 mb-2">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol" class="w-6 h-6 rounded-full bg-slate-700 shrink-0 mt-0.5" />
+          <p class="text-xs text-slate-300 leading-relaxed line-clamp-2"><span class="font-semibold text-slate-200">Carol Wu:</span> Are we going with glassmorphism style for the modals or keeping it flat? Needs a decision before next sprint.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex -space-x-1.5">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+          </div>
+          <span class="text-[11px] text-slate-400 font-medium">7 replies</span>
+          <span class="text-[10px] text-slate-500 truncate ml-auto">Mike: Glass it up! 🪟</span>
+        </div>
+      </button>
+
+      <!-- Thread 6 — Marketing campaign -->
+      <button onclick="activateThread('thread-6')" id="tl-thread-6" class="thread-list-item w-full text-left px-3 py-3 hover:bg-slate-800/60 transition rounded-xl mx-1 relative" style="width:calc(100% - 8px)">
+        <div class="flex items-center gap-1.5 mb-1.5">
+          <span class="text-[10px] font-semibold text-slate-500 bg-slate-700/60 px-1.5 py-0.5 rounded">#marketing</span>
+          <span class="ml-auto text-[10px] text-slate-500">Mon</span>
+        </div>
+        <div class="flex items-start gap-2 mb-2">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David" class="w-6 h-6 rounded-full bg-slate-700 shrink-0 mt-0.5" />
+          <p class="text-xs text-slate-300 leading-relaxed line-clamp-2"><span class="font-semibold text-slate-200">David Kim:</span> Q3 campaign metrics are looking 🔥 — 42% increase in trial signups vs last quarter. Full report attached.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex -space-x-1.5">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+          </div>
+          <span class="text-[11px] text-slate-400 font-medium">6 replies</span>
+          <span class="text-[10px] text-slate-500 truncate ml-auto">Mike: Outstanding work! 🎉</span>
+        </div>
+      </button>
+
+      <!-- Thread 7 — DevOps -->
+      <button onclick="activateThread('thread-7')" id="tl-thread-7" class="thread-list-item w-full text-left px-3 py-3 hover:bg-slate-800/60 transition rounded-xl mx-1 relative" style="width:calc(100% - 8px)">
+        <div class="flex items-center gap-1.5 mb-1.5">
+          <span class="text-[10px] font-semibold text-slate-500 bg-slate-700/60 px-1.5 py-0.5 rounded">#engineering</span>
+          <span class="ml-auto text-[10px] text-slate-500">Mon</span>
+        </div>
+        <div class="flex items-start gap-2 mb-2">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=tom" alt="Tom" class="w-6 h-6 rounded-full bg-slate-700 shrink-0 mt-0.5" />
+          <p class="text-xs text-slate-300 leading-relaxed line-clamp-2"><span class="font-semibold text-slate-200">Tom Wilson:</span> CI/CD pipeline fully migrated to GitHub Actions. Build times dropped from 14 min to 4 min ✅</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex -space-x-1.5">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya" class="w-5 h-5 rounded-full bg-slate-700 border border-slate-900" />
+          </div>
+          <span class="text-[11px] text-slate-400 font-medium">3 replies</span>
+          <span class="text-[10px] text-slate-500 truncate ml-auto">Bob: Massive improvement!</span>
+        </div>
+      </button>
+
+      <!-- Thread 8 — Unreplied -->
+      <button onclick="activateThread('thread-8')" id="tl-thread-8" class="thread-list-item w-full text-left px-3 py-3 hover:bg-slate-800/60 transition rounded-xl mx-1 relative" style="width:calc(100% - 8px)">
+        <div class="flex items-center gap-1.5 mb-1.5">
+          <span class="text-[10px] font-semibold text-slate-500 bg-slate-700/60 px-1.5 py-0.5 rounded">#design</span>
+          <span class="text-[10px] font-semibold text-slate-500 bg-slate-800 border border-slate-700 px-1.5 py-0.5 rounded">No replies yet</span>
+          <span class="ml-auto text-[10px] text-slate-500">Sun</span>
+        </div>
+        <div class="flex items-start gap-2 mb-2">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah" class="w-6 h-6 rounded-full bg-slate-700 shrink-0 mt-0.5" />
+          <p class="text-xs text-slate-300 leading-relaxed line-clamp-2"><span class="font-semibold text-slate-200">Sarah Lee:</span> Should we update the icon library to Lucide 3.x? New icons are 🔥 and the API is cleaner.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] text-slate-500 italic">Be the first to reply…</span>
+        </div>
+      </button>
+
+    </div>
+  </aside>
+
+  <!-- ─── Thread Detail Panel ──────────────────────────────────── -->
+  <main class="flex flex-col flex-1 min-w-0 bg-slate-950 overflow-hidden">
+
+    <!-- Thread Header -->
+    <header class="flex items-center gap-3 px-4 py-3 bg-slate-900/80 backdrop-blur border-b border-slate-800 shrink-0">
+      <div class="flex items-center gap-2 min-w-0 flex-1">
+        <i data-lucide="message-square-text" class="w-4 h-4 text-violet-400 shrink-0"></i>
+        <div class="min-w-0">
+          <h2 class="font-bold text-slate-100 text-sm">Thread in <span class="text-violet-400">#engineering</span></h2>
+          <p class="text-xs text-slate-500">5 participants · Last reply 2:15 PM</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1">
+        <!-- Participant avatars -->
+        <div class="hidden sm:flex -space-x-1.5 mr-1">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob" class="w-6 h-6 rounded-full bg-slate-700 border border-slate-900" />
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-6 h-6 rounded-full bg-slate-700 border border-slate-900" />
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol" class="w-6 h-6 rounded-full bg-slate-700 border border-slate-900" />
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya" class="w-6 h-6 rounded-full bg-slate-700 border border-slate-900" />
+          <div class="w-6 h-6 rounded-full bg-slate-700 border border-slate-900 flex items-center justify-center"><span class="text-[8px] text-slate-300 font-bold">+1</span></div>
+        </div>
+        <button aria-label="Search in thread" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+          <i data-lucide="search" class="w-4 h-4"></i>
+        </button>
+        <button aria-label="More options" data-dropdown-trigger="thread-detail-dd" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+          <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+        </button>
+        <div id="thread-detail-dd" data-dropdown class="hidden absolute right-4 top-14 z-50 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in text-sm">
+          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i>Follow Thread</button>
+          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="copy" class="w-4 h-4 opacity-60"></i>Copy Link</button>
+          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bookmark" class="w-4 h-4 opacity-60"></i>Bookmark</button>
+          <div class="border-t border-slate-700 my-1"></div>
+          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="bell-off" class="w-4 h-4 opacity-60"></i>Mute Thread</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Thread Content (scrollable) -->
+    <div id="thread-detail-list" class="flex-1 overflow-y-auto py-6 px-4 space-y-0.5">
+
+      <!-- Original Message (larger) -->
+      <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-5 mb-2">
+        <div class="flex items-start gap-3 mb-3">
+          <button class="shrink-0" aria-label="Bob's profile">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-10 h-10 rounded-xl bg-slate-700" />
+          </button>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-baseline gap-2 mb-1">
+              <button class="text-sm font-bold text-slate-100 hover:underline">Bob Martinez</button>
+              <span class="text-xs text-slate-500">Today at 9:28 AM</span>
+              <span class="text-xs bg-emerald-900/40 text-emerald-400 px-1.5 py-0.5 rounded font-medium">Engineer</span>
+              <span class="text-xs text-violet-400 ml-auto"># engineering</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed mb-3">Hey team, just deployed the new API endpoint. Here's the endpoint structure for review:</p>
+            <div class="code-block p-3 rounded-xl overflow-x-auto">
+              <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-700">
+                <span class="text-xs text-slate-500 font-medium">JavaScript</span>
+                <button onclick="window.NexusComponents?.toast('Copied!','success',2000)" class="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1 transition"><i data-lucide="copy" class="w-3 h-3"></i>Copy</button>
+              </div>
+              <pre class="text-slate-300 text-xs leading-relaxed overflow-x-auto"><code>GET /api/v2/channels/:id/messages
+Authorization: Bearer &lt;token&gt;
+
+// Response
+{
+  "messages": [...],
+  "cursor": "eyJpZCI6Mj...",
+  "has_more": true
+}</code></pre>
+            </div>
+            <!-- Reactions on original -->
+            <div class="flex flex-wrap gap-1 mt-3">
+              <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition reaction-active text-violet-300 border-violet-700 bg-violet-900/30">
+                🚀 <span data-count>5</span>
+              </button>
+              <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition">
+                👍 <span data-count>3</span>
+              </button>
+              <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition">
+                👀 <span data-count>2</span>
+              </button>
+              <button class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-400 transition">
+                <i data-lucide="smile-plus" class="w-3 h-3"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Replies divider -->
+      <div class="flex items-center gap-3 py-2 mb-2">
+        <div class="flex-1 h-px bg-slate-800"></div>
+        <span class="text-xs font-semibold text-slate-500 px-2 py-0.5 rounded-full border border-slate-800 bg-slate-900">5 replies</span>
+        <div class="flex-1 h-px bg-slate-800"></div>
+      </div>
+
+      <!-- Reply 1 — Alice -->
+      <div class="message-row group relative flex gap-3 px-2 py-1.5 hover:bg-slate-800/40 rounded-xl transition">
+        <button class="shrink-0 mt-0.5" aria-label="Alice's profile">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">Alice Chen</button>
+            <span class="text-xs text-slate-500">9:33 AM</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Nice! I tested the cursor-based pagination — works great. One thing: should we add rate limiting headers to the response? Something like <code class="bg-slate-800 px-1 rounded text-violet-300 text-xs">X-RateLimit-Remaining</code>.</p>
+          <div class="flex flex-wrap gap-1 mt-1.5">
+            <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition">
+              💡 <span data-count>2</span>
+            </button>
+          </div>
+        </div>
+        <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- Reply 2 — Bob -->
+      <div class="message-row group relative flex gap-3 px-2 py-0.5 hover:bg-slate-800/40 rounded-xl transition">
+        <div class="w-9 shrink-0 flex justify-end pt-1"><span class="text-[10px] text-slate-600 opacity-0 group-hover:opacity-100 transition">9:41</span></div>
+        <div class="flex-1 min-w-0">
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Great call <span class="mention">@Alice</span>! I'll add the rate limit headers in the next commit. Also adding <code class="bg-slate-800 px-1 rounded text-violet-300 text-xs">X-Request-ID</code> for tracing.</p>
+        </div>
+        <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- Reply 3 — Carol -->
+      <div class="message-row group relative flex gap-3 px-2 py-1.5 hover:bg-slate-800/40 rounded-xl transition">
+        <button class="shrink-0 mt-0.5" aria-label="Carol's profile">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">Carol Wu</button>
+            <span class="text-xs text-slate-500">9:45 AM</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Tested on the iOS client — responses are fast! Looks solid 👍 Can we also document the error codes? I saw a few undocumented 4xx responses in the staging logs.</p>
+          <div class="flex flex-wrap gap-1 mt-1.5">
+            <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition">
+              👍 <span data-count>3</span>
+            </button>
+          </div>
+        </div>
+        <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- Reply 4 — Priya -->
+      <div class="message-row group relative flex gap-3 px-2 py-1.5 hover:bg-slate-800/40 rounded-xl transition">
+        <button class="shrink-0 mt-0.5" aria-label="Priya's profile">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">Priya Sharma</button>
+            <span class="text-xs text-slate-500">10:12 AM</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Added the endpoint to the Postman collection and shared with the team. Also set up an automated smoke test in the CI pipeline — it runs on every PR now 🎯</p>
+          <!-- File attachment in reply -->
+          <div class="flex items-center gap-3 bg-slate-800 border border-slate-700 rounded-xl p-3 max-w-sm mt-2 hover:border-slate-600 transition">
+            <div class="w-8 h-8 rounded-lg bg-orange-900/40 flex items-center justify-center shrink-0">
+              <i data-lucide="file-code-2" class="w-4 h-4 text-orange-400"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-medium text-slate-200 truncate">API-v2-Postman-Collection.json</p>
+              <p class="text-[10px] text-slate-500">48 KB · JSON · 10:12 AM</p>
+            </div>
+            <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition shrink-0" aria-label="Download">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+        <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+      <!-- Reply 5 — Latest (unread) -->
+      <div class="flex items-center gap-3 px-2 py-1">
+        <div class="flex-1 h-px bg-red-500/40"></div>
+        <span class="text-xs font-medium text-red-400 px-2 py-0.5 rounded-full border border-red-500/30 bg-red-900/20">New</span>
+        <div class="flex-1 h-px bg-red-500/40"></div>
+      </div>
+
+      <div class="message-row group relative flex gap-3 px-2 py-1.5 hover:bg-slate-800/40 rounded-xl transition bg-amber-500/5 border-l-2 border-amber-500/20">
+        <button class="shrink-0 mt-0.5" aria-label="Bob's profile">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-9 h-9 rounded-xl bg-slate-700" />
+        </button>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 mb-1">
+            <button class="text-sm font-semibold text-slate-100 hover:underline">Bob Martinez</button>
+            <span class="text-xs text-slate-500">2:15 PM</span>
+            <span class="text-[10px] font-medium text-emerald-400 ml-auto">Latest</span>
+          </div>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Updated with rate-limit headers and full error code docs in the wiki. Sending to QA now — <span class="mention">@Carol</span> and <span class="mention">@Priya</span> can you run regression on your end? 🙏</p>
+          <div class="flex flex-wrap gap-1 mt-1.5">
+            <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition">
+              🙌 <span data-count>2</span>
+            </button>
+            <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition reaction-active text-violet-300 border-violet-700 bg-violet-900/30">
+              ✅ <span data-count>1</span>
+            </button>
+          </div>
+        </div>
+        <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+        </div>
+      </div>
+
+    </div><!-- /thread-detail-list -->
+
+    <!-- Thread Composer -->
+    <div class="shrink-0 px-4 pb-4 pt-2">
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl focus-within:border-violet-500/60 focus-within:ring-1 focus-within:ring-violet-500/20 transition">
+        <div class="flex items-end gap-2 px-4 py-3">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-7 h-7 rounded-xl bg-slate-700 shrink-0 self-start mt-0.5" />
+          <div class="flex-1">
+            <textarea
+              id="thread-composer-input"
+              data-auto-resize
+              rows="1"
+              placeholder="Reply to thread…"
+              aria-label="Reply to thread"
+              class="w-full bg-transparent text-sm text-slate-100 placeholder-slate-500 focus:outline-none resize-none leading-relaxed max-h-40"
+            ></textarea>
+          </div>
+        </div>
+        <div class="flex items-center gap-1 px-3 pb-2.5">
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Emoji"><i data-lucide="smile" class="w-4 h-4"></i></button>
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Mention"><i data-lucide="at-sign" class="w-4 h-4"></i></button>
+          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Code block"><i data-lucide="code" class="w-4 h-4"></i></button>
+          <div class="flex-1"></div>
+          <span class="text-xs text-slate-600 hidden sm:block mr-1">
+            <kbd class="px-1 py-0.5 rounded bg-slate-700 text-slate-400 font-mono text-[10px]">Enter</kbd> to reply
+          </span>
+          <button id="thread-send-btn" aria-label="Send reply" onclick="sendThreadReply()" class="w-8 h-8 rounded-xl bg-violet-600 hover:bg-violet-500 active:scale-95 transition flex items-center justify-center">
+            <i data-lucide="send" class="w-3.5 h-3.5 text-white"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</div><!-- /app shell -->
+
+<script type="module" src="/js/app.js"></script>
+<script>
+  function switchThreadTab(tab, btn) {
+    document.querySelectorAll('.thread-tab-btn').forEach(b => {
+      b.classList.remove('border-violet-400','text-violet-400');
+      b.classList.add('border-transparent','text-slate-400');
+    });
+    btn.classList.add('border-violet-400','text-violet-400');
+    btn.classList.remove('border-transparent','text-slate-400');
+  }
+
+  function activateThread(id) {
+    document.querySelectorAll('.thread-list-item').forEach(el => {
+      el.classList.remove('bg-slate-800');
+      el.classList.add('hover:bg-slate-800/60');
+    });
+    const btn = document.getElementById('tl-' + id);
+    if (btn) {
+      btn.classList.add('bg-slate-800');
+      btn.classList.remove('hover:bg-slate-800/60');
+    }
+  }
+
+  function sendThreadReply() {
+    const input = document.getElementById('thread-composer-input');
+    const text = input?.value.trim();
+    if (!text) return;
+    const list = document.getElementById('thread-detail-list');
+    const time = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    const row = document.createElement('div');
+    row.className = 'message-row group relative flex gap-3 px-2 py-1.5 hover:bg-slate-800/40 rounded-xl transition fade-in';
+    row.innerHTML = `
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-slate-700" />
+      <div class="flex-1 min-w-0">
+        <div class="flex items-baseline gap-2 mb-1">
+          <span class="text-sm font-semibold text-slate-100">You</span>
+          <span class="text-xs text-slate-500">${time}</span>
+        </div>
+        <p class="msg-body text-sm text-slate-300 leading-relaxed">${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>
+      </div>
+      <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
+        <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+        <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+      </div>
+    `;
+    list.appendChild(row);
+    input.value = '';
+    input.style.height = 'auto';
+    list.scrollTop = list.scrollHeight;
+    if (window.lucide) lucide.createIcons();
+    window.NexusComponents?.toast('Reply sent!','success',2000);
+  }
+
+  document.getElementById('thread-composer-input')?.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendThreadReply(); }
+  });
+</script>
+<script>window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });</script>
+</body>
+</html>

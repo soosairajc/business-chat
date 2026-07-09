@@ -1,21 +1,110 @@
 @import "tailwindcss";
 
-/* Auto-grow textarea */
-textarea {
-  field-sizing: content;
+/* Class-based dark mode (toggled via JS adding .dark to <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Google Font ────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─── Base ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #4B5563; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #6B7280; }
+
+/* ─── Glassmorphism ──────────────────────────────────────────── */
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
 }
-::-webkit-scrollbar-track {
-  background: transparent;
+.glass-light {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.08);
 }
-::-webkit-scrollbar-thumb {
-  background: #374151;
-  border-radius: 9999px;
+
+/* ─── Textarea auto-grow ─────────────────────────────────────── */
+textarea { field-sizing: content; }
+
+/* ─── Transitions ────────────────────────────────────────────── */
+.sidebar-transition { transition: width 0.25s cubic-bezier(0.4,0,0.2,1); }
+.fade-in { animation: fadeIn 0.15s ease-out; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+
+.slide-in-right { animation: slideInRight 0.2s ease-out; }
+@keyframes slideInRight { from { opacity:0; transform:translateX(16px); } to { opacity:1; transform:translateX(0); } }
+
+/* ─── Message hover actions ──────────────────────────────────── */
+.message-row:hover .message-actions { opacity: 1; pointer-events: auto; }
+.message-actions { opacity: 0; pointer-events: none; transition: opacity 0.1s; }
+
+/* ─── Code blocks ────────────────────────────────────────────── */
+.code-block {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.6;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #4B5563;
+
+/* ─── Tooltip ────────────────────────────────────────────────── */
+[data-tooltip] { position: relative; }
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%; top: calc(100% + 6px);
+  transform: translateX(-50%);
+  background: #1e293b;
+  color: #e2e8f0;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 5px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 9999;
 }
+[data-tooltip]:hover::after { opacity: 1; }
+
+/* ─── Toast ──────────────────────────────────────────────────── */
+#toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+
+/* ─── Modal backdrop ─────────────────────────────────────────── */
+.modal-backdrop { background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); }
+
+/* ─── Mention highlight ──────────────────────────────────────── */
+.mention { color: #8b5cf6; background: rgba(139,92,246,0.12); padding: 1px 4px; border-radius: 4px; font-weight: 500; }
+
+/* ─── Skeleton loader ────────────────────────────────────────── */
+.skeleton { background: linear-gradient(90deg, #1e293b 25%, #2d3748 50%, #1e293b 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 6px; }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+/* ─── Typing indicator ───────────────────────────────────────── */
+.typing-dot { animation: typingBounce 1.2s ease-in-out infinite; }
+.typing-dot:nth-child(1) { animation-delay: 0s; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+
+/* ─── Channel list collapse ──────────────────────────────────── */
+.channel-group-content { overflow: hidden; transition: height 0.2s ease; }
+
+/* ─── RTL overrides ──────────────────────────────────────────── */
+[dir="rtl"] .rtl-flip { transform: scaleX(-1); }
