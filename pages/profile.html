@@ -52,12 +52,12 @@
     <!-- Cover + Avatar -->
     <div class="relative">
       <!-- Cover Image -->
-      <div class="h-48 md:h-64 bg-gradient-to-br from-violet-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+      <div id="profile-cover" class="h-48 md:h-64 bg-gradient-to-br from-violet-900 via-indigo-900 to-slate-900 relative overflow-hidden">
         <div class="absolute inset-0 opacity-30" style="background-image:radial-gradient(circle at 30% 50%, #7c3aed 0%, transparent 50%), radial-gradient(circle at 70% 30%, #4f46e5 0%, transparent 50%)"></div>
         <div class="absolute inset-0 flex items-center justify-center opacity-5">
           <svg width="400" height="400" viewBox="0 0 400 400"><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="white"/></pattern><rect width="400" height="400" fill="url(#dots)"/></svg>
         </div>
-        <button onclick="window.NexusComponents?.toast('Edit mode','success')" class="absolute top-4 right-4 px-3 py-1.5 bg-black/40 hover:bg-black/60 text-white text-xs font-medium rounded-lg backdrop-blur-sm transition flex items-center gap-1.5" aria-label="Edit cover photo">
+        <button onclick="openEditCover()" class="absolute top-4 right-4 px-3 py-1.5 bg-black/40 hover:bg-black/60 text-white text-xs font-medium rounded-lg backdrop-blur-sm transition flex items-center gap-1.5" aria-label="Edit cover photo">
           <i data-lucide="camera" class="w-3.5 h-3.5"></i> Edit Cover
         </button>
       </div>
@@ -109,7 +109,7 @@
             <button onclick="window.NexusComponents?.toast('Following','success')" class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i> Follow</button>
             <button onclick="window.NexusComponents?.toast('Notifications enabled','success')" class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i> Notify on active</button>
             <div class="border-t border-slate-700 my-1"></div>
-            <button onclick="window.NexusComponents?.toast('Reported','error')" class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="flag" class="w-4 h-4 opacity-60"></i> Report</button>
+            <button onclick="window.NexusComponents?.openModal('report-user-modal')" class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="flag" class="w-4 h-4 opacity-60"></i> Report</button>
           </div>
         </div>
       </div>
@@ -349,15 +349,16 @@
       <div id="tab-files" class="profile-panel hidden">
         <div class="flex items-center justify-between mb-4">
           <div class="flex gap-2">
-            <button onclick="window.NexusComponents?.toast('Showing all files','info')" class="px-3 py-1.5 bg-violet-600/20 text-violet-400 text-xs font-semibold rounded-lg border border-violet-500/30">All</button>
-            <button onclick="window.NexusComponents?.toast('Filtered: Images','info')" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Images</button>
-            <button onclick="window.NexusComponents?.toast('Filtered: Figma','info')" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Figma</button>
-            <button onclick="window.NexusComponents?.toast('Filtered: Docs','info')" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Docs</button>
+            <button data-file-filter="all" onclick="filterFiles('all')" class="file-filter-btn px-3 py-1.5 bg-violet-600/20 text-violet-400 text-xs font-semibold rounded-lg border border-violet-500/30 transition">All</button>
+            <button data-file-filter="images" onclick="filterFiles('images')" class="file-filter-btn px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Images</button>
+            <button data-file-filter="figma" onclick="filterFiles('figma')" class="file-filter-btn px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Figma</button>
+            <button data-file-filter="docs" onclick="filterFiles('docs')" class="file-filter-btn px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Docs</button>
           </div>
+          <span id="file-count" class="text-xs text-slate-500"></span>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <div id="files-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           <!-- File cards -->
-          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+          <div data-file-type="figma" class="file-card rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
             <div class="h-24 bg-gradient-to-br from-violet-900 to-indigo-900 flex items-center justify-center">
               <i data-lucide="figma" class="w-8 h-8 text-violet-300 opacity-80"></i>
             </div>
@@ -366,7 +367,7 @@
               <p class="text-[10px] text-slate-500 mt-0.5">8.2 MB · 2 hours ago</p>
             </div>
           </div>
-          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+          <div data-file-type="images" class="file-card rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
             <div class="h-24 bg-gradient-to-br from-blue-900 to-cyan-900 flex items-center justify-center">
               <i data-lucide="image" class="w-8 h-8 text-blue-300 opacity-80"></i>
             </div>
@@ -375,7 +376,7 @@
               <p class="text-[10px] text-slate-500 mt-0.5">1.4 MB · Yesterday</p>
             </div>
           </div>
-          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+          <div data-file-type="docs" class="file-card rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
             <div class="h-24 bg-gradient-to-br from-rose-900 to-pink-900 flex items-center justify-center">
               <i data-lucide="file-text" class="w-8 h-8 text-rose-300 opacity-80"></i>
             </div>
@@ -384,7 +385,7 @@
               <p class="text-[10px] text-slate-500 mt-0.5">340 KB · 2 days ago</p>
             </div>
           </div>
-          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+          <div data-file-type="figma" class="file-card rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
             <div class="h-24 bg-gradient-to-br from-emerald-900 to-teal-900 flex items-center justify-center">
               <i data-lucide="figma" class="w-8 h-8 text-emerald-300 opacity-80"></i>
             </div>
@@ -393,7 +394,7 @@
               <p class="text-[10px] text-slate-500 mt-0.5">24.1 MB · 3 days ago</p>
             </div>
           </div>
-          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+          <div data-file-type="docs" class="file-card rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
             <div class="h-24 bg-gradient-to-br from-amber-900 to-orange-900 flex items-center justify-center">
               <i data-lucide="presentation" class="w-8 h-8 text-amber-300 opacity-80"></i>
             </div>
@@ -402,7 +403,7 @@
               <p class="text-[10px] text-slate-500 mt-0.5">6.8 MB · 1 week ago</p>
             </div>
           </div>
-          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+          <div data-file-type="images" class="file-card rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
             <div class="h-24 bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center">
               <i data-lucide="image" class="w-8 h-8 text-slate-400 opacity-80"></i>
             </div>
@@ -411,6 +412,12 @@
               <p class="text-[10px] text-slate-500 mt-0.5">2.1 MB · 1 week ago</p>
             </div>
           </div>
+        </div>
+        <!-- Empty state -->
+        <div id="files-empty" class="hidden flex-col items-center justify-center text-center py-16">
+          <div class="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-3"><i data-lucide="folder-x" class="w-5 h-5 text-slate-500"></i></div>
+          <p class="text-sm font-semibold text-slate-300">No files in this category</p>
+          <p class="text-xs text-slate-500 mt-1">Try a different filter.</p>
         </div>
       </div>
 
@@ -482,9 +489,106 @@
   </main>
 </div>
 
+<!-- Report User Modal -->
+<div id="report-user-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-md bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2">
+        <i data-lucide="flag" class="w-4 h-4 text-amber-400"></i>
+        <h2 class="font-bold text-slate-100">Report Alice Chen</h2>
+      </div>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <form onsubmit="submitReportUser(event)">
+      <div class="p-5 space-y-3">
+        <p class="text-sm text-slate-400">Why are you reporting this user? Your report is confidential.</p>
+        <div class="space-y-2">
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-user-reason" value="spam" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Spam or scam</p><p class="text-xs text-slate-500">Unwanted promotions or phishing</p></div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-user-reason" value="harassment" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Harassment or bullying</p><p class="text-xs text-slate-500">Abusive or threatening behavior</p></div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-user-reason" value="inappropriate" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Inappropriate content</p><p class="text-xs text-slate-500">Explicit or offensive material</p></div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-user-reason" value="impersonation" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Impersonation</p><p class="text-xs text-slate-500">Pretending to be someone else</p></div>
+          </label>
+          <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-700 bg-slate-800/50 cursor-pointer hover:border-violet-500 transition">
+            <input type="radio" name="report-user-reason" value="other" class="w-4 h-4 accent-violet-600" />
+            <div><p class="text-sm font-medium text-slate-100">Something else</p><p class="text-xs text-slate-500">Another safety concern</p></div>
+          </label>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 mb-1.5">Additional details <span class="text-slate-600 font-normal">(optional)</span></label>
+          <textarea id="report-user-details" rows="3" placeholder="Add any context that will help our team…" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition resize-none"></textarea>
+        </div>
+        <p id="report-user-error" class="hidden text-xs text-red-400 flex items-center gap-1"><i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>Please select a reason to continue.</p>
+      </div>
+      <div class="flex justify-end gap-2 px-5 py-4 border-t border-slate-800">
+        <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+        <button type="submit" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Submit report</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Cover Modal -->
+<div id="edit-cover-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-lg bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2">
+        <i data-lucide="camera" class="w-4 h-4 text-violet-400"></i>
+        <h2 class="font-bold text-slate-100">Edit Cover Photo</h2>
+      </div>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="p-5 space-y-4">
+      <!-- Live preview -->
+      <div id="cover-preview" class="h-32 rounded-xl bg-gradient-to-br from-violet-900 via-indigo-900 to-slate-900 border border-slate-700 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30" style="background-image:radial-gradient(circle at 30% 50%, #7c3aed 0%, transparent 50%), radial-gradient(circle at 70% 30%, #4f46e5 0%, transparent 50%)"></div>
+        <span class="absolute bottom-2 left-3 text-[10px] font-medium text-white/70">Preview</span>
+      </div>
+
+      <!-- Upload button -->
+      <button type="button" onclick="uploadCover()" class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-dashed border-slate-600 text-sm font-medium text-slate-300 transition">
+        <i data-lucide="upload" class="w-4 h-4"></i> Upload a photo
+      </button>
+      <input id="cover-file-input" type="file" accept="image/*" class="hidden" onchange="handleCoverUpload(event)" />
+
+      <!-- Preset covers -->
+      <div>
+        <p class="text-xs font-semibold text-slate-400 mb-2">Or choose a cover</p>
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+          <button type="button" onclick="setCoverPreset('from-violet-900 via-indigo-900 to-slate-900', this)" class="cover-preset h-12 rounded-lg bg-gradient-to-br from-violet-900 via-indigo-900 to-slate-900 ring-2 ring-violet-400 transition" aria-label="Violet cover"></button>
+          <button type="button" onclick="setCoverPreset('from-blue-900 via-cyan-900 to-slate-900', this)" class="cover-preset h-12 rounded-lg bg-gradient-to-br from-blue-900 via-cyan-900 to-slate-900 ring-2 ring-transparent transition" aria-label="Blue cover"></button>
+          <button type="button" onclick="setCoverPreset('from-emerald-900 via-teal-900 to-slate-900', this)" class="cover-preset h-12 rounded-lg bg-gradient-to-br from-emerald-900 via-teal-900 to-slate-900 ring-2 ring-transparent transition" aria-label="Emerald cover"></button>
+          <button type="button" onclick="setCoverPreset('from-rose-900 via-pink-900 to-slate-900', this)" class="cover-preset h-12 rounded-lg bg-gradient-to-br from-rose-900 via-pink-900 to-slate-900 ring-2 ring-transparent transition" aria-label="Rose cover"></button>
+          <button type="button" onclick="setCoverPreset('from-amber-800 via-orange-900 to-slate-900', this)" class="cover-preset h-12 rounded-lg bg-gradient-to-br from-amber-800 via-orange-900 to-slate-900 ring-2 ring-transparent transition" aria-label="Amber cover"></button>
+          <button type="button" onclick="setCoverPreset('from-slate-700 via-slate-800 to-slate-900', this)" class="cover-preset h-12 rounded-lg bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 ring-2 ring-transparent transition" aria-label="Slate cover"></button>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center justify-between gap-2 px-5 py-4 border-t border-slate-800">
+      <button type="button" onclick="removeCover()" class="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-red-400 font-medium border border-slate-700 transition"><i data-lucide="trash-2" class="w-4 h-4"></i>Remove</button>
+      <div class="flex gap-2">
+        <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+        <button type="button" onclick="saveCover()" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Save Cover</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="module" src="/js/app.js"></script>
 <script>
-window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); filterFiles('all'); });
 
 function switchTab(id) {
   document.querySelectorAll('.profile-panel').forEach(p => p.classList.add('hidden'));
@@ -497,6 +601,127 @@ function switchTab(id) {
     t.classList.toggle('text-slate-400', !isActive);
     t.classList.toggle('border-transparent', !isActive);
   });
+}
+
+/* ═══ Files tab — filter ═══ */
+function filterFiles(type) {
+  // Active-state styling on the filter buttons
+  document.querySelectorAll('.file-filter-btn').forEach(btn => {
+    const active = btn.getAttribute('data-file-filter') === type;
+    btn.classList.toggle('bg-violet-600/20', active);
+    btn.classList.toggle('text-violet-400', active);
+    btn.classList.toggle('border-violet-500/30', active);
+    btn.classList.toggle('bg-slate-800', !active);
+    btn.classList.toggle('text-slate-400', !active);
+    btn.classList.toggle('border-slate-700', !active);
+  });
+  // Show/hide cards
+  let visible = 0;
+  document.querySelectorAll('.file-card').forEach(card => {
+    const show = type === 'all' || card.getAttribute('data-file-type') === type;
+    card.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  const total = document.querySelectorAll('.file-card').length;
+  const count = document.getElementById('file-count');
+  if (count) count.textContent = visible + ' of ' + total + ' file' + (total === 1 ? '' : 's');
+  const empty = document.getElementById('files-empty');
+  empty?.classList.toggle('hidden', visible > 0);
+  empty?.classList.toggle('flex', visible === 0);
+}
+
+/* ═══ Report User ═══ */
+function submitReportUser(e) {
+  e.preventDefault();
+  const reason = document.querySelector('input[name="report-user-reason"]:checked');
+  if (!reason) { document.getElementById('report-user-error').classList.remove('hidden'); return; }
+  window.NexusComponents?.closeModal('report-user-modal');
+  // Reset form for next time
+  document.querySelectorAll('input[name="report-user-reason"]').forEach(r => r.checked = false);
+  document.getElementById('report-user-details').value = '';
+  document.getElementById('report-user-error').classList.add('hidden');
+  window.NexusComponents?.toast('Report submitted — thanks for keeping Nexus safe', 'success');
+}
+
+/* ═══ Edit Cover ═══ */
+let pendingCover = null; // { type:'gradient', value } | { type:'image', url } | { type:'remove' }
+
+function applyGradient(el, gradient) {
+  // Strip any existing gradient direction/stop classes, keep the rest.
+  [...el.classList].forEach(c => {
+    if (/^(from|via|to)-/.test(c) || c === 'bg-gradient-to-br') el.classList.remove(c);
+  });
+  el.style.backgroundImage = '';
+  el.classList.add('bg-gradient-to-br', ...gradient.split(' '));
+}
+
+function openEditCover() {
+  pendingCover = null;
+  // Reset preview to the current cover look
+  const preview = document.getElementById('cover-preview');
+  preview.style.backgroundImage = '';
+  applyGradient(preview, 'from-violet-900 via-indigo-900 to-slate-900');
+  document.querySelectorAll('.cover-preset').forEach((b, i) => {
+    b.classList.toggle('ring-violet-400', i === 0);
+    b.classList.toggle('ring-transparent', i !== 0);
+  });
+  window.NexusComponents?.openModal('edit-cover-modal');
+  if (window.lucide) lucide.createIcons();
+}
+
+function setCoverPreset(gradient, btn) {
+  pendingCover = { type: 'gradient', value: gradient };
+  const preview = document.getElementById('cover-preview');
+  applyGradient(preview, gradient);
+  document.querySelectorAll('.cover-preset').forEach(b => {
+    b.classList.toggle('ring-violet-400', b === btn);
+    b.classList.toggle('ring-transparent', b !== btn);
+  });
+}
+
+function uploadCover() {
+  document.getElementById('cover-file-input').click();
+}
+
+function handleCoverUpload(e) {
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  pendingCover = { type: 'image', url };
+  const preview = document.getElementById('cover-preview');
+  [...preview.classList].forEach(c => { if (/^(from|via|to)-/.test(c) || c === 'bg-gradient-to-br') preview.classList.remove(c); });
+  preview.style.backgroundImage = `url('${url}')`;
+  preview.style.backgroundSize = 'cover';
+  preview.style.backgroundPosition = 'center';
+  document.querySelectorAll('.cover-preset').forEach(b => b.classList.replace('ring-violet-400', 'ring-transparent'));
+  e.target.value = '';
+  window.NexusComponents?.toast('Photo ready — click Save Cover to apply', 'info', 2500);
+}
+
+function saveCover() {
+  const cover = document.getElementById('profile-cover');
+  if (!pendingCover || pendingCover.type === 'gradient') {
+    applyGradient(cover, pendingCover ? pendingCover.value : 'from-violet-900 via-indigo-900 to-slate-900');
+  } else if (pendingCover.type === 'image') {
+    [...cover.classList].forEach(c => { if (/^(from|via|to)-/.test(c) || c === 'bg-gradient-to-br') cover.classList.remove(c); });
+    cover.style.backgroundImage = `url('${pendingCover.url}')`;
+    cover.style.backgroundSize = 'cover';
+    cover.style.backgroundPosition = 'center';
+  } else if (pendingCover.type === 'remove') {
+    applyGradient(cover, 'from-slate-800 to-slate-900');
+    cover.style.backgroundImage = '';
+  }
+  window.NexusComponents?.closeModal('edit-cover-modal');
+  window.NexusComponents?.toast('Cover photo updated', 'success');
+}
+
+function removeCover() {
+  pendingCover = { type: 'remove' };
+  const preview = document.getElementById('cover-preview');
+  applyGradient(preview, 'from-slate-800 to-slate-900');
+  preview.style.backgroundImage = '';
+  document.querySelectorAll('.cover-preset').forEach(b => b.classList.replace('ring-violet-400', 'ring-transparent'));
+  window.NexusComponents?.toast('Cover will be removed on save', 'warning', 2000);
 }
 </script>
 </body>
