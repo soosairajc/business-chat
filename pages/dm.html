@@ -106,16 +106,29 @@
       <button onclick="window.NexusComponents?.openModal('new-dm-modal')" aria-label="New message" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="New message">
         <i data-lucide="edit" class="w-4 h-4"></i>
       </button>
-      <button onclick="window.NexusComponents?.toast('Filters applied','info')" aria-label="Filter" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Filter">
+      <button data-dropdown-trigger="dm-filter-dd" aria-label="Filter" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Filter">
         <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
       </button>
+      <div id="dm-filter-dd" data-dropdown class="hidden absolute left-14 top-14 z-50 w-52 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in text-sm">
+        <p class="px-3 py-1 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Show</p>
+        <button data-dm-filter="all" onclick="setDMFilter('all')" class="dm-filter-opt w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check" class="w-4 h-4 text-violet-400 dm-filter-check"></i>All conversations</button>
+        <button data-dm-filter="unread" onclick="setDMFilter('unread')" class="dm-filter-opt w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check" class="w-4 h-4 text-violet-400 dm-filter-check hidden"></i>Unread only</button>
+        <button data-dm-filter="online" onclick="setDMFilter('online')" class="dm-filter-opt w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check" class="w-4 h-4 text-violet-400 dm-filter-check hidden"></i>Online only</button>
+        <div class="border-t border-slate-700 my-1"></div>
+        <p class="px-3 py-1 text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Sort</p>
+        <button data-dm-sort="recent" onclick="setDMSort('recent')" class="dm-sort-opt w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check" class="w-4 h-4 text-violet-400 dm-sort-check"></i>Most recent</button>
+        <button data-dm-sort="alpha" onclick="setDMSort('alpha')" class="dm-sort-opt w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check" class="w-4 h-4 text-violet-400 dm-sort-check hidden"></i>Alphabetical</button>
+        <div class="border-t border-slate-700 my-1"></div>
+        <button onclick="markAllDMRead()" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check-check" class="w-4 h-4 opacity-60"></i>Mark all as read</button>
+      </div>
     </div>
 
     <!-- Search -->
     <div class="px-3 py-2.5 shrink-0">
       <div class="relative">
         <i data-lucide="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500 pointer-events-none"></i>
-        <input type="search" placeholder="Search conversations…" aria-label="Search conversations" class="w-full bg-slate-800 border border-slate-700 text-slate-300 placeholder-slate-500 text-sm rounded-xl pl-8 pr-3 py-2 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/20 transition" />
+        <input id="dm-search" type="search" oninput="refreshDMList()" placeholder="Search conversations…" aria-label="Search conversations" class="w-full bg-slate-800 border border-slate-700 text-slate-300 placeholder-slate-500 text-sm rounded-xl pl-8 pr-8 py-2 focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/20 transition" />
+        <button id="dm-search-clear" onclick="clearDMSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-200 transition" aria-label="Clear search"><i data-lucide="x" class="w-3.5 h-3.5"></i></button>
       </div>
     </div>
 
@@ -340,7 +353,7 @@
         <a href="/pages/calls.html" aria-label="Video call" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Video call">
           <i data-lucide="video" class="w-4 h-4"></i>
         </a>
-        <button onclick="window.NexusComponents?.toast('Search messages','info')" aria-label="Search messages" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Search">
+        <button onclick="const s=document.getElementById('dm-search');s.focus();s.select();" aria-label="Search messages" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Search">
           <i data-lucide="search" class="w-4 h-4"></i>
         </button>
         <button id="contact-sidebar-toggle" aria-label="Toggle contact info" onclick="document.getElementById('contact-sidebar').classList.toggle('hidden')" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" title="Contact info">
@@ -595,16 +608,18 @@
     <!-- DM Composer -->
     <div class="shrink-0 px-4 pb-4 pt-2">
       <div class="flex items-center gap-0.5 mb-1.5 px-2">
-        <button onclick="window.NexusComponents?.toast('Bold','info')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Bold"><i data-lucide="bold" class="w-3.5 h-3.5"></i></button>
-        <button onclick="window.NexusComponents?.toast('Italic','info')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Italic"><i data-lucide="italic" class="w-3.5 h-3.5"></i></button>
-        <button onclick="window.NexusComponents?.toast('Code','info')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Code"><i data-lucide="code" class="w-3.5 h-3.5"></i></button>
-        <button onclick="window.NexusComponents?.toast('Insert link','info')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Link"><i data-lucide="link" class="w-3.5 h-3.5"></i></button>
+        <button type="button" onclick="dmWrap('**','**')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Bold" title="Bold"><i data-lucide="bold" class="w-3.5 h-3.5"></i></button>
+        <button type="button" onclick="dmWrap('*','*')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Italic" title="Italic"><i data-lucide="italic" class="w-3.5 h-3.5"></i></button>
+        <button type="button" onclick="dmWrap('\`','\`')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Code" title="Inline code"><i data-lucide="code" class="w-3.5 h-3.5"></i></button>
+        <button type="button" onclick="dmWrap('[','](url)')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Link" title="Link"><i data-lucide="link" class="w-3.5 h-3.5"></i></button>
         <div class="w-px h-4 bg-slate-700 mx-1"></div>
-        <button onclick="window.NexusComponents?.toast('List','info')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="List"><i data-lucide="list" class="w-3.5 h-3.5"></i></button>
-        <button onclick="window.NexusComponents?.toast('Quote','info')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Quote"><i data-lucide="quote" class="w-3.5 h-3.5"></i></button>
+        <button type="button" onclick="dmPrefix('- ')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="List" title="Bulleted list"><i data-lucide="list" class="w-3.5 h-3.5"></i></button>
+        <button type="button" onclick="dmPrefix('> ')" class="p-1.5 rounded hover:bg-slate-800 text-slate-500 hover:text-slate-300 transition" aria-label="Quote" title="Quote"><i data-lucide="quote" class="w-3.5 h-3.5"></i></button>
         <div class="ml-auto text-xs text-slate-600" id="dm-char-counter">0 / 4000</div>
       </div>
       <div class="bg-slate-800 border border-slate-700 rounded-2xl focus-within:border-violet-500/60 focus-within:ring-1 focus-within:ring-violet-500/20 transition">
+        <!-- Attachment chips (populated by file picker) -->
+        <div id="dm-attachment-bar" class="flex flex-wrap gap-2 px-4 pt-3 empty:hidden"></div>
         <div class="flex items-end gap-2 px-4 py-3">
           <div class="flex-1">
             <textarea
@@ -619,13 +634,25 @@
           </div>
         </div>
         <div class="flex items-center gap-1 px-3 pb-2.5">
-          <button onclick="window.NexusComponents?.toast('Emoji picker','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Emoji" title="Emoji"><i data-lucide="smile" class="w-4 h-4"></i></button>
-          <button onclick="window.NexusComponents?.toast('GIF picker','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="GIF" title="GIF"><span class="text-[10px] font-bold leading-none">GIF</span></button>
-          <button onclick="window.NexusComponents?.toast('Mention someone','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Mention" title="Mention"><i data-lucide="at-sign" class="w-4 h-4"></i></button>
-          <button onclick="window.NexusComponents?.toast('Attach file','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file" title="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
-          <button onclick="window.NexusComponents?.toast('Upload image','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Upload image"><i data-lucide="image" class="w-4 h-4"></i></button>
+          <button type="button" data-picker="emoji" data-picker-target="#dm-composer-input" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Emoji" title="Emoji"><i data-lucide="smile" class="w-4 h-4"></i></button>
+          <button type="button" data-picker="gif" data-picker-target="#dm-composer-input" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="GIF" title="GIF"><span class="text-[10px] font-bold leading-none">GIF</span></button>
+          <div class="relative">
+            <button type="button" onclick="toggleMentionPopup(event)" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Mention" title="Mention someone"><i data-lucide="at-sign" class="w-4 h-4"></i></button>
+            <!-- Mention member popup -->
+            <div id="dm-mention-popup" class="hidden absolute bottom-full left-0 mb-2 w-60 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden z-50 fade-in">
+              <div class="p-2 border-b border-slate-700">
+                <div class="relative">
+                  <i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-1/2 -translate-y-1/2"></i>
+                  <input id="dm-mention-search" type="text" oninput="renderMentionList(this.value)" placeholder="Mention someone" class="w-full bg-slate-900 border border-slate-700 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-violet-500" />
+                </div>
+              </div>
+              <div id="dm-mention-list" class="max-h-52 overflow-y-auto p-1"></div>
+            </div>
+          </div>
+          <button type="button" data-file-trigger data-attachments="#dm-attachment-bar" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file" title="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
+          <button type="button" data-file-trigger data-accept="image/*" data-attachments="#dm-attachment-bar" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Upload image" title="Upload image"><i data-lucide="image" class="w-4 h-4"></i></button>
           <div class="flex-1"></div>
-          <button onclick="window.NexusComponents?.toast('Recording voice message','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Voice message"><i data-lucide="mic" class="w-4 h-4"></i></button>
+          <button type="button" onclick="openDMVoiceRecorder()" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Voice message" title="Record voice message"><i data-lucide="mic" class="w-4 h-4"></i></button>
           <button id="dm-send-btn" aria-label="Send message" onclick="sendDMMessage()" class="w-8 h-8 rounded-xl bg-violet-600 hover:bg-violet-500 active:scale-95 transition flex items-center justify-center ml-1">
             <i data-lucide="send" class="w-3.5 h-3.5 text-white"></i>
           </button>
@@ -922,38 +949,414 @@
   </div>
 </div>
 
+<!-- Voice Message Recorder Modal -->
+<div id="dm-voice-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-sm bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-800">
+      <h2 class="font-bold text-slate-100 flex items-center gap-2"><i data-lucide="mic" class="w-4 h-4 text-violet-400"></i>Voice Message</h2>
+      <button data-modal-close onclick="dmVoiceStopTickers()" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="p-5">
+      <!-- Status -->
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <span id="dm-voice-dot" class="w-2.5 h-2.5 rounded-full bg-slate-600"></span>
+        <span id="dm-voice-status" class="text-xs font-semibold uppercase tracking-wider text-slate-400">Ready to record</span>
+      </div>
+      <!-- Timer -->
+      <p id="dm-voice-timer" class="text-center text-4xl font-bold font-mono text-slate-100 mb-4 tabular-nums">0:00</p>
+      <!-- Waveform -->
+      <div id="dm-voice-waveform" class="flex items-end justify-center gap-1 h-16 mb-5"></div>
+      <!-- Controls -->
+      <div class="flex items-center justify-center gap-3">
+        <button type="button" id="dm-voice-record-btn" onclick="dmVoiceRecord()" class="w-16 h-16 rounded-full bg-red-600 hover:bg-red-500 flex items-center justify-center transition shadow-lg" aria-label="Record"><i data-lucide="mic" class="w-7 h-7 text-white"></i></button>
+        <button type="button" id="dm-voice-pause-btn" onclick="dmVoicePause()" class="hidden w-14 h-14 rounded-full bg-slate-800 border border-slate-700 hover:bg-slate-700 flex items-center justify-center transition text-slate-200" aria-label="Pause"><i data-lucide="pause" class="w-6 h-6"></i></button>
+        <button type="button" id="dm-voice-stop-btn" onclick="dmVoiceStop()" class="hidden w-16 h-16 rounded-full bg-slate-100 hover:bg-white flex items-center justify-center transition shadow-lg" aria-label="Stop"><i data-lucide="square" class="w-6 h-6 text-slate-900 fill-slate-900"></i></button>
+        <button type="button" id="dm-voice-play-btn" onclick="dmVoicePlay()" class="hidden w-16 h-16 rounded-full bg-violet-600 hover:bg-violet-500 flex items-center justify-center transition shadow-lg" aria-label="Play"><i data-lucide="play" class="w-7 h-7 text-white ml-0.5"></i></button>
+      </div>
+      <!-- Post-record actions -->
+      <div id="dm-voice-actions" class="hidden flex items-center gap-2 mt-5">
+        <button type="button" onclick="dmVoiceDelete()" class="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sm font-semibold text-red-400 transition"><i data-lucide="trash-2" class="w-4 h-4"></i>Delete</button>
+        <button type="button" onclick="dmVoiceSend()" class="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm font-semibold text-white transition"><i data-lucide="send" class="w-4 h-4"></i>Send</button>
+      </div>
+      <p class="text-[11px] text-slate-600 text-center mt-4">Demo recorder · sample frontend data only</p>
+    </div>
+  </div>
+</div>
+
 <script type="module" src="/js/app.js"></script>
 <script>
+  /* ─── Unified conversation-list filtering ─── */
+  let dmTab = 'all';       // all | unread | favorites | groups
+  let dmFilter = 'all';    // all | unread | online
+  let dmSort = 'recent';   // recent | alpha
+
   function switchDMTab(tab, btn) {
+    dmTab = tab;
     document.querySelectorAll('.dm-tab-btn').forEach(b => {
       b.classList.remove('border-violet-400','text-violet-400');
       b.classList.add('border-transparent','text-slate-400');
     });
     btn.classList.add('border-violet-400','text-violet-400');
     btn.classList.remove('border-transparent','text-slate-400');
+    refreshDMList();
+  }
+  window.switchDMTab = switchDMTab;
 
-    // Filter the conversation list by category
+  function itemIsOnline(item) { return !!item.querySelector('.bg-green-400'); }
+  function itemIsUnread(item) {
+    return (item.getAttribute('data-cat') || '').split(' ').includes('unread');
+  }
+
+  function refreshDMList() {
+    const term = (document.getElementById('dm-search')?.value || '').trim().toLowerCase();
+    document.getElementById('dm-search-clear')?.classList.toggle('hidden', !term);
     let visible = 0;
     document.querySelectorAll('.dm-item').forEach(item => {
       const cats = (item.getAttribute('data-cat') || '').split(' ');
-      const show = tab === 'all' || cats.includes(tab);
+      const matchTab = dmTab === 'all' || cats.includes(dmTab);
+      const matchFilter = dmFilter === 'all'
+        || (dmFilter === 'unread' && itemIsUnread(item))
+        || (dmFilter === 'online' && itemIsOnline(item));
+      const matchSearch = !term || item.textContent.toLowerCase().includes(term);
+      const show = matchTab && matchFilter && matchSearch;
       item.classList.toggle('hidden', !show);
       if (show) visible++;
     });
-    // Section labels only make sense in the "All" view
-    document.querySelectorAll('[data-dm-section]').forEach(p => p.classList.toggle('hidden', tab !== 'all'));
+    // Section labels only make sense in the unfiltered "All" view
+    const plain = dmTab === 'all' && dmFilter === 'all' && !term;
+    document.querySelectorAll('[data-dm-section]').forEach(p => p.classList.toggle('hidden', !plain));
     // Empty state
     let empty = document.getElementById('dm-empty');
     if (!empty) {
       empty = document.createElement('div');
       empty.id = 'dm-empty';
       empty.className = 'hidden flex flex-col items-center justify-center py-16 text-center px-6';
-      empty.innerHTML = '<i data-lucide="message-square-dashed" class="w-8 h-8 text-slate-600 mb-2"></i><p class="text-sm text-slate-500">No conversations here yet</p>';
+      empty.innerHTML = '<i data-lucide="message-square-dashed" class="w-8 h-8 text-slate-600 mb-2"></i><p class="text-sm text-slate-500">No conversations found</p>';
       document.querySelector('.dm-item')?.closest('.overflow-y-auto')?.appendChild(empty);
     }
     empty.classList.toggle('hidden', visible > 0);
     if (window.lucide) lucide.createIcons();
   }
+  window.refreshDMList = refreshDMList;
+
+  function clearDMSearch() {
+    const input = document.getElementById('dm-search');
+    input.value = '';
+    input.focus();
+    refreshDMList();
+  }
+  window.clearDMSearch = clearDMSearch;
+
+  function setDMFilter(kind) {
+    dmFilter = kind;
+    document.querySelectorAll('.dm-filter-opt').forEach(opt => {
+      opt.querySelector('.dm-filter-check')?.classList.toggle('hidden', opt.getAttribute('data-dm-filter') !== kind);
+    });
+    document.getElementById('dm-filter-dd')?.classList.add('hidden');
+    refreshDMList();
+    window.NexusComponents?.toast(
+      kind === 'unread' ? 'Showing unread only' : kind === 'online' ? 'Showing online only' : 'Showing all conversations', 'info', 1800);
+  }
+  window.setDMFilter = setDMFilter;
+
+  function setDMSort(order) {
+    dmSort = order;
+    document.querySelectorAll('.dm-sort-opt').forEach(opt => {
+      opt.querySelector('.dm-sort-check')?.classList.toggle('hidden', opt.getAttribute('data-dm-sort') !== order);
+    });
+    // Reorder items inside each section container (keeps section grouping intact).
+    document.querySelectorAll('.dm-item').forEach(item => {
+      if (!item.dataset.orig) item.dataset.orig = String([...item.parentElement.children].indexOf(item));
+    });
+    const groups = new Set([...document.querySelectorAll('.dm-item')].map(i => i.parentElement));
+    groups.forEach(container => {
+      const items = [...container.querySelectorAll('.dm-item')];
+      items.sort((a, b) => {
+        if (order === 'alpha') {
+          const na = a.querySelector('p.truncate')?.textContent.trim().toLowerCase() || '';
+          const nb = b.querySelector('p.truncate')?.textContent.trim().toLowerCase() || '';
+          return na.localeCompare(nb);
+        }
+        return Number(a.dataset.orig) - Number(b.dataset.orig);
+      });
+      const anchor = container.querySelector('button:not(.dm-item)'); // "New direct message" button, if any
+      items.forEach(el => container.insertBefore(el, anchor || null));
+    });
+    document.getElementById('dm-filter-dd')?.classList.add('hidden');
+    window.NexusComponents?.toast(order === 'alpha' ? 'Sorted alphabetically' : 'Sorted by most recent', 'info', 1800);
+  }
+  window.setDMSort = setDMSort;
+
+  function markAllDMRead() {
+    document.querySelectorAll('.dm-item').forEach(item => {
+      item.querySelector('span.bg-violet-600.rounded-full')?.remove();
+      item.setAttribute('data-cat', (item.getAttribute('data-cat') || '').replace(/\bunread\b/, '').trim());
+      item.querySelector('.text-violet-300')?.classList.replace('text-violet-300', 'text-slate-400');
+    });
+    document.getElementById('dm-filter-dd')?.classList.add('hidden');
+    // Reset the Unread tab badge
+    const badge = document.querySelector('[data-dm-tab="unread"] span');
+    if (badge) badge.textContent = '0';
+    refreshDMList();
+    window.NexusComponents?.toast('All conversations marked as read', 'success');
+  }
+  window.markAllDMRead = markAllDMRead;
+
+  /* ─── @Mention member popup ─── */
+  const DM_MEMBERS = [
+    { name: 'Alice Chen', seed: 'alice', role: 'Design Lead', status: 'bg-green-400' },
+    { name: 'Bob Martinez', seed: 'bob', role: 'Engineer', status: 'bg-amber-400' },
+    { name: 'Carol Wu', seed: 'carol', role: 'Product', status: 'bg-amber-400' },
+    { name: 'David Kim', seed: 'david', role: 'Marketing', status: 'bg-green-400' },
+    { name: 'Priya Sharma', seed: 'priya', role: 'Engineer', status: 'bg-slate-600' },
+    { name: 'Sarah Lee', seed: 'sarah', role: 'Design', status: 'bg-green-400' },
+    { name: 'Tom Wilson', seed: 'tom', role: 'DevOps', status: 'bg-slate-600' },
+  ];
+
+  function toggleMentionPopup(e) {
+    e.stopPropagation();
+    const popup = document.getElementById('dm-mention-popup');
+    const willOpen = popup.classList.contains('hidden');
+    popup.classList.toggle('hidden');
+    if (willOpen) {
+      renderMentionList('');
+      const search = document.getElementById('dm-mention-search');
+      search.value = '';
+      setTimeout(() => search.focus(), 0);
+    }
+  }
+  window.toggleMentionPopup = toggleMentionPopup;
+
+  function renderMentionList(filter) {
+    const list = document.getElementById('dm-mention-list');
+    const q = (filter || '').trim().toLowerCase();
+    const matches = DM_MEMBERS.filter(m => m.name.toLowerCase().includes(q) || m.role.toLowerCase().includes(q));
+    list.innerHTML = matches.length ? '' : '<p class="text-center text-xs text-slate-500 py-6">No members found</p>';
+    matches.forEach(m => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-700 transition text-left';
+      b.innerHTML = `
+        <span class="relative shrink-0">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=${m.seed}" alt="" class="w-7 h-7 rounded-lg bg-slate-700" />
+          <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full ${m.status} border-2 border-slate-800"></span>
+        </span>
+        <span class="min-w-0"><span class="block text-xs font-semibold text-slate-100 truncate">${m.name}</span><span class="block text-[10px] text-slate-500">${m.role}</span></span>`;
+      b.addEventListener('click', () => {
+        dmInsert('@' + m.name.split(' ')[0] + ' ');
+        document.getElementById('dm-mention-popup').classList.add('hidden');
+      });
+      list.appendChild(b);
+    });
+    if (window.lucide) lucide.createIcons();
+  }
+  window.renderMentionList = renderMentionList;
+
+  // Close mention popup on outside click
+  document.addEventListener('click', e => {
+    const popup = document.getElementById('dm-mention-popup');
+    if (popup && !popup.classList.contains('hidden') && !popup.parentElement.contains(e.target)) {
+      popup.classList.add('hidden');
+    }
+  });
+
+  /* ─── Composer text helpers ─── */
+  function dmInsert(text) {
+    const ta = document.getElementById('dm-composer-input');
+    if (!ta) return;
+    const s = ta.selectionStart ?? ta.value.length, en = ta.selectionEnd ?? ta.value.length;
+    ta.value = ta.value.slice(0, s) + text + ta.value.slice(en);
+    ta.focus();
+    const pos = s + text.length;
+    ta.setSelectionRange(pos, pos);
+    ta.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  window.dmInsert = dmInsert;
+
+  function dmWrap(before, after) {
+    const ta = document.getElementById('dm-composer-input');
+    if (!ta) return;
+    const s = ta.selectionStart ?? 0, en = ta.selectionEnd ?? 0;
+    const sel = ta.value.slice(s, en);
+    ta.value = ta.value.slice(0, s) + before + sel + after + ta.value.slice(en);
+    ta.focus();
+    if (sel) ta.setSelectionRange(s + before.length, en + before.length);
+    else ta.setSelectionRange(s + before.length, s + before.length);
+    ta.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  window.dmWrap = dmWrap;
+
+  function dmPrefix(prefix) {
+    const ta = document.getElementById('dm-composer-input');
+    if (!ta) return;
+    const s = ta.selectionStart ?? 0;
+    const lineStart = ta.value.lastIndexOf('\n', s - 1) + 1;
+    ta.value = ta.value.slice(0, lineStart) + prefix + ta.value.slice(lineStart);
+    ta.focus();
+    ta.setSelectionRange(s + prefix.length, s + prefix.length);
+    ta.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  window.dmPrefix = dmPrefix;
+
+  /* ─── Voice recorder ─── */
+  let dmVoiceSeconds = 0, dmVoiceTick = null, dmVoicePlayTick = null, dmVoicePlayPos = 0, dmVoiceState = 'idle';
+  const DM_VOICE_BARS = 32;
+
+  function dmVoiceBuildWave() {
+    const wrap = document.getElementById('dm-voice-waveform');
+    wrap.innerHTML = '';
+    for (let i = 0; i < DM_VOICE_BARS; i++) {
+      const bar = document.createElement('span');
+      bar.className = 'dm-voice-bar w-1.5 rounded-full bg-slate-700 transition-all';
+      bar.style.height = '8%';
+      wrap.appendChild(bar);
+    }
+  }
+  function dmFmt(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  function dmVoiceSetStatus(text, dot) {
+    document.getElementById('dm-voice-status').textContent = text;
+    document.getElementById('dm-voice-dot').className = 'w-2.5 h-2.5 rounded-full ' + dot;
+  }
+  function dmVoicePseudo(i, t) { return (Math.sin(i * 12.9898 + t * 3.233) * 43758.5453) % 1; }
+  function dmVoiceAnimate(active) {
+    document.querySelectorAll('.dm-voice-bar').forEach((bar, i) => {
+      if (i < active) {
+        bar.style.height = Math.min(100, 20 + Math.abs(dmVoicePseudo(i, dmVoiceSeconds + i)) * 80) + '%';
+        bar.classList.remove('bg-slate-700'); bar.classList.add('bg-violet-500');
+      } else {
+        bar.style.height = '8%';
+        bar.classList.add('bg-slate-700'); bar.classList.remove('bg-violet-500');
+      }
+    });
+  }
+  function dmVoiceButtons(ids) {
+    ['dm-voice-record-btn','dm-voice-pause-btn','dm-voice-stop-btn','dm-voice-play-btn'].forEach(id =>
+      document.getElementById(id).classList.toggle('hidden', !ids.includes(id)));
+    document.getElementById('dm-voice-actions').classList.toggle('hidden', !ids.includes('actions'));
+  }
+  function dmVoiceReset() {
+    clearInterval(dmVoiceTick); clearInterval(dmVoicePlayTick);
+    dmVoiceState = 'idle'; dmVoiceSeconds = 0; dmVoicePlayPos = 0;
+    document.getElementById('dm-voice-timer').textContent = '0:00';
+    dmVoiceSetStatus('Ready to record', 'bg-slate-600');
+    dmVoiceButtons(['dm-voice-record-btn']);
+    dmVoiceBuildWave();
+  }
+  function openDMVoiceRecorder() {
+    dmVoiceReset();
+    window.NexusComponents?.openModal('dm-voice-modal');
+    if (window.lucide) lucide.createIcons();
+  }
+  window.openDMVoiceRecorder = openDMVoiceRecorder;
+
+  function dmVoiceRecord() {
+    if (dmVoiceState === 'recording') return;
+    dmVoiceState = 'recording';
+    dmVoiceSetStatus('Recording…', 'bg-red-500 animate-pulse');
+    dmVoiceButtons(['dm-voice-pause-btn','dm-voice-stop-btn']);
+    if (window.lucide) lucide.createIcons();
+    clearInterval(dmVoiceTick);
+    dmVoiceTick = setInterval(() => {
+      dmVoiceSeconds++;
+      document.getElementById('dm-voice-timer').textContent = dmFmt(dmVoiceSeconds);
+      dmVoiceAnimate(Math.min(DM_VOICE_BARS, dmVoiceSeconds));
+    }, 1000);
+  }
+  window.dmVoiceRecord = dmVoiceRecord;
+
+  function dmVoicePause() {
+    if (dmVoiceState !== 'recording') return;
+    dmVoiceState = 'paused';
+    clearInterval(dmVoiceTick);
+    dmVoiceSetStatus('Paused', 'bg-amber-400');
+    dmVoiceButtons(['dm-voice-record-btn','dm-voice-stop-btn']);
+    if (window.lucide) lucide.createIcons();
+  }
+  window.dmVoicePause = dmVoicePause;
+
+  function dmVoiceStop() {
+    clearInterval(dmVoiceTick);
+    if (dmVoiceSeconds === 0) dmVoiceSeconds = 9; // sample duration if stopped instantly
+    dmVoiceState = 'recorded';
+    dmVoiceSetStatus('Recorded · ' + dmFmt(dmVoiceSeconds), 'bg-violet-500');
+    dmVoiceAnimate(DM_VOICE_BARS);
+    dmVoiceButtons(['dm-voice-play-btn','actions']);
+    if (window.lucide) lucide.createIcons();
+  }
+  window.dmVoiceStop = dmVoiceStop;
+
+  function dmVoicePlay() {
+    if (dmVoiceState === 'playing') {
+      clearInterval(dmVoicePlayTick);
+      dmVoiceState = 'recorded';
+      dmVoiceSetStatus('Recorded · ' + dmFmt(dmVoiceSeconds), 'bg-violet-500');
+      document.getElementById('dm-voice-play-btn').innerHTML = '<i data-lucide="play" class="w-7 h-7 text-white ml-0.5"></i>';
+      if (window.lucide) lucide.createIcons();
+      return;
+    }
+    dmVoiceState = 'playing';
+    dmVoiceSetStatus('Playing…', 'bg-green-500 animate-pulse');
+    document.getElementById('dm-voice-play-btn').innerHTML = '<i data-lucide="pause" class="w-7 h-7 text-white"></i>';
+    if (window.lucide) lucide.createIcons();
+    dmVoicePlayPos = 0;
+    clearInterval(dmVoicePlayTick);
+    dmVoicePlayTick = setInterval(() => {
+      dmVoicePlayPos++;
+      document.getElementById('dm-voice-timer').textContent = dmFmt(dmVoicePlayPos) + ' / ' + dmFmt(dmVoiceSeconds);
+      const progress = Math.round((dmVoicePlayPos / dmVoiceSeconds) * DM_VOICE_BARS);
+      document.querySelectorAll('.dm-voice-bar').forEach((b, i) => b.classList.toggle('bg-violet-300', i < progress));
+      if (dmVoicePlayPos >= dmVoiceSeconds) {
+        clearInterval(dmVoicePlayTick);
+        dmVoiceState = 'recorded';
+        dmVoiceSetStatus('Recorded · ' + dmFmt(dmVoiceSeconds), 'bg-violet-500');
+        document.getElementById('dm-voice-timer').textContent = dmFmt(dmVoiceSeconds);
+        document.getElementById('dm-voice-play-btn').innerHTML = '<i data-lucide="play" class="w-7 h-7 text-white ml-0.5"></i>';
+        document.querySelectorAll('.dm-voice-bar').forEach(b => b.classList.remove('bg-violet-300'));
+        if (window.lucide) lucide.createIcons();
+      }
+    }, 1000);
+  }
+  window.dmVoicePlay = dmVoicePlay;
+
+  function dmVoiceDelete() {
+    dmVoiceReset();
+    if (window.lucide) lucide.createIcons();
+    window.NexusComponents?.toast('Recording deleted', 'info', 2000);
+  }
+  window.dmVoiceDelete = dmVoiceDelete;
+
+  function dmVoiceSend() {
+    const dur = dmFmt(dmVoiceSeconds);
+    dmVoiceStopTickers();
+    window.NexusComponents?.closeModal('dm-voice-modal');
+    // Drop a voice-note bubble into the conversation using sample data.
+    const list = document.getElementById('dm-message-list');
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const row = document.createElement('div');
+    row.className = 'message-row group relative flex gap-3 px-4 py-1.5 hover:bg-slate-800/40 rounded-lg mx-2 transition fade-in';
+    row.innerHTML = `
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-9 h-9 rounded-xl shrink-0 mt-0.5 bg-slate-700" />
+      <div class="flex-1 min-w-0">
+        <div class="flex items-baseline gap-2 mb-1"><span class="text-sm font-semibold text-slate-100">You</span><span class="text-xs text-slate-500">${time}</span></div>
+        <div class="flex items-center gap-3 bg-slate-800 border border-slate-700 rounded-xl p-3 max-w-xs">
+          <span class="w-8 h-8 rounded-full bg-violet-600 flex items-center justify-center shrink-0"><i data-lucide="play" class="w-3.5 h-3.5 text-white ml-0.5"></i></span>
+          <div class="flex-1"><div class="h-1.5 bg-slate-700 rounded-full overflow-hidden"><div class="h-full w-0 bg-violet-500 rounded-full"></div></div>
+          <div class="flex justify-between mt-1"><span class="text-xs text-slate-500">0:00</span><span class="text-xs text-slate-500">${dur}</span></div></div>
+          <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+        </div>
+      </div>`;
+    const typingRow = list.querySelector('.flex.gap-3.px-6.py-2');
+    list.insertBefore(row, typingRow || null);
+    if (!typingRow) list.appendChild(row);
+    list.scrollTop = list.scrollHeight;
+    if (window.lucide) lucide.createIcons();
+    window.NexusComponents?.toast('Voice message sent · ' + dur, 'success');
+  }
+  window.dmVoiceSend = dmVoiceSend;
+
+  function dmVoiceStopTickers() { clearInterval(dmVoiceTick); clearInterval(dmVoicePlayTick); }
+  window.dmVoiceStopTickers = dmVoiceStopTickers;
 
   function activateDM(id) {
     document.querySelectorAll('.dm-item').forEach(el => {
