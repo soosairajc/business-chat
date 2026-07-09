@@ -25,17 +25,17 @@
       <div class="px-3 py-2 border-b border-slate-700 mb-1">
         <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Workspaces</p>
       </div>
-      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
+      <button onclick="window.NexusComponents?.toast('Workspace switched','success')" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
         <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shrink-0"><span class="text-white font-bold text-xs">N</span></div>
         <div><p class="text-sm font-semibold text-slate-100">Nexus HQ</p><p class="text-xs text-slate-400">nexus-hq.com · 48 members</p></div>
         <i data-lucide="check" class="w-4 h-4 text-violet-400 ml-auto"></i>
       </button>
-      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
+      <button onclick="window.NexusComponents?.toast('Workspace switched','success')" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
         <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center shrink-0"><span class="text-white font-bold text-xs">D</span></div>
         <div><p class="text-sm font-semibold text-slate-100">Design Studio</p><p class="text-xs text-slate-400">design.io · 12 members</p></div>
       </button>
       <div class="border-t border-slate-700 mt-1 pt-1">
-        <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left text-sm text-slate-400">
+        <button onclick="window.NexusComponents?.toast('Workspace added','success')" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left text-sm text-slate-400">
           <div class="w-8 h-8 rounded-lg border-2 border-dashed border-slate-600 flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4"></i></div>
           Add a workspace
         </button>
@@ -89,10 +89,10 @@
         <div><p class="text-sm font-semibold text-slate-100">You</p><p class="text-xs text-green-400">● Active</p></div>
       </div>
       <a href="/pages/profile.html" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300"><i data-lucide="user" class="w-4 h-4 opacity-60"></i>View Profile</a>
-      <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Set Status</button>
+      <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Set Status</button>
       <a href="/pages/settings.html" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300"><i data-lucide="settings" class="w-4 h-4 opacity-60"></i>Preferences</a>
       <div class="border-t border-slate-700 my-1"></div>
-      <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Sign Out</button>
+      <button onclick="window.NexusComponents?.toast('Signed out','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Sign Out</button>
     </div>
   </nav>
 
@@ -108,12 +108,12 @@
         <i data-lucide="chevron-down" class="w-3 h-3"></i>
       </button>
       <div id="thread-filter-dd" data-dropdown class="hidden absolute right-4 top-14 z-50 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in text-sm">
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check" class="w-4 h-4 text-violet-400"></i>All channels</button>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><span class="w-4 h-4"></span>#general</button>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><span class="w-4 h-4"></span>#design</button>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><span class="w-4 h-4"></span>#engineering</button>
+        <button onclick="window.NexusComponents?.toast('Filtered','info')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="check" class="w-4 h-4 text-violet-400"></i>All channels</button>
+        <button onclick="window.NexusComponents?.toast('Filtered','info')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><span class="w-4 h-4"></span>#general</button>
+        <button onclick="window.NexusComponents?.toast('Filtered','info')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><span class="w-4 h-4"></span>#design</button>
+        <button onclick="window.NexusComponents?.toast('Filtered','info')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><span class="w-4 h-4"></span>#engineering</button>
         <div class="border-t border-slate-700 my-1"></div>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="sort-desc" class="w-4 h-4 opacity-60"></i>Newest first</button>
+        <button onclick="window.NexusComponents?.toast('Sorted by newest','info')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="sort-desc" class="w-4 h-4 opacity-60"></i>Newest first</button>
       </div>
     </div>
 
@@ -313,18 +313,18 @@
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya" class="w-6 h-6 rounded-full bg-slate-700 border border-slate-900" />
           <div class="w-6 h-6 rounded-full bg-slate-700 border border-slate-900 flex items-center justify-center"><span class="text-[8px] text-slate-300 font-bold">+1</span></div>
         </div>
-        <button aria-label="Search in thread" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+        <button onclick="window.NexusComponents?.toast('Search in thread','info')" aria-label="Search in thread" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
           <i data-lucide="search" class="w-4 h-4"></i>
         </button>
         <button aria-label="More options" data-dropdown-trigger="thread-detail-dd" class="p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
           <i data-lucide="more-horizontal" class="w-4 h-4"></i>
         </button>
         <div id="thread-detail-dd" data-dropdown class="hidden absolute right-4 top-14 z-50 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in text-sm">
-          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i>Follow Thread</button>
-          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="copy" class="w-4 h-4 opacity-60"></i>Copy Link</button>
-          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bookmark" class="w-4 h-4 opacity-60"></i>Bookmark</button>
+          <button onclick="window.NexusComponents?.toast('Following thread','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i>Follow Thread</button>
+          <button onclick="window.NexusComponents?.toast('Copied','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="copy" class="w-4 h-4 opacity-60"></i>Copy Link</button>
+          <button onclick="window.NexusComponents?.toast('Bookmarked','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bookmark" class="w-4 h-4 opacity-60"></i>Bookmark</button>
           <div class="border-t border-slate-700 my-1"></div>
-          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="bell-off" class="w-4 h-4 opacity-60"></i>Mute Thread</button>
+          <button onclick="window.NexusComponents?.toast('Muted','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="bell-off" class="w-4 h-4 opacity-60"></i>Mute Thread</button>
         </div>
       </div>
     </header>
@@ -405,7 +405,7 @@ Authorization: Bearer &lt;token&gt;
           </div>
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
@@ -418,7 +418,7 @@ Authorization: Bearer &lt;token&gt;
           <p class="msg-body text-sm text-slate-300 leading-relaxed">Great call <span class="mention">@Alice</span>! I'll add the rate limit headers in the next commit. Also adding <code class="bg-slate-800 px-1 rounded text-violet-300 text-xs">X-Request-ID</code> for tracing.</p>
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
@@ -442,7 +442,7 @@ Authorization: Bearer &lt;token&gt;
           </div>
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
@@ -474,7 +474,7 @@ Authorization: Bearer &lt;token&gt;
           </div>
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
@@ -508,7 +508,7 @@ Authorization: Bearer &lt;token&gt;
           </div>
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>

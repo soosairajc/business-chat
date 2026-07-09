@@ -57,7 +57,7 @@
             <option>#engineering</option>
             <option>#product</option>
           </select>
-          <button aria-label="Mark all read" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition">
+          <button onclick="window.NexusComponents?.toast('Marked as read','success')" aria-label="Mark all read" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition">
             <i data-lucide="check-check" class="w-4 h-4"></i>
             <span class="hidden sm:inline">Mark all read</span>
           </button>
@@ -132,7 +132,7 @@
                 <p class="text-sm font-medium text-slate-100">Q4-Report-2024.pdf</p>
                 <p class="text-xs text-slate-500">2.4 MB · PDF</p>
               </div>
-              <button class="ml-auto p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-100 transition" aria-label="Download">
+              <button onclick="window.NexusComponents?.toast('Download started','info')" class="ml-auto p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-100 transition" aria-label="Download">
                 <i data-lucide="download" class="w-4 h-4"></i>
               </button>
             </div>
@@ -282,7 +282,7 @@
 
         <!-- Load more -->
         <div class="flex justify-center pt-6 pb-2">
-          <button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition">
+          <button onclick="window.NexusComponents?.toast('No older activity','info')" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm transition">
             <i data-lucide="refresh-cw" class="w-4 h-4"></i>
             Load older activity
           </button>

@@ -16,7 +16,7 @@
 
   <!-- Icon Rail -->
   <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
-    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+    <button onclick="window.NexusComponents?.toast('Nexus HQ','info')" class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
       <span class="text-white font-bold text-sm">N</span>
       <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
     </button>
@@ -504,11 +504,11 @@
       <div class="flex items-center justify-between mt-8 pt-4 border-t border-slate-800">
         <p class="text-sm text-slate-500">Showing 16 of 48 members</p>
         <div class="flex items-center gap-1">
-          <button class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">Prev</button>
-          <button class="px-3 py-1.5 rounded-lg text-sm bg-violet-600 text-white">1</button>
-          <button class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">2</button>
-          <button class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">3</button>
-          <button class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">Next</button>
+          <button onclick="window.NexusComponents?.toast('Previous page','info')" class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">Prev</button>
+          <button onclick="window.NexusComponents?.toast('Page 1','info')" class="px-3 py-1.5 rounded-lg text-sm bg-violet-600 text-white">1</button>
+          <button onclick="window.NexusComponents?.toast('Page 2','info')" class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">2</button>
+          <button onclick="window.NexusComponents?.toast('Page 3','info')" class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">3</button>
+          <button onclick="window.NexusComponents?.toast('Next page','info')" class="px-3 py-1.5 rounded-lg text-sm text-slate-400 hover:bg-slate-800 hover:text-slate-100 transition">Next</button>
         </div>
       </div>
     </div>

@@ -24,6 +24,7 @@ export default defineConfig({
         shortcuts:      resolve(__dirname, 'pages/shortcuts.html'),
         '404':          resolve(__dirname, 'pages/404.html'),
         maintenance:    resolve(__dirname, 'pages/maintenance.html'),
+        status:         resolve(__dirname, 'pages/status.html'),
       }
     }
   },

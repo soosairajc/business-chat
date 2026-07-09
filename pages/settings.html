@@ -17,7 +17,7 @@
 
   <!-- ─── Icon Rail ─────────────────────────────────────────── -->
   <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 dark:border-slate-800 py-3 gap-1 z-20">
-    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Nexus HQ workspace">
+    <button onclick="window.NexusComponents?.toast('Nexus HQ','info')" class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Nexus HQ workspace">
       <span class="text-white font-bold text-sm">N</span>
       <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
     </button>
@@ -40,10 +40,10 @@
       <i data-lucide="align-right" data-dir-icon class="w-4 h-4"></i>
     </button>
     <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
-    <button aria-label="Your profile" class="relative mt-1">
+    <a href="/pages/profile.html" aria-label="Your profile" class="relative mt-1">
       <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
       <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
-    </button>
+    </a>
   </nav>
 
   <!-- ─── Settings Nav Sidebar ──────────────────────────────── -->
@@ -429,7 +429,7 @@
             <span class="text-white font-bold text-2xl">N</span>
           </div>
           <div>
-            <button class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-medium text-slate-300 rounded-lg border border-slate-700 transition">Upload Image</button>
+            <button onclick="window.NexusComponents?.toast('Upload started','info')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-medium text-slate-300 rounded-lg border border-slate-700 transition">Upload Image</button>
             <p class="text-xs text-slate-500 mt-1.5">PNG, JPG or GIF · Max 4MB</p>
           </div>
         </div>
@@ -560,12 +560,12 @@
         <div class="flex items-center gap-6 mb-6">
           <div class="relative">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Profile avatar" class="w-20 h-20 rounded-2xl bg-slate-700 ring-4 ring-slate-800" />
-            <button class="absolute -bottom-1.5 -right-1.5 w-7 h-7 rounded-full bg-violet-600 flex items-center justify-center shadow-lg hover:bg-violet-500 transition" aria-label="Change avatar">
+            <button onclick="window.NexusComponents?.toast('Upload started','info')" class="absolute -bottom-1.5 -right-1.5 w-7 h-7 rounded-full bg-violet-600 flex items-center justify-center shadow-lg hover:bg-violet-500 transition" aria-label="Change avatar">
               <i data-lucide="camera" class="w-3.5 h-3.5 text-white"></i>
             </button>
           </div>
           <div>
-            <button class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-medium text-slate-300 rounded-lg border border-slate-700 transition block mb-2">Upload new photo</button>
+            <button onclick="window.NexusComponents?.toast('Upload started','info')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-medium text-slate-300 rounded-lg border border-slate-700 transition block mb-2">Upload new photo</button>
             <p class="text-xs text-slate-500">PNG, JPG or WebP · Max 8MB</p>
           </div>
         </div>
@@ -756,8 +756,8 @@
         <h3 class="text-sm font-semibold text-slate-300 mb-3 mt-5 uppercase tracking-wide">Active Sessions</h3>
         <div class="space-y-2">
           <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-between"><div class="flex items-center gap-3"><i data-lucide="monitor" class="w-5 h-5 text-violet-400"></i><div><p class="text-sm font-medium text-slate-100">MacBook Pro — Chrome 121</p><p class="text-xs text-slate-400">San Francisco, CA · Active now</p></div></div><span class="text-xs text-emerald-400 font-medium">Current</span></div>
-          <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-between"><div class="flex items-center gap-3"><i data-lucide="smartphone" class="w-5 h-5 text-slate-400"></i><div><p class="text-sm font-medium text-slate-100">iPhone 15 Pro — Nexus App</p><p class="text-xs text-slate-400">San Francisco, CA · 2 hours ago</p></div></div><button class="text-xs text-red-400 hover:text-red-300 font-medium transition">Revoke</button></div>
-          <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-between"><div class="flex items-center gap-3"><i data-lucide="tablet" class="w-5 h-5 text-slate-400"></i><div><p class="text-sm font-medium text-slate-100">iPad Air — Safari</p><p class="text-xs text-slate-400">New York, NY · 3 days ago</p></div></div><button class="text-xs text-red-400 hover:text-red-300 font-medium transition">Revoke</button></div>
+          <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-between"><div class="flex items-center gap-3"><i data-lucide="smartphone" class="w-5 h-5 text-slate-400"></i><div><p class="text-sm font-medium text-slate-100">iPhone 15 Pro — Nexus App</p><p class="text-xs text-slate-400">San Francisco, CA · 2 hours ago</p></div></div><button onclick="window.NexusComponents?.toast('Session revoked','error')" class="text-xs text-red-400 hover:text-red-300 font-medium transition">Revoke</button></div>
+          <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-between"><div class="flex items-center gap-3"><i data-lucide="tablet" class="w-5 h-5 text-slate-400"></i><div><p class="text-sm font-medium text-slate-100">iPad Air — Safari</p><p class="text-xs text-slate-400">New York, NY · 3 days ago</p></div></div><button onclick="window.NexusComponents?.toast('Session revoked','error')" class="text-xs text-red-400 hover:text-red-300 font-medium transition">Revoke</button></div>
         </div>
       </section>
     </div>
@@ -765,9 +765,9 @@
       <h2 class="text-xl font-bold text-slate-100 mb-2">Connected Apps</h2>
       <p class="text-sm text-slate-400 mb-6">Manage third-party integrations and connected services.</p>
       <div class="space-y-3">
-        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center gap-4"><div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 text-white font-bold text-sm">Jr</div><div class="flex-1"><p class="text-sm font-medium text-slate-100">Jira</p><p class="text-xs text-slate-400">Issue tracking · Connected 3 months ago</p></div><span class="text-xs text-emerald-400 font-medium mr-2">Active</span><button class="text-xs text-red-400 hover:text-red-300 font-medium transition">Disconnect</button></div>
-        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center gap-4"><div class="w-10 h-10 rounded-xl bg-gray-700 flex items-center justify-center shrink-0"><i data-lucide="github" class="w-5 h-5 text-white"></i></div><div class="flex-1"><p class="text-sm font-medium text-slate-100">GitHub</p><p class="text-xs text-slate-400">Code repository · Connected 1 year ago</p></div><span class="text-xs text-emerald-400 font-medium mr-2">Active</span><button class="text-xs text-red-400 hover:text-red-300 font-medium transition">Disconnect</button></div>
-        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center gap-4"><div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center shrink-0 text-white font-bold text-sm">Fg</div><div class="flex-1"><p class="text-sm font-medium text-slate-100">Figma</p><p class="text-xs text-slate-400">Design tool · Connected 6 months ago</p></div><span class="text-xs text-emerald-400 font-medium mr-2">Active</span><button class="text-xs text-red-400 hover:text-red-300 font-medium transition">Disconnect</button></div>
+        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center gap-4"><div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 text-white font-bold text-sm">Jr</div><div class="flex-1"><p class="text-sm font-medium text-slate-100">Jira</p><p class="text-xs text-slate-400">Issue tracking · Connected 3 months ago</p></div><span class="text-xs text-emerald-400 font-medium mr-2">Active</span><button onclick="window.NexusComponents?.toast('Disconnected','error')" class="text-xs text-red-400 hover:text-red-300 font-medium transition">Disconnect</button></div>
+        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center gap-4"><div class="w-10 h-10 rounded-xl bg-gray-700 flex items-center justify-center shrink-0"><i data-lucide="github" class="w-5 h-5 text-white"></i></div><div class="flex-1"><p class="text-sm font-medium text-slate-100">GitHub</p><p class="text-xs text-slate-400">Code repository · Connected 1 year ago</p></div><span class="text-xs text-emerald-400 font-medium mr-2">Active</span><button onclick="window.NexusComponents?.toast('Disconnected','error')" class="text-xs text-red-400 hover:text-red-300 font-medium transition">Disconnect</button></div>
+        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700 flex items-center gap-4"><div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center shrink-0 text-white font-bold text-sm">Fg</div><div class="flex-1"><p class="text-sm font-medium text-slate-100">Figma</p><p class="text-xs text-slate-400">Design tool · Connected 6 months ago</p></div><span class="text-xs text-emerald-400 font-medium mr-2">Active</span><button onclick="window.NexusComponents?.toast('Disconnected','error')" class="text-xs text-red-400 hover:text-red-300 font-medium transition">Disconnect</button></div>
         <button onclick="window.NexusComponents?.toast('Browse integrations marketplace', 'info')" class="w-full p-4 rounded-xl border-2 border-dashed border-slate-700 hover:border-violet-600 text-sm text-slate-400 hover:text-violet-400 transition flex items-center justify-center gap-2">
           <i data-lucide="plus" class="w-4 h-4"></i> Add Integration
         </button>
@@ -777,8 +777,8 @@
       <h2 class="text-xl font-bold text-slate-100 mb-2">API Keys</h2>
       <p class="text-sm text-slate-400 mb-6">Manage API tokens for programmatic access to Nexus.</p>
       <div class="space-y-3 mb-4">
-        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700"><div class="flex items-center justify-between mb-2"><p class="text-sm font-medium text-slate-100">Production Token</p><div class="flex items-center gap-2"><span class="text-xs text-emerald-400 font-medium">Active</span><button class="text-xs text-red-400 hover:text-red-300 font-medium">Revoke</button></div></div><code class="text-xs text-slate-400 font-mono bg-slate-900 px-3 py-2 rounded-lg block">nxs_prod_a8f2c9e1d4b7...••••••••</code><p class="text-xs text-slate-500 mt-2">Created Jan 15, 2024 · Last used 2 hours ago</p></div>
-        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700"><div class="flex items-center justify-between mb-2"><p class="text-sm font-medium text-slate-100">Development Token</p><div class="flex items-center gap-2"><span class="text-xs text-amber-400 font-medium">Expires in 7d</span><button class="text-xs text-red-400 hover:text-red-300 font-medium">Revoke</button></div></div><code class="text-xs text-slate-400 font-mono bg-slate-900 px-3 py-2 rounded-lg block">nxs_dev_3c1e8a05f2d9...••••••••</code><p class="text-xs text-slate-500 mt-2">Created Feb 3, 2024 · Last used yesterday</p></div>
+        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700"><div class="flex items-center justify-between mb-2"><p class="text-sm font-medium text-slate-100">Production Token</p><div class="flex items-center gap-2"><span class="text-xs text-emerald-400 font-medium">Active</span><button onclick="window.NexusComponents?.toast('Token revoked','error')" class="text-xs text-red-400 hover:text-red-300 font-medium">Revoke</button></div></div><code class="text-xs text-slate-400 font-mono bg-slate-900 px-3 py-2 rounded-lg block">nxs_prod_a8f2c9e1d4b7...••••••••</code><p class="text-xs text-slate-500 mt-2">Created Jan 15, 2024 · Last used 2 hours ago</p></div>
+        <div class="p-4 rounded-xl bg-slate-800 border border-slate-700"><div class="flex items-center justify-between mb-2"><p class="text-sm font-medium text-slate-100">Development Token</p><div class="flex items-center gap-2"><span class="text-xs text-amber-400 font-medium">Expires in 7d</span><button onclick="window.NexusComponents?.toast('Token revoked','error')" class="text-xs text-red-400 hover:text-red-300 font-medium">Revoke</button></div></div><code class="text-xs text-slate-400 font-mono bg-slate-900 px-3 py-2 rounded-lg block">nxs_dev_3c1e8a05f2d9...••••••••</code><p class="text-xs text-slate-500 mt-2">Created Feb 3, 2024 · Last used yesterday</p></div>
       </div>
       <button onclick="window.NexusComponents?.toast('New API key generated!', 'success')" class="flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-lg transition">
         <i data-lucide="plus" class="w-4 h-4"></i> Generate New Key
