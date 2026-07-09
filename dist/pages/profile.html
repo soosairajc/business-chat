@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script type="module" crossorigin src="/assets/app-DWoDH9r9.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/app-BQLTTLQh.css">
+  <script type="module" crossorigin src="/assets/app-D1sSmzJQ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-Cg4TFSET.css">
 </head>
 <body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
 
@@ -18,7 +18,7 @@
 
   <!-- ─── Icon Rail ─────────────────────────────────────────── -->
   <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
-    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Nexus HQ workspace">
+    <button onclick="window.NexusComponents?.toast('Nexus HQ','info')" class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Nexus HQ workspace">
       <span class="text-white font-bold text-sm">N</span>
       <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
     </button>
@@ -41,10 +41,10 @@
       <i data-lucide="align-right" data-dir-icon class="w-4 h-4"></i>
     </button>
     <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
-    <button aria-label="Your profile" class="relative mt-1">
+    <a href="/pages/profile.html" aria-label="Your profile" class="relative mt-1">
       <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
       <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
-    </button>
+    </a>
   </nav>
 
   <!-- ─── Profile Main ───────────────────────────────────────── -->
@@ -58,7 +58,7 @@
         <div class="absolute inset-0 flex items-center justify-center opacity-5">
           <svg width="400" height="400" viewBox="0 0 400 400"><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="white"/></pattern><rect width="400" height="400" fill="url(#dots)"/></svg>
         </div>
-        <button class="absolute top-4 right-4 px-3 py-1.5 bg-black/40 hover:bg-black/60 text-white text-xs font-medium rounded-lg backdrop-blur-sm transition flex items-center gap-1.5" aria-label="Edit cover photo">
+        <button onclick="window.NexusComponents?.toast('Edit mode','success')" class="absolute top-4 right-4 px-3 py-1.5 bg-black/40 hover:bg-black/60 text-white text-xs font-medium rounded-lg backdrop-blur-sm transition flex items-center gap-1.5" aria-label="Edit cover photo">
           <i data-lucide="camera" class="w-3.5 h-3.5"></i> Edit Cover
         </button>
       </div>
@@ -107,10 +107,10 @@
             <i data-lucide="more-horizontal" class="w-4 h-4"></i>
           </button>
           <div id="profile-more-dd" data-dropdown class="hidden absolute right-10 mt-2 z-50 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
-            <button class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i> Follow</button>
-            <button class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i> Notify on active</button>
+            <button onclick="window.NexusComponents?.toast('Following','success')" class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i> Follow</button>
+            <button onclick="window.NexusComponents?.toast('Notifications enabled','success')" class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i> Notify on active</button>
             <div class="border-t border-slate-700 my-1"></div>
-            <button class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="flag" class="w-4 h-4 opacity-60"></i> Report</button>
+            <button onclick="window.NexusComponents?.toast('Reported','error')" class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="flag" class="w-4 h-4 opacity-60"></i> Report</button>
           </div>
         </div>
       </div>
@@ -350,10 +350,10 @@
       <div id="tab-files" class="profile-panel hidden">
         <div class="flex items-center justify-between mb-4">
           <div class="flex gap-2">
-            <button class="px-3 py-1.5 bg-violet-600/20 text-violet-400 text-xs font-semibold rounded-lg border border-violet-500/30">All</button>
-            <button class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Images</button>
-            <button class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Figma</button>
-            <button class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Docs</button>
+            <button onclick="window.NexusComponents?.toast('Showing all files','info')" class="px-3 py-1.5 bg-violet-600/20 text-violet-400 text-xs font-semibold rounded-lg border border-violet-500/30">All</button>
+            <button onclick="window.NexusComponents?.toast('Filtered: Images','info')" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Images</button>
+            <button onclick="window.NexusComponents?.toast('Filtered: Figma','info')" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Figma</button>
+            <button onclick="window.NexusComponents?.toast('Filtered: Docs','info')" class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Docs</button>
           </div>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Status — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-D1sSmzJQ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-Cg4TFSET.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <a href="/" class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Nexus home">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" data-tooltip="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" data-tooltip="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" data-tooltip="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" data-tooltip="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" data-theme-icon class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" data-tooltip="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <main data-app-main class="flex-1 overflow-y-auto bg-slate-950">
+    <div class="max-w-3xl mx-auto px-6 py-10">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-violet-500/20">
+            <span class="text-white font-bold">N</span>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-slate-100">Nexus Status</h1>
+            <p class="text-xs text-slate-500">Real-time status of Nexus services</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="refresh-btn" class="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-sm text-slate-200 transition"><i data-lucide="refresh-cw" class="w-4 h-4"></i><span class="hidden sm:inline">Refresh</span></button>
+          <button onclick="window.NexusComponents?.toast('Subscribed to status updates','success')" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition"><i data-lucide="bell" class="w-4 h-4"></i>Subscribe</button>
+        </div>
+      </div>
+
+      <!-- Overall banner -->
+      <div id="overall-banner" class="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5 flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center shrink-0">
+          <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-400"></i>
+        </div>
+        <div class="min-w-0">
+          <h2 class="text-lg font-bold text-emerald-300">All Systems Operational</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Last updated <span id="last-updated">just now</span> · 90-day uptime <span class="text-slate-200 font-medium">99.98%</span></p>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <section class="mb-8">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Services</h3>
+          <div class="flex items-center gap-1 bg-slate-900 border border-slate-800 rounded-lg p-0.5" id="range-toggle">
+            <button data-range="30" class="px-2.5 py-1 rounded-md text-xs text-slate-400 transition">30d</button>
+            <button data-range="60" class="px-2.5 py-1 rounded-md text-xs text-slate-400 transition">60d</button>
+            <button data-range="90" class="px-2.5 py-1 rounded-md text-xs bg-slate-700 text-slate-100 transition">90d</button>
+          </div>
+        </div>
+        <div id="services" class="rounded-2xl border border-slate-800 bg-slate-900 divide-y divide-slate-800 overflow-hidden"></div>
+        <div class="flex items-center gap-4 mt-3 text-xs text-slate-500">
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-emerald-500"></span>Operational</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-amber-500"></span>Degraded</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-red-500"></span>Outage</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-slate-700"></span>No data</span>
+        </div>
+      </section>
+
+      <!-- Scheduled maintenance -->
+      <section class="mb-8">
+        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Scheduled Maintenance</h3>
+        <div class="rounded-2xl border border-blue-500/30 bg-blue-500/5 p-5">
+          <div class="flex items-start gap-3">
+            <div class="w-9 h-9 rounded-lg bg-blue-500/15 flex items-center justify-center shrink-0"><i data-lucide="calendar-clock" class="w-5 h-5 text-blue-400"></i></div>
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h4 class="font-semibold text-slate-100">Database cluster upgrade</h4>
+                <span class="px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 text-[10px] font-semibold uppercase tracking-wide">Scheduled</span>
+              </div>
+              <p class="text-sm text-slate-400 mt-1">We'll be upgrading our primary database cluster for improved performance. Messaging may be briefly delayed. No downtime expected.</p>
+              <p class="text-xs text-slate-500 mt-2 flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5"></i>Jul 14, 2026 · 02:00–03:00 UTC · Affects: Messaging, File Storage</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Past incidents -->
+      <section class="mb-8">
+        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Incident History</h3>
+        <div id="incidents" class="space-y-4"></div>
+      </section>
+
+      <!-- Recent updates -->
+      <section class="mb-10">
+        <h3 class="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3">Recent Updates</h3>
+        <ol id="updates" class="relative border-s border-slate-800 ms-2 space-y-5"></ol>
+      </section>
+
+      <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
+        <span>Nexus Status · Uptime data is illustrative sample data</span>
+        <div class="flex items-center gap-4">
+          <a href="/pages/maintenance.html" class="hover:text-slate-300 transition flex items-center gap-1"><i data-lucide="wrench" class="w-3.5 h-3.5"></i>Maintenance</a>
+          <button onclick="window.NexusComponents?.toast('Opening @nexusstatus','info')" class="hover:text-slate-300 transition flex items-center gap-1"><i data-lucide="twitter" class="w-3.5 h-3.5"></i>@nexusstatus</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2"></div>
+
+<script>
+// ── Sample data ───────────────────────────────────────────────
+const SERVICES = [
+  { name: 'API', desc: 'REST & GraphQL endpoints', status: 'operational', uptime: 99.99 },
+  { name: 'Web Application', desc: 'app.nexus.app', status: 'operational', uptime: 100 },
+  { name: 'Messaging & Chat', desc: 'Realtime message delivery', status: 'degraded', uptime: 99.82 },
+  { name: 'Voice & Video', desc: 'Calls and screen sharing', status: 'operational', uptime: 99.95 },
+  { name: 'Notifications', desc: 'Push, email & in-app', status: 'operational', uptime: 99.97 },
+  { name: 'File Storage', desc: 'Uploads, previews & CDN', status: 'operational', uptime: 99.99 },
+  { name: 'Search', desc: 'Message & file search', status: 'operational', uptime: 99.9 },
+  { name: 'Webhooks', desc: 'Outgoing integrations', status: 'operational', uptime: 99.93 },
+];
+
+const STATUS = {
+  operational: { label: 'Operational', dot: 'bg-emerald-500', text: 'text-emerald-400', bar: 'bg-emerald-500' },
+  degraded:    { label: 'Degraded Performance', dot: 'bg-amber-500', text: 'text-amber-400', bar: 'bg-amber-500' },
+  partial:     { label: 'Partial Outage', dot: 'bg-orange-500', text: 'text-orange-400', bar: 'bg-orange-500' },
+  outage:      { label: 'Major Outage', dot: 'bg-red-500', text: 'text-red-400', bar: 'bg-red-500' },
+};
+
+const INCIDENTS = [
+  { date: 'Jul 5, 2026', title: 'Elevated message delivery latency', sev: 'degraded',
+    updates: [
+      { t: '14:52 UTC', tag: 'Resolved', text: 'Message delivery has fully recovered. Root cause was a saturated queue worker; capacity has been increased.' },
+      { t: '14:10 UTC', tag: 'Monitoring', text: 'A fix has been deployed and latency is returning to normal. We are monitoring.' },
+      { t: '13:38 UTC', tag: 'Investigating', text: 'We are investigating delayed message delivery in some workspaces.' },
+    ]},
+  { date: 'Jun 22, 2026', title: 'File uploads failing intermittently', sev: 'partial',
+    updates: [
+      { t: '09:20 UTC', tag: 'Resolved', text: 'Uploads are working normally. A misconfigured CDN edge node has been drained.' },
+      { t: '08:47 UTC', tag: 'Identified', text: 'Root cause identified in a single CDN region; rerouting traffic.' },
+    ]},
+  { date: 'Jun 3, 2026', title: 'Scheduled maintenance completed', sev: 'operational',
+    updates: [
+      { t: '03:00 UTC', tag: 'Completed', text: 'Database maintenance completed successfully with no customer impact.' },
+    ]},
+];
+
+const UPDATES = [
+  { icon: 'sparkles', color: 'text-violet-400', title: 'Faster search rollout', text: 'Search indexing latency reduced by ~40% for large workspaces.', time: '2 days ago' },
+  { icon: 'shield-check', color: 'text-emerald-400', title: 'Security patch applied', text: 'Routine dependency updates deployed across all services.', time: '5 days ago' },
+  { icon: 'zap', color: 'text-amber-400', title: 'Voice quality improvements', text: 'New adaptive bitrate codec enabled for low-bandwidth calls.', time: '1 week ago' },
+];
+
+const TAG_COLORS = {
+  Resolved: 'bg-emerald-500/15 text-emerald-300', Completed: 'bg-emerald-500/15 text-emerald-300',
+  Monitoring: 'bg-blue-500/15 text-blue-300', Identified: 'bg-amber-500/15 text-amber-300',
+  Investigating: 'bg-red-500/15 text-red-300',
+};
+
+// ── Deterministic pseudo-random so bars are stable per service ──
+function seeded(seed) { let x = seed * 9301 + 49297; return () => { x = (x * 9301 + 49297) % 233280; return x / 233280; }; }
+
+function renderServices(days) {
+  const host = document.getElementById('services');
+  host.innerHTML = '';
+  SERVICES.forEach((svc, i) => {
+    const st = STATUS[svc.status];
+    const rand = seeded(i + 1);
+    const bars = Array.from({ length: days }, (_, d) => {
+      const r = rand();
+      // mostly operational; the degraded service has a few bad days near the end
+      let cls = st.bar;
+      if (svc.status === 'operational') cls = r > 0.985 ? 'bg-amber-500' : 'bg-emerald-500';
+      else if (svc.status === 'degraded') cls = (d > days - 4 && r > 0.4) ? 'bg-amber-500' : (r > 0.97 ? 'bg-red-500' : 'bg-emerald-500');
+      return `<span class="flex-1 min-w-[2px] h-7 rounded-[2px] ${cls} opacity-90 hover:opacity-100 transition" title="Day ${days - d}: ${cls.includes('emerald') ? 'Operational' : cls.includes('amber') ? 'Degraded' : 'Outage'}"></span>`;
+    }).join('');
+    const row = document.createElement('div');
+    row.className = 'p-4';
+    row.innerHTML = `
+      <div class="flex items-center justify-between gap-3 mb-2.5">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <span class="w-2.5 h-2.5 rounded-full ${st.dot} shrink-0"></span>
+          <div class="min-w-0">
+            <p class="text-sm font-medium text-slate-100 truncate">${svc.name}</p>
+            <p class="text-xs text-slate-500 truncate">${svc.desc}</p>
+          </div>
+        </div>
+        <span class="text-xs font-medium ${st.text} shrink-0">${st.label}</span>
+      </div>
+      <div class="flex items-end gap-[2px]">${bars}</div>
+      <div class="flex items-center justify-between mt-1.5 text-[11px] text-slate-500">
+        <span>${days} days ago</span><span>${svc.uptime}% uptime</span><span>Today</span>
+      </div>`;
+    host.appendChild(row);
+  });
+}
+
+function renderIncidents() {
+  const host = document.getElementById('incidents');
+  host.innerHTML = '';
+  INCIDENTS.forEach(inc => {
+    const st = STATUS[inc.sev] || STATUS.operational;
+    const el = document.createElement('div');
+    el.className = 'rounded-2xl border border-slate-800 bg-slate-900 p-5';
+    el.innerHTML = `
+      <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="w-2.5 h-2.5 rounded-full ${st.dot}"></span>
+          <h4 class="font-semibold text-slate-100 truncate">${inc.title}</h4>
+        </div>
+        <span class="text-xs text-slate-500">${inc.date}</span>
+      </div>
+      <div class="space-y-3 ps-1">
+        ${inc.updates.map(u => `
+          <div class="flex gap-3">
+            <span class="px-2 py-0.5 h-fit rounded-md text-[10px] font-semibold ${TAG_COLORS[u.tag] || 'bg-slate-700 text-slate-300'}">${u.tag}</span>
+            <div class="min-w-0"><p class="text-sm text-slate-300">${u.text}</p><p class="text-[11px] text-slate-500 mt-0.5">${u.t}</p></div>
+          </div>`).join('')}
+      </div>`;
+    host.appendChild(el);
+  });
+}
+
+function renderUpdates() {
+  const host = document.getElementById('updates');
+  host.innerHTML = UPDATES.map(u => `
+    <li class="ms-5">
+      <span class="absolute -start-[9px] mt-1 w-4 h-4 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center"><i data-lucide="${u.icon}" class="w-2.5 h-2.5 ${u.color}"></i></span>
+      <div class="flex items-center gap-2 flex-wrap"><h4 class="text-sm font-semibold text-slate-100">${u.title}</h4><span class="text-[11px] text-slate-500">${u.time}</span></div>
+      <p class="text-sm text-slate-400 mt-0.5">${u.text}</p>
+    </li>`).join('');
+}
+
+let currentRange = 90;
+function renderAll() { renderServices(currentRange); renderIncidents(); renderUpdates(); if (window.lucide) lucide.createIcons(); }
+
+document.getElementById('range-toggle').addEventListener('click', e => {
+  const btn = e.target.closest('[data-range]'); if (!btn) return;
+  currentRange = +btn.getAttribute('data-range');
+  document.querySelectorAll('#range-toggle button').forEach(b => {
+    const on = b === btn;
+    b.classList.toggle('bg-slate-700', on); b.classList.toggle('text-slate-100', on); b.classList.toggle('text-slate-400', !on);
+  });
+  renderServices(currentRange); if (window.lucide) lucide.createIcons();
+});
+
+document.getElementById('refresh-btn').addEventListener('click', () => {
+  document.getElementById('last-updated').textContent = 'just now';
+  renderAll();
+  window.NexusComponents?.toast('Status refreshed', 'success', 1800);
+});
+
+window.addEventListener('load', () => { renderAll(); });
+</script>
+</body>
+</html>

@@ -18,15 +18,15 @@
     .media-thumb:hover .media-overlay { opacity: 1; }
     .media-overlay { opacity: 0; transition: opacity 0.2s; }
   </style>
-  <script type="module" crossorigin src="/assets/app-DWoDH9r9.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/app-BQLTTLQh.css">
+  <script type="module" crossorigin src="/assets/app-D1sSmzJQ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-Cg4TFSET.css">
 </head>
 <body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
 <div class="flex h-full overflow-hidden">
 
   <!-- Icon Rail -->
   <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
-    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+    <button onclick="window.NexusComponents?.toast('Nexus HQ','info')" class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
       <span class="text-white font-bold text-sm">N</span>
     </button>
     <div class="w-6 border-t border-slate-700 mb-1"></div>
@@ -71,21 +71,21 @@
       </button>
       <div class="pt-3">
         <p class="px-2 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">By Channel</p>
-        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><span class="text-slate-500 text-xs">#</span> design</button>
-        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><span class="text-slate-500 text-xs">#</span> marketing</button>
-        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><span class="text-slate-500 text-xs">#</span> general</button>
+        <button onclick="window.NexusComponents?.toast('Filtered by #design','info')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><span class="text-slate-500 text-xs">#</span> design</button>
+        <button onclick="window.NexusComponents?.toast('Filtered by #marketing','info')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><span class="text-slate-500 text-xs">#</span> marketing</button>
+        <button onclick="window.NexusComponents?.toast('Filtered by #general','info')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><span class="text-slate-500 text-xs">#</span> general</button>
       </div>
       <div class="pt-3">
         <p class="px-2 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">By Person</p>
-        <button class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="" class="w-5 h-5 rounded-full" /> Alice Chen</button>
-        <button class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="" class="w-5 h-5 rounded-full" /> Sarah Lee</button>
-        <button class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="" class="w-5 h-5 rounded-full" /> David Kim</button>
+        <button onclick="window.NexusComponents?.toast('Filtered by Alice Chen','info')" class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="" class="w-5 h-5 rounded-full" /> Alice Chen</button>
+        <button onclick="window.NexusComponents?.toast('Filtered by Sarah Lee','info')" class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="" class="w-5 h-5 rounded-full" /> Sarah Lee</button>
+        <button onclick="window.NexusComponents?.toast('Filtered by David Kim','info')" class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="" class="w-5 h-5 rounded-full" /> David Kim</button>
       </div>
       <div class="pt-3">
         <p class="px-2 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">Date Range</p>
-        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">Today</button>
-        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">This Week</button>
-        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">This Month</button>
+        <button onclick="window.NexusComponents?.toast('Filtered: Today','info')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">Today</button>
+        <button onclick="window.NexusComponents?.toast('Filtered: This Week','info')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">This Week</button>
+        <button onclick="window.NexusComponents?.toast('Filtered: This Month','info')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">This Month</button>
       </div>
     </div>
   </aside>
@@ -118,8 +118,8 @@
               <i data-lucide="image" class="w-12 h-12 text-violet-300 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
-              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Download started','success')" aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">hero-banner-v3.png</p>
@@ -134,8 +134,8 @@
               <i data-lucide="image" class="w-10 h-10 text-emerald-300 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
-              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Download started','success')" aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">team-photo-all-hands.jpg</p>
@@ -153,7 +153,7 @@
               </div>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Play" class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-7 h-7 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Playing','info')" aria-label="Play" class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-7 h-7 text-white"></i></button>
             </div>
             <div class="absolute top-3 left-3"><span class="px-2 py-0.5 rounded-full bg-blue-600/80 text-white text-[10px] font-semibold">VIDEO</span></div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
@@ -169,8 +169,8 @@
               <i data-lucide="image" class="w-10 h-10 text-rose-300 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
-              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Download started','success')" aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">brand-colors-palette.png</p>
@@ -185,8 +185,8 @@
               <i data-lucide="image" class="w-10 h-10 text-amber-300 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
-              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Download started','success')" aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">social-campaign-oct.jpg</p>
@@ -204,7 +204,7 @@
               </div>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Play" class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-7 h-7 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Playing','info')" aria-label="Play" class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-7 h-7 text-white"></i></button>
             </div>
             <div class="absolute top-3 left-3"><span class="px-2 py-0.5 rounded-full bg-cyan-600/80 text-white text-[10px] font-semibold">VIDEO</span></div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
@@ -220,8 +220,8 @@
               <i data-lucide="image" class="w-10 h-10 text-purple-300 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
-              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Download started','success')" aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">app-screenshots-v2.png</p>
@@ -239,7 +239,7 @@
               </div>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Play" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Playing','info')" aria-label="Play" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute top-3 left-3"><span class="px-2 py-0.5 rounded-full bg-indigo-600/80 text-white text-[10px] font-semibold">AUDIO</span></div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
@@ -255,8 +255,8 @@
               <i data-lucide="image" class="w-12 h-12 text-green-300 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
-              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Download started','success')" aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">office-plant-wall.jpg</p>
@@ -271,7 +271,7 @@
               <i data-lucide="image" class="w-10 h-10 text-fuchsia-300 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">logo-variants-2024.png</p>
@@ -286,7 +286,7 @@
               <i data-lucide="image" class="w-10 h-10 text-slate-400 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">dark-mode-mockup.png</p>
@@ -301,7 +301,7 @@
               <i data-lucide="image" class="w-10 h-10 text-yellow-300 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">event-poster-conf24.jpg</p>
@@ -319,7 +319,7 @@
               </div>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Play" class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-7 h-7 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Playing','info')" aria-label="Play" class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-7 h-7 text-white"></i></button>
             </div>
             <div class="absolute top-3 left-3"><span class="px-2 py-0.5 rounded-full bg-red-600/80 text-white text-[10px] font-semibold">VIDEO</span></div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
@@ -335,7 +335,7 @@
               <i data-lucide="image" class="w-10 h-10 text-sky-300 opacity-60"></i>
             </div>
             <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
-              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button onclick="window.NexusComponents?.toast('Opening preview','info')" aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
             </div>
             <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
               <p class="text-xs text-white font-medium truncate">architecture-diagram.png</p>

@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script type="module" crossorigin src="/assets/app-DWoDH9r9.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/app-BQLTTLQh.css">
+  <script type="module" crossorigin src="/assets/app-D1sSmzJQ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-Cg4TFSET.css">
 </head>
 <body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
 <div class="flex h-full overflow-hidden">
@@ -366,7 +366,7 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-800">
-          <tr data-filter-item class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item data-type="documents" data-filter-text="Q4-Report-2024.pdf" class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-red-900/40 flex items-center justify-center shrink-0"><i data-lucide="file-text" class="w-4 h-4 text-red-400"></i></div>
@@ -386,7 +386,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr data-filter-item class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item data-type="images" data-filter-text="hero-banner-v3.png" class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-violet-900/40 flex items-center justify-center shrink-0"><i data-lucide="image" class="w-4 h-4 text-violet-400"></i></div>
@@ -406,7 +406,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr data-filter-item class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item data-type="videos" data-filter-text="product-demo-oct.mp4" class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-blue-900/40 flex items-center justify-center shrink-0"><i data-lucide="video" class="w-4 h-4 text-blue-400"></i></div>
@@ -426,7 +426,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr data-filter-item class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item data-type="archives" data-filter-text="design-assets-v2.zip" class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-amber-900/40 flex items-center justify-center shrink-0"><i data-lucide="archive" class="w-4 h-4 text-amber-400"></i></div>
@@ -446,7 +446,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr data-filter-item class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item data-type="documents" data-filter-text="marketing-budget.xlsx" class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-green-900/40 flex items-center justify-center shrink-0"><i data-lucide="table" class="w-4 h-4 text-green-400"></i></div>
@@ -466,7 +466,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr data-filter-item class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item data-type="documents" data-filter-text="nexus-design-system.fig" class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-fuchsia-900/40 flex items-center justify-center shrink-0"><i data-lucide="pen-tool" class="w-4 h-4 text-fuchsia-400"></i></div>
@@ -494,22 +494,55 @@
 
 <!-- Context Menu -->
 <div id="file-context-menu" class="hidden fixed z-50 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-1 text-sm">
-  <button class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-slate-300 hover:text-slate-100 transition text-left">
+  <button data-ctx="preview" class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-slate-300 hover:text-slate-100 transition text-left">
+    <i data-lucide="eye" class="w-4 h-4 text-slate-400"></i> Preview
+  </button>
+  <button data-ctx="download" class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-slate-300 hover:text-slate-100 transition text-left">
     <i data-lucide="download" class="w-4 h-4 text-slate-400"></i> Download
   </button>
-  <button class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-slate-300 hover:text-slate-100 transition text-left">
+  <button data-ctx="copy" class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-slate-300 hover:text-slate-100 transition text-left">
     <i data-lucide="link" class="w-4 h-4 text-slate-400"></i> Copy Link
   </button>
-  <button class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-slate-300 hover:text-slate-100 transition text-left">
+  <button data-ctx="share" class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-slate-300 hover:text-slate-100 transition text-left">
     <i data-lucide="share-2" class="w-4 h-4 text-slate-400"></i> Share
   </button>
-  <button class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-slate-300 hover:text-slate-100 transition text-left">
+  <button data-ctx="pin" class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-slate-300 hover:text-slate-100 transition text-left">
     <i data-lucide="pin" class="w-4 h-4 text-slate-400"></i> Pin File
   </button>
   <div class="border-t border-slate-700 my-1"></div>
-  <button class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-red-400 hover:text-red-300 transition text-left">
+  <button data-ctx="delete" class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-red-400 hover:text-red-300 transition text-left">
     <i data-lucide="trash-2" class="w-4 h-4"></i> Delete
   </button>
+</div>
+
+<!-- File Preview Modal -->
+<div id="file-preview-modal" data-modal class="hidden fixed inset-0 z-[60] flex items-center justify-center p-4 modal-backdrop">
+  <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
+  <div data-modal-panel class="w-full max-w-2xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between gap-3 px-5 py-3.5 border-b border-slate-800">
+      <div class="flex items-center gap-3 min-w-0">
+        <span id="fp-badge" class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 bg-slate-800"><i data-lucide="file" id="fp-badge-icon" class="w-5 h-5"></i></span>
+        <div class="min-w-0">
+          <h2 id="fp-name" class="text-sm font-semibold text-slate-100 truncate">file</h2>
+          <p id="fp-sub" class="text-xs text-slate-500 truncate">—</p>
+        </div>
+      </div>
+      <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition shrink-0"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="p-5">
+      <div id="fp-stage" class="rounded-xl overflow-hidden bg-slate-950 border border-slate-800 h-64 flex items-center justify-center"></div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-5 text-sm">
+        <div><p class="text-xs text-slate-500 mb-0.5">Type</p><p id="fp-type" class="text-slate-200 font-medium capitalize">—</p></div>
+        <div><p class="text-xs text-slate-500 mb-0.5">Size</p><p id="fp-size" class="text-slate-200 font-medium">—</p></div>
+        <div><p class="text-xs text-slate-500 mb-0.5">Owner</p><p id="fp-owner" class="text-slate-200 font-medium">—</p></div>
+        <div><p class="text-xs text-slate-500 mb-0.5">Modified</p><p id="fp-date" class="text-slate-200 font-medium">—</p></div>
+      </div>
+    </div>
+    <div class="flex items-center justify-end gap-2 px-5 py-3.5 border-t border-slate-800">
+      <button data-ctx="copy" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-200 transition"><i data-lucide="link" class="w-4 h-4"></i>Copy link</button>
+      <button data-ctx="download" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition"><i data-lucide="download" class="w-4 h-4"></i>Download</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -533,17 +566,42 @@ document.getElementById('list-view-btn').addEventListener('click', () => {
   document.getElementById('grid-view-btn').classList.add('bg-slate-800', 'text-slate-400');
 });
 
-// Context menu
-const ctxMenu = document.getElementById('file-context-menu');
-function showFileContextMenu(e, el) {
-  e.preventDefault();
-  ctxMenu.style.left = e.clientX + 'px';
-  ctxMenu.style.top = e.clientY + 'px';
-  ctxMenu.classList.remove('hidden');
-}
-document.addEventListener('click', () => ctxMenu.classList.add('hidden'));
+const toast = (m, t = 'success') => window.NexusComponents?.toast(m, t, 2200);
 
-// Filter buttons
+// ── Type mapping / helpers ────────────────────────────────────
+const TYPE_META = {
+  images:    { icon: 'image',     color: 'text-blue-400',    bg: 'bg-blue-900/40',    grad: 'from-blue-900/60 to-blue-950' },
+  videos:    { icon: 'video',     color: 'text-fuchsia-400', bg: 'bg-fuchsia-900/40', grad: 'from-fuchsia-900/60 to-fuchsia-950' },
+  audio:     { icon: 'music',     color: 'text-emerald-400', bg: 'bg-emerald-900/40', grad: 'from-emerald-900/60 to-emerald-950' },
+  documents: { icon: 'file-text', color: 'text-red-400',     bg: 'bg-red-900/40',     grad: 'from-red-900/60 to-red-950' },
+  archives:  { icon: 'file-archive', color: 'text-amber-400', bg: 'bg-amber-900/40',  grad: 'from-amber-900/60 to-amber-950' },
+};
+function humanSize(bytes) {
+  bytes = +bytes || 0;
+  if (bytes >= 1073741824) return (bytes / 1073741824).toFixed(1) + ' GB';
+  if (bytes >= 1048576) return (bytes / 1048576).toFixed(1) + ' MB';
+  if (bytes >= 1024) return Math.round(bytes / 1024) + ' KB';
+  return bytes + ' B';
+}
+// Pull owner/date text from the card/row if present
+function fileMeta(el) {
+  const owner = el.querySelector('img[alt]')?.getAttribute('alt') || el.querySelector('.text-slate-400')?.textContent?.trim() || 'You';
+  const metaText = el.querySelector('.text-slate-500')?.textContent || '';
+  const date = (metaText.match(/·\s*(.+)$/) || [,'Recently'])[1].trim() || 'Recently';
+  return { owner, date };
+}
+
+// ── Type tabs (All / Images / Videos / Audio / Documents / Archives) ──
+function applyTypeFilter(type) {
+  let count = 0;
+  document.querySelectorAll('#file-grid [data-filter-item], #list-view [data-filter-item]').forEach(item => {
+    const show = type === 'all' || item.getAttribute('data-type') === type;
+    item.classList.toggle('hidden', !show);
+    if (show) count++;
+  });
+  const empty = document.querySelector('[data-filter-empty]');
+  if (empty) empty.classList.toggle('hidden', count > 0);
+}
 document.querySelectorAll('.file-filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.file-filter-btn').forEach(b => {
@@ -552,7 +610,88 @@ document.querySelectorAll('.file-filter-btn').forEach(btn => {
     });
     btn.classList.add('bg-violet-600/20', 'text-violet-300');
     btn.classList.remove('text-slate-400');
+    applyTypeFilter(btn.getAttribute('data-filter'));
   });
+});
+
+// ── File Preview modal ────────────────────────────────────────
+function openFilePreview(el) {
+  const name = el.getAttribute('data-name') || el.getAttribute('data-filter-text') || 'file';
+  const type = el.getAttribute('data-type') || 'documents';
+  const size = humanSize(el.getAttribute('data-size'));
+  const meta = fileMeta(el);
+  const m = TYPE_META[type] || TYPE_META.documents;
+
+  document.getElementById('fp-name').textContent = name;
+  document.getElementById('fp-sub').textContent = `${size} · ${meta.date}`;
+  document.getElementById('fp-type').textContent = type;
+  document.getElementById('fp-size').textContent = size;
+  document.getElementById('fp-owner').textContent = meta.owner;
+  document.getElementById('fp-date').textContent = meta.date;
+
+  const badge = document.getElementById('fp-badge');
+  badge.className = `w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${m.bg}`;
+  const bi = document.getElementById('fp-badge-icon');
+  bi.setAttribute('data-lucide', m.icon);
+  bi.setAttribute('class', `w-5 h-5 ${m.color}`);
+
+  const stage = document.getElementById('fp-stage');
+  if (type === 'videos') {
+    stage.innerHTML = `<video controls class="w-full h-full object-contain bg-black"><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4"></video>`;
+  } else if (type === 'audio') {
+    stage.innerHTML = `<div class="w-full px-8 text-center">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${m.grad} flex items-center justify-center"><i data-lucide="music" class="w-8 h-8 ${m.color}"></i></div>
+      <audio controls class="w-full"><source src="https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3" type="audio/mpeg"></audio></div>`;
+  } else if (type === 'images') {
+    stage.innerHTML = `<div class="w-full h-full bg-gradient-to-br ${m.grad} flex flex-col items-center justify-center gap-2">
+      <i data-lucide="image" class="w-12 h-12 ${m.color}"></i><span class="text-xs text-slate-400">${name}</span></div>`;
+  } else {
+    stage.innerHTML = `<div class="w-full h-full flex flex-col items-center justify-center gap-3">
+      <div class="w-24 h-28 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shadow-inner"><i data-lucide="${m.icon}" class="w-10 h-10 ${m.color}"></i></div>
+      <span class="text-xs text-slate-500">Preview not available — download to view</span></div>`;
+  }
+  window.NexusComponents?.openModal('file-preview-modal');
+  if (window.lucide) lucide.createIcons();
+}
+
+// Click a file (grid card or list row) to preview — but not when clicking a button
+document.querySelectorAll('#file-grid [data-filter-item], #list-view [data-filter-item]').forEach(el => {
+  el.classList.add('cursor-pointer');
+  el.addEventListener('click', e => { if (e.target.closest('button, a')) return; openFilePreview(el); });
+});
+
+// ── Context menu ──────────────────────────────────────────────
+const ctxMenu = document.getElementById('file-context-menu');
+let ctxTarget = null;
+function showFileContextMenu(e, el) {
+  e.preventDefault();
+  ctxTarget = el;
+  ctxMenu.style.left = Math.min(e.clientX, window.innerWidth - 200) + 'px';
+  ctxMenu.style.top = Math.min(e.clientY, window.innerHeight - 260) + 'px';
+  ctxMenu.classList.remove('hidden');
+}
+document.addEventListener('click', e => { if (!e.target.closest('#file-context-menu')) ctxMenu.classList.add('hidden'); });
+
+// Shared file actions (context menu + preview-modal buttons)
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-ctx]');
+  if (!btn) return;
+  const action = btn.getAttribute('data-ctx');
+  // context-menu actions use ctxTarget; modal buttons use the currently-open file
+  const name = (btn.closest('#file-context-menu') ? ctxTarget : null)?.getAttribute('data-name')
+    || document.getElementById('fp-name').textContent || 'file';
+  ctxMenu.classList.add('hidden');
+  if (action === 'preview' && ctxTarget) { openFilePreview(ctxTarget); return; }
+  const msgs = {
+    download: [`Downloading “${name}”`, 'success'],
+    copy:     ['Link copied to clipboard', 'success'],
+    share:    [`Share sheet opened for “${name}”`, 'info'],
+    pin:      [`Pinned “${name}”`, 'success'],
+    delete:   [`Moved “${name}” to trash`, 'error'],
+  };
+  const [msg, kind] = msgs[action] || ['Done', 'success'];
+  if (action === 'copy') navigator.clipboard?.writeText(`https://nexus.app/files/${encodeURIComponent(name)}`).catch(()=>{});
+  toast(msg, kind);
 });
 </script>
 </body>

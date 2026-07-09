@@ -335,12 +335,12 @@
       <!-- Original Message (larger) -->
       <div class="bg-slate-900/60 rounded-2xl border border-slate-800 p-5 mb-2">
         <div class="flex items-start gap-3 mb-3">
-          <button class="shrink-0" aria-label="Bob's profile">
+          <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="shrink-0" aria-label="Bob's profile">
             <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-10 h-10 rounded-xl bg-slate-700" />
           </button>
           <div class="flex-1 min-w-0">
             <div class="flex items-baseline gap-2 mb-1">
-              <button class="text-sm font-bold text-slate-100 hover:underline">Bob Martinez</button>
+              <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="text-sm font-bold text-slate-100 hover:underline">Bob Martinez</button>
               <span class="text-xs text-slate-500">Today at 9:28 AM</span>
               <span class="text-xs bg-emerald-900/40 text-emerald-400 px-1.5 py-0.5 rounded font-medium">Engineer</span>
               <span class="text-xs text-violet-400 ml-auto"># engineering</span>
@@ -372,7 +372,7 @@ Authorization: Bearer &lt;token&gt;
               <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition">
                 👀 <span data-count>2</span>
               </button>
-              <button class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-400 transition">
+              <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs text-slate-400 transition">
                 <i data-lucide="smile-plus" class="w-3 h-3"></i>
               </button>
             </div>
@@ -389,12 +389,12 @@ Authorization: Bearer &lt;token&gt;
 
       <!-- Reply 1 — Alice -->
       <div class="message-row group relative flex gap-3 px-2 py-1.5 hover:bg-slate-800/40 rounded-xl transition">
-        <button class="shrink-0 mt-0.5" aria-label="Alice's profile">
+        <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="shrink-0 mt-0.5" aria-label="Alice's profile">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-9 h-9 rounded-xl bg-slate-700" />
         </button>
         <div class="flex-1 min-w-0">
           <div class="flex items-baseline gap-2 mb-1">
-            <button class="text-sm font-semibold text-slate-100 hover:underline">Alice Chen</button>
+            <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="text-sm font-semibold text-slate-100 hover:underline">Alice Chen</button>
             <span class="text-xs text-slate-500">9:33 AM</span>
           </div>
           <p class="msg-body text-sm text-slate-300 leading-relaxed">Nice! I tested the cursor-based pagination — works great. One thing: should we add rate limiting headers to the response? Something like <code class="bg-slate-800 px-1 rounded text-violet-300 text-xs">X-RateLimit-Remaining</code>.</p>
@@ -406,8 +406,8 @@ Authorization: Bearer &lt;token&gt;
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Replying','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('More actions','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
 
@@ -419,19 +419,19 @@ Authorization: Bearer &lt;token&gt;
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Replying','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('More actions','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
 
       <!-- Reply 3 — Carol -->
       <div class="message-row group relative flex gap-3 px-2 py-1.5 hover:bg-slate-800/40 rounded-xl transition">
-        <button class="shrink-0 mt-0.5" aria-label="Carol's profile">
+        <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="shrink-0 mt-0.5" aria-label="Carol's profile">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-9 h-9 rounded-xl bg-slate-700" />
         </button>
         <div class="flex-1 min-w-0">
           <div class="flex items-baseline gap-2 mb-1">
-            <button class="text-sm font-semibold text-slate-100 hover:underline">Carol Wu</button>
+            <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="text-sm font-semibold text-slate-100 hover:underline">Carol Wu</button>
             <span class="text-xs text-slate-500">9:45 AM</span>
           </div>
           <p class="msg-body text-sm text-slate-300 leading-relaxed">Tested on the iOS client — responses are fast! Looks solid 👍 Can we also document the error codes? I saw a few undocumented 4xx responses in the staging logs.</p>
@@ -443,19 +443,19 @@ Authorization: Bearer &lt;token&gt;
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Replying','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('More actions','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
 
       <!-- Reply 4 — Priya -->
       <div class="message-row group relative flex gap-3 px-2 py-1.5 hover:bg-slate-800/40 rounded-xl transition">
-        <button class="shrink-0 mt-0.5" aria-label="Priya's profile">
+        <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="shrink-0 mt-0.5" aria-label="Priya's profile">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-9 h-9 rounded-xl bg-slate-700" />
         </button>
         <div class="flex-1 min-w-0">
           <div class="flex items-baseline gap-2 mb-1">
-            <button class="text-sm font-semibold text-slate-100 hover:underline">Priya Sharma</button>
+            <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="text-sm font-semibold text-slate-100 hover:underline">Priya Sharma</button>
             <span class="text-xs text-slate-500">10:12 AM</span>
           </div>
           <p class="msg-body text-sm text-slate-300 leading-relaxed">Added the endpoint to the Postman collection and shared with the team. Also set up an automated smoke test in the CI pipeline — it runs on every PR now 🎯</p>
@@ -468,15 +468,15 @@ Authorization: Bearer &lt;token&gt;
               <p class="text-xs font-medium text-slate-200 truncate">API-v2-Postman-Collection.json</p>
               <p class="text-[10px] text-slate-500">48 KB · JSON · 10:12 AM</p>
             </div>
-            <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition shrink-0" aria-label="Download">
+            <button onclick="window.NexusComponents?.toast('Downloading…','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition shrink-0" aria-label="Download">
               <i data-lucide="download" class="w-3.5 h-3.5"></i>
             </button>
           </div>
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Replying','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('More actions','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
 
@@ -488,12 +488,12 @@ Authorization: Bearer &lt;token&gt;
       </div>
 
       <div class="message-row group relative flex gap-3 px-2 py-1.5 hover:bg-slate-800/40 rounded-xl transition bg-amber-500/5 border-l-2 border-amber-500/20">
-        <button class="shrink-0 mt-0.5" aria-label="Bob's profile">
+        <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="shrink-0 mt-0.5" aria-label="Bob's profile">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-9 h-9 rounded-xl bg-slate-700" />
         </button>
         <div class="flex-1 min-w-0">
           <div class="flex items-baseline gap-2 mb-1">
-            <button class="text-sm font-semibold text-slate-100 hover:underline">Bob Martinez</button>
+            <button onclick="window.NexusComponents?.toast('Opening profile','info')" class="text-sm font-semibold text-slate-100 hover:underline">Bob Martinez</button>
             <span class="text-xs text-slate-500">2:15 PM</span>
             <span class="text-[10px] font-medium text-emerald-400 ml-auto">Latest</span>
           </div>
@@ -509,8 +509,8 @@ Authorization: Bearer &lt;token&gt;
         </div>
         <div class="message-actions absolute -top-3 right-2 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button onclick="window.NexusComponents?.toast('Reaction added','success')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('Replying','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Reply"><i data-lucide="reply" class="w-3.5 h-3.5"></i></button>
+          <button onclick="window.NexusComponents?.toast('More actions','info')" class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
 
@@ -533,10 +533,10 @@ Authorization: Bearer &lt;token&gt;
           </div>
         </div>
         <div class="flex items-center gap-1 px-3 pb-2.5">
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Emoji"><i data-lucide="smile" class="w-4 h-4"></i></button>
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Mention"><i data-lucide="at-sign" class="w-4 h-4"></i></button>
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Code block"><i data-lucide="code" class="w-4 h-4"></i></button>
+          <button onclick="window.NexusComponents?.toast('Emoji picker','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Emoji"><i data-lucide="smile" class="w-4 h-4"></i></button>
+          <button onclick="window.NexusComponents?.toast('Attach file','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
+          <button onclick="window.NexusComponents?.toast('Mention someone','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Mention"><i data-lucide="at-sign" class="w-4 h-4"></i></button>
+          <button onclick="window.NexusComponents?.toast('Code block','info')" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Code block"><i data-lucide="code" class="w-4 h-4"></i></button>
           <div class="flex-1"></div>
           <span class="text-xs text-slate-600 hidden sm:block mr-1">
             <kbd class="px-1 py-0.5 rounded bg-slate-700 text-slate-400 font-mono text-[10px]">Enter</kbd> to reply

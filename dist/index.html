@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script type="module" crossorigin src="/assets/app-DWoDH9r9.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/app-BQLTTLQh.css">
+  <script type="module" crossorigin src="/assets/app-D1sSmzJQ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-Cg4TFSET.css">
 </head>
 <body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
 
@@ -32,17 +32,17 @@
       <div class="px-3 py-2 border-b border-slate-700 mb-1">
         <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Workspaces</p>
       </div>
-      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
+      <button onclick="window.NexusComponents?.toast('Workspace switched','success')" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
         <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shrink-0"><span class="text-white font-bold text-xs">N</span></div>
         <div><p class="text-sm font-semibold text-slate-100">Nexus HQ</p><p class="text-xs text-slate-400">nexus-hq.com · 48 members</p></div>
         <i data-lucide="check" class="w-4 h-4 text-violet-400 ml-auto"></i>
       </button>
-      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
+      <button onclick="window.NexusComponents?.toast('Workspace switched','success')" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left">
         <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center shrink-0"><span class="text-white font-bold text-xs">D</span></div>
         <div><p class="text-sm font-semibold text-slate-100">Design Studio</p><p class="text-xs text-slate-400">design.io · 12 members</p></div>
       </button>
       <div class="border-t border-slate-700 mt-1 pt-1">
-        <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left text-sm text-slate-400">
+        <button onclick="window.NexusComponents?.toast('Create a workspace','info')" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-700 transition text-left text-sm text-slate-400">
           <div class="w-8 h-8 rounded-lg border-2 border-dashed border-slate-600 flex items-center justify-center shrink-0"><i data-lucide="plus" class="w-4 h-4"></i></div>
           Add a workspace
         </button>
@@ -105,10 +105,10 @@
         <div><p class="text-sm font-semibold text-slate-100">You</p><p class="text-xs text-green-400">● Active</p></div>
       </div>
       <a href="/pages/profile.html" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300"><i data-lucide="user" class="w-4 h-4 opacity-60"></i>View Profile</a>
-      <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Set Status</button>
+      <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Set Status</button>
       <a href="/pages/settings.html" class="flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-slate-300"><i data-lucide="settings" class="w-4 h-4 opacity-60"></i>Preferences</a>
       <div class="border-t border-slate-700 my-1"></div>
-      <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Sign Out</button>
+      <button onclick="window.NexusComponents?.toast('Signed out','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Sign Out</button>
     </div>
 
   </nav>
@@ -123,9 +123,9 @@
         <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 shrink-0"></i>
       </button>
       <div id="ws-name-dd" data-dropdown class="hidden absolute left-14 top-12 z-50 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="settings" class="w-4 h-4 opacity-60"></i>Workspace Settings</button>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i>Invite People</button>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="credit-card" class="w-4 h-4 opacity-60"></i>Billing</button>
+        <a href="/pages/settings.html" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="settings" class="w-4 h-4 opacity-60"></i>Workspace Settings</a>
+        <a href="/pages/invite.html" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i>Invite People</a>
+        <a href="/pages/settings.html" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="credit-card" class="w-4 h-4 opacity-60"></i>Billing</a>
       </div>
       <button onclick="window.NexusComponents?.openModal('search-modal')" aria-label="Search" class="w-7 h-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition shrink-0">
         <i data-lucide="search" class="w-4 h-4"></i>
@@ -274,7 +274,7 @@
 
       <!-- ── Drafts ── -->
       <div class="px-2 mt-2">
-        <a href="#" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition text-sm">
+        <a href="/pages/threads.html" class="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition text-sm">
           <i data-lucide="file-text" class="w-3.5 h-3.5 text-slate-500 shrink-0"></i>
           <span>Drafts</span>
           <span class="ml-auto text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">2</span>
@@ -298,12 +298,12 @@
       </button>
       <div id="status-dd" data-dropdown class="hidden absolute left-2 bottom-14 z-50 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
         <p class="px-3 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">Set Status</p>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🟢 Active</button>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🌙 Do not disturb</button>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🚶 Away</button>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">⛔ Offline</button>
+        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🟢 Active</button>
+        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🌙 Do not disturb</button>
+        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">🚶 Away</button>
+        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left">⛔ Offline</button>
         <div class="border-t border-slate-700 my-1"></div>
-        <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Custom Status…</button>
+        <button onclick="window.NexusComponents?.toast('Status updated','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-sm text-slate-300 text-left"><i data-lucide="zap" class="w-4 h-4 opacity-60"></i>Custom Status…</button>
       </div>
     </div>
 
@@ -352,12 +352,12 @@
           <i data-lucide="more-horizontal" class="w-4 h-4"></i>
         </button>
         <div id="header-more-dd" data-dropdown class="hidden absolute right-4 top-14 z-50 w-52 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in text-sm">
-          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="info" class="w-4 h-4 opacity-60"></i>Channel Info</button>
-          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i>Invite People</button>
-          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i>Notifications</button>
-          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="star" class="w-4 h-4 opacity-60"></i>Add to Favorites</button>
+          <button onclick="window.NexusComponents?.openModal('channel-info-modal')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="info" class="w-4 h-4 opacity-60"></i>Channel Info</button>
+          <a href="/pages/invite.html" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i>Invite People</a>
+          <a href="/pages/notifications.html" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i>Notifications</a>
+          <button onclick="window.NexusComponents?.toast('Added to favorites','success')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left"><i data-lucide="star" class="w-4 h-4 opacity-60"></i>Add to Favorites</button>
           <div class="border-t border-slate-700 my-1"></div>
-          <button class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Leave Channel</button>
+          <button onclick="window.NexusComponents?.toast('Left channel','error')" class="w-full flex items-center gap-2 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left"><i data-lucide="log-out" class="w-4 h-4 opacity-60"></i>Leave Channel</button>
         </div>
       </div>
     </header>
@@ -397,7 +397,7 @@
             <span class="text-xs text-slate-500">9:14 AM</span>
             <span class="text-xs bg-violet-600/20 text-violet-400 px-1.5 py-0.5 rounded font-medium">Design Lead</span>
           </div>
-          <p class="msg-body text-sm text-slate-300 leading-relaxed">Good morning team! 👋 Just pushed the updated design specs to the <a href="#" class="text-violet-400 hover:underline">#design</a> channel. Please take a look when you get a chance — especially the new component library updates.</p>
+          <p class="msg-body text-sm text-slate-300 leading-relaxed">Good morning team! 👋 Just pushed the updated design specs to the <a href="/" class="text-violet-400 hover:underline">#design</a> channel. Please take a look when you get a chance — especially the new component library updates.</p>
           <!-- Reactions -->
           <div class="flex flex-wrap gap-1 mt-1.5">
             <button data-reaction class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs transition reaction-active text-violet-300 border-violet-700 bg-violet-900/30">
@@ -711,9 +711,9 @@ Authorization: Bearer &lt;token&gt;
             <p class="text-sm text-slate-400">Q3 Planning · Ship Week 28–31</p>
           </div>
           <div class="flex flex-col gap-1.5">
-            <button class="flex items-center gap-2 text-sm text-slate-300 hover:text-violet-400 transition"><i data-lucide="bell" class="w-4 h-4 text-slate-400"></i>Notifications</button>
-            <button class="flex items-center gap-2 text-sm text-slate-300 hover:text-violet-400 transition"><i data-lucide="user-plus" class="w-4 h-4 text-slate-400"></i>Invite People</button>
-            <button class="flex items-center gap-2 text-sm text-slate-300 hover:text-violet-400 transition"><i data-lucide="settings" class="w-4 h-4 text-slate-400"></i>Channel Settings</button>
+            <a href="/pages/notifications.html" class="flex items-center gap-2 text-sm text-slate-300 hover:text-violet-400 transition"><i data-lucide="bell" class="w-4 h-4 text-slate-400"></i>Notifications</a>
+            <a href="/pages/invite.html" class="flex items-center gap-2 text-sm text-slate-300 hover:text-violet-400 transition"><i data-lucide="user-plus" class="w-4 h-4 text-slate-400"></i>Invite People</a>
+            <a href="/pages/settings.html" class="flex items-center gap-2 text-sm text-slate-300 hover:text-violet-400 transition"><i data-lucide="settings" class="w-4 h-4 text-slate-400"></i>Channel Settings</a>
           </div>
         </div>
         <!-- Activity timeline -->
@@ -739,26 +739,26 @@ Authorization: Bearer &lt;token&gt;
             <div class="relative shrink-0"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-7 h-7 rounded-full bg-slate-700" /><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border border-slate-900"></span></div>
             <div class="min-w-0"><p class="text-xs font-semibold text-slate-200 truncate">Alice Chen</p><p class="text-[10px] text-slate-500">🚀 Shipping features</p></div>
           </button>
-          <button class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
+          <button onclick="window.NexusComponents?.openModal('profile-modal')" class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
             <div class="relative shrink-0"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-7 h-7 rounded-full bg-slate-700" /><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border border-slate-900"></span></div>
             <div class="min-w-0"><p class="text-xs font-semibold text-slate-200 truncate">Bob Martinez</p><p class="text-[10px] text-slate-500">In a call</p></div>
           </button>
-          <button class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
+          <button onclick="window.NexusComponents?.openModal('profile-modal')" class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
             <div class="relative shrink-0"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-7 h-7 rounded-full bg-slate-700" /><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-amber-400 border border-slate-900"></span></div>
             <div class="min-w-0"><p class="text-xs font-semibold text-slate-200 truncate">Carol Wu</p><p class="text-[10px] text-slate-500">Away</p></div>
           </button>
-          <button class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
+          <button onclick="window.NexusComponents?.openModal('profile-modal')" class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
             <div class="relative shrink-0"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David Kim" class="w-7 h-7 rounded-full bg-slate-700" /><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-green-400 border border-slate-900"></span></div>
             <div class="min-w-0"><p class="text-xs font-semibold text-slate-200 truncate">David Kim</p><p class="text-[10px] text-slate-500">Active</p></div>
           </button>
         </div>
         <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider mt-4 mb-2">Offline — 40</h3>
         <div class="space-y-1">
-          <button class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
+          <button onclick="window.NexusComponents?.openModal('profile-modal')" class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
             <div class="relative shrink-0"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-7 h-7 rounded-full bg-slate-700 opacity-60" /><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-slate-600 border border-slate-900"></span></div>
             <div class="min-w-0"><p class="text-xs font-semibold text-slate-400 truncate">Priya Sharma</p><p class="text-[10px] text-slate-600">Last seen 2h ago</p></div>
           </button>
-          <button class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
+          <button onclick="window.NexusComponents?.openModal('profile-modal')" class="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-800 transition text-left">
             <div class="relative shrink-0"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-7 h-7 rounded-full bg-slate-700 opacity-60" /><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-slate-600 border border-slate-900"></span></div>
             <div class="min-w-0"><p class="text-xs font-semibold text-slate-400 truncate">Mike Johnson</p><p class="text-[10px] text-slate-600">Last seen 5h ago</p></div>
           </button>
@@ -798,7 +798,7 @@ Authorization: Bearer &lt;token&gt;
           </div>
           <div class="bg-slate-800 border border-slate-700 rounded-xl p-3 hover:border-slate-600 transition">
             <div class="flex items-center gap-1.5 mb-1.5"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob" class="w-4 h-4 rounded-full bg-slate-700" /><span class="text-xs font-semibold text-slate-300">Bob Martinez</span><span class="text-[10px] text-slate-500 ml-auto">Sun</span></div>
-            <p class="text-xs text-slate-400 leading-relaxed">API v2 is live in production. Breaking changes documented in the <a href="#" class="text-violet-400">wiki</a>.</p>
+            <p class="text-xs text-slate-400 leading-relaxed">API v2 is live in production. Breaking changes documented in the <a href="/pages/files.html" class="text-violet-400">wiki</a>.</p>
           </div>
         </div>
       </div>
@@ -823,14 +823,14 @@ Authorization: Bearer &lt;token&gt;
     </div>
     <div class="p-2">
       <p class="text-xs text-slate-500 px-3 py-1 uppercase tracking-wider font-semibold">Recent</p>
-      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-800 rounded-xl transition text-left">
+      <a href="/" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-800 rounded-xl transition text-left">
         <div class="w-7 h-7 rounded-full bg-violet-700 flex items-center justify-center shrink-0"><span class="text-xs font-bold text-white">#</span></div>
         <div><p class="text-sm text-slate-200">design</p><p class="text-xs text-slate-500">Channel</p></div>
-      </button>
-      <button class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-800 rounded-xl transition text-left">
+      </a>
+      <a href="/pages/profile.html" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-800 rounded-xl transition text-left">
         <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-7 h-7 rounded-full bg-slate-700 shrink-0" />
         <div><p class="text-sm text-slate-200">Alice Chen</p><p class="text-xs text-slate-500">People · Design Lead</p></div>
-      </button>
+      </a>
       <p class="text-xs text-slate-500 px-3 py-1 mt-1 uppercase tracking-wider font-semibold">Quick Actions</p>
       <button onclick="window.NexusComponents?.closeModal('search-modal');window.NexusComponents?.openModal('new-channel-modal')" class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-800 rounded-xl transition text-left">
         <div class="w-7 h-7 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0"><i data-lucide="hash" class="w-3.5 h-3.5 text-slate-400"></i></div>
