@@ -283,6 +283,15 @@
         </div>
       </div>
 
+      <!-- Raised Hands queue panel -->
+      <div id="hands-panel" class="hidden absolute top-16 right-4 z-20 w-60 rounded-2xl bg-slate-900/95 backdrop-blur-sm border border-slate-700 shadow-2xl overflow-hidden fade-in">
+        <div class="flex items-center justify-between px-4 py-2.5 border-b border-slate-800">
+          <span class="flex items-center gap-2 text-sm font-semibold text-slate-100"><i data-lucide="hand" class="w-4 h-4 text-amber-400"></i>Raised Hands <span id="hands-count" class="text-xs font-normal text-slate-400">0</span></span>
+          <button onclick="lowerAllHands()" title="Lower all (Host)" class="text-[10px] font-semibold text-slate-400 hover:text-slate-200 transition">Lower all</button>
+        </div>
+        <div id="hands-list" class="p-2 max-h-56 overflow-y-auto space-y-1"></div>
+      </div>
+
       <!-- Call Controls Bar -->
       <div class="flex items-center justify-center gap-3 px-6 py-4 bg-slate-900/90 backdrop-blur-sm border-t border-slate-800 shrink-0 flex-wrap">
         <!-- Mute -->
@@ -327,6 +336,15 @@
             <button type="button" onclick="sendReaction('🙌')" class="w-9 h-9 rounded-xl hover:bg-slate-700 text-xl leading-none transition flex items-center justify-center">🙌</button>
           </div>
         </div>
+        <!-- Raise Hand -->
+        <div class="flex flex-col items-center gap-1">
+          <button id="hand-btn" onclick="toggleRaiseHand()" aria-label="Raise hand" title="Raise hand (R)"
+            class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition text-slate-300 hover:text-slate-100 relative">
+            <i data-lucide="hand" class="w-5 h-5" id="hand-icon"></i>
+            <span id="hand-queue-badge" class="hidden absolute -top-1 -right-1 min-w-4 h-4 px-1 rounded-full bg-amber-500 text-slate-900 text-[9px] font-bold items-center justify-center">0</span>
+          </button>
+          <span class="text-[10px] text-slate-500" id="hand-label">Raise</span>
+        </div>
         <!-- Participants -->
         <div class="flex flex-col items-center gap-1">
           <button onclick="toggleParticipantsPanel()" aria-label="Toggle participants"
@@ -357,7 +375,6 @@
               <div class="min-w-0"><p class="text-sm font-semibold text-slate-100 truncate">Alice Chen</p><p class="text-[11px] text-green-400">● Speaking</p></div>
             </div>
             <button onclick="moreAction('profile')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="user" class="w-4 h-4 opacity-60"></i>View Profile</button>
-            <button onclick="moreAction('message')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="message-circle" class="w-4 h-4 opacity-60"></i>Message</button>
             <button onclick="moreAction('details')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="info" class="w-4 h-4 opacity-60"></i>Call Details</button>
             <button onclick="moreAction('add')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i>Add People</button>
             <button onclick="moreAction('record')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="circle-dot" class="w-4 h-4 opacity-60"></i>Record Call</button>
@@ -367,9 +384,15 @@
             <button onclick="moreAction('captions')" class="w-full flex items-center justify-between gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><span class="flex items-center gap-2.5"><i data-lucide="captions" class="w-4 h-4 opacity-60"></i>Live Captions</span><span id="cc-menu-state" class="text-[10px] font-bold text-slate-500 uppercase">Off</span></button>
             <button onclick="moreAction('fullscreen')" class="w-full flex items-center justify-between gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><span class="flex items-center gap-2.5"><i data-lucide="maximize" class="w-4 h-4 opacity-60" id="fs-menu-icon"></i><span id="fs-menu-label">Full Screen</span></span></button>
             <button onclick="moreAction('stats')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="activity" class="w-4 h-4 opacity-60"></i>Network Statistics</button>
+            <button onclick="moreAction('notes')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="sparkles" class="w-4 h-4 opacity-60"></i>AI Meeting Notes</button>
+            <button onclick="moreAction('background')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="image" class="w-4 h-4 opacity-60"></i>Background Effects</button>
+            <button onclick="moreAction('pip')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="picture-in-picture-2" class="w-4 h-4 opacity-60"></i>Picture-in-Picture</button>
+            <button onclick="moreAction('mini')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="minimize-2" class="w-4 h-4 opacity-60"></i>Minimize to Mini Window</button>
+            <button onclick="moreAction('shortcuts')" class="w-full flex items-center justify-between gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><span class="flex items-center gap-2.5"><i data-lucide="keyboard" class="w-4 h-4 opacity-60"></i>Keyboard Shortcuts</span><kbd class="text-[10px] text-slate-500 font-mono">?</kbd></button>
             <div class="border-t border-slate-700 my-1"></div>
             <button onclick="moreAction('report')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-slate-300 text-left transition"><i data-lucide="flag" class="w-4 h-4 opacity-60"></i>Report a Problem</button>
             <button onclick="moreAction('block')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-700 text-red-400 text-left transition"><i data-lucide="ban" class="w-4 h-4 opacity-60"></i>Block Participant</button>
+            <button onclick="moreAction('end')" class="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-red-600/15 text-red-400 text-left transition font-medium"><i data-lucide="phone-off" class="w-4 h-4 opacity-60"></i>End for Everyone</button>
           </div>
         </div>
         <!-- Divider -->
@@ -929,6 +952,125 @@
   </div>
 </div>
 
+<!-- ══ BACKGROUND EFFECTS MODAL ══ -->
+<div id="background-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('background-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[30rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2.5"><span class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center"><i data-lucide="image" class="w-4 h-4 text-violet-400"></i></span><h3 class="text-base font-bold text-slate-100">Background Effects</h3></div>
+      <button onclick="closeMoreModal('background-modal')" aria-label="Close" class="w-8 h-8 rounded-lg hover:bg-slate-800 flex items-center justify-center text-slate-400 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="px-6 py-5 grid grid-cols-3 gap-3">
+      <button onclick="setBackground('none', this)" data-bg="none" class="bg-opt group relative aspect-video rounded-xl overflow-hidden border-2 border-slate-700 bg-slate-800 flex flex-col items-center justify-center gap-1.5 transition"><i data-lucide="ban" class="w-5 h-5 text-slate-400"></i><span class="text-[11px] font-medium text-slate-300">None</span></button>
+      <button onclick="setBackground('blur', this)" data-bg="blur" class="bg-opt group relative aspect-video rounded-xl overflow-hidden border-2 border-slate-700 flex flex-col items-center justify-center gap-1.5 transition" style="background:linear-gradient(135deg,#1e293b,#334155);backdrop-filter:blur(4px)"><i data-lucide="aperture" class="w-5 h-5 text-slate-200"></i><span class="text-[11px] font-medium text-slate-100">Blur</span></button>
+      <button onclick="setBackground('office', this)" data-bg="office" class="bg-opt group relative aspect-video rounded-xl overflow-hidden border-2 border-slate-700 flex flex-col items-center justify-center gap-1.5 transition" style="background:linear-gradient(135deg,#475569,#1e293b)"><i data-lucide="building-2" class="w-5 h-5 text-slate-100"></i><span class="text-[11px] font-medium text-slate-100">Office</span></button>
+      <button onclick="setBackground('home', this)" data-bg="home" class="bg-opt group relative aspect-video rounded-xl overflow-hidden border-2 border-slate-700 flex flex-col items-center justify-center gap-1.5 transition" style="background:linear-gradient(135deg,#b45309,#78350f)"><i data-lucide="home" class="w-5 h-5 text-amber-50"></i><span class="text-[11px] font-medium text-amber-50">Home</span></button>
+      <button onclick="setBackground('nature', this)" data-bg="nature" class="bg-opt group relative aspect-video rounded-xl overflow-hidden border-2 border-slate-700 flex flex-col items-center justify-center gap-1.5 transition" style="background:linear-gradient(135deg,#15803d,#064e3b)"><i data-lucide="trees" class="w-5 h-5 text-emerald-50"></i><span class="text-[11px] font-medium text-emerald-50">Nature</span></button>
+      <button onclick="document.getElementById('bg-custom-input').click()" class="bg-opt group relative aspect-video rounded-xl overflow-hidden border-2 border-dashed border-slate-600 hover:border-violet-500 bg-slate-800/40 flex flex-col items-center justify-center gap-1.5 transition"><i data-lucide="upload" class="w-5 h-5 text-slate-400"></i><span class="text-[11px] font-medium text-slate-300">Custom</span></button>
+      <input id="bg-custom-input" type="file" accept="image/*" class="hidden" onchange="handleCustomBg(this)" />
+    </div>
+    <div class="px-6 pb-5">
+      <div class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+        <i data-lucide="info" class="w-4 h-4 text-violet-400 shrink-0"></i>
+        <p class="text-xs text-slate-400">Effects apply to your camera feed only. Current: <span id="bg-current" class="text-slate-200 font-medium">None</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ KEYBOARD SHORTCUTS MODAL ══ -->
+<div id="shortcuts-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('shortcuts-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[28rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+      <div class="flex items-center gap-2.5"><span class="w-9 h-9 rounded-xl bg-violet-600/20 flex items-center justify-center"><i data-lucide="keyboard" class="w-4 h-4 text-violet-400"></i></span><h3 class="text-base font-bold text-slate-100">Keyboard Shortcuts</h3></div>
+      <button onclick="closeMoreModal('shortcuts-modal')" aria-label="Close" class="w-8 h-8 rounded-lg hover:bg-slate-800 flex items-center justify-center text-slate-400 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+    </div>
+    <div class="px-6 py-4 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Toggle mute</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">M</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Toggle camera</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">V</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Share screen</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">S</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Raise / lower hand</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">R</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Toggle chat</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">C</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Live captions</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">Shift C</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Toggle participants</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">P</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Full screen</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">F</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Picture-in-Picture</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">Shift P</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Show shortcuts</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">?</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-slate-300">Send reaction</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">E</kbd></div>
+      <div class="flex items-center justify-between py-2 border-b border-slate-800/60"><span class="text-sm text-red-400">Leave call</span><kbd class="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-xs font-mono text-slate-300">L</kbd></div>
+    </div>
+    <div class="px-6 py-3 border-t border-slate-800 text-center"><p class="text-[11px] text-slate-500">Shortcuts are disabled while typing in a text field</p></div>
+  </div>
+</div>
+
+<!-- ══ END MEETING FOR EVERYONE MODAL ══ -->
+<div id="end-meeting-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop onclick="closeMoreModal('end-meeting-modal')" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-[24rem] max-w-[calc(100vw-2rem)] bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <div class="px-6 pt-6 text-center">
+      <div class="w-14 h-14 mx-auto rounded-full bg-red-500/15 flex items-center justify-center mb-4"><i data-lucide="phone-off" class="w-7 h-7 text-red-400"></i></div>
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 text-[10px] font-bold uppercase tracking-wider mb-2"><i data-lucide="shield" class="w-3 h-3"></i>Host only</div>
+      <h3 class="text-lg font-bold text-slate-100">End meeting for everyone?</h3>
+      <p class="text-sm text-slate-400 mt-2">This will disconnect all <span class="text-slate-200 font-medium">5 participants</span> and end the call for the whole room. This can't be undone.</p>
+      <label class="mt-4 flex items-center gap-2.5 text-left p-3 rounded-xl bg-slate-800/60 border border-slate-700/60 cursor-pointer">
+        <input id="end-save-notes" type="checkbox" checked class="w-4 h-4 rounded accent-violet-500" />
+        <span class="text-xs text-slate-300">Save AI meeting notes &amp; recording to #design</span>
+      </label>
+    </div>
+    <div class="px-6 py-5 flex gap-2">
+      <button onclick="closeMoreModal('end-meeting-modal')" class="flex-1 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-xl border border-slate-700 transition">Cancel</button>
+      <button onclick="confirmEndMeeting()" class="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white text-sm font-semibold rounded-xl transition flex items-center justify-center gap-2"><i data-lucide="phone-off" class="w-4 h-4"></i>End for All</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PICTURE-IN-PICTURE (simulated) ══ -->
+<div id="pip-window" class="hidden fixed bottom-6 right-6 z-[60] w-64 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-900 fade-in">
+  <div class="relative aspect-video bg-gradient-to-br from-violet-950 to-slate-900 flex items-center justify-center">
+    <div class="relative">
+      <div class="absolute inset-0 rounded-full speaking-ring bg-violet-500/30 scale-150"></div>
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Active speaker" class="w-14 h-14 rounded-full bg-slate-700 relative z-10 ring-2 ring-violet-500" />
+    </div>
+    <span class="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded-md bg-black/60 text-[10px] font-bold text-slate-200"><i data-lucide="picture-in-picture-2" class="w-3 h-3"></i>PiP</span>
+    <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-md bg-black/60 text-[10px] font-medium text-slate-100">Alice Chen</span>
+    <span id="pip-timer" class="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-black/60 text-[10px] font-mono text-slate-300">23:47</span>
+  </div>
+  <div class="flex items-center justify-center gap-2 px-3 py-2 bg-slate-900">
+    <button onclick="toggleMute()" title="Mute" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition"><i data-lucide="mic" class="w-4 h-4"></i></button>
+    <button onclick="togglePiP()" title="Back to call" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition"><i data-lucide="maximize-2" class="w-4 h-4"></i></button>
+    <button onclick="leaveCall()" title="Leave" class="w-8 h-8 rounded-lg bg-red-600 hover:bg-red-500 flex items-center justify-center text-white transition"><i data-lucide="phone-off" class="w-4 h-4"></i></button>
+  </div>
+</div>
+
+<!-- ══ FLOATING MINI CALL WINDOW ══ -->
+<div id="mini-window" class="hidden fixed bottom-6 left-6 z-[60] w-72 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-900 fade-in select-none">
+  <!-- Drag handle / title bar -->
+  <div id="mini-header" class="flex items-center justify-between px-3 py-2 bg-slate-800 border-b border-slate-700 cursor-move">
+    <span class="flex items-center gap-2 text-xs font-semibold text-slate-200"><span class="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot"></span>#design · <span id="mini-timer" class="font-mono">23:47</span></span>
+    <div class="flex items-center gap-1">
+      <button onclick="toggleMiniCollapse()" id="mini-collapse-btn" title="Minimize" class="w-6 h-6 rounded-md hover:bg-slate-700 flex items-center justify-center text-slate-400 transition"><i data-lucide="minus" class="w-3.5 h-3.5"></i></button>
+      <button onclick="restoreFromMini()" title="Restore to full call" class="w-6 h-6 rounded-md hover:bg-slate-700 flex items-center justify-center text-slate-400 transition"><i data-lucide="maximize-2" class="w-3.5 h-3.5"></i></button>
+      <button onclick="closeMiniWindow()" title="Close" class="w-6 h-6 rounded-md hover:bg-red-600/20 flex items-center justify-center text-slate-400 hover:text-red-400 transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button>
+    </div>
+  </div>
+  <!-- Body (collapsible) -->
+  <div id="mini-body">
+    <div class="grid grid-cols-2 gap-1 p-1.5 bg-slate-950">
+      <div class="relative aspect-video rounded-lg bg-gradient-to-br from-violet-950 to-slate-900 flex items-center justify-center"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" class="w-8 h-8 rounded-full bg-slate-700 ring-1 ring-violet-500" alt="Alice" /><span class="absolute bottom-0.5 left-0.5 px-1 rounded bg-black/60 text-[8px] text-slate-100">Alice</span></div>
+      <div class="relative aspect-video rounded-lg bg-gradient-to-br from-blue-950 to-slate-900 flex items-center justify-center"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" class="w-8 h-8 rounded-full bg-slate-700" alt="Bob" /><span class="absolute bottom-0.5 left-0.5 px-1 rounded bg-black/60 text-[8px] text-slate-100">Bob</span></div>
+      <div class="relative aspect-video rounded-lg bg-gradient-to-br from-emerald-950 to-slate-900 flex items-center justify-center"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" class="w-8 h-8 rounded-full bg-slate-700" alt="Carol" /><span class="absolute bottom-0.5 left-0.5 px-1 rounded bg-black/60 text-[8px] text-slate-100">Carol</span></div>
+      <div class="relative aspect-video rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center ring-1 ring-violet-600/40"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" class="w-8 h-8 rounded-full bg-slate-700" alt="You" /><span class="absolute bottom-0.5 left-0.5 px-1 rounded bg-violet-600 text-[8px] text-white">You</span></div>
+    </div>
+    <div class="flex items-center justify-center gap-2 px-3 py-2 bg-slate-900 border-t border-slate-800">
+      <button onclick="toggleMute()" title="Mute" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition"><i data-lucide="mic" class="w-4 h-4" id="mini-mic-icon"></i></button>
+      <button onclick="toggleCamera()" title="Camera" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition"><i data-lucide="video" class="w-4 h-4"></i></button>
+      <button onclick="restoreFromMini()" title="Restore" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition"><i data-lucide="maximize" class="w-4 h-4"></i></button>
+      <button onclick="leaveCall()" title="Leave" class="w-8 h-8 rounded-lg bg-red-600 hover:bg-red-500 flex items-center justify-center text-white transition"><i data-lucide="phone-off" class="w-4 h-4"></i></button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ INCOMING CALL MODAL ══ -->
 <div id="incoming-call-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
   <div data-modal-backdrop class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
@@ -966,6 +1108,46 @@
 </div>
 
 <!-- In-call Chat Drawer -->
+<!-- ══ AI MEETING NOTES DRAWER ══ -->
+<aside id="notes-panel" class="hidden fixed top-0 right-0 h-full w-full max-w-sm bg-slate-900 border-l border-slate-800 shadow-2xl z-40 flex-col" aria-label="AI meeting notes">
+  <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800 shrink-0">
+    <div>
+      <h2 class="text-sm font-bold text-slate-100 flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-violet-400"></i>AI Meeting Notes</h2>
+      <p class="text-xs text-slate-500 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot"></span>Generating live · #design</p>
+    </div>
+    <button onclick="toggleMeetingNotes()" aria-label="Close notes" class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
+  </div>
+  <div class="flex-1 overflow-y-auto p-4 space-y-5">
+    <!-- Summary -->
+    <section>
+      <h3 class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2"><i data-lucide="text" class="w-3.5 h-3.5 text-violet-400"></i>Summary</h3>
+      <p class="text-sm text-slate-300 leading-relaxed p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">The team reviewed the Q3 dashboard redesign. Alice proposed leading with metrics cards while keeping the activity feed one click away. Bob committed to delivering the responsive layout by Thursday, and the group agreed to prioritize dark-mode accessibility before shipping.</p>
+    </section>
+    <!-- Key Decisions -->
+    <section>
+      <h3 class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-green-400"></i>Key Decisions</h3>
+      <ul class="space-y-2">
+        <li class="flex gap-2.5 text-sm text-slate-300 p-2.5 rounded-xl bg-slate-800/40"><i data-lucide="check" class="w-4 h-4 text-green-400 shrink-0 mt-0.5"></i>Dashboard will lead with metrics cards; activity feed moves to a secondary tab.</li>
+        <li class="flex gap-2.5 text-sm text-slate-300 p-2.5 rounded-xl bg-slate-800/40"><i data-lucide="check" class="w-4 h-4 text-green-400 shrink-0 mt-0.5"></i>Ship date confirmed for next Friday, pending QA sign-off.</li>
+        <li class="flex gap-2.5 text-sm text-slate-300 p-2.5 rounded-xl bg-slate-800/40"><i data-lucide="check" class="w-4 h-4 text-green-400 shrink-0 mt-0.5"></i>Design tokens to be synced so spacing stays consistent across modes.</li>
+      </ul>
+    </section>
+    <!-- Action Items -->
+    <section>
+      <h3 class="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2"><i data-lucide="list-checks" class="w-3.5 h-3.5 text-amber-400"></i>Action Items</h3>
+      <ul class="space-y-2">
+        <li class="flex items-center gap-3 text-sm p-2.5 rounded-xl bg-slate-800/40"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" class="w-7 h-7 rounded-lg bg-slate-700 shrink-0" alt="Bob" /><div class="flex-1 min-w-0"><p class="text-slate-200">Build responsive dashboard layout</p><p class="text-xs text-slate-500">Bob Martinez · Due Thu</p></div></li>
+        <li class="flex items-center gap-3 text-sm p-2.5 rounded-xl bg-slate-800/40"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" class="w-7 h-7 rounded-lg bg-slate-700 shrink-0" alt="Carol" /><div class="flex-1 min-w-0"><p class="text-slate-200">Add dark-mode contrast to QA checklist</p><p class="text-xs text-slate-500">Carol Wu · Due Wed</p></div></li>
+        <li class="flex items-center gap-3 text-sm p-2.5 rounded-xl bg-slate-800/40"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" class="w-7 h-7 rounded-lg bg-slate-700 shrink-0" alt="You" /><div class="flex-1 min-w-0"><p class="text-slate-200">Sync design tokens for spacing</p><p class="text-xs text-slate-500">You · Due Fri</p></div></li>
+      </ul>
+    </section>
+  </div>
+  <div class="p-3 border-t border-slate-800 shrink-0 flex gap-2">
+    <button onclick="window.NexusComponents?.toast('Notes copied to clipboard','success')" class="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition"><i data-lucide="copy" class="w-3.5 h-3.5"></i>Copy</button>
+    <button onclick="window.NexusComponents?.toast('Notes shared to #design','success')" class="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition"><i data-lucide="send" class="w-3.5 h-3.5"></i>Share to channel</button>
+  </div>
+</aside>
+
 <aside id="call-chat-panel" class="hidden fixed top-0 right-0 h-full w-full max-w-sm bg-slate-900 border-l border-slate-800 shadow-2xl z-40 flex-col" aria-label="In-call chat">
   <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800 shrink-0">
     <div>
@@ -1251,6 +1433,12 @@ function moreAction(kind) {
     case 'captions':   toggleCaptions(); break;
     case 'fullscreen': toggleFullscreen(); break;
     case 'stats':      refreshStats(); openMoreModal('stats-modal'); break;
+    case 'notes':      toggleMeetingNotes(); break;
+    case 'background': openMoreModal('background-modal'); break;
+    case 'pip':        togglePiP(); break;
+    case 'mini':       openMiniWindow(); break;
+    case 'shortcuts':  openMoreModal('shortcuts-modal'); break;
+    case 'end':        openMoreModal('end-meeting-modal'); break;
   }
 }
 
@@ -1661,6 +1849,256 @@ function clearWhiteboard() {
   window.NexusComponents?.toast('Canvas cleared', 'info', 1200);
 }
 
+/* ── Raise Hand + queue ── */
+const HAND_ROSTER = { alice: 'Alice Chen', bob: 'Bob Martinez', carol: 'Carol Wu', you: 'You' };
+let handsQueue = [];           // array of {id, name, at} in raise order
+let handSeq = 0;
+let myHandRaised = false;
+
+function toggleRaiseHand() {
+  myHandRaised = !myHandRaised;
+  if (myHandRaised) {
+    raiseHand('you', 'You');
+    const pos = handsQueue.findIndex(h => h.id === 'you') + 1;
+    window.NexusComponents?.toast('✋ Hand raised — you are #' + pos + ' in the queue', 'info', 2000);
+    // simulate a colleague raising their hand shortly after
+    setTimeout(() => { if (!handsQueue.some(h => h.id === 'carol')) raiseHand('carol', 'Carol Wu'); }, 2600);
+  } else {
+    lowerHand('you');
+  }
+  updateHandBtn();
+}
+
+function raiseHand(id, name) {
+  if (handsQueue.some(h => h.id === id)) return;
+  handSeq++;
+  handsQueue.push({ id, name, order: handSeq });
+  setTileHand(id, true);
+  renderHandsQueue();
+}
+function lowerHand(id) {
+  handsQueue = handsQueue.filter(h => h.id !== id);
+  setTileHand(id, false);
+  if (id === 'you') myHandRaised = false;
+  renderHandsQueue();
+  updateHandBtn();
+}
+function lowerAllHands() {
+  handsQueue.slice().forEach(h => setTileHand(h.id, false));
+  handsQueue = [];
+  myHandRaised = false;
+  renderHandsQueue();
+  updateHandBtn();
+  window.NexusComponents?.toast('All hands lowered', 'info', 1500);
+}
+
+function setTileHand(id, on) {
+  const tile = document.querySelector(`.video-tile[data-tile="${id}"]`);
+  if (!tile) return;
+  let badge = tile.querySelector('.tile-hand-badge');
+  if (on) {
+    if (!badge) {
+      const holder = tile.querySelector('.absolute.top-3.left-3') || tile;
+      badge = document.createElement('span');
+      badge.className = 'tile-hand-badge inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-amber-400 text-slate-900 text-[10px] font-bold';
+      badge.innerHTML = '<i data-lucide="hand" class="w-3 h-3"></i>Hand';
+      holder.appendChild(badge);
+      if (window.lucide) lucide.createIcons();
+    }
+  } else if (badge) {
+    badge.remove();
+  }
+}
+
+function renderHandsQueue() {
+  const panel = document.getElementById('hands-panel');
+  const list = document.getElementById('hands-list');
+  const count = document.getElementById('hands-count');
+  const badge = document.getElementById('hand-queue-badge');
+  if (count) count.textContent = handsQueue.length;
+  if (badge) {
+    badge.textContent = handsQueue.length;
+    badge.classList.toggle('hidden', handsQueue.length === 0);
+    badge.classList.toggle('flex', handsQueue.length > 0);
+  }
+  if (!handsQueue.length) { panel?.classList.add('hidden'); return; }
+  panel?.classList.remove('hidden');
+  if (list) {
+    list.innerHTML = handsQueue.map((h, i) => `
+      <div class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-slate-800 transition">
+        <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 text-[11px] font-bold flex items-center justify-center shrink-0">${i + 1}</span>
+        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=${h.id}" alt="${h.name}" class="w-7 h-7 rounded-lg bg-slate-700 shrink-0" />
+        <span class="flex-1 min-w-0 text-sm text-slate-200 truncate">${h.name}${h.id === 'you' ? ' <span class="text-[10px] text-violet-400">(you)</span>' : ''}</span>
+        <button onclick="lowerHand('${h.id}')" title="Lower hand" class="w-6 h-6 rounded-md hover:bg-slate-700 flex items-center justify-center text-slate-400 shrink-0 transition"><i data-lucide="x" class="w-3.5 h-3.5"></i></button>
+      </div>`).join('');
+    if (window.lucide) lucide.createIcons();
+  }
+}
+
+function updateHandBtn() {
+  const btn = document.getElementById('hand-btn');
+  const label = document.getElementById('hand-label');
+  if (btn) {
+    btn.classList.toggle('bg-amber-500', myHandRaised);
+    btn.classList.toggle('border-amber-400', myHandRaised);
+    btn.classList.toggle('text-slate-900', myHandRaised);
+    btn.classList.toggle('bg-slate-800', !myHandRaised);
+    btn.classList.toggle('text-slate-300', !myHandRaised);
+  }
+  if (label) label.textContent = myHandRaised ? 'Lower' : 'Raise';
+}
+
+/* ── AI Meeting Notes ── */
+function toggleMeetingNotes() {
+  const panel = document.getElementById('notes-panel');
+  const open = panel.classList.contains('hidden');
+  panel.classList.toggle('hidden', !open);
+  panel.classList.toggle('flex', open);
+  if (open && window.lucide) lucide.createIcons();
+}
+
+/* ── Background Effects ── */
+const BG_STYLES = {
+  none:   { css: '', label: 'None' },
+  blur:   { css: 'blur(3px) brightness(0.9)', label: 'Blur' },
+  office: { css: 'contrast(1.05) sepia(0.15)', label: 'Office' },
+  home:   { css: 'sepia(0.35) saturate(1.2)', label: 'Home' },
+  nature: { css: 'hue-rotate(60deg) saturate(1.3)', label: 'Nature' },
+};
+function setBackground(kind, el) {
+  document.querySelectorAll('.bg-opt').forEach(b => { b.classList.remove('border-violet-500'); b.classList.add('border-slate-700'); });
+  if (el) { el.classList.add('border-violet-500'); el.classList.remove('border-slate-700'); }
+  const tile = document.querySelector('.video-tile[data-tile="you"]');
+  const img = tile?.querySelector('img');
+  const style = BG_STYLES[kind] || BG_STYLES.none;
+  if (img) img.style.filter = style.css;
+  const cur = document.getElementById('bg-current');
+  if (cur) cur.textContent = style.label;
+  window.NexusComponents?.toast(kind === 'none' ? 'Background effect removed' : `${style.label} background applied`, 'success', 1600);
+}
+function handleCustomBg(input) {
+  const file = input.files && input.files[0];
+  if (!file) return;
+  document.querySelectorAll('.bg-opt').forEach(b => { b.classList.remove('border-violet-500'); b.classList.add('border-slate-700'); });
+  const cur = document.getElementById('bg-current');
+  if (cur) cur.textContent = 'Custom · ' + file.name;
+  const tile = document.querySelector('.video-tile[data-tile="you"]');
+  const img = tile?.querySelector('img');
+  if (img) img.style.filter = 'brightness(0.95)';
+  window.NexusComponents?.toast('Custom background applied', 'success', 1600);
+  input.value = '';
+}
+
+/* ── Picture-in-Picture (simulated) ── */
+let pipOn = false;
+function togglePiP() {
+  pipOn = !pipOn;
+  const win = document.getElementById('pip-window');
+  win?.classList.toggle('hidden', !pipOn);
+  if (pipOn && window.lucide) lucide.createIcons();
+  document.getElementById('more-menu')?.classList.add('hidden');
+  window.NexusComponents?.toast(pipOn ? 'Picture-in-Picture enabled' : 'Back to call', 'info', 1500);
+}
+
+/* ── Floating Mini Call Window (minimize / drag / restore / close) ── */
+let miniCollapsed = false;
+function openMiniWindow() {
+  document.getElementById('more-menu')?.classList.add('hidden');
+  const win = document.getElementById('mini-window');
+  win?.classList.remove('hidden');
+  miniCollapsed = false;
+  document.getElementById('mini-body')?.classList.remove('hidden');
+  if (window.lucide) lucide.createIcons();
+  window.NexusComponents?.toast('Call minimized to mini window', 'info', 1500);
+}
+function closeMiniWindow() {
+  document.getElementById('mini-window')?.classList.add('hidden');
+}
+function restoreFromMini() {
+  closeMiniWindow();
+  document.getElementById('pip-window')?.classList.add('hidden');
+  pipOn = false;
+  showCallView('active');
+  window.NexusComponents?.toast('Back to full call', 'info', 1200);
+}
+function toggleMiniCollapse() {
+  miniCollapsed = !miniCollapsed;
+  const body = document.getElementById('mini-body');
+  const icon = document.querySelector('#mini-collapse-btn i');
+  body?.classList.toggle('hidden', miniCollapsed);
+  if (icon) icon.setAttribute('data-lucide', miniCollapsed ? 'plus' : 'minus');
+  if (window.lucide) lucide.createIcons();
+}
+// Drag the mini window by its header
+(function makeMiniDraggable() {
+  const win = document.getElementById('mini-window');
+  const handle = document.getElementById('mini-header');
+  if (!win || !handle) return;
+  let dragging = false, offX = 0, offY = 0;
+  const down = e => {
+    if (e.target.closest('button')) return;
+    dragging = true;
+    const p = e.touches ? e.touches[0] : e;
+    const r = win.getBoundingClientRect();
+    offX = p.clientX - r.left; offY = p.clientY - r.top;
+    win.style.transition = 'none';
+    document.body.style.userSelect = 'none';
+  };
+  const moveIt = e => {
+    if (!dragging) return;
+    const p = e.touches ? e.touches[0] : e;
+    let x = p.clientX - offX, y = p.clientY - offY;
+    x = Math.max(4, Math.min(x, window.innerWidth - win.offsetWidth - 4));
+    y = Math.max(4, Math.min(y, window.innerHeight - win.offsetHeight - 4));
+    win.style.left = x + 'px'; win.style.top = y + 'px';
+    win.style.right = 'auto'; win.style.bottom = 'auto';
+  };
+  const up = () => { dragging = false; document.body.style.userSelect = ''; };
+  handle.addEventListener('mousedown', down);
+  window.addEventListener('mousemove', moveIt);
+  window.addEventListener('mouseup', up);
+  handle.addEventListener('touchstart', down, { passive: true });
+  window.addEventListener('touchmove', moveIt, { passive: true });
+  window.addEventListener('touchend', up);
+})();
+
+/* ── End Meeting for Everyone ── */
+function confirmEndMeeting() {
+  const saveNotes = document.getElementById('end-save-notes')?.checked;
+  closeMoreModal('end-meeting-modal');
+  captionsOn && toggleCaptions();
+  window.NexusComponents?.toast(saveNotes ? 'Meeting ended · notes & recording saved to #design' : 'Meeting ended for everyone', 'success', 2600);
+  setTimeout(() => showCallView('history'), 900);
+}
+
+/* ── Keyboard Shortcuts ── */
+document.addEventListener('keydown', e => {
+  // ignore when typing or using modifiers (except Shift for our combos)
+  const t = e.target;
+  if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  // only when active call view is visible
+  if (document.getElementById('view-active')?.classList.contains('hidden')) return;
+  const k = e.key.toLowerCase();
+  if (e.shiftKey) {
+    if (k === 'c') { e.preventDefault(); toggleCaptions(); }
+    else if (k === 'p') { e.preventDefault(); togglePiP(); }
+    else if (e.key === '?') { e.preventDefault(); openMoreModal('shortcuts-modal'); }
+    return;
+  }
+  switch (k) {
+    case 'm': e.preventDefault(); toggleMute(); break;
+    case 'v': e.preventDefault(); toggleCamera(); break;
+    case 's': e.preventDefault(); toggleShare(); break;
+    case 'r': e.preventDefault(); toggleRaiseHand(); break;
+    case 'c': e.preventDefault(); toggleCallChat(); break;
+    case 'p': e.preventDefault(); toggleParticipantsPanel(); break;
+    case 'f': e.preventDefault(); toggleFullscreen(); break;
+    case 'e': e.preventDefault(); toggleReactPicker(e); break;
+    case '?': e.preventDefault(); openMoreModal('shortcuts-modal'); break;
+  }
+});
+
 // Close popovers on outside click / Escape.
 document.addEventListener('click', e => {
   if (!e.target.closest('#react-picker') && !e.target.closest('[onclick*="toggleReactPicker"]') &&
@@ -1671,7 +2109,7 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeCallPopovers();
-    ['profile-modal','details-modal','add-people-modal','record-modal','settings-modal','block-modal','whiteboard-modal','stats-modal']
+    ['profile-modal','details-modal','add-people-modal','record-modal','settings-modal','block-modal','whiteboard-modal','stats-modal','background-modal','shortcuts-modal','end-meeting-modal']
       .forEach(id => closeMoreModal(id));
     if (!document.getElementById('report-modal')?.classList.contains('hidden')) closeReport();
   }
