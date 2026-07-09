@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full dark" dir="ltr">
 <head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alice Chen — Profile — Nexus</title>
@@ -46,7 +47,7 @@
   </nav>
 
   <!-- ─── Profile Main ───────────────────────────────────────── -->
-  <main class="flex-1 overflow-y-auto bg-slate-950">
+  <main data-app-main class="flex-1 overflow-y-auto bg-slate-950">
 
     <!-- Cover + Avatar -->
     <div class="relative">

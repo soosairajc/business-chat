@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media Gallery — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    .masonry { columns: 2; gap: 1rem; }
+    @media (min-width: 640px) { .masonry { columns: 3; } }
+    @media (min-width: 1024px) { .masonry { columns: 4; } }
+    @media (min-width: 1280px) { .masonry { columns: 5; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
+    .media-thumb:hover .media-overlay { opacity: 1; }
+    .media-overlay { opacity: 0; transition: opacity 0.2s; }
+  </style>
+  <script type="module" crossorigin src="/assets/app-C2L9P_lY.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-DnQ1GjaE.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/notifications.html" aria-label="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <a href="/pages/activity-feed.html" aria-label="Activity" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="activity" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <a href="/pages/bookmarks.html" aria-label="Bookmarks" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="bookmark" class="w-4 h-4"></i></a>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="align-right" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Filter Sidebar -->
+  <aside data-app-sidebar class="flex flex-col w-52 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex transition-all">
+    <div class="px-4 py-4 border-b border-slate-800">
+      <h2 class="text-sm font-bold text-slate-100">Media Gallery</h2>
+      <p class="text-xs text-slate-500 mt-0.5">124 items shared</p>
+    </div>
+    <div class="flex-1 py-3 space-y-0.5 px-2">
+      <p class="px-2 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">Media Type</p>
+      <button class="media-filter active w-full flex items-center gap-2.5 px-3 py-2 rounded-lg bg-violet-600/20 text-violet-300 text-sm text-left transition">
+        <i data-lucide="layout-grid" class="w-4 h-4 shrink-0"></i> All Media <span class="ml-auto text-xs text-slate-500">124</span>
+      </button>
+      <button class="media-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+        <i data-lucide="image" class="w-4 h-4 shrink-0"></i> Images <span class="ml-auto text-xs text-slate-500">89</span>
+      </button>
+      <button class="media-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+        <i data-lucide="video" class="w-4 h-4 shrink-0"></i> Videos <span class="ml-auto text-xs text-slate-500">28</span>
+      </button>
+      <button class="media-filter w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">
+        <i data-lucide="music" class="w-4 h-4 shrink-0"></i> Audio <span class="ml-auto text-xs text-slate-500">7</span>
+      </button>
+      <div class="pt-3">
+        <p class="px-2 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">By Channel</p>
+        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><span class="text-slate-500 text-xs">#</span> design</button>
+        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><span class="text-slate-500 text-xs">#</span> marketing</button>
+        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><span class="text-slate-500 text-xs">#</span> general</button>
+      </div>
+      <div class="pt-3">
+        <p class="px-2 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">By Person</p>
+        <button class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="" class="w-5 h-5 rounded-full" /> Alice Chen</button>
+        <button class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="" class="w-5 h-5 rounded-full" /> Sarah Lee</button>
+        <button class="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="" class="w-5 h-5 rounded-full" /> David Kim</button>
+      </div>
+      <div class="pt-3">
+        <p class="px-2 py-1 text-xs font-semibold text-slate-500 uppercase tracking-wider">Date Range</p>
+        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">Today</button>
+        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">This Week</button>
+        <button class="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-slate-100 text-sm text-left transition">This Month</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden">
+    <!-- Toolbar -->
+    <div class="flex items-center gap-3 px-5 py-3 border-b border-slate-800 bg-slate-900 shrink-0 flex-wrap gap-y-2">
+      <h2 class="text-sm font-semibold text-slate-300">All Media</h2>
+      <div class="ml-auto flex items-center gap-2">
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+          <input type="search" placeholder="Search media…" class="bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-3 py-1.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition w-48" />
+        </div>
+        <div class="flex items-center border border-slate-700 rounded-lg overflow-hidden">
+          <button id="masonry-btn" aria-label="Masonry view" class="p-2 bg-slate-700 text-slate-100 transition hover:bg-slate-600"><i data-lucide="layout-masonry" class="w-4 h-4"></i></button>
+          <button id="table-btn" aria-label="Table view" class="p-2 bg-slate-800 text-slate-400 hover:text-slate-100 hover:bg-slate-700 transition"><i data-lucide="table" class="w-4 h-4"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div id="masonry-view" class="flex-1 overflow-y-auto p-5">
+      <div class="masonry">
+
+        <!-- Items with varying heights for masonry effect -->
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-violet-800 to-indigo-950 flex items-center justify-center" style="height:200px">
+              <i data-lucide="image" class="w-12 h-12 text-violet-300 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">hero-banner-v3.png</p>
+              <p class="text-[11px] text-slate-300 truncate">Alice Chen · 4h ago · #design</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-emerald-800 to-teal-950 flex items-center justify-center" style="height:140px">
+              <i data-lucide="image" class="w-10 h-10 text-emerald-300 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">team-photo-all-hands.jpg</p>
+              <p class="text-[11px] text-slate-300 truncate">Sarah Lee · Yesterday · #general</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-blue-800 to-slate-950 flex items-center justify-center" style="height:260px">
+              <div class="text-center">
+                <i data-lucide="video" class="w-12 h-12 text-blue-300 opacity-60 mx-auto"></i>
+                <div class="mt-2 px-3 py-1 rounded-full bg-blue-900/60 text-xs text-blue-300">2:34</div>
+              </div>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Play" class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-7 h-7 text-white"></i></button>
+            </div>
+            <div class="absolute top-3 left-3"><span class="px-2 py-0.5 rounded-full bg-blue-600/80 text-white text-[10px] font-semibold">VIDEO</span></div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">product-demo-oct.mp4</p>
+              <p class="text-[11px] text-slate-300 truncate">Bob Martinez · Yesterday · #engineering</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-rose-800 to-pink-950 flex items-center justify-center" style="height:180px">
+              <i data-lucide="image" class="w-10 h-10 text-rose-300 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">brand-colors-palette.png</p>
+              <p class="text-[11px] text-slate-300 truncate">Alice Chen · 2 days ago · #design</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-amber-800 to-orange-950 flex items-center justify-center" style="height:150px">
+              <i data-lucide="image" class="w-10 h-10 text-amber-300 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">social-campaign-oct.jpg</p>
+              <p class="text-[11px] text-slate-300 truncate">David Kim · 3 days ago · #marketing</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-cyan-800 to-teal-950 flex items-center justify-center" style="height:220px">
+              <div class="text-center">
+                <i data-lucide="video" class="w-12 h-12 text-cyan-300 opacity-60 mx-auto"></i>
+                <div class="mt-2 px-3 py-1 rounded-full bg-cyan-900/60 text-xs text-cyan-300">5:12</div>
+              </div>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Play" class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-7 h-7 text-white"></i></button>
+            </div>
+            <div class="absolute top-3 left-3"><span class="px-2 py-0.5 rounded-full bg-cyan-600/80 text-white text-[10px] font-semibold">VIDEO</span></div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">onboarding-walkthrough.mp4</p>
+              <p class="text-[11px] text-slate-300 truncate">Carol Wu · 1 week ago · #product</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-purple-800 to-violet-950 flex items-center justify-center" style="height:170px">
+              <i data-lucide="image" class="w-10 h-10 text-purple-300 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">app-screenshots-v2.png</p>
+              <p class="text-[11px] text-slate-300 truncate">Sarah Lee · 1 week ago · #design</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-indigo-800 to-blue-950 flex items-center justify-center" style="height:130px">
+              <div class="text-center">
+                <i data-lucide="music" class="w-10 h-10 text-indigo-300 opacity-60 mx-auto"></i>
+                <div class="mt-2 px-3 py-1 rounded-full bg-indigo-900/60 text-xs text-indigo-300">0:45</div>
+              </div>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Play" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute top-3 left-3"><span class="px-2 py-0.5 rounded-full bg-indigo-600/80 text-white text-[10px] font-semibold">AUDIO</span></div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">brand-jingle-final.mp3</p>
+              <p class="text-[11px] text-slate-300 truncate">David Kim · 1 week ago · #marketing</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-green-800 to-emerald-950 flex items-center justify-center" style="height:240px">
+              <i data-lucide="image" class="w-12 h-12 text-green-300 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+              <button aria-label="Download" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="download" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">office-plant-wall.jpg</p>
+              <p class="text-[11px] text-slate-300 truncate">Bob Martinez · 2 weeks ago · #general</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-fuchsia-800 to-pink-950 flex items-center justify-center" style="height:160px">
+              <i data-lucide="image" class="w-10 h-10 text-fuchsia-300 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">logo-variants-2024.png</p>
+              <p class="text-[11px] text-slate-300 truncate">Alice Chen · 2 weeks ago · #design</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center" style="height:190px">
+              <i data-lucide="image" class="w-10 h-10 text-slate-400 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">dark-mode-mockup.png</p>
+              <p class="text-[11px] text-slate-300 truncate">Sarah Lee · 3 weeks ago · #design</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-yellow-800 to-amber-950 flex items-center justify-center" style="height:145px">
+              <i data-lucide="image" class="w-10 h-10 text-yellow-300 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">event-poster-conf24.jpg</p>
+              <p class="text-[11px] text-slate-300 truncate">David Kim · 1 month ago · #marketing</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-red-800 to-rose-950 flex items-center justify-center" style="height:280px">
+              <div class="text-center">
+                <i data-lucide="video" class="w-12 h-12 text-red-300 opacity-60 mx-auto"></i>
+                <div class="mt-2 px-3 py-1 rounded-full bg-red-900/60 text-xs text-red-300">8:47</div>
+              </div>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Play" class="w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="play" class="w-7 h-7 text-white"></i></button>
+            </div>
+            <div class="absolute top-3 left-3"><span class="px-2 py-0.5 rounded-full bg-red-600/80 text-white text-[10px] font-semibold">VIDEO</span></div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">q3-retrospective-recording.mp4</p>
+              <p class="text-[11px] text-slate-300 truncate">Carol Wu · 1 month ago · #product</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="media-thumb relative rounded-xl overflow-hidden cursor-pointer group">
+            <div class="bg-gradient-to-br from-sky-800 to-blue-950 flex items-center justify-center" style="height:175px">
+              <i data-lucide="image" class="w-10 h-10 text-sky-300 opacity-60"></i>
+            </div>
+            <div class="media-overlay absolute inset-0 bg-slate-950/70 flex items-center justify-center gap-3">
+              <button aria-label="Expand" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition"><i data-lucide="maximize-2" class="w-5 h-5 text-white"></i></button>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-slate-950/80 to-transparent media-overlay">
+              <p class="text-xs text-white font-medium truncate">architecture-diagram.png</p>
+              <p class="text-[11px] text-slate-300 truncate">Priya Sharma · 1 month ago · #engineering</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Table View (hidden) -->
+    <div id="table-view" class="flex-1 overflow-y-auto hidden">
+      <table class="w-full text-sm">
+        <thead class="sticky top-0 bg-slate-900 border-b border-slate-800">
+          <tr>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Preview</th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Name</th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider hidden md:table-cell">Type</th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider hidden lg:table-cell">Shared By</th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider hidden lg:table-cell">Channel</th>
+            <th class="text-left px-5 py-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Date</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800">
+          <tr class="hover:bg-slate-900/60 transition">
+            <td class="px-5 py-3"><div class="w-12 h-12 rounded-lg bg-gradient-to-br from-violet-800 to-indigo-950 flex items-center justify-center"><i data-lucide="image" class="w-5 h-5 text-violet-300"></i></div></td>
+            <td class="px-5 py-3 font-medium text-slate-100">hero-banner-v3.png</td>
+            <td class="px-5 py-3 hidden md:table-cell"><span class="px-2 py-0.5 rounded-full bg-violet-900/40 text-violet-400 text-xs">IMAGE</span></td>
+            <td class="px-5 py-3 text-slate-400 hidden lg:table-cell">Alice Chen</td>
+            <td class="px-5 py-3 text-slate-500 hidden lg:table-cell">#design</td>
+            <td class="px-5 py-3 text-slate-500">4h ago</td>
+          </tr>
+          <tr class="hover:bg-slate-900/60 transition">
+            <td class="px-5 py-3"><div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-800 to-slate-950 flex items-center justify-center"><i data-lucide="video" class="w-5 h-5 text-blue-300"></i></div></td>
+            <td class="px-5 py-3 font-medium text-slate-100">product-demo-oct.mp4</td>
+            <td class="px-5 py-3 hidden md:table-cell"><span class="px-2 py-0.5 rounded-full bg-blue-900/40 text-blue-400 text-xs">VIDEO</span></td>
+            <td class="px-5 py-3 text-slate-400 hidden lg:table-cell">Bob Martinez</td>
+            <td class="px-5 py-3 text-slate-500 hidden lg:table-cell">#engineering</td>
+            <td class="px-5 py-3 text-slate-500">Yesterday</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+document.getElementById('masonry-btn').addEventListener('click', () => {
+  document.getElementById('masonry-view').classList.remove('hidden');
+  document.getElementById('table-view').classList.add('hidden');
+});
+document.getElementById('table-btn').addEventListener('click', () => {
+  document.getElementById('table-view').classList.remove('hidden');
+  document.getElementById('masonry-view').classList.add('hidden');
+});
+document.querySelectorAll('.media-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.media-filter').forEach(b => { b.classList.remove('bg-violet-600/20','text-violet-300'); b.classList.add('text-slate-400'); });
+    btn.classList.add('bg-violet-600/20','text-violet-300'); btn.classList.remove('text-slate-400');
+  });
+});
+</script>
+</body>
+</html>

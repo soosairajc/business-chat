@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full dark" dir="ltr">
 <head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Activity Feed — Nexus</title>
@@ -40,7 +41,7 @@
   </nav>
 
   <!-- Main -->
-  <div class="flex-1 flex flex-col overflow-hidden">
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden">
     <!-- Header + Filter Tabs -->
     <div class="border-b border-slate-800 bg-slate-900 shrink-0">
       <div class="flex items-center gap-3 px-6 py-4">

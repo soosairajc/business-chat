@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calls — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    @keyframes speaking-ring {
+      0%,100%{transform:scale(1);opacity:.6}
+      50%{transform:scale(1.12);opacity:1}
+    }
+    .speaking-ring { animation: speaking-ring 1.4s ease-in-out infinite; }
+    @keyframes pulse-green {
+      0%,100%{opacity:1} 50%{opacity:.4}
+    }
+    .pulse-dot { animation: pulse-green 1.5s ease-in-out infinite; }
+    @keyframes call-timer { from{} }
+    .call-duration::before { content: attr(data-time); }
+  </style>
+  <script type="module" crossorigin src="/assets/app-C2L9P_lY.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-DnQ1GjaE.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+
+<div class="flex h-full overflow-hidden">
+
+  <!-- ─── Icon Rail ─────────────────────────────────────────── -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Nexus HQ workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="relative w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="message-square-text" class="w-4 h-4"></i>
+      <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-violet-600 text-white text-[9px] font-bold flex items-center justify-center">4</span>
+    </a>
+    <a href="/pages/notifications.html" aria-label="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="sun" data-theme-icon class="w-4 h-4"></i>
+    </button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="align-right" data-dir-icon class="w-4 h-4"></i>
+    </button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <button aria-label="Your profile" class="relative mt-1">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+  </nav>
+
+  <!-- ─── Call Views Container ──────────────────────────────── -->
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden relative">
+
+    <!-- View Toggle Tabs (top bar when NOT in active call) -->
+    <div id="call-view-tabs" class="hidden flex items-center gap-1 px-4 py-2 bg-slate-900 border-b border-slate-800 shrink-0">
+      <button onclick="showCallView('active')" class="call-tab px-4 py-1.5 text-sm font-medium rounded-lg transition text-slate-400 hover:text-slate-100 hover:bg-slate-800" data-view="active">Active Call</button>
+      <button onclick="showCallView('history')" class="call-tab px-4 py-1.5 text-sm font-medium rounded-lg transition text-slate-400 hover:text-slate-100 hover:bg-slate-800" data-view="history">History</button>
+      <div class="ml-auto flex items-center gap-2">
+        <button onclick="showIncomingCall()" class="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+          <i data-lucide="phone-incoming" class="w-3.5 h-3.5 text-green-400"></i> Simulate Incoming Call
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ ACTIVE CALL VIEW ══ -->
+    <div id="view-active" class="flex-1 flex flex-col overflow-hidden bg-slate-950 relative">
+
+      <!-- Top bar -->
+      <div class="flex items-center justify-between px-5 py-3 bg-slate-900/80 backdrop-blur-sm border-b border-slate-800 shrink-0 z-10">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2">
+            <i data-lucide="hash" class="w-4 h-4 text-slate-400"></i>
+            <span class="text-sm font-semibold text-slate-100">design</span>
+          </div>
+          <span class="text-slate-600">·</span>
+          <span class="text-sm text-slate-300 font-mono" id="call-timer">23:47</span>
+          <!-- Connection quality -->
+          <div class="flex items-end gap-0.5 h-4" aria-label="Connection: Excellent">
+            <div class="w-1 bg-green-400 rounded-sm" style="height:30%"></div>
+            <div class="w-1 bg-green-400 rounded-sm" style="height:55%"></div>
+            <div class="w-1 bg-green-400 rounded-sm" style="height:80%"></div>
+            <div class="w-1 bg-green-400 rounded-sm" style="height:100%"></div>
+          </div>
+          <span class="text-xs text-green-400 font-medium">Excellent</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="toggleParticipantsPanel()" id="participants-toggle" aria-label="Toggle participants panel" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+            <i data-lucide="users" class="w-3.5 h-3.5"></i>
+            <span>5</span>
+          </button>
+          <button onclick="showCallView('history')" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+            <i data-lucide="clock" class="w-3.5 h-3.5"></i> History
+          </button>
+          <button onclick="showIncomingCall()" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+            <i data-lucide="phone-incoming" class="w-3.5 h-3.5 text-green-400"></i> Incoming
+          </button>
+        </div>
+      </div>
+
+      <!-- Video Grid + Sidebar -->
+      <div class="flex flex-1 overflow-hidden">
+
+        <!-- Main grid area -->
+        <div class="flex-1 p-4 grid grid-rows-2 grid-cols-2 gap-3 overflow-hidden">
+
+          <!-- Tile 1: Alice (speaking) -->
+          <div class="relative rounded-2xl bg-gradient-to-br from-violet-950 to-slate-900 overflow-hidden group">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="relative">
+                <div class="absolute inset-0 rounded-full speaking-ring bg-violet-500/30 scale-150"></div>
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen" class="w-20 h-20 rounded-full bg-slate-700 relative z-10 ring-3 ring-violet-500" />
+              </div>
+            </div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-2">
+              <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-sm">
+                <i data-lucide="mic" class="w-3 h-3 text-green-400"></i>
+                <span class="text-xs font-medium text-slate-100">Alice Chen</span>
+              </div>
+            </div>
+            <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition">
+              <div class="w-2 h-2 rounded-full bg-violet-500 speaking-ring"></div>
+            </div>
+            <!-- Speaking indicator glow -->
+            <div class="absolute inset-0 rounded-2xl ring-2 ring-violet-500/60 pointer-events-none"></div>
+          </div>
+
+          <!-- Tile 2: Bob -->
+          <div class="relative rounded-2xl bg-gradient-to-br from-blue-950 to-slate-900 overflow-hidden group">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-20 h-20 rounded-full bg-slate-700" />
+            </div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-2">
+              <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-sm">
+                <i data-lucide="mic-off" class="w-3 h-3 text-red-400"></i>
+                <span class="text-xs font-medium text-slate-100">Bob Martinez</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tile 3: Carol -->
+          <div class="relative rounded-2xl bg-gradient-to-br from-emerald-950 to-slate-900 overflow-hidden group">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-20 h-20 rounded-full bg-slate-700" />
+            </div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-2">
+              <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-sm">
+                <i data-lucide="mic" class="w-3 h-3 text-green-400"></i>
+                <span class="text-xs font-medium text-slate-100">Carol Wu</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tile 4: You (self view, bottom right) -->
+          <div class="relative rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 overflow-hidden group ring-2 ring-violet-600/40">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-20 h-20 rounded-full bg-slate-700" />
+            </div>
+            <div class="absolute bottom-3 left-3 flex items-center gap-2">
+              <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-sm">
+                <i data-lucide="mic" class="w-3 h-3 text-green-400" id="self-mic-icon"></i>
+                <span class="text-xs font-medium text-violet-300">You</span>
+              </div>
+            </div>
+            <div class="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-violet-600 text-white text-[9px] font-bold">YOU</div>
+          </div>
+        </div>
+
+        <!-- Participants Panel (side drawer) -->
+        <aside id="participants-panel" class="w-64 shrink-0 bg-slate-900 border-l border-slate-800 flex-col overflow-y-auto hidden">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800">
+            <h3 class="text-sm font-semibold text-slate-100">Participants</h3>
+            <span class="text-xs text-slate-400">5 people</span>
+          </div>
+          <div class="p-3 space-y-1">
+            <!-- Participant rows -->
+            <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-800 transition">
+              <div class="relative shrink-0">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-9 h-9 rounded-xl bg-slate-700" />
+                <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-slate-900 flex items-center justify-center"><i data-lucide="mic" class="w-2.5 h-2.5 text-green-400"></i></span>
+              </div>
+              <div class="flex-1 min-w-0"><p class="text-sm font-medium text-slate-100 truncate">Alice Chen</p><p class="text-xs text-violet-400">Speaking</p></div>
+              <div class="w-2 h-2 rounded-full bg-violet-500 speaking-ring shrink-0"></div>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-800 transition">
+              <div class="relative shrink-0">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob" class="w-9 h-9 rounded-xl bg-slate-700" />
+                <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-slate-900 flex items-center justify-center"><i data-lucide="mic-off" class="w-2.5 h-2.5 text-red-400"></i></span>
+              </div>
+              <div class="flex-1 min-w-0"><p class="text-sm font-medium text-slate-100 truncate">Bob Martinez</p><p class="text-xs text-slate-500">Muted</p></div>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-800 transition">
+              <div class="relative shrink-0">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol" class="w-9 h-9 rounded-xl bg-slate-700" />
+                <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-slate-900 flex items-center justify-center"><i data-lucide="mic" class="w-2.5 h-2.5 text-green-400"></i></span>
+              </div>
+              <div class="flex-1 min-w-0"><p class="text-sm font-medium text-slate-100 truncate">Carol Wu</p><p class="text-xs text-slate-400">Listening</p></div>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-800 transition">
+              <div class="relative shrink-0">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David" class="w-9 h-9 rounded-xl bg-slate-700" />
+                <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-slate-900 flex items-center justify-center"><i data-lucide="mic-off" class="w-2.5 h-2.5 text-red-400"></i></span>
+              </div>
+              <div class="flex-1 min-w-0"><p class="text-sm font-medium text-slate-100 truncate">David Kim</p><p class="text-xs text-slate-500">Muted</p></div>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-800 transition ring-1 ring-violet-500/40 bg-violet-600/5">
+              <div class="relative shrink-0">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="You" class="w-9 h-9 rounded-xl bg-slate-700" />
+                <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-slate-900 flex items-center justify-center" id="panel-mic-icon"><i data-lucide="mic" class="w-2.5 h-2.5 text-green-400"></i></span>
+              </div>
+              <div class="flex-1 min-w-0"><p class="text-sm font-medium text-violet-300 truncate">You</p><p class="text-xs text-slate-400">Host</p></div>
+            </div>
+          </div>
+          <div class="p-3 mt-auto border-t border-slate-800">
+            <button onclick="window.NexusComponents?.toast('Invite link copied!', 'success')" class="w-full flex items-center justify-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+              <i data-lucide="user-plus" class="w-3.5 h-3.5"></i> Invite Others
+            </button>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Call Controls Bar -->
+      <div class="flex items-center justify-center gap-3 px-6 py-4 bg-slate-900/90 backdrop-blur-sm border-t border-slate-800 shrink-0 flex-wrap">
+        <!-- Mute -->
+        <div class="flex flex-col items-center gap-1">
+          <button id="mute-btn" onclick="toggleMute()" aria-label="Mute microphone"
+            class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition text-slate-300 hover:text-slate-100">
+            <i data-lucide="mic" class="w-5 h-5" id="mute-icon"></i>
+          </button>
+          <span class="text-[10px] text-slate-500" id="mute-label">Mute</span>
+        </div>
+        <!-- Camera -->
+        <div class="flex flex-col items-center gap-1">
+          <button id="cam-btn" onclick="toggleCamera()" aria-label="Toggle camera"
+            class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition text-slate-300 hover:text-slate-100">
+            <i data-lucide="video" class="w-5 h-5" id="cam-icon"></i>
+          </button>
+          <span class="text-[10px] text-slate-500" id="cam-label">Camera</span>
+        </div>
+        <!-- Screen Share -->
+        <div class="flex flex-col items-center gap-1">
+          <button id="share-btn" onclick="toggleShare()" aria-label="Share screen"
+            class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition text-slate-300 hover:text-slate-100">
+            <i data-lucide="monitor" class="w-5 h-5" id="share-icon"></i>
+          </button>
+          <span class="text-[10px] text-slate-500">Share</span>
+        </div>
+        <!-- Reactions -->
+        <div class="flex flex-col items-center gap-1">
+          <button onclick="window.NexusComponents?.toast('👋 Reaction sent!', 'info')" aria-label="Send reaction"
+            class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition text-xl">
+            👋
+          </button>
+          <span class="text-[10px] text-slate-500">React</span>
+        </div>
+        <!-- Participants -->
+        <div class="flex flex-col items-center gap-1">
+          <button onclick="toggleParticipantsPanel()" aria-label="Toggle participants"
+            class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition text-slate-300 hover:text-slate-100 relative">
+            <i data-lucide="users" class="w-5 h-5"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-violet-600 text-white text-[9px] font-bold flex items-center justify-center">5</span>
+          </button>
+          <span class="text-[10px] text-slate-500">People</span>
+        </div>
+        <!-- Chat -->
+        <div class="flex flex-col items-center gap-1">
+          <button aria-label="Open chat" class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition text-slate-300 hover:text-slate-100 relative">
+            <i data-lucide="message-square" class="w-5 h-5"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-violet-600 text-white text-[9px] font-bold flex items-center justify-center">3</span>
+          </button>
+          <span class="text-[10px] text-slate-500">Chat</span>
+        </div>
+        <!-- More -->
+        <div class="flex flex-col items-center gap-1">
+          <button aria-label="More options" class="w-12 h-12 rounded-2xl bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition text-slate-300 hover:text-slate-100">
+            <i data-lucide="more-horizontal" class="w-5 h-5"></i>
+          </button>
+          <span class="text-[10px] text-slate-500">More</span>
+        </div>
+        <!-- Divider -->
+        <div class="w-px h-12 bg-slate-700 mx-1"></div>
+        <!-- Leave Call -->
+        <div class="flex flex-col items-center gap-1">
+          <button onclick="leaveCall()" aria-label="Leave call"
+            class="w-14 h-12 rounded-2xl bg-red-600 hover:bg-red-500 flex items-center justify-center transition shadow-lg">
+            <i data-lucide="phone-off" class="w-5 h-5 text-white"></i>
+          </button>
+          <span class="text-[10px] text-red-400 font-medium">Leave</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CALL HISTORY VIEW ══ -->
+    <div id="view-history" class="hidden flex-1 overflow-hidden flex flex-col">
+      <div class="flex items-center justify-between px-5 py-3 bg-slate-900 border-b border-slate-800 shrink-0">
+        <div>
+          <h2 class="text-base font-semibold text-slate-100">Call History</h2>
+          <p class="text-xs text-slate-400">Recent calls and meetings</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="showIncomingCall()" class="flex items-center gap-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+            <i data-lucide="phone-incoming" class="w-3.5 h-3.5 text-green-400"></i> Simulate Incoming
+          </button>
+          <button onclick="showCallView('active')" class="flex items-center gap-2 px-3 py-1.5 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition">
+            <i data-lucide="video" class="w-3.5 h-3.5"></i> Active Call
+          </button>
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto p-4">
+        <!-- Date group -->
+        <div class="flex items-center gap-3 mb-3">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Today</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+        <div class="space-y-2 mb-6">
+          <!-- Call item - ongoing -->
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-violet-500/40 hover:border-violet-500/60 transition cursor-pointer" onclick="showCallView('active')">
+            <div class="w-10 h-10 rounded-xl bg-violet-600/20 flex items-center justify-center shrink-0">
+              <i data-lucide="video" class="w-5 h-5 text-violet-400"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <p class="text-sm font-semibold text-slate-100">#design — Design Review</p>
+                <span class="flex items-center gap-1 px-2 py-0.5 bg-green-500/20 text-green-400 text-[10px] font-bold rounded-full">
+                  <span class="w-1.5 h-1.5 rounded-full bg-green-400 pulse-dot inline-block"></span> LIVE
+                </span>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Started 23 min ago · 5 participants</p>
+              <div class="flex items-center gap-1 mt-1.5">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" class="w-5 h-5 rounded-full bg-slate-700 ring-1 ring-slate-900" alt="Alice" />
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" class="w-5 h-5 rounded-full bg-slate-700 ring-1 ring-slate-900" alt="Bob" />
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" class="w-5 h-5 rounded-full bg-slate-700 ring-1 ring-slate-900" alt="Carol" />
+                <span class="text-xs text-slate-500 ml-1">+2 more</span>
+              </div>
+            </div>
+            <button onclick="showCallView('active')" class="px-3 py-1.5 bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold rounded-lg transition shrink-0">Join</button>
+          </div>
+
+          <!-- Outgoing call -->
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition cursor-pointer">
+            <div class="relative w-10 h-10 shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-10 h-10 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-900 flex items-center justify-center">
+                <i data-lucide="phone-outgoing" class="w-3 h-3 text-blue-400"></i>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-100">Carol Wu</p>
+              <p class="text-xs text-slate-400 mt-0.5">Video call · 8 min 22 sec</p>
+              <p class="text-xs text-slate-500 mt-0.5">10:15 AM</p>
+            </div>
+            <button onclick="window.NexusComponents?.toast('Calling Carol Wu…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-green-400"></i> Call back
+            </button>
+          </div>
+
+          <!-- Missed call -->
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-red-900/30 hover:border-red-900/50 transition cursor-pointer">
+            <div class="relative w-10 h-10 shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-10 h-10 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-900 flex items-center justify-center">
+                <i data-lucide="phone-missed" class="w-3 h-3 text-red-400"></i>
+              </div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-red-400">Mike Johnson <span class="text-xs text-red-500/70 font-normal">· Missed</span></p>
+              <p class="text-xs text-slate-400 mt-0.5">Audio call</p>
+              <p class="text-xs text-slate-500 mt-0.5">9:02 AM</p>
+            </div>
+            <button onclick="window.NexusComponents?.toast('Calling Mike Johnson…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-red-600/20 hover:bg-red-600/30 text-red-400 text-xs font-medium rounded-lg border border-red-800/50 transition">
+              <i data-lucide="phone" class="w-3.5 h-3.5"></i> Call back
+            </button>
+          </div>
+        </div>
+
+        <!-- Yesterday -->
+        <div class="flex items-center gap-3 mb-3">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Yesterday</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+        <div class="space-y-2 mb-6">
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition cursor-pointer">
+            <div class="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center shrink-0"><i data-lucide="video" class="w-5 h-5 text-blue-400"></i></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-100">#product — Sprint Planning</p>
+              <p class="text-xs text-slate-400 mt-0.5">Video call · 1h 12min · 8 participants</p>
+              <p class="text-xs text-slate-500 mt-0.5">2:00 PM</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition cursor-pointer">
+            <div class="relative w-10 h-10 shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-10 h-10 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-900 flex items-center justify-center"><i data-lucide="phone-incoming" class="w-3 h-3 text-green-400"></i></div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-100">Bob Martinez</p>
+              <p class="text-xs text-slate-400 mt-0.5">Audio call · 4 min 51 sec</p>
+              <p class="text-xs text-slate-500 mt-0.5">11:30 AM</p>
+            </div>
+            <button onclick="window.NexusComponents?.toast('Calling Bob Martinez…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-green-400"></i> Call back
+            </button>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition cursor-pointer">
+            <div class="relative w-10 h-10 shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-10 h-10 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-900 flex items-center justify-center"><i data-lucide="phone-missed" class="w-3 h-3 text-red-400"></i></div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-red-400">Priya Sharma <span class="text-xs text-red-500/70 font-normal">· Missed</span></p>
+              <p class="text-xs text-slate-400 mt-0.5">Audio call</p>
+              <p class="text-xs text-slate-500 mt-0.5">9:45 AM</p>
+            </div>
+            <button onclick="window.NexusComponents?.toast('Calling Priya Sharma…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-red-600/20 hover:bg-red-600/30 text-red-400 text-xs font-medium rounded-lg border border-red-800/50 transition">
+              <i data-lucide="phone" class="w-3.5 h-3.5"></i> Call back
+            </button>
+          </div>
+        </div>
+
+        <!-- This week -->
+        <div class="flex items-center gap-3 mb-3">
+          <div class="flex-1 h-px bg-slate-800"></div>
+          <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">This Week</span>
+          <div class="flex-1 h-px bg-slate-800"></div>
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition cursor-pointer">
+            <div class="w-10 h-10 rounded-xl bg-emerald-600/20 flex items-center justify-center shrink-0"><i data-lucide="video" class="w-5 h-5 text-emerald-400"></i></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-100">#design — Design Critique</p>
+              <p class="text-xs text-slate-400 mt-0.5">Video call · 45 min · 6 participants</p>
+              <p class="text-xs text-slate-500 mt-0.5">Mon, Feb 5 · 3:00 PM</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition cursor-pointer">
+            <div class="relative w-10 h-10 shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah Lee" class="w-10 h-10 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-900 flex items-center justify-center"><i data-lucide="phone-outgoing" class="w-3 h-3 text-blue-400"></i></div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium text-slate-100">Sarah Lee</p>
+              <p class="text-xs text-slate-400 mt-0.5">Video call · 22 min 10 sec</p>
+              <p class="text-xs text-slate-500 mt-0.5">Mon, Feb 5 · 11:00 AM</p>
+            </div>
+            <button onclick="window.NexusComponents?.toast('Calling Sarah Lee…', 'info')" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg border border-slate-700 transition">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-green-400"></i> Call back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ INCOMING CALL MODAL ══ -->
+<div id="incoming-call-modal" data-modal class="hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div data-modal-backdrop class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div data-modal-panel class="relative z-10 w-80 bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl overflow-hidden fade-in">
+    <!-- Gradient top -->
+    <div class="h-32 bg-gradient-to-br from-violet-900 to-indigo-900 relative flex items-center justify-center">
+      <div class="absolute inset-0 opacity-30" style="background:radial-gradient(circle at 50% 100%, #7c3aed, transparent 70%)"></div>
+      <!-- Pulsing ring around avatar -->
+      <div class="relative">
+        <div class="absolute inset-0 rounded-full bg-violet-500/30 scale-150 speaking-ring"></div>
+        <div class="absolute inset-0 rounded-full bg-violet-500/15 scale-[2.2] speaking-ring" style="animation-delay:0.3s"></div>
+        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-20 h-20 rounded-full bg-slate-700 relative z-10 ring-4 ring-white/20" />
+      </div>
+    </div>
+    <div class="p-6 text-center">
+      <p class="text-xs text-slate-400 mb-1 uppercase tracking-widest font-semibold">Incoming Video Call</p>
+      <h3 class="text-xl font-bold text-slate-100 mb-1">Mike Johnson</h3>
+      <p class="text-sm text-slate-400 mb-6">CEO · Nexus HQ</p>
+      <div class="flex items-center justify-center gap-6">
+        <div class="flex flex-col items-center gap-2">
+          <button onclick="declineCall()" aria-label="Decline call" class="w-14 h-14 rounded-full bg-red-600 hover:bg-red-500 flex items-center justify-center transition shadow-lg shadow-red-900/50">
+            <i data-lucide="phone-off" class="w-6 h-6 text-white"></i>
+          </button>
+          <span class="text-xs text-slate-400">Decline</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <button onclick="acceptCall()" aria-label="Accept call" class="w-14 h-14 rounded-full bg-green-600 hover:bg-green-500 flex items-center justify-center transition shadow-lg shadow-green-900/50">
+            <i data-lucide="video" class="w-6 h-6 text-white"></i>
+          </button>
+          <span class="text-xs text-slate-400">Accept</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Left call overlay -->
+<div id="left-call-overlay" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+  <div class="text-center fade-in">
+    <div class="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto mb-4">
+      <i data-lucide="phone-off" class="w-7 h-7 text-red-400"></i>
+    </div>
+    <h3 class="text-xl font-bold text-slate-100 mb-2">Call Ended</h3>
+    <p class="text-sm text-slate-400 mb-6">Duration: 23:47</p>
+    <div class="flex items-center justify-center gap-3">
+      <button onclick="rejoinCall()" class="px-5 py-2.5 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-xl transition">Rejoin</button>
+      <button onclick="closeLeftOverlay()" class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-xl border border-slate-700 transition">Dismiss</button>
+    </div>
+  </div>
+</div>
+
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+
+let isMuted = false, isCameraOff = false, isSharing = false;
+let timerInterval;
+let seconds = 23 * 60 + 47;
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    seconds++;
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    const el = document.getElementById('call-timer');
+    if (el) el.textContent = m + ':' + s;
+  }, 1000);
+}
+startTimer();
+
+function showCallView(view) {
+  document.getElementById('view-active').classList.toggle('hidden', view !== 'active');
+  document.getElementById('view-active').classList.toggle('flex', view === 'active');
+  document.getElementById('view-history').classList.toggle('hidden', view !== 'history');
+  document.getElementById('view-history').classList.toggle('flex', view === 'history');
+  if (window.lucide) lucide.createIcons();
+}
+
+function toggleParticipantsPanel() {
+  const panel = document.getElementById('participants-panel');
+  panel.classList.toggle('hidden');
+  panel.classList.toggle('flex');
+}
+
+function toggleMute() {
+  isMuted = !isMuted;
+  const icon = document.getElementById('mute-icon');
+  const btn = document.getElementById('mute-btn');
+  const label = document.getElementById('mute-label');
+  const selfIcon = document.getElementById('self-mic-icon');
+  if (isMuted) {
+    btn.classList.replace('bg-slate-800', 'bg-red-600/30');
+    btn.classList.replace('border-slate-700', 'border-red-700');
+    label.textContent = 'Unmute';
+    label.classList.add('text-red-400');
+    label.classList.remove('text-slate-500');
+  } else {
+    btn.classList.replace('bg-red-600/30', 'bg-slate-800');
+    btn.classList.replace('border-red-700', 'border-slate-700');
+    label.textContent = 'Mute';
+    label.classList.remove('text-red-400');
+    label.classList.add('text-slate-500');
+  }
+  icon.setAttribute('data-lucide', isMuted ? 'mic-off' : 'mic');
+  selfIcon?.setAttribute('data-lucide', isMuted ? 'mic-off' : 'mic');
+  if (window.lucide) lucide.createIcons();
+  window.NexusComponents?.toast(isMuted ? 'Microphone muted' : 'Microphone on', isMuted ? 'warning' : 'success', 2000);
+}
+
+function toggleCamera() {
+  isCameraOff = !isCameraOff;
+  const icon = document.getElementById('cam-icon');
+  const btn = document.getElementById('cam-btn');
+  const label = document.getElementById('cam-label');
+  if (isCameraOff) {
+    btn.classList.replace('bg-slate-800', 'bg-red-600/30');
+    btn.classList.replace('border-slate-700', 'border-red-700');
+    label.textContent = 'Start cam';
+    label.classList.add('text-red-400');
+    label.classList.remove('text-slate-500');
+  } else {
+    btn.classList.replace('bg-red-600/30', 'bg-slate-800');
+    btn.classList.replace('border-red-700', 'border-slate-700');
+    label.textContent = 'Camera';
+    label.classList.remove('text-red-400');
+    label.classList.add('text-slate-500');
+  }
+  icon.setAttribute('data-lucide', isCameraOff ? 'video-off' : 'video');
+  if (window.lucide) lucide.createIcons();
+  window.NexusComponents?.toast(isCameraOff ? 'Camera turned off' : 'Camera on', isCameraOff ? 'warning' : 'success', 2000);
+}
+
+function toggleShare() {
+  isSharing = !isSharing;
+  const icon = document.getElementById('share-icon');
+  const btn = document.getElementById('share-btn');
+  if (isSharing) {
+    btn.classList.replace('bg-slate-800', 'bg-violet-600/30');
+    btn.classList.replace('border-slate-700', 'border-violet-600');
+    btn.classList.add('text-violet-400');
+  } else {
+    btn.classList.replace('bg-violet-600/30', 'bg-slate-800');
+    btn.classList.replace('border-violet-600', 'border-slate-700');
+    btn.classList.remove('text-violet-400');
+  }
+  icon.setAttribute('data-lucide', isSharing ? 'monitor-stop' : 'monitor');
+  if (window.lucide) lucide.createIcons();
+  window.NexusComponents?.toast(isSharing ? 'Screen sharing started' : 'Stopped sharing', isSharing ? 'success' : 'info', 2000);
+}
+
+function leaveCall() {
+  clearInterval(timerInterval);
+  document.getElementById('left-call-overlay').classList.remove('hidden');
+}
+
+function rejoinCall() {
+  document.getElementById('left-call-overlay').classList.add('hidden');
+  seconds = 0;
+  startTimer();
+  window.NexusComponents?.toast('Rejoined the call!', 'success');
+}
+
+function closeLeftOverlay() {
+  document.getElementById('left-call-overlay').classList.add('hidden');
+  showCallView('history');
+}
+
+function showIncomingCall() {
+  document.getElementById('incoming-call-modal').classList.remove('hidden');
+  if (window.lucide) lucide.createIcons();
+}
+
+function acceptCall() {
+  document.getElementById('incoming-call-modal').classList.add('hidden');
+  showCallView('active');
+  window.NexusComponents?.toast('Call connected!', 'success');
+}
+
+function declineCall() {
+  document.getElementById('incoming-call-modal').classList.add('hidden');
+  window.NexusComponents?.toast('Call declined', 'info', 2000);
+}
+</script>
+</body>
+</html>

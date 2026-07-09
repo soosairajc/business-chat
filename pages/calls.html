@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full dark" dir="ltr">
 <head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calls — Nexus</title>
@@ -59,7 +60,7 @@
   </nav>
 
   <!-- ─── Call Views Container ──────────────────────────────── -->
-  <div class="flex-1 flex flex-col overflow-hidden relative">
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden relative">
 
     <!-- View Toggle Tabs (top bar when NOT in active call) -->
     <div id="call-view-tabs" class="hidden flex items-center gap-1 px-4 py-2 bg-slate-900 border-b border-slate-800 shrink-0">

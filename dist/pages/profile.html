@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alice Chen — Profile — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-C2L9P_lY.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-DnQ1GjaE.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+
+<div class="flex h-full overflow-hidden">
+
+  <!-- ─── Icon Rail ─────────────────────────────────────────── -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Nexus HQ workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" class="relative w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="message-square-text" class="w-4 h-4"></i>
+      <span class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-violet-600 text-white text-[9px] font-bold flex items-center justify-center">4</span>
+    </a>
+    <a href="/pages/notifications.html" aria-label="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="sun" data-theme-icon class="w-4 h-4"></i>
+    </button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition">
+      <i data-lucide="align-right" data-dir-icon class="w-4 h-4"></i>
+    </button>
+    <a href="/pages/settings.html" aria-label="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <button aria-label="Your profile" class="relative mt-1">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+  </nav>
+
+  <!-- ─── Profile Main ───────────────────────────────────────── -->
+  <main data-app-main class="flex-1 overflow-y-auto bg-slate-950">
+
+    <!-- Cover + Avatar -->
+    <div class="relative">
+      <!-- Cover Image -->
+      <div class="h-48 md:h-64 bg-gradient-to-br from-violet-900 via-indigo-900 to-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30" style="background-image:radial-gradient(circle at 30% 50%, #7c3aed 0%, transparent 50%), radial-gradient(circle at 70% 30%, #4f46e5 0%, transparent 50%)"></div>
+        <div class="absolute inset-0 flex items-center justify-center opacity-5">
+          <svg width="400" height="400" viewBox="0 0 400 400"><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="white"/></pattern><rect width="400" height="400" fill="url(#dots)"/></svg>
+        </div>
+        <button class="absolute top-4 right-4 px-3 py-1.5 bg-black/40 hover:bg-black/60 text-white text-xs font-medium rounded-lg backdrop-blur-sm transition flex items-center gap-1.5" aria-label="Edit cover photo">
+          <i data-lucide="camera" class="w-3.5 h-3.5"></i> Edit Cover
+        </button>
+      </div>
+
+      <!-- Avatar overlapping cover -->
+      <div class="absolute left-6 md:left-10 bottom-0 translate-y-1/2 flex items-end gap-4">
+        <div class="relative">
+          <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice Chen's avatar"
+            class="w-24 h-24 rounded-2xl bg-slate-700 ring-4 ring-slate-950 shadow-2xl" />
+          <span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-400 border-3 border-slate-950 ring-2 ring-slate-950"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Info Bar -->
+    <div class="pt-16 pb-6 px-6 md:px-10 border-b border-slate-800">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-3 flex-wrap">
+            <h1 class="text-2xl font-bold text-slate-100">Alice Chen</h1>
+            <span class="px-2.5 py-0.5 rounded-full bg-violet-600/20 text-violet-400 text-xs font-semibold">Design Lead</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-600/20 text-emerald-400 text-xs font-semibold flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span> Active now
+            </span>
+          </div>
+          <p class="text-sm text-slate-400 mt-1.5 max-w-xl leading-relaxed">Design Lead @ Nexus. Passionate about building beautiful, accessible user experiences. Based in San Francisco. ✨</p>
+          <div class="flex items-center gap-4 mt-2 text-xs text-slate-500 flex-wrap">
+            <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> San Francisco, CA</span>
+            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 9:42 AM local time</span>
+            <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Joined January 2022</span>
+            <span class="flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5"></i> she/her</span>
+          </div>
+        </div>
+        <!-- Action buttons -->
+        <div class="flex items-center gap-2 flex-wrap shrink-0">
+          <a href="/pages/dm.html" class="flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold rounded-xl transition shadow-lg">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> Message
+          </a>
+          <a href="/pages/calls.html" class="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-xl border border-slate-700 transition">
+            <i data-lucide="phone" class="w-4 h-4"></i> Call
+          </a>
+          <a href="/pages/calls.html" class="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-semibold rounded-xl border border-slate-700 transition">
+            <i data-lucide="video" class="w-4 h-4"></i> Video
+          </a>
+          <button data-dropdown-trigger="profile-more-dd" aria-label="More options" class="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl border border-slate-700 transition">
+            <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+          </button>
+          <div id="profile-more-dd" data-dropdown class="hidden absolute right-10 mt-2 z-50 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 fade-in">
+            <button class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="user-plus" class="w-4 h-4 opacity-60"></i> Follow</button>
+            <button class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-slate-300 text-left"><i data-lucide="bell" class="w-4 h-4 opacity-60"></i> Notify on active</button>
+            <div class="border-t border-slate-700 my-1"></div>
+            <button class="w-full flex items-center gap-2 px-3 py-2 hover:bg-slate-700 transition text-sm text-red-400 text-left"><i data-lucide="flag" class="w-4 h-4 opacity-60"></i> Report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="border-b border-slate-800 px-6 md:px-10 bg-slate-950 sticky top-0 z-10">
+      <div class="flex gap-0" role="tablist" aria-label="Profile sections">
+        <button role="tab" data-tab="overview" aria-selected="true" onclick="switchTab('overview')" class="profile-tab px-5 py-3.5 text-sm font-medium text-violet-400 border-b-2 border-violet-500 transition">Overview</button>
+        <button role="tab" data-tab="activity" aria-selected="false" onclick="switchTab('activity')" class="profile-tab px-5 py-3.5 text-sm font-medium text-slate-400 hover:text-slate-300 border-b-2 border-transparent hover:border-slate-600 transition">Activity</button>
+        <button role="tab" data-tab="files" aria-selected="false" onclick="switchTab('files')" class="profile-tab px-5 py-3.5 text-sm font-medium text-slate-400 hover:text-slate-300 border-b-2 border-transparent hover:border-slate-600 transition">Files</button>
+        <button role="tab" data-tab="incommon" aria-selected="false" onclick="switchTab('incommon')" class="profile-tab px-5 py-3.5 text-sm font-medium text-slate-400 hover:text-slate-300 border-b-2 border-transparent hover:border-slate-600 transition">In Common</button>
+      </div>
+    </div>
+
+    <!-- Tab Panels -->
+    <div class="px-6 md:px-10 py-6 max-w-5xl">
+
+      <!-- ── OVERVIEW ── -->
+      <div id="tab-overview" class="profile-panel grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Left column -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- Status -->
+          <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+            <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Current Status</h3>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-xl">🎨</div>
+              <div>
+                <p class="text-sm font-medium text-slate-100">Designing the new onboarding flow</p>
+                <p class="text-xs text-slate-400 mt-0.5">Clears in 3 hours</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+            <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Contact</h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-4 h-4 text-slate-400"></i></div>
+                <div><p class="text-xs text-slate-500">Email</p><p class="text-sm text-slate-200">alice.chen@nexus-hq.com</p></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center shrink-0"><i data-lucide="phone" class="w-4 h-4 text-slate-400"></i></div>
+                <div><p class="text-xs text-slate-500">Phone</p><p class="text-sm text-slate-200">+1 (415) 555-0192</p></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center shrink-0"><i data-lucide="map-pin" class="w-4 h-4 text-slate-400"></i></div>
+                <div><p class="text-xs text-slate-500">Location</p><p class="text-sm text-slate-200">San Francisco, CA, USA</p></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center shrink-0"><i data-lucide="clock" class="w-4 h-4 text-slate-400"></i></div>
+                <div><p class="text-xs text-slate-500">Local Time</p><p class="text-sm text-slate-200">9:42 AM — America/Los_Angeles (UTC-8)</p></div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center shrink-0"><i data-lucide="link" class="w-4 h-4 text-slate-400"></i></div>
+                <div><p class="text-xs text-slate-500">Website</p><p class="text-sm text-violet-400">alicechen.design</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+            <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Skills & Expertise</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full bg-violet-600/20 text-violet-300 text-xs font-medium">Product Design</span>
+              <span class="px-3 py-1 rounded-full bg-blue-600/20 text-blue-300 text-xs font-medium">Figma</span>
+              <span class="px-3 py-1 rounded-full bg-emerald-600/20 text-emerald-300 text-xs font-medium">Design Systems</span>
+              <span class="px-3 py-1 rounded-full bg-amber-600/20 text-amber-300 text-xs font-medium">User Research</span>
+              <span class="px-3 py-1 rounded-full bg-rose-600/20 text-rose-300 text-xs font-medium">Accessibility</span>
+              <span class="px-3 py-1 rounded-full bg-sky-600/20 text-sky-300 text-xs font-medium">Prototyping</span>
+              <span class="px-3 py-1 rounded-full bg-indigo-600/20 text-indigo-300 text-xs font-medium">HTML/CSS</span>
+              <span class="px-3 py-1 rounded-full bg-purple-600/20 text-purple-300 text-xs font-medium">Motion Design</span>
+            </div>
+          </div>
+
+          <!-- Shared Channels -->
+          <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+            <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Shared Channels</h3>
+            <div class="space-y-2">
+              <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-800 transition cursor-pointer">
+                <div class="w-8 h-8 rounded-lg bg-violet-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-violet-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">design</p><p class="text-xs text-slate-400">48 members</p></div>
+              </div>
+              <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-800 transition cursor-pointer">
+                <div class="w-8 h-8 rounded-lg bg-emerald-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-emerald-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">product</p><p class="text-xs text-slate-400">32 members</p></div>
+              </div>
+              <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-800 transition cursor-pointer">
+                <div class="w-8 h-8 rounded-lg bg-blue-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-blue-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">general</p><p class="text-xs text-slate-400">148 members</p></div>
+              </div>
+              <div class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-800 transition cursor-pointer">
+                <div class="w-8 h-8 rounded-lg bg-amber-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-amber-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">announcements</p><p class="text-xs text-slate-400">148 members</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <div class="space-y-5">
+          <!-- Stats -->
+          <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+            <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Stats</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3 rounded-xl bg-slate-800 text-center"><p class="text-xl font-bold text-slate-100">2.4k</p><p class="text-xs text-slate-400 mt-0.5">Messages</p></div>
+              <div class="p-3 rounded-xl bg-slate-800 text-center"><p class="text-xl font-bold text-slate-100">148</p><p class="text-xs text-slate-400 mt-0.5">Files shared</p></div>
+              <div class="p-3 rounded-xl bg-slate-800 text-center"><p class="text-xl font-bold text-slate-100">36</p><p class="text-xs text-slate-400 mt-0.5">Reactions given</p></div>
+              <div class="p-3 rounded-xl bg-slate-800 text-center"><p class="text-xl font-bold text-slate-100">12</p><p class="text-xs text-slate-400 mt-0.5">Channels</p></div>
+            </div>
+          </div>
+
+          <!-- Also in teams with -->
+          <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800">
+            <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Also works with</h3>
+            <div class="space-y-2.5">
+              <div class="flex items-center gap-2.5">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-8 h-8 rounded-lg bg-slate-700" />
+                <div><p class="text-sm font-medium text-slate-100">Carol Wu</p><p class="text-xs text-slate-400">Product</p></div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-8 h-8 rounded-lg bg-slate-700" />
+                <div><p class="text-sm font-medium text-slate-100">Bob Martinez</p><p class="text-xs text-slate-400">Engineer</p></div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah Lee" class="w-8 h-8 rounded-lg bg-slate-700" />
+                <div><p class="text-sm font-medium text-slate-100">Sarah Lee</p><p class="text-xs text-slate-400">Designer</p></div>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-8 h-8 rounded-lg bg-slate-700" />
+                <div><p class="text-sm font-medium text-slate-100">Mike Johnson</p><p class="text-xs text-slate-400">CEO</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ACTIVITY ── -->
+      <div id="tab-activity" class="profile-panel hidden max-w-2xl">
+        <div class="space-y-1">
+          <!-- Date group -->
+          <div class="flex items-center gap-3 py-3">
+            <div class="flex-1 h-px bg-slate-800"></div>
+            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Today</span>
+            <div class="flex-1 h-px bg-slate-800"></div>
+          </div>
+
+          <!-- Activity items -->
+          <div class="flex gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-9 h-9 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs">💬</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Alice Chen</span> posted in <span class="text-violet-400 font-medium">#design</span></p>
+              <div class="mt-1 p-3 rounded-lg bg-slate-800 border border-slate-700">
+                <p class="text-sm text-slate-200">Just finished the new onboarding screens! Taking inspiration from the feedback in yesterday's design review. The flow is much cleaner now. 🎨</p>
+              </div>
+              <p class="text-xs text-slate-500 mt-1.5">11:42 AM</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-9 h-9 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs">📎</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Alice Chen</span> shared a file in <span class="text-violet-400 font-medium">#design</span></p>
+              <div class="mt-1 flex items-center gap-3 p-3 rounded-lg bg-slate-800 border border-slate-700">
+                <div class="w-10 h-10 rounded-lg bg-violet-600/20 flex items-center justify-center shrink-0"><i data-lucide="figma" class="w-5 h-5 text-violet-400"></i></div>
+                <div><p class="text-sm font-medium text-slate-100">Onboarding-v4.fig</p><p class="text-xs text-slate-400">Figma · 8.2 MB</p></div>
+              </div>
+              <p class="text-xs text-slate-500 mt-1.5">10:15 AM</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-9 h-9 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs">😍</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Alice Chen</span> reacted 😍 to Bob's message in <span class="text-violet-400 font-medium">#engineering</span></p>
+              <div class="mt-1 p-3 rounded-lg bg-slate-800 border border-slate-700 text-sm text-slate-400 italic">"The new API endpoints are live in staging!"</div>
+              <p class="text-xs text-slate-500 mt-1.5">9:30 AM</p>
+            </div>
+          </div>
+
+          <!-- Date group -->
+          <div class="flex items-center gap-3 py-3">
+            <div class="flex-1 h-px bg-slate-800"></div>
+            <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Yesterday</span>
+            <div class="flex-1 h-px bg-slate-800"></div>
+          </div>
+
+          <div class="flex gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-9 h-9 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs">🧵</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Alice Chen</span> started a thread in <span class="text-violet-400 font-medium">#product</span></p>
+              <div class="mt-1 p-3 rounded-lg bg-slate-800 border border-slate-700">
+                <p class="text-sm text-slate-200">Q3 Design System audit — let's collect all the inconsistencies before the sprint planning session on Friday.</p>
+              </div>
+              <div class="flex items-center gap-2 mt-2">
+                <div class="flex -space-x-1.5">
+                  <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" class="w-5 h-5 rounded-full bg-slate-700 ring-1 ring-slate-950" alt="Carol" />
+                  <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" class="w-5 h-5 rounded-full bg-slate-700 ring-1 ring-slate-950" alt="Bob" />
+                  <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" class="w-5 h-5 rounded-full bg-slate-700 ring-1 ring-slate-950" alt="Sarah" />
+                </div>
+                <span class="text-xs text-slate-400">8 replies · Last by Carol Wu</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-1.5">3:22 PM</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 p-3 rounded-xl hover:bg-slate-900 transition group">
+            <div class="relative shrink-0">
+              <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="Alice" class="w-9 h-9 rounded-xl bg-slate-700" />
+              <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-xs">💬</div>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm text-slate-300"><span class="font-semibold text-slate-100">Alice Chen</span> posted in <span class="text-violet-400 font-medium">#general</span></p>
+              <div class="mt-1 p-3 rounded-lg bg-slate-800 border border-slate-700">
+                <p class="text-sm text-slate-200">PSA: The Figma design system library has been updated with the new color tokens. Please update your local copies! 🎨</p>
+              </div>
+              <p class="text-xs text-slate-500 mt-1.5">9:05 AM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FILES ── -->
+      <div id="tab-files" class="profile-panel hidden">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex gap-2">
+            <button class="px-3 py-1.5 bg-violet-600/20 text-violet-400 text-xs font-semibold rounded-lg border border-violet-500/30">All</button>
+            <button class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Images</button>
+            <button class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Figma</button>
+            <button class="px-3 py-1.5 bg-slate-800 text-slate-400 text-xs font-semibold rounded-lg border border-slate-700 hover:border-slate-600 transition">Docs</button>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          <!-- File cards -->
+          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+            <div class="h-24 bg-gradient-to-br from-violet-900 to-indigo-900 flex items-center justify-center">
+              <i data-lucide="figma" class="w-8 h-8 text-violet-300 opacity-80"></i>
+            </div>
+            <div class="p-2.5">
+              <p class="text-xs font-medium text-slate-200 truncate">Onboarding-v4.fig</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">8.2 MB · 2 hours ago</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+            <div class="h-24 bg-gradient-to-br from-blue-900 to-cyan-900 flex items-center justify-center">
+              <i data-lucide="image" class="w-8 h-8 text-blue-300 opacity-80"></i>
+            </div>
+            <div class="p-2.5">
+              <p class="text-xs font-medium text-slate-200 truncate">design-tokens.png</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">1.4 MB · Yesterday</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+            <div class="h-24 bg-gradient-to-br from-rose-900 to-pink-900 flex items-center justify-center">
+              <i data-lucide="file-text" class="w-8 h-8 text-rose-300 opacity-80"></i>
+            </div>
+            <div class="p-2.5">
+              <p class="text-xs font-medium text-slate-200 truncate">Q3-Design-Brief.pdf</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">340 KB · 2 days ago</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+            <div class="h-24 bg-gradient-to-br from-emerald-900 to-teal-900 flex items-center justify-center">
+              <i data-lucide="figma" class="w-8 h-8 text-emerald-300 opacity-80"></i>
+            </div>
+            <div class="p-2.5">
+              <p class="text-xs font-medium text-slate-200 truncate">DesignSystem-v2.fig</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">24.1 MB · 3 days ago</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+            <div class="h-24 bg-gradient-to-br from-amber-900 to-orange-900 flex items-center justify-center">
+              <i data-lucide="presentation" class="w-8 h-8 text-amber-300 opacity-80"></i>
+            </div>
+            <div class="p-2.5">
+              <p class="text-xs font-medium text-slate-200 truncate">Q3-Roadmap-Deck.pptx</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">6.8 MB · 1 week ago</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-slate-900 border border-slate-800 overflow-hidden hover:border-slate-600 transition group cursor-pointer">
+            <div class="h-24 bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center">
+              <i data-lucide="image" class="w-8 h-8 text-slate-400 opacity-80"></i>
+            </div>
+            <div class="p-2.5">
+              <p class="text-xs font-medium text-slate-200 truncate">user-flow-v3.png</p>
+              <p class="text-[10px] text-slate-500 mt-0.5">2.1 MB · 1 week ago</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── IN COMMON ── -->
+      <div id="tab-incommon" class="profile-panel hidden max-w-2xl">
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-sm font-semibold text-slate-300 mb-3 uppercase tracking-wide text-xs">Channels in common (6)</h3>
+            <div class="space-y-2">
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+                <div class="w-9 h-9 rounded-lg bg-violet-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-violet-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">design</p><p class="text-xs text-slate-400">48 members · Most active shared channel</p></div>
+                <a href="/" class="text-xs text-violet-400 hover:text-violet-300 transition">Open</a>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+                <div class="w-9 h-9 rounded-lg bg-emerald-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-emerald-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">product</p><p class="text-xs text-slate-400">32 members</p></div>
+                <a href="/" class="text-xs text-violet-400 hover:text-violet-300 transition">Open</a>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+                <div class="w-9 h-9 rounded-lg bg-blue-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-blue-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">general</p><p class="text-xs text-slate-400">148 members</p></div>
+                <a href="/" class="text-xs text-violet-400 hover:text-violet-300 transition">Open</a>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+                <div class="w-9 h-9 rounded-lg bg-amber-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-amber-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">announcements</p><p class="text-xs text-slate-400">148 members</p></div>
+                <a href="/" class="text-xs text-violet-400 hover:text-violet-300 transition">Open</a>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+                <div class="w-9 h-9 rounded-lg bg-rose-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-rose-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">design-ops</p><p class="text-xs text-slate-400">15 members</p></div>
+                <a href="/" class="text-xs text-violet-400 hover:text-violet-300 transition">Open</a>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+                <div class="w-9 h-9 rounded-lg bg-sky-600/20 flex items-center justify-center"><i data-lucide="hash" class="w-4 h-4 text-sky-400"></i></div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">frontend</p><p class="text-xs text-slate-400">27 members</p></div>
+                <a href="/" class="text-xs text-violet-400 hover:text-violet-300 transition">Open</a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-slate-300 mb-3 uppercase tracking-wide text-xs">Groups in common (2)</h3>
+            <div class="space-y-2">
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+                <div class="flex -space-x-2 shrink-0">
+                  <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" class="w-8 h-8 rounded-lg bg-slate-700 ring-2 ring-slate-900" alt="Alice" />
+                  <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" class="w-8 h-8 rounded-lg bg-slate-700 ring-2 ring-slate-900" alt="Carol" />
+                  <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" class="w-8 h-8 rounded-lg bg-slate-700 ring-2 ring-slate-900" alt="Sarah" />
+                </div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">Design Leadership</p><p class="text-xs text-slate-400">Alice, Carol, Sarah + 2 more</p></div>
+                <a href="/pages/dm.html" class="text-xs text-violet-400 hover:text-violet-300 transition">Open</a>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition">
+                <div class="flex -space-x-2 shrink-0">
+                  <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" class="w-8 h-8 rounded-lg bg-slate-700 ring-2 ring-slate-900" alt="Alice" />
+                  <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" class="w-8 h-8 rounded-lg bg-slate-700 ring-2 ring-slate-900" alt="Bob" />
+                  <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" class="w-8 h-8 rounded-lg bg-slate-700 ring-2 ring-slate-900" alt="Mike" />
+                </div>
+                <div class="flex-1"><p class="text-sm font-medium text-slate-100">Q3 Product Sync</p><p class="text-xs text-slate-400">Alice, Bob, Mike + 4 more</p></div>
+                <a href="/pages/dm.html" class="text-xs text-violet-400 hover:text-violet-300 transition">Open</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
+
+function switchTab(id) {
+  document.querySelectorAll('.profile-panel').forEach(p => p.classList.add('hidden'));
+  document.getElementById('tab-' + id)?.classList.remove('hidden');
+  document.querySelectorAll('.profile-tab').forEach(t => {
+    const isActive = t.getAttribute('data-tab') === id;
+    t.setAttribute('aria-selected', String(isActive));
+    t.classList.toggle('text-violet-400', isActive);
+    t.classList.toggle('border-violet-500', isActive);
+    t.classList.toggle('text-slate-400', !isActive);
+    t.classList.toggle('border-transparent', !isActive);
+  });
+}
+</script>
+</body>
+</html>

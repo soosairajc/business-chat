@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full dark" dir="ltr">
 <head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Media Gallery — Nexus</title>
@@ -48,7 +49,7 @@
   </nav>
 
   <!-- Filter Sidebar -->
-  <aside class="flex flex-col w-52 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex">
+  <aside data-app-sidebar class="flex flex-col w-52 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex transition-all">
     <div class="px-4 py-4 border-b border-slate-800">
       <h2 class="text-sm font-bold text-slate-100">Media Gallery</h2>
       <p class="text-xs text-slate-500 mt-0.5">124 items shared</p>
@@ -89,7 +90,7 @@
   </aside>
 
   <!-- Main -->
-  <div class="flex-1 flex flex-col overflow-hidden">
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden">
     <!-- Toolbar -->
     <div class="flex items-center gap-3 px-5 py-3 border-b border-slate-800 bg-slate-900 shrink-0 flex-wrap gap-y-2">
       <h2 class="text-sm font-semibold text-slate-300">All Media</h2>

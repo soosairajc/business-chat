@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keyboard Shortcuts — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-C2L9P_lY.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-DnQ1GjaE.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20 fixed left-0 top-0 h-full">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" data-tooltip="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/notifications.html" aria-label="Mentions" data-tooltip="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" data-tooltip="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" data-tooltip="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" data-tooltip="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" data-tooltip="Team Directory" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <a href="/pages/activity-feed.html" aria-label="Activity" data-tooltip="Activity" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="activity" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <a href="/pages/bookmarks.html" aria-label="Bookmarks" data-tooltip="Bookmarks" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="bookmark" class="w-4 h-4"></i></a>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="align-right" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" data-tooltip="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <main class="flex-1 overflow-y-auto ml-14">
+    <!-- Top bar -->
+    <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-800 bg-slate-900 sticky top-0 z-10">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-lg">
+        <i data-lucide="keyboard" class="w-4 h-4 text-white"></i>
+      </div>
+      <div>
+        <h1 class="text-lg font-bold text-slate-100">Keyboard Shortcuts</h1>
+        <p class="text-xs text-slate-500">Work faster — press <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">?</kbd> anywhere to open this guide</p>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Navigation -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+          <div class="flex items-center gap-2.5 px-5 py-3.5 border-b border-slate-800">
+            <span class="w-7 h-7 rounded-lg bg-violet-500/15 flex items-center justify-center"><i data-lucide="compass" class="w-4 h-4 text-violet-400"></i></span>
+            <h2 class="font-semibold text-slate-100">Navigation</h2>
+          </div>
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-slate-800">
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Quick switcher</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">K</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Go to Home</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">G</kbd> <span class="text-slate-600">then</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">H</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Go to DMs</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">G</kbd> <span class="text-slate-600">then</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">D</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Next / previous channel</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Alt</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">↑</kbd> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">↓</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Toggle sidebar</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">\</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Search everything</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">/</kbd></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Messaging -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+          <div class="flex items-center gap-2.5 px-5 py-3.5 border-b border-slate-800">
+            <span class="w-7 h-7 rounded-lg bg-emerald-500/15 flex items-center justify-center"><i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i></span>
+            <h2 class="font-semibold text-slate-100">Messaging</h2>
+          </div>
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-slate-800">
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Send message</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Enter</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">New line</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Enter</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Edit last message</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">↑</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Reply in thread</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">T</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Add reaction</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">\</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Mark as unread</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">U</kbd></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Formatting -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+          <div class="flex items-center gap-2.5 px-5 py-3.5 border-b border-slate-800">
+            <span class="w-7 h-7 rounded-lg bg-amber-500/15 flex items-center justify-center"><i data-lucide="type" class="w-4 h-4 text-amber-400"></i></span>
+            <h2 class="font-semibold text-slate-100">Formatting</h2>
+          </div>
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-slate-800">
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Bold</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">B</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Italic</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">I</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Strikethrough</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">X</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Inline code</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">C</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Blockquote</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">9</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Insert link</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">U</kbd></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <!-- Calls -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+          <div class="flex items-center gap-2.5 px-5 py-3.5 border-b border-slate-800">
+            <span class="w-7 h-7 rounded-lg bg-green-500/15 flex items-center justify-center"><i data-lucide="phone" class="w-4 h-4 text-green-400"></i></span>
+            <h2 class="font-semibold text-slate-100">Calls</h2>
+          </div>
+          <table class="w-full text-sm">
+            <tbody class="divide-y divide-slate-800">
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Toggle mute</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">M</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Toggle video</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">V</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Push to talk</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Space</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Share screen</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">S</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Raise hand</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">H</kbd></td></tr>
+              <tr class="hover:bg-slate-800/40 transition"><td class="px-5 py-2.5 text-slate-300">Leave call</td><td class="px-5 py-2.5 text-right whitespace-nowrap"><kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Shift</kbd> <span class="text-slate-600">+</span> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">L</kbd></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+      </div>
+
+      <p class="text-center text-xs text-slate-500 mt-8">Tip: shortcuts use <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">⌘</kbd> in place of <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 border-b-2 text-[11px] font-semibold text-slate-300">Ctrl</kbd> on macOS.</p>
+    </div>
+  </main>
+</div>
+
+<script>window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });</script>
+</body>
+</html>

@@ -4,7 +4,9 @@
  */
 
 import './theme.js';
+import './settings.js';
 import './components.js';
+import './interactions.js';
 
 // ─── Init Lucide icons ────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {

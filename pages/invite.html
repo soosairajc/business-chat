@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invite Members — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20 fixed left-0 top-0 h-full">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" data-tooltip="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/notifications.html" aria-label="Mentions" data-tooltip="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" data-tooltip="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" data-tooltip="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" data-tooltip="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" data-tooltip="Team Directory" class="w-9 h-9 rounded-xl flex items-center justify-center bg-slate-800 text-slate-100 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <a href="/pages/activity-feed.html" aria-label="Activity" data-tooltip="Activity" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="activity" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <a href="/pages/bookmarks.html" aria-label="Bookmarks" data-tooltip="Bookmarks" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="bookmark" class="w-4 h-4"></i></a>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="align-right" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" data-tooltip="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <main class="flex-1 overflow-y-auto ml-14">
+    <!-- Top bar -->
+    <div class="flex items-center gap-3 px-6 py-4 border-b border-slate-800 bg-slate-900 sticky top-0 z-10">
+      <a href="/pages/team-directory.html" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition" aria-label="Back">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      </a>
+      <div>
+        <h1 class="text-lg font-bold text-slate-100">Invite Members</h1>
+        <p class="text-xs text-slate-500">Grow your workspace — invite teammates by email or share a link</p>
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 py-8 space-y-6">
+
+      <!-- Email invite card -->
+      <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-violet-500/20">
+            <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+          </div>
+          <div>
+            <h2 class="font-semibold text-slate-100">Invite by email</h2>
+            <p class="text-xs text-slate-500">Add one or more addresses, then choose a role</p>
+          </div>
+        </div>
+
+        <!-- Email pills input -->
+        <label class="block text-xs font-medium text-slate-400 mb-2">Email addresses</label>
+        <div class="flex flex-wrap items-center gap-2 bg-slate-800 border border-slate-700 rounded-xl p-2.5 focus-within:border-violet-500 transition">
+          <span class="inline-flex items-center gap-1.5 pl-2.5 pr-1.5 py-1 rounded-lg bg-violet-500/15 text-violet-300 text-sm">
+            alice@acme.com
+            <button onclick="this.parentElement.remove()" class="w-4 h-4 rounded flex items-center justify-center hover:bg-violet-500/25 transition" aria-label="Remove"><i data-lucide="x" class="w-3 h-3"></i></button>
+          </span>
+          <span class="inline-flex items-center gap-1.5 pl-2.5 pr-1.5 py-1 rounded-lg bg-violet-500/15 text-violet-300 text-sm">
+            bob@acme.com
+            <button onclick="this.parentElement.remove()" class="w-4 h-4 rounded flex items-center justify-center hover:bg-violet-500/25 transition" aria-label="Remove"><i data-lucide="x" class="w-3 h-3"></i></button>
+          </span>
+          <input id="emailInput" type="email" placeholder="name@company.com" class="flex-1 min-w-[160px] bg-transparent px-2 py-1 text-sm text-slate-100 placeholder-slate-500 focus:outline-none" />
+        </div>
+
+        <!-- Role + action row -->
+        <div class="flex flex-wrap items-center gap-3 mt-4">
+          <div class="relative">
+            <button data-dropdown-trigger="roleMenu" class="flex items-center gap-2 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 hover:border-slate-600 transition">
+              <i data-lucide="shield" class="w-4 h-4 text-slate-400"></i>
+              <span id="roleLabel">Member</span>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500"></i>
+            </button>
+            <div id="roleMenu" data-dropdown class="hidden absolute left-0 mt-2 w-56 bg-slate-800 border border-slate-700 rounded-xl shadow-xl py-1.5 z-20">
+              <button onclick="document.getElementById('roleLabel').textContent='Admin'" class="w-full flex items-start gap-2.5 px-3 py-2 text-left hover:bg-slate-700/60 transition">
+                <i data-lucide="shield-check" class="w-4 h-4 text-violet-400 mt-0.5"></i>
+                <span><span class="block text-sm text-slate-100">Admin</span><span class="block text-xs text-slate-500">Full access & member management</span></span>
+              </button>
+              <button onclick="document.getElementById('roleLabel').textContent='Member'" class="w-full flex items-start gap-2.5 px-3 py-2 text-left hover:bg-slate-700/60 transition">
+                <i data-lucide="user" class="w-4 h-4 text-emerald-400 mt-0.5"></i>
+                <span><span class="block text-sm text-slate-100">Member</span><span class="block text-xs text-slate-500">Post & join channels</span></span>
+              </button>
+              <button onclick="document.getElementById('roleLabel').textContent='Guest'" class="w-full flex items-start gap-2.5 px-3 py-2 text-left hover:bg-slate-700/60 transition">
+                <i data-lucide="eye" class="w-4 h-4 text-amber-400 mt-0.5"></i>
+                <span><span class="block text-sm text-slate-100">Guest</span><span class="block text-xs text-slate-500">Limited, single-channel access</span></span>
+              </button>
+            </div>
+          </div>
+          <button onclick="window.NexusComponents?.toast('Invitations sent!','success')" class="ml-auto flex items-center gap-2 px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition shadow-lg shadow-violet-500/20">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            Send Invites
+          </button>
+        </div>
+      </section>
+
+      <!-- Shareable link card -->
+      <section class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+            <i data-lucide="link" class="w-5 h-5 text-white"></i>
+          </div>
+          <div>
+            <h2 class="font-semibold text-slate-100">Shareable invite link</h2>
+            <p class="text-xs text-slate-500">Anyone with this link can join — expires in 7 days</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex-1 flex items-center gap-2 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 min-w-0">
+            <i data-lucide="globe" class="w-4 h-4 text-slate-500 shrink-0"></i>
+            <input readonly value="https://nexus.app/join/acme-team-x7f2q9" class="flex-1 bg-transparent text-sm text-slate-300 focus:outline-none truncate" />
+          </div>
+          <button onclick="window.NexusComponents?.toast('Link copied!','success')" class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-100 text-sm font-medium transition shrink-0">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+            Copy
+          </button>
+        </div>
+        <div class="flex items-center gap-4 mt-4 text-xs text-slate-500">
+          <span class="flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5"></i> Expires Jul 16, 2026</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5"></i> 12 joined via link</span>
+          <button onclick="window.NexusComponents?.toast('New link generated','success')" class="flex items-center gap-1.5 text-violet-400 hover:text-violet-300 transition ml-auto"><i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Regenerate</button>
+        </div>
+      </section>
+
+      <!-- Pending invites -->
+      <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+          <div class="flex items-center gap-2">
+            <h2 class="font-semibold text-slate-100">Pending invitations</h2>
+            <span class="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 text-xs font-medium">4 pending</span>
+          </div>
+          <button class="text-xs text-slate-400 hover:text-slate-100 transition">Manage all</button>
+        </div>
+        <ul class="divide-y divide-slate-800">
+          <li class="flex items-center gap-3 px-6 py-3.5 hover:bg-slate-800/40 transition">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=jordan" alt="Jordan Blake" class="w-9 h-9 rounded-lg bg-slate-700 shrink-0" />
+            <div class="min-w-0 flex-1">
+              <p class="text-sm text-slate-100 truncate">jordan.blake@acme.com</p>
+              <p class="text-xs text-slate-500">Invited 2 days ago · by Mike Johnson</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-violet-500/15 text-violet-400">Admin</span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/15 text-amber-400">Pending</span>
+            <button onclick="window.NexusComponents?.toast('Invite resent','success')" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-700 transition" aria-label="Resend"><i data-lucide="send" class="w-4 h-4"></i></button>
+            <button onclick="window.NexusComponents?.toast('Invite revoked','success')" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-red-400 hover:bg-slate-700 transition" aria-label="Revoke"><i data-lucide="x" class="w-4 h-4"></i></button>
+          </li>
+          <li class="flex items-center gap-3 px-6 py-3.5 hover:bg-slate-800/40 transition">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=maya" alt="Maya Patel" class="w-9 h-9 rounded-lg bg-slate-700 shrink-0" />
+            <div class="min-w-0 flex-1">
+              <p class="text-sm text-slate-100 truncate">maya.patel@acme.com</p>
+              <p class="text-xs text-slate-500">Invited 5 days ago · by Alice Chen</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/15 text-emerald-400">Member</span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/15 text-amber-400">Pending</span>
+            <button onclick="window.NexusComponents?.toast('Invite resent','success')" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-700 transition" aria-label="Resend"><i data-lucide="send" class="w-4 h-4"></i></button>
+            <button onclick="window.NexusComponents?.toast('Invite revoked','success')" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-red-400 hover:bg-slate-700 transition" aria-label="Revoke"><i data-lucide="x" class="w-4 h-4"></i></button>
+          </li>
+          <li class="flex items-center gap-3 px-6 py-3.5 hover:bg-slate-800/40 transition">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=leo" alt="Leo Grant" class="w-9 h-9 rounded-lg bg-slate-700 shrink-0" />
+            <div class="min-w-0 flex-1">
+              <p class="text-sm text-slate-100 truncate">leo.grant@acme.com</p>
+              <p class="text-xs text-slate-500">Invited 1 week ago · by David Kim</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/15 text-amber-400">Guest</span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-500/15 text-slate-400">Expired</span>
+            <button onclick="window.NexusComponents?.toast('Invite resent','success')" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-700 transition" aria-label="Resend"><i data-lucide="send" class="w-4 h-4"></i></button>
+            <button onclick="window.NexusComponents?.toast('Invite revoked','success')" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-red-400 hover:bg-slate-700 transition" aria-label="Revoke"><i data-lucide="x" class="w-4 h-4"></i></button>
+          </li>
+          <li class="flex items-center gap-3 px-6 py-3.5 hover:bg-slate-800/40 transition">
+            <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=zoe" alt="Zoe Adams" class="w-9 h-9 rounded-lg bg-slate-700 shrink-0" />
+            <div class="min-w-0 flex-1">
+              <p class="text-sm text-slate-100 truncate">zoe.adams@acme.com</p>
+              <p class="text-xs text-slate-500">Invited 3 hours ago · by You</p>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/15 text-emerald-400">Member</span>
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/15 text-amber-400">Pending</span>
+            <button onclick="window.NexusComponents?.toast('Invite resent','success')" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-700 transition" aria-label="Resend"><i data-lucide="send" class="w-4 h-4"></i></button>
+            <button onclick="window.NexusComponents?.toast('Invite revoked','success')" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-red-400 hover:bg-slate-700 transition" aria-label="Revoke"><i data-lucide="x" class="w-4 h-4"></i></button>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+<script>window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });</script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full dark" dir="ltr">
 <head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Direct Messages — Nexus</title>
@@ -97,7 +98,7 @@
   </nav>
 
   <!-- ─── DM List Panel ────────────────────────────────────────── -->
-  <aside id="dm-list-panel" aria-label="Direct messages list" class="flex flex-col w-72 shrink-0 bg-slate-900 border-r border-slate-800 overflow-hidden">
+  <aside id="dm-list-panel" data-app-sidebar aria-label="Direct messages list" class="flex flex-col w-72 shrink-0 bg-slate-900 border-r border-slate-800 overflow-hidden transition-all">
 
     <!-- Header -->
     <div class="flex items-center gap-2 px-4 py-3.5 border-b border-slate-800 shrink-0">
@@ -314,7 +315,7 @@
   </aside>
 
   <!-- ─── DM Chat Area ─────────────────────────────────────────── -->
-  <main class="flex flex-col flex-1 min-w-0 bg-slate-950 overflow-hidden">
+  <main data-app-main class="flex flex-col flex-1 min-w-0 bg-slate-950 overflow-hidden">
 
     <!-- DM Header -->
     <header class="flex items-center gap-3 px-4 py-3 bg-slate-900/80 backdrop-blur border-b border-slate-800 shrink-0">

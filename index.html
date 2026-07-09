@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full dark" dir="ltr">
 <head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nexus — Premium Team Chat Template</title>
@@ -112,7 +113,7 @@
   </nav>
 
   <!-- ─── Channel Panel ───────────────────────────────────────── -->
-  <aside aria-label="Channels" class="flex flex-col w-60 shrink-0 bg-slate-900 border-r border-slate-800 overflow-hidden">
+  <aside data-app-sidebar aria-label="Channels" class="flex flex-col w-60 shrink-0 bg-slate-900 border-r border-slate-800 overflow-hidden transition-all">
 
     <!-- Workspace header -->
     <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-800 shrink-0">
@@ -308,7 +309,7 @@
   </aside>
 
   <!-- ─── Chat Area ────────────────────────────────────────────── -->
-  <main class="flex flex-col flex-1 min-w-0 bg-slate-950">
+  <main data-app-main class="flex flex-col flex-1 min-w-0 bg-slate-950">
 
     <!-- Channel Header -->
     <header class="flex items-center gap-3 px-4 py-3 bg-slate-900/80 backdrop-blur border-b border-slate-800 shrink-0">
@@ -448,7 +449,7 @@ Authorization: Bearer &lt;token&gt;
 }</code></pre>
           </div>
           <!-- Thread reply preview -->
-          <button class="mt-1.5 flex items-center gap-1.5 text-xs text-violet-400 hover:text-violet-300 transition">
+          <button data-thread-open class="mt-1.5 flex items-center gap-1.5 text-xs text-violet-400 hover:text-violet-300 transition">
             <div class="flex -space-x-1">
               <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" alt="" class="w-4 h-4 rounded-full bg-slate-700 border border-slate-900" />
               <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="" class="w-4 h-4 rounded-full bg-slate-700 border border-slate-900" />
@@ -459,7 +460,7 @@ Authorization: Bearer &lt;token&gt;
         </div>
         <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="Reply in thread"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" data-thread-open title="Reply in thread"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
@@ -488,7 +489,7 @@ Authorization: Bearer &lt;token&gt;
         </div>
         <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="Reply"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" data-thread-open title="Reply"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
@@ -519,11 +520,11 @@ Authorization: Bearer &lt;token&gt;
           </div>
           <!-- Image attachment -->
           <div class="mt-2 max-w-sm rounded-xl overflow-hidden border border-slate-700">
-            <div class="bg-gradient-to-br from-violet-900 via-indigo-900 to-slate-900 h-40 flex items-center justify-center relative group/img">
+            <div data-lightbox="placeholder" data-lightbox-group="chat" data-caption="design-system-preview.png · 1.4 MB" class="bg-gradient-to-br from-violet-900 via-indigo-900 to-slate-900 h-40 flex items-center justify-center relative group/img cursor-pointer">
               <i data-lucide="image" class="w-12 h-12 text-slate-500"></i>
               <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover/img:opacity-100 transition flex items-center justify-center gap-2">
-                <button class="p-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition"><i data-lucide="expand" class="w-4 h-4"></i></button>
-                <button class="p-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition"><i data-lucide="download" class="w-4 h-4"></i></button>
+                <button class="p-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition" title="Expand"><i data-lucide="expand" class="w-4 h-4"></i></button>
+                <button onclick="event.stopPropagation();window.NexusComponents?.toast('Downloading…','info',1500)" class="p-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 transition" title="Download"><i data-lucide="download" class="w-4 h-4"></i></button>
               </div>
             </div>
             <div class="px-3 py-1.5 bg-slate-800/50 text-xs text-slate-500">design-system-preview.png · 1.4 MB</div>
@@ -531,7 +532,7 @@ Authorization: Bearer &lt;token&gt;
         </div>
         <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="Reply"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" data-thread-open title="Reply"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
@@ -549,7 +550,7 @@ Authorization: Bearer &lt;token&gt;
           <p class="msg-body text-sm text-slate-300 leading-relaxed">Voice note for the standup catch-up 🎙️</p>
           <!-- Audio player -->
           <div class="flex items-center gap-3 bg-slate-800 border border-slate-700 rounded-xl p-3 max-w-xs mt-1.5">
-            <button class="w-8 h-8 rounded-full bg-violet-600 hover:bg-violet-500 flex items-center justify-center shrink-0 transition"><i data-lucide="play" class="w-3.5 h-3.5 text-white ml-0.5"></i></button>
+            <button data-media-open="audio" data-media-title="Voice note · Priya Sharma" class="w-8 h-8 rounded-full bg-violet-600 hover:bg-violet-500 flex items-center justify-center shrink-0 transition"><i data-lucide="play" class="w-3.5 h-3.5 text-white ml-0.5"></i></button>
             <div class="flex-1">
               <div class="h-1.5 bg-slate-700 rounded-full overflow-hidden"><div class="h-full w-1/3 bg-violet-500 rounded-full"></div></div>
               <div class="flex justify-between mt-1"><span class="text-xs text-slate-500">0:22</span><span class="text-xs text-slate-500">1:04</span></div>
@@ -560,7 +561,7 @@ Authorization: Bearer &lt;token&gt;
         </div>
         <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="Reply"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" data-thread-open title="Reply"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
@@ -593,7 +594,7 @@ Authorization: Bearer &lt;token&gt;
         </div>
         <div class="message-actions absolute -top-3 right-6 flex items-center gap-0.5 bg-slate-800 border border-slate-700 rounded-lg px-1 py-0.5 shadow-lg z-10">
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="React"><i data-lucide="smile" class="w-3.5 h-3.5"></i></button>
-          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="Reply"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
+          <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" data-thread-open title="Reply"><i data-lucide="message-square" class="w-3.5 h-3.5"></i></button>
           <button class="p-1.5 rounded hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="More"><i data-lucide="more-horizontal" class="w-3.5 h-3.5"></i></button>
         </div>
       </div>
@@ -637,6 +638,8 @@ Authorization: Bearer &lt;token&gt;
           <span class="text-xs text-amber-400 font-medium">Draft restored</span>
           <button class="ml-auto text-xs text-slate-500 hover:text-slate-300" onclick="document.getElementById('draft-bar').classList.add('hidden')">Dismiss</button>
         </div>
+        <!-- Attachment chips (populated by file picker) -->
+        <div id="attachment-bar" class="flex flex-wrap gap-2 px-4 pt-2 empty:hidden"></div>
         <div class="flex items-end gap-2 px-4 py-3">
           <div class="flex-1">
             <textarea
@@ -651,13 +654,14 @@ Authorization: Bearer &lt;token&gt;
           </div>
         </div>
         <div class="flex items-center gap-1 px-3 pb-2.5">
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Emoji" title="Emoji"><i data-lucide="smile" class="w-4 h-4"></i></button>
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="GIF" title="GIF">
+          <button data-picker="emoji" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Emoji" title="Emoji"><i data-lucide="smile" class="w-4 h-4"></i></button>
+          <button data-picker="gif" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="GIF" title="GIF">
             <span class="text-[10px] font-bold leading-none">GIF</span>
           </button>
+          <button data-picker="sticker" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Sticker" title="Sticker"><i data-lucide="sticker" class="w-4 h-4"></i></button>
           <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Mention" title="Mention"><i data-lucide="at-sign" class="w-4 h-4"></i></button>
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file" title="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
-          <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Upload image" title="Upload image"><i data-lucide="image" class="w-4 h-4"></i></button>
+          <button data-file-trigger data-attachments="#attachment-bar" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Attach file" title="Attach file"><i data-lucide="paperclip" class="w-4 h-4"></i></button>
+          <button data-file-trigger data-accept="image/*" data-attachments="#attachment-bar" class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Upload image" title="Upload image"><i data-lucide="image" class="w-4 h-4"></i></button>
           <div class="flex-1"></div>
           <button class="p-1.5 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" aria-label="Voice message" title="Voice message"><i data-lucide="mic" class="w-4 h-4"></i></button>
           <button id="send-btn" aria-label="Send message" onclick="window.NexusComponents?.toast('Message sent!','success',2000)" class="w-8 h-8 rounded-xl bg-violet-600 hover:bg-violet-500 active:scale-95 transition flex items-center justify-center ml-1">
@@ -852,12 +856,13 @@ Authorization: Bearer &lt;token&gt;
       <h2 class="font-bold text-slate-100">Create a Channel</h2>
       <button data-modal-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition"><i data-lucide="x" class="w-4 h-4"></i></button>
     </div>
+    <form data-validate data-success="Channel created!" data-close-modal="new-channel-modal" data-reset>
     <div class="p-5 space-y-4">
       <div>
         <label class="block text-xs font-semibold text-slate-400 mb-1.5">Name</label>
         <div class="flex items-center gap-2 bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 focus-within:border-violet-500 transition">
           <span class="text-slate-400 font-semibold">#</span>
-          <input type="text" placeholder="e.g. project-alpha" class="flex-1 bg-transparent text-slate-100 placeholder-slate-500 text-sm focus:outline-none" aria-label="Channel name" />
+          <input type="text" data-rule="required|min:2" placeholder="e.g. project-alpha" class="flex-1 bg-transparent text-slate-100 placeholder-slate-500 text-sm focus:outline-none" aria-label="Channel name" />
         </div>
       </div>
       <div>
@@ -867,11 +872,11 @@ Authorization: Bearer &lt;token&gt;
       <div>
         <label class="block text-xs font-semibold text-slate-400 mb-2">Visibility</label>
         <div class="grid grid-cols-2 gap-2">
-          <button class="flex items-center gap-2 p-3 rounded-xl bg-violet-600/20 border border-violet-500/40 text-left">
+          <button type="button" class="flex items-center gap-2 p-3 rounded-xl bg-violet-600/20 border border-violet-500/40 text-left">
             <i data-lucide="hash" class="w-4 h-4 text-violet-400 shrink-0"></i>
             <div><p class="text-xs font-semibold text-slate-200">Public</p><p class="text-[10px] text-slate-400">Anyone can join</p></div>
           </button>
-          <button class="flex items-center gap-2 p-3 rounded-xl bg-slate-800 border border-slate-700 hover:border-slate-600 text-left transition">
+          <button type="button" class="flex items-center gap-2 p-3 rounded-xl bg-slate-800 border border-slate-700 hover:border-slate-600 text-left transition">
             <i data-lucide="lock" class="w-4 h-4 text-slate-400 shrink-0"></i>
             <div><p class="text-xs font-semibold text-slate-400">Private</p><p class="text-[10px] text-slate-500">Invite only</p></div>
           </button>
@@ -879,9 +884,10 @@ Authorization: Bearer &lt;token&gt;
       </div>
     </div>
     <div class="flex justify-end gap-2 px-5 py-4 border-t border-slate-800">
-      <button data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
-      <button onclick="window.NexusComponents?.closeModal('new-channel-modal');window.NexusComponents?.toast('Channel created!','success')" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Create Channel</button>
+      <button type="button" data-modal-close class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm text-slate-300 transition">Cancel</button>
+      <button type="submit" class="px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-sm text-white font-semibold transition">Create Channel</button>
     </div>
+    </form>
   </div>
   <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
 </div>
@@ -961,6 +967,52 @@ Authorization: Bearer &lt;token&gt;
   <div data-modal-backdrop class="absolute inset-0 -z-10"></div>
 </div>
 
+<!-- ─── Thread panel (slide-in) ──────────────────────────────── -->
+<aside id="thread-panel" class="hidden translate-x-full fixed top-0 right-0 h-full w-full max-w-md bg-slate-900 border-l border-slate-800 shadow-2xl z-50 flex flex-col transition-transform duration-300 ease-out" style="transition-property:transform" aria-label="Thread">
+  <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800 shrink-0">
+    <div>
+      <h2 class="font-semibold text-slate-100 text-sm flex items-center gap-2"><i data-lucide="message-square-text" class="w-4 h-4 text-violet-400"></i>Thread</h2>
+      <p class="text-xs text-slate-500">#general · 3 replies</p>
+    </div>
+    <button data-thread-close class="p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition" aria-label="Close thread"><i data-lucide="x" class="w-4 h-4"></i></button>
+  </div>
+  <div class="flex-1 overflow-y-auto p-4 space-y-4">
+    <!-- Root message -->
+    <div class="pb-4 border-b border-slate-800">
+      <div class="flex gap-3">
+        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=alice" class="w-8 h-8 rounded-full bg-slate-700 shrink-0" alt="" />
+        <div class="min-w-0">
+          <div class="flex items-baseline gap-2"><span class="text-sm font-semibold text-slate-100">Alice Chen</span><span class="text-xs text-slate-500">9:14 AM</span></div>
+          <p class="text-sm text-slate-300 mt-0.5">Just pushed the updated design specs — take a look when you get a chance 🎨</p>
+        </div>
+      </div>
+    </div>
+    <!-- Replies -->
+    <div class="flex gap-3">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" class="w-8 h-8 rounded-full bg-slate-700 shrink-0" alt="" />
+      <div class="min-w-0"><div class="flex items-baseline gap-2"><span class="text-sm font-semibold text-slate-100">Carol Wu</span><span class="text-xs text-slate-500">9:32 AM</span></div>
+      <p class="text-sm text-slate-300 mt-0.5">Love the new spacing scale. Much cleaner 👌</p></div>
+    </div>
+    <div class="flex gap-3">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" class="w-8 h-8 rounded-full bg-slate-700 shrink-0" alt="" />
+      <div class="min-w-0"><div class="flex items-baseline gap-2"><span class="text-sm font-semibold text-slate-100">David Kim</span><span class="text-xs text-slate-500">9:41 AM</span></div>
+      <p class="text-sm text-slate-300 mt-0.5">Shipping the token updates now. Should be live by EOD.</p></div>
+    </div>
+    <div class="flex gap-3">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" class="w-8 h-8 rounded-full bg-slate-700 shrink-0" alt="" />
+      <div class="min-w-0"><div class="flex items-baseline gap-2"><span class="text-sm font-semibold text-slate-100">You</span><span class="text-xs text-slate-500">9:45 AM</span></div>
+      <p class="text-sm text-slate-300 mt-0.5">Perfect, thanks all! 🙏</p></div>
+    </div>
+  </div>
+  <div class="p-3 border-t border-slate-800 shrink-0">
+    <div class="flex items-end gap-2 bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 focus-within:border-violet-500/60 transition">
+      <textarea data-auto-resize rows="1" placeholder="Reply to thread…" data-picker-target="#thread-reply-input" id="thread-reply-input" class="flex-1 bg-transparent text-sm text-slate-100 placeholder-slate-500 focus:outline-none resize-none max-h-32"></textarea>
+      <button data-picker="emoji" data-picker-target="#thread-reply-input" class="p-1 rounded-lg hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition" title="Emoji"><i data-lucide="smile" class="w-4 h-4"></i></button>
+      <button onclick="window.NexusComponents?.toast('Reply sent!','success',2000)" class="w-7 h-7 rounded-lg bg-violet-600 hover:bg-violet-500 flex items-center justify-center transition"><i data-lucide="send" class="w-3.5 h-3.5 text-white"></i></button>
+    </div>
+  </div>
+</aside>
+
 <!-- Toast container -->
 <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2"></div>
 
@@ -968,6 +1020,9 @@ Authorization: Bearer &lt;token&gt;
 <div class="fixed bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
   <button onclick="window.NexusComponents?.openModal('search-modal')" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 text-xs text-slate-300 shadow-lg transition">
     <i data-lucide="search" class="w-3.5 h-3.5"></i>Search
+  </button>
+  <button data-command-open class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 text-xs text-slate-300 shadow-lg transition">
+    <i data-lucide="command" class="w-3.5 h-3.5 text-violet-400"></i>Command <kbd class="px-1 py-0.5 rounded bg-slate-900 text-slate-500 font-mono text-[10px]">⌘K</kbd>
   </button>
   <button onclick="window.NexusComponents?.openModal('call-modal')" class="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 text-xs text-slate-300 shadow-lg transition">
     <i data-lucide="phone-incoming" class="w-3.5 h-3.5 text-green-400"></i>Incoming Call
@@ -982,14 +1037,7 @@ Authorization: Bearer &lt;token&gt;
 
 <script type="module" src="/js/app.js"></script>
 <script>
-  // Keyboard shortcut: Cmd/Ctrl+K → search
-  document.addEventListener('keydown', e => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-      e.preventDefault();
-      window.NexusComponents?.openModal('search-modal');
-    }
-  });
-  // Init icons after modules load
+  // Init icons after modules load (Cmd/Ctrl+K command palette is handled in interactions.js)
   window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });
 </script>
 

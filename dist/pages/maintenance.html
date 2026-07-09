@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scheduled Maintenance — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-C2L9P_lY.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-DnQ1GjaE.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-hidden">
+<div class="flex h-full overflow-hidden">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20 fixed left-0 top-0 h-full">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" data-tooltip="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/notifications.html" aria-label="Mentions" data-tooltip="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" data-tooltip="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" data-tooltip="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" data-tooltip="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" data-tooltip="Team Directory" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <a href="/pages/activity-feed.html" aria-label="Activity" data-tooltip="Activity" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="activity" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <a href="/pages/bookmarks.html" aria-label="Bookmarks" data-tooltip="Bookmarks" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="bookmark" class="w-4 h-4"></i></a>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="align-right" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" data-tooltip="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1" aria-label="Profile">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <main class="force-dark flex-1 relative overflow-hidden ml-14 flex items-center justify-center">
+    <!-- Gradient background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-950"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(251,146,60,0.15),transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.12),transparent_60%)]"></div>
+
+    <div class="relative z-10 w-full max-w-lg mx-auto px-6 text-center">
+      <!-- Icon -->
+      <div class="flex justify-center mb-6">
+        <div class="relative w-20 h-20 rounded-2xl bg-gradient-to-br from-amber-600/20 to-orange-600/20 border border-slate-800 flex items-center justify-center shadow-2xl">
+          <i data-lucide="wrench" class="w-9 h-9 text-amber-400"></i>
+          <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-amber-400 animate-pulse border-2 border-slate-950"></span>
+        </div>
+      </div>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-4">
+        <i data-lucide="clock" class="w-3 h-3"></i>
+        Scheduled Maintenance
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-bold text-slate-100 mb-3">We'll be right back</h1>
+      <p class="text-slate-400 mb-8 max-w-md mx-auto">Nexus is undergoing scheduled maintenance to bring you faster performance and new features. Thanks for your patience — no action is needed on your end.</p>
+
+      <!-- Progress card -->
+      <div class="bg-slate-900/70 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 text-left mb-8">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-sm font-medium text-slate-300">Upgrade in progress</span>
+          <span class="text-sm font-semibold text-amber-400">68%</span>
+        </div>
+        <div class="w-full h-2.5 rounded-full bg-slate-800 overflow-hidden">
+          <div class="h-full w-[68%] rounded-full bg-gradient-to-r from-amber-500 to-orange-500 transition-all"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mt-6">
+          <div class="flex items-start gap-2.5">
+            <i data-lucide="calendar" class="w-4 h-4 text-slate-500 mt-0.5"></i>
+            <div>
+              <p class="text-xs text-slate-500">Started</p>
+              <p class="text-sm text-slate-200">Jul 9, 02:00 UTC</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-2.5">
+            <i data-lucide="timer" class="w-4 h-4 text-slate-500 mt-0.5"></i>
+            <div>
+              <p class="text-xs text-slate-500">Estimated back online</p>
+              <p class="text-sm text-slate-200">~25 minutes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="https://status.nexus.app" class="flex items-center gap-2 px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold transition shadow-lg shadow-violet-500/25">
+          <i data-lucide="activity" class="w-4 h-4"></i>
+          View Status Page
+        </a>
+        <button onclick="window.NexusComponents?.toast('You will be notified when we are back','success')" class="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-semibold border border-slate-700 transition">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+          Notify Me
+        </button>
+      </div>
+
+      <div class="flex items-center justify-center gap-4 mt-10 text-xs text-slate-600">
+        <a href="#" class="hover:text-slate-400 transition flex items-center gap-1.5"><i data-lucide="twitter" class="w-3.5 h-3.5"></i> @nexusstatus</a>
+        <span>·</span>
+        <a href="mailto:support@nexus.app" class="hover:text-slate-400 transition flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5"></i> support@nexus.app</a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });</script>
+</body>
+</html>

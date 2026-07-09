@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full dark" dir="ltr">
 <head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Files — Nexus</title>
@@ -40,7 +41,7 @@
   </nav>
 
   <!-- Filter Sidebar -->
-  <aside class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex">
+  <aside data-app-sidebar class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto hidden md:flex transition-all">
     <div class="px-4 py-4 border-b border-slate-800">
       <h2 class="text-sm font-bold text-slate-100">Files</h2>
       <p class="text-xs text-slate-500 mt-0.5">2.4 GB of 10 GB used</p>
@@ -111,21 +112,21 @@
   </aside>
 
   <!-- Main Content -->
-  <div class="flex-1 flex flex-col overflow-hidden">
+  <div data-app-main class="flex-1 flex flex-col overflow-hidden" data-filter-scope>
     <!-- Toolbar -->
     <div class="flex items-center gap-3 px-5 py-3 border-b border-slate-800 bg-slate-900 shrink-0 flex-wrap gap-y-2">
       <div class="flex items-center gap-2 flex-1 min-w-0 max-w-sm">
         <div class="relative flex-1">
           <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
-          <input type="search" placeholder="Search files…" class="w-full bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition" />
+          <input type="search" data-filter-input placeholder="Search files…" class="w-full bg-slate-800 border border-slate-700 rounded-lg pl-9 pr-3 py-2 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-violet-500 transition" />
         </div>
       </div>
       <div class="flex items-center gap-2 ml-auto">
-        <select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 focus:outline-none focus:border-violet-500 transition cursor-pointer">
-          <option value="recent">Recent</option>
-          <option value="name">Name</option>
-          <option value="size">Size</option>
-          <option value="type">Type</option>
+        <select data-sort-select class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-slate-300 focus:outline-none focus:border-violet-500 transition cursor-pointer">
+          <option value="recent" data-sort-key="active" data-sort-dir="asc">Recent</option>
+          <option value="name" data-sort-key="name" data-sort-dir="asc">Name</option>
+          <option value="size" data-sort-key="size" data-sort-dir="desc">Size</option>
+          <option value="type" data-sort-key="type" data-sort-dir="asc">Type</option>
         </select>
         <div class="flex items-center border border-slate-700 rounded-lg overflow-hidden">
           <button id="grid-view-btn" aria-label="Grid view" class="p-2 bg-slate-700 text-slate-100 transition hover:bg-slate-600">
@@ -144,11 +145,18 @@
 
     <!-- File Grid View -->
     <div id="grid-view" class="flex-1 overflow-y-auto p-5">
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4" id="file-grid">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4" id="file-grid" data-sort-list>
+
+        <!-- Empty state -->
+        <div data-filter-empty class="hidden col-span-full flex flex-col items-center justify-center py-20 text-center">
+          <i data-lucide="search-x" class="w-12 h-12 text-slate-600 mb-3"></i>
+          <p class="text-sm font-medium text-slate-400">No files found</p>
+          <p class="text-xs text-slate-500 mt-1">Try a different search term</p>
+        </div>
 
         <!-- File cards -->
         <!-- PDF -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="Q4-Report-2024.pdf" data-name="Q4-Report-2024.pdf" data-type="documents" data-size="2516582" data-active="1" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-red-900/60 to-red-950 flex items-center justify-center">
             <i data-lucide="file-text" class="w-10 h-10 text-red-400"></i>
           </div>
@@ -163,7 +171,7 @@
         </div>
 
         <!-- PNG -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="hero-banner-v3.png" data-name="hero-banner-v3.png" data-type="images" data-size="1153434" data-active="2" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-violet-900/60 to-purple-950 flex items-center justify-center">
             <i data-lucide="image" class="w-10 h-10 text-violet-400"></i>
           </div>
@@ -178,7 +186,7 @@
         </div>
 
         <!-- MP4 -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="product-demo-oct.mp4" data-name="product-demo-oct.mp4" data-type="videos" data-size="88289280" data-active="3" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-blue-900/60 to-blue-950 flex items-center justify-center">
             <i data-lucide="video" class="w-10 h-10 text-blue-400"></i>
           </div>
@@ -193,7 +201,7 @@
         </div>
 
         <!-- ZIP -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="design-assets-v2.zip" data-name="design-assets-v2.zip" data-type="archives" data-size="163577856" data-active="4" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-amber-900/60 to-amber-950 flex items-center justify-center">
             <i data-lucide="archive" class="w-10 h-10 text-amber-400"></i>
           </div>
@@ -208,7 +216,7 @@
         </div>
 
         <!-- XLSX -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="marketing-budget.xlsx" data-name="marketing-budget.xlsx" data-type="documents" data-size="86016" data-active="5" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-green-900/60 to-green-950 flex items-center justify-center">
             <i data-lucide="table" class="w-10 h-10 text-green-400"></i>
           </div>
@@ -223,7 +231,7 @@
         </div>
 
         <!-- Figma -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="nexus-design-system.fig" data-name="nexus-design-system.fig" data-type="documents" data-size="13421772" data-active="6" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-fuchsia-900/60 to-pink-950 flex items-center justify-center">
             <i data-lucide="pen-tool" class="w-10 h-10 text-fuchsia-400"></i>
           </div>
@@ -238,7 +246,7 @@
         </div>
 
         <!-- SVG -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="icons-set-v4.svg" data-name="icons-set-v4.svg" data-type="images" data-size="327680" data-active="7" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-cyan-900/60 to-teal-950 flex items-center justify-center">
             <i data-lucide="vector" class="w-10 h-10 text-cyan-400"></i>
           </div>
@@ -253,7 +261,7 @@
         </div>
 
         <!-- PPTX -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="q4-board-deck.pptx" data-name="q4-board-deck.pptx" data-type="documents" data-size="8493466" data-active="8" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-orange-900/60 to-red-950 flex items-center justify-center">
             <i data-lucide="presentation" class="w-10 h-10 text-orange-400"></i>
           </div>
@@ -268,7 +276,7 @@
         </div>
 
         <!-- MP3 -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="brand-jingle-final.mp3" data-name="brand-jingle-final.mp3" data-type="audio" data-size="4508876" data-active="9" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-pink-900/60 to-rose-950 flex items-center justify-center">
             <i data-lucide="music" class="w-10 h-10 text-pink-400"></i>
           </div>
@@ -283,7 +291,7 @@
         </div>
 
         <!-- DOCX -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="product-spec-v2.docx" data-name="product-spec-v2.docx" data-type="documents" data-size="215040" data-active="10" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-indigo-900/60 to-blue-950 flex items-center justify-center">
             <i data-lucide="file-text" class="w-10 h-10 text-indigo-400"></i>
           </div>
@@ -298,7 +306,7 @@
         </div>
 
         <!-- TAR.GZ -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="backend-v2.1.0.tar.gz" data-name="backend-v2.1.0.tar.gz" data-type="archives" data-size="44669337" data-active="11" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-slate-700/60 to-slate-900 flex items-center justify-center">
             <i data-lucide="package" class="w-10 h-10 text-slate-400"></i>
           </div>
@@ -313,7 +321,7 @@
         </div>
 
         <!-- CSV -->
-        <div class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
+        <div data-filter-item data-sort-item data-filter-text="user-analytics-nov.csv" data-name="user-analytics-nov.csv" data-type="documents" data-size="1887436" data-active="12" class="group relative bg-slate-900 border border-slate-800 rounded-xl overflow-hidden hover:border-slate-700 hover:shadow-lg transition cursor-pointer" oncontextmenu="showFileContextMenu(event, this)">
           <div class="h-28 bg-gradient-to-br from-lime-900/60 to-green-950 flex items-center justify-center">
             <i data-lucide="file-spreadsheet" class="w-10 h-10 text-lime-400"></i>
           </div>
@@ -357,7 +365,7 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-800">
-          <tr class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-red-900/40 flex items-center justify-center shrink-0"><i data-lucide="file-text" class="w-4 h-4 text-red-400"></i></div>
@@ -377,7 +385,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-violet-900/40 flex items-center justify-center shrink-0"><i data-lucide="image" class="w-4 h-4 text-violet-400"></i></div>
@@ -397,7 +405,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-blue-900/40 flex items-center justify-center shrink-0"><i data-lucide="video" class="w-4 h-4 text-blue-400"></i></div>
@@ -417,7 +425,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-amber-900/40 flex items-center justify-center shrink-0"><i data-lucide="archive" class="w-4 h-4 text-amber-400"></i></div>
@@ -437,7 +445,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-green-900/40 flex items-center justify-center shrink-0"><i data-lucide="table" class="w-4 h-4 text-green-400"></i></div>
@@ -457,7 +465,7 @@
               <button class="p-1.5 rounded-lg text-slate-500 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
             </td>
           </tr>
-          <tr class="hover:bg-slate-900/60 transition">
+          <tr data-filter-item class="hover:bg-slate-900/60 transition">
             <td class="px-5 py-3">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-fuchsia-900/40 flex items-center justify-center shrink-0"><i data-lucide="pen-tool" class="w-4 h-4 text-fuchsia-400"></i></div>

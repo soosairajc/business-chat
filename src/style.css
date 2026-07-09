@@ -1,10 +1,37 @@
+/* ─── Google Font (must precede other rules) ─────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 /* Class-based dark mode (toggled via JS adding .dark to <html>) */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ─── Google Font ────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ─────────────────────────────────────────────────────────────
+   LIGHT MODE
+   Dark mode is the default (the whole template is authored in the
+   raw slate scale). Light mode is produced by re-mapping the slate
+   palette variables with a symmetric luminance flip (950↔50,
+   900↔100, …, 500 fixed). Because every Tailwind v4 colour utility —
+   bg / text / border / ring / gradient / opacity-modifier and even
+   the JS-generated components — resolves to var(--color-slate-*),
+   this single override themes the ENTIRE template with no markup
+   changes and identical layout/contrast relationships.
+   Selector specificity (0,1,1) beats Tailwind's :root (0,1,0).
+   ───────────────────────────────────────────────────────────── */
+html:not(.dark) {
+  --color-slate-50:  oklch(12.9% .042 264.695); /* ← 950 */
+  --color-slate-100: oklch(20.8% .042 265.755); /* ← 900 */
+  --color-slate-200: oklch(27.9% .041 260.031); /* ← 800 */
+  --color-slate-300: oklch(37.2% .044 257.287); /* ← 700 */
+  --color-slate-400: oklch(44.6% .043 257.281); /* ← 600 */
+  --color-slate-500: oklch(55.4% .046 257.417); /* ← 500 (fixed) */
+  --color-slate-600: oklch(70.4% .04  256.788); /* ← 400 */
+  --color-slate-700: oklch(86.9% .022 252.894); /* ← 300 */
+  --color-slate-800: oklch(92.9% .013 255.508); /* ← 200 */
+  --color-slate-900: oklch(96.8% .007 247.896); /* ← 100 */
+  --color-slate-950: oklch(98.4% .003 247.858); /* ← 50  */
+  color-scheme: light;
+}
+html.dark { color-scheme: dark; }
 
 /* ─── Base ───────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
@@ -105,6 +132,127 @@ textarea { field-sizing: content; }
 
 /* ─── Channel list collapse ──────────────────────────────────── */
 .channel-group-content { overflow: hidden; transition: height 0.2s ease; }
+
+/* ─── Tabs ───────────────────────────────────────────────────── */
+[data-tab] { color: #94a3b8; border-color: transparent; transition: color .15s, border-color .15s; }
+[data-tab].tab-active { color: #a78bfa; border-color: #a78bfa; }
+
+/* ─── Emoji reactions ────────────────────────────────────────── */
+[data-reaction] { transition: background .15s, border-color .15s; }
+[data-reaction].reaction-active { background: rgba(139,92,246,0.18); border-color: rgba(139,92,246,0.6); color: #c4b5fd; }
+
+/* ─── Filter chips ───────────────────────────────────────────── */
+[data-filter-chip] { transition: background .15s, color .15s; }
+[data-filter-chip].filter-chip-active { background: #7c3aed; color: #fff; }
+
+/* ─── Focus ring for keyboard nav ────────────────────────────── */
+:focus-visible { outline: 2px solid #8b5cf6; outline-offset: 2px; border-radius: 4px; }
+
+/* Regions that must stay dark in BOTH themes (decorative full-bleed
+   banners / media scrims with white text). Re-pins the canonical dark
+   slate palette on the subtree so white text keeps its contrast. */
+.force-dark {
+  --color-slate-50:  oklch(98.4% .003 247.858);
+  --color-slate-100: oklch(96.8% .007 247.896);
+  --color-slate-200: oklch(92.9% .013 255.508);
+  --color-slate-300: oklch(86.9% .022 252.894);
+  --color-slate-400: oklch(70.4% .04  256.788);
+  --color-slate-500: oklch(55.4% .046 257.417);
+  --color-slate-600: oklch(44.6% .043 257.281);
+  --color-slate-700: oklch(37.2% .044 257.287);
+  --color-slate-800: oklch(27.9% .041 260.031);
+  --color-slate-900: oklch(20.8% .042 265.755);
+  --color-slate-950: oklch(12.9% .042 264.695);
+}
+
+/* Media-gallery scrims/hover overlays read as photo chrome — keep them
+   dark in light mode so the white captions & icons stay legible. */
+html:not(.dark) .media-thumb .media-overlay { background-image: none; background-color: rgba(2,6,23,0.55); }
+
+/* ─── Light-mode fixes for components with hard-coded colours ─── */
+html:not(.dark) ::-webkit-scrollbar-thumb { background: #cbd5e1; }
+html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+html:not(.dark) .skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+}
+html:not(.dark) [data-tooltip]::after { background: #0f172a; color: #f1f5f9; }
+html:not(.dark) .code-block { background: #f8fafc; border-color: #e2e8f0; color: #0f172a; }
+html:not(.dark) .mention { color: #7c3aed; background: rgba(124,58,237,0.10); }
+html:not(.dark) .glass {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(15,23,42,0.08);
+}
+html:not(.dark) .modal-backdrop { background: rgba(15,23,42,0.35); }
+
+/* ─────────────────────────────────────────────────────────────
+   APPEARANCE SETTINGS (js/settings.js writes these on <html>)
+   ───────────────────────────────────────────────────────────── */
+
+/* Accent colour — remap the whole violet scale to the chosen colour,
+   exactly like the light-mode slate flip. Recolours every violet-* usage
+   (buttons, rings, badges, links, gradients, opacity variants) template-wide.
+   data-accent="violet" is the authored default → no override needed. */
+html[data-accent="blue"] {
+  --color-violet-50: oklch(97% .014 254.604);   --color-violet-100: oklch(93.2% .032 255.585);
+  --color-violet-200: oklch(88.2% .059 254.128); --color-violet-300: oklch(80.9% .105 251.813);
+  --color-violet-400: oklch(70.7% .165 254.624); --color-violet-500: oklch(62.3% .214 259.815);
+  --color-violet-600: oklch(54.6% .245 262.881); --color-violet-700: oklch(48.8% .243 264.376);
+  --color-violet-800: oklch(42.4% .199 265.638); --color-violet-900: oklch(37.9% .146 265.522);
+  --color-violet-950: oklch(28.2% .091 267.935);
+}
+html[data-accent="emerald"] {
+  --color-violet-50: oklch(97.9% .021 166.113);  --color-violet-100: oklch(95% .052 163.051);
+  --color-violet-200: oklch(90.5% .093 164.15);  --color-violet-300: oklch(84.5% .143 164.978);
+  --color-violet-400: oklch(76.5% .177 163.223); --color-violet-500: oklch(69.6% .17 162.48);
+  --color-violet-600: oklch(59.6% .145 163.225); --color-violet-700: oklch(50.8% .118 165.612);
+  --color-violet-800: oklch(43.2% .095 166.913); --color-violet-900: oklch(37.8% .077 168.94);
+  --color-violet-950: oklch(26.2% .051 172.552);
+}
+html[data-accent="rose"] {
+  --color-violet-50: oklch(96.9% .015 12.422);   --color-violet-100: oklch(94.1% .03 12.58);
+  --color-violet-200: oklch(89.2% .058 10.001);  --color-violet-300: oklch(81% .117 11.638);
+  --color-violet-400: oklch(71.2% .194 13.428);  --color-violet-500: oklch(64.5% .246 16.439);
+  --color-violet-600: oklch(58.6% .253 17.585);  --color-violet-700: oklch(51.4% .222 16.935);
+  --color-violet-800: oklch(45.5% .188 13.697);  --color-violet-900: oklch(41% .159 10.272);
+  --color-violet-950: oklch(27.1% .105 12.094);
+}
+html[data-accent="amber"] {
+  --color-violet-50: oklch(98.7% .022 95.277);   --color-violet-100: oklch(96.2% .059 95.617);
+  --color-violet-200: oklch(92.4% .12 95.746);   --color-violet-300: oklch(87.9% .169 91.605);
+  --color-violet-400: oklch(82.8% .189 84.429);  --color-violet-500: oklch(76.9% .188 70.08);
+  --color-violet-600: oklch(66.6% .179 58.318);  --color-violet-700: oklch(55.5% .163 48.998);
+  --color-violet-800: oklch(47.3% .137 46.201);  --color-violet-900: oklch(41.4% .112 45.904);
+  --color-violet-950: oklch(27.9% .077 45.635);
+}
+html[data-accent="sky"] {
+  --color-violet-50: oklch(97.7% .013 236.62);   --color-violet-100: oklch(95.1% .026 236.824);
+  --color-violet-200: oklch(90.1% .058 230.902); --color-violet-300: oklch(82.8% .111 230.318);
+  --color-violet-400: oklch(74.6% .16 232.661);  --color-violet-500: oklch(68.5% .169 237.323);
+  --color-violet-600: oklch(58.8% .158 241.966); --color-violet-700: oklch(50% .134 242.749);
+  --color-violet-800: oklch(44.3% .11 240.79);   --color-violet-900: oklch(39.1% .09 240.876);
+  --color-violet-950: oklch(29.3% .066 243.157);
+}
+
+/* Message density — tighten / loosen chat rows */
+html[data-density="compact"]  .message-row { padding-top: .125rem; padding-bottom: .125rem; }
+html[data-density="spacious"] .message-row { padding-top: .625rem; padding-bottom: .625rem; }
+
+/* Secondary sidebar collapse */
+html[data-sidebar="collapsed"] [data-app-sidebar] { width: 0 !important; min-width: 0 !important; border-width: 0 !important; overflow: hidden; }
+
+/* Main content width */
+html[data-layout="centered"] [data-app-main] { max-width: 1100px; margin-inline: auto; width: 100%; }
+
+/* Reduce motion — neutralise animations & transitions everywhere */
+html[data-reduce-motion="true"] *,
+html[data-reduce-motion="true"] *::before,
+html[data-reduce-motion="true"] *::after {
+  animation-duration: .001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important;
+  scroll-behavior: auto !important;
+}
 
 /* ─── RTL overrides ──────────────────────────────────────────── */
 [dir="rtl"] .rtl-flip { transform: scaleX(-1); }

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full dark" dir="ltr">
+<head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome — Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="/assets/app-C2L9P_lY.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-DnQ1GjaE.css">
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans overflow-auto">
+
+<div class="flex h-full min-h-screen overflow-auto">
+
+  <!-- Icon Rail -->
+  <nav aria-label="Workspace navigation" class="flex flex-col items-center w-14 shrink-0 bg-slate-900 border-r border-slate-800 py-3 gap-1 z-20 fixed left-0 top-0 h-full">
+    <button class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center mb-3 hover:scale-105 transition-transform shadow-lg" aria-label="Workspace">
+      <span class="text-white font-bold text-sm">N</span>
+      <span class="absolute -top-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </button>
+    <div class="w-6 border-t border-slate-700 mb-1"></div>
+    <a href="/" aria-label="Home" data-tooltip="Home" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="home" class="w-4 h-4"></i></a>
+    <a href="/pages/threads.html" aria-label="Threads" data-tooltip="Threads" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-square-text" class="w-4 h-4"></i></a>
+    <a href="/pages/notifications.html" aria-label="Mentions" data-tooltip="Mentions" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="at-sign" class="w-4 h-4"></i></a>
+    <a href="/pages/dm.html" aria-label="Direct Messages" data-tooltip="Direct Messages" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+    <a href="/pages/calls.html" aria-label="Calls" data-tooltip="Calls" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="phone" class="w-4 h-4"></i></a>
+    <a href="/pages/files.html" aria-label="Files" data-tooltip="Files" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="folder" class="w-4 h-4"></i></a>
+    <a href="/pages/team-directory.html" aria-label="Team" data-tooltip="Team Directory" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="users" class="w-4 h-4"></i></a>
+    <a href="/pages/activity-feed.html" aria-label="Activity" data-tooltip="Activity" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="activity" class="w-4 h-4"></i></a>
+    <div class="flex-1"></div>
+    <a href="/pages/bookmarks.html" aria-label="Bookmarks" data-tooltip="Bookmarks" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="bookmark" class="w-4 h-4"></i></a>
+    <button onclick="window.NexusTheme?.toggleDark()" aria-label="Toggle theme" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="sun" class="w-4 h-4"></i></button>
+    <button onclick="window.NexusTheme?.toggleDir()" aria-label="Toggle RTL" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="align-right" class="w-4 h-4"></i></button>
+    <a href="/pages/settings.html" aria-label="Settings" data-tooltip="Settings" class="w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"><i data-lucide="settings" class="w-4 h-4"></i></a>
+    <a href="/pages/profile.html" class="relative mt-1">
+      <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=you" alt="Your avatar" class="w-9 h-9 rounded-xl bg-slate-700 hover:ring-2 hover:ring-violet-500 transition" />
+      <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-400 border-2 border-slate-900"></span>
+    </a>
+  </nav>
+
+  <!-- Main content -->
+  <main class="flex-1 overflow-auto ml-14">
+
+    <!-- Hero Section -->
+    <div class="force-dark relative overflow-hidden">
+      <!-- Gradient background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-violet-950 via-slate-900 to-slate-950"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(139,92,246,0.3),transparent_60%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(99,102,241,0.2),transparent_60%)]"></div>
+      <!-- Grid pattern -->
+      <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'40\' height=\'40\' viewBox=\'0 0 40 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.3\'%3E%3Cpath d=\'M0 40L40 0H20L0 20M40 40V20L20 40\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+      <div class="relative z-10 px-8 py-20 text-center max-w-4xl mx-auto">
+        <!-- Logo -->
+        <div class="flex items-center justify-center mb-6">
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center shadow-2xl shadow-violet-500/30">
+            <span class="text-white font-bold text-2xl">N</span>
+          </div>
+        </div>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-semibold uppercase tracking-wider mb-4">
+          <i data-lucide="sparkles" class="w-3 h-3"></i>
+          ThemeForest Premium UI Template
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
+          Welcome to <span class="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">Nexus</span>
+        </h1>
+        <p class="text-xl text-slate-300 mb-3 max-w-2xl mx-auto">Premium Team Chat UI Template</p>
+        <p class="text-slate-400 mb-8 max-w-xl mx-auto">Built with Tailwind CSS v4, featuring dark/light mode, RTL support, glassmorphism, and 16 polished pages ready for production.</p>
+
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-8">
+          <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-sm text-slate-300">
+            <i data-lucide="palette" class="w-4 h-4 text-violet-400"></i>
+            Tailwind CSS v4
+          </div>
+          <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-sm text-slate-300">
+            <i data-lucide="moon" class="w-4 h-4 text-indigo-400"></i>
+            Dark & Light Mode
+          </div>
+          <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-sm text-slate-300">
+            <i data-lucide="languages" class="w-4 h-4 text-emerald-400"></i>
+            RTL Ready
+          </div>
+          <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-sm text-slate-300">
+            <i data-lucide="smartphone" class="w-4 h-4 text-amber-400"></i>
+            Fully Responsive
+          </div>
+          <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-sm text-slate-300">
+            <i data-lucide="accessibility" class="w-4 h-4 text-pink-400"></i>
+            Accessible
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-4">
+          <a href="/" class="px-6 py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold transition shadow-lg shadow-violet-500/25 flex items-center gap-2">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            Open App
+          </a>
+          <a href="#pages" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 font-semibold border border-slate-700 transition flex items-center gap-2">
+            <i data-lucide="grid" class="w-4 h-4"></i>
+            Browse Pages
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="relative z-10 border-t border-slate-800/60 bg-slate-900/50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto px-8 py-5 flex flex-wrap items-center justify-center gap-8">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-white">16</div>
+            <div class="text-xs text-slate-400 mt-0.5">Pages</div>
+          </div>
+          <div class="w-px h-8 bg-slate-700 hidden md:block"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-white">50+</div>
+            <div class="text-xs text-slate-400 mt-0.5">Components</div>
+          </div>
+          <div class="w-px h-8 bg-slate-700 hidden md:block"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-white">2</div>
+            <div class="text-xs text-slate-400 mt-0.5">Color Modes</div>
+          </div>
+          <div class="w-px h-8 bg-slate-700 hidden md:block"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-white">RTL</div>
+            <div class="text-xs text-slate-400 mt-0.5">Support</div>
+          </div>
+          <div class="w-px h-8 bg-slate-700 hidden md:block"></div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-white">A11y</div>
+            <div class="text-xs text-slate-400 mt-0.5">Accessible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pages Grid -->
+    <div id="pages" class="px-8 py-12">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold text-slate-100">All Pages</h2>
+          <p class="text-slate-400 mt-1">Every page in the Nexus template — click to preview</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+          <!-- Main Chat -->
+          <a href="/" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-violet-900 to-indigo-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_50%,rgba(139,92,246,0.5),transparent)]"></div>
+              <i data-lucide="message-square" class="w-10 h-10 text-violet-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-violet-600 text-white text-[10px] font-bold">MAIN</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Main Chat</h3>
+              <p class="text-xs text-slate-400 mt-1">Channels, messages, threads & full app shell</p>
+            </div>
+          </a>
+
+          <!-- Direct Messages -->
+          <a href="/pages/dm.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-emerald-900 to-teal-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_50%,rgba(52,211,153,0.5),transparent)]"></div>
+              <i data-lucide="message-circle" class="w-10 h-10 text-emerald-400 relative z-10"></i>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Direct Messages</h3>
+              <p class="text-xs text-slate-400 mt-1">1:1 and group DM conversations</p>
+            </div>
+          </a>
+
+          <!-- Threads -->
+          <a href="/pages/threads.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-blue-900 to-slate-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_70%,rgba(96,165,250,0.5),transparent)]"></div>
+              <i data-lucide="message-square-text" class="w-10 h-10 text-blue-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-bold">4 NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Threads</h3>
+              <p class="text-xs text-slate-400 mt-1">Thread replies & conversations inbox</p>
+            </div>
+          </a>
+
+          <!-- Notifications -->
+          <a href="/pages/notifications.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-amber-900 to-orange-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_30%,rgba(251,191,36,0.5),transparent)]"></div>
+              <i data-lucide="bell" class="w-10 h-10 text-amber-400 relative z-10"></i>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Notifications</h3>
+              <p class="text-xs text-slate-400 mt-1">Mentions, reactions & activity alerts</p>
+            </div>
+          </a>
+
+          <!-- Calls -->
+          <a href="/pages/calls.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-green-900 to-emerald-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_60%_40%,rgba(74,222,128,0.5),transparent)]"></div>
+              <i data-lucide="video" class="w-10 h-10 text-green-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-green-600 text-white text-[10px] font-bold">LIVE</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Calls</h3>
+              <p class="text-xs text-slate-400 mt-1">Audio & video calling interface</p>
+            </div>
+          </a>
+
+          <!-- Files -->
+          <a href="/pages/files.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-sky-900 to-blue-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_40%_60%,rgba(56,189,248,0.5),transparent)]"></div>
+              <i data-lucide="folder-open" class="w-10 h-10 text-sky-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-sky-600 text-white text-[10px] font-bold">NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">File Browser</h3>
+              <p class="text-xs text-slate-400 mt-1">Browse, search & manage shared files</p>
+            </div>
+          </a>
+
+          <!-- Team Directory -->
+          <a href="/pages/team-directory.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-purple-900 to-violet-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.5),transparent)]"></div>
+              <i data-lucide="users" class="w-10 h-10 text-purple-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-purple-600 text-white text-[10px] font-bold">NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Team Directory</h3>
+              <p class="text-xs text-slate-400 mt-1">Full team member cards & profiles</p>
+            </div>
+          </a>
+
+          <!-- Settings -->
+          <a href="/pages/settings.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_70%_30%,rgba(148,163,184,0.3),transparent)]"></div>
+              <i data-lucide="settings" class="w-10 h-10 text-slate-400 relative z-10"></i>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Settings</h3>
+              <p class="text-xs text-slate-400 mt-1">Account, notifications & preferences</p>
+            </div>
+          </a>
+
+          <!-- Profile -->
+          <a href="/pages/profile.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-rose-900 to-pink-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(251,113,133,0.5),transparent)]"></div>
+              <i data-lucide="user-circle" class="w-10 h-10 text-rose-400 relative z-10"></i>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">User Profile</h3>
+              <p class="text-xs text-slate-400 mt-1">Profile page with activity & info</p>
+            </div>
+          </a>
+
+          <!-- Media Gallery -->
+          <a href="/pages/media-gallery.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-fuchsia-900 to-pink-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_30%_50%,rgba(217,70,239,0.5),transparent)]"></div>
+              <i data-lucide="image" class="w-10 h-10 text-fuchsia-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-fuchsia-600 text-white text-[10px] font-bold">NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Media Gallery</h3>
+              <p class="text-xs text-slate-400 mt-1">Masonry image & video gallery</p>
+            </div>
+          </a>
+
+          <!-- Bookmarks -->
+          <a href="/pages/bookmarks.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-yellow-900 to-amber-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_60%_40%,rgba(234,179,8,0.5),transparent)]"></div>
+              <i data-lucide="bookmark" class="w-10 h-10 text-yellow-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-yellow-600 text-white text-[10px] font-bold">NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Bookmarks</h3>
+              <p class="text-xs text-slate-400 mt-1">Saved messages, files & links</p>
+            </div>
+          </a>
+
+          <!-- Activity Feed -->
+          <a href="/pages/activity-feed.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-cyan-900 to-teal-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,0.5),transparent)]"></div>
+              <i data-lucide="activity" class="w-10 h-10 text-cyan-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-cyan-600 text-white text-[10px] font-bold">NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Activity Feed</h3>
+              <p class="text-xs text-slate-400 mt-1">Team activity timeline & events</p>
+            </div>
+          </a>
+
+          <!-- Invite -->
+          <a href="/pages/invite.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-indigo-900 to-violet-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_40%_60%,rgba(99,102,241,0.5),transparent)]"></div>
+              <i data-lucide="user-plus" class="w-10 h-10 text-indigo-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-indigo-600 text-white text-[10px] font-bold">NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Invite Members</h3>
+              <p class="text-xs text-slate-400 mt-1">Email invites & shareable links</p>
+            </div>
+          </a>
+
+          <!-- Shortcuts -->
+          <a href="/pages/shortcuts.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.3),transparent)]"></div>
+              <i data-lucide="keyboard" class="w-10 h-10 text-violet-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-slate-600 text-white text-[10px] font-bold">NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Keyboard Shortcuts</h3>
+              <p class="text-xs text-slate-400 mt-1">Full shortcut reference guide</p>
+            </div>
+          </a>
+
+          <!-- 404 -->
+          <a href="/pages/404.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-red-900 to-rose-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(248,113,113,0.5),transparent)]"></div>
+              <i data-lucide="file-x" class="w-10 h-10 text-red-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-red-600 text-white text-[10px] font-bold">NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">404 Not Found</h3>
+              <p class="text-xs text-slate-400 mt-1">Beautiful error page with navigation</p>
+            </div>
+          </a>
+
+          <!-- Maintenance -->
+          <a href="/pages/maintenance.html" class="group block rounded-2xl bg-slate-900 border border-slate-800 hover:border-violet-500/50 hover:shadow-lg hover:shadow-violet-500/10 transition-all overflow-hidden">
+            <div class="h-36 bg-gradient-to-br from-orange-900 to-amber-950 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,rgba(251,146,60,0.5),transparent)]"></div>
+              <i data-lucide="wrench" class="w-10 h-10 text-orange-400 relative z-10"></i>
+              <div class="absolute top-3 right-3">
+                <span class="px-2 py-0.5 rounded-full bg-orange-600 text-white text-[10px] font-bold">NEW</span>
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-slate-100 group-hover:text-violet-400 transition">Maintenance</h3>
+              <p class="text-xs text-slate-400 mt-1">Scheduled downtime status page</p>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-16 pt-8 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-sm text-slate-500">
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 flex items-center justify-center">
+              <span class="text-white font-bold text-xs">N</span>
+            </div>
+            <span>Nexus UI Template — ThemeForest Premium Quality</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <span>Built with Tailwind CSS v4</span>
+            <span>·</span>
+            <span>Lucide Icons</span>
+            <span>·</span>
+            <span>Inter Font</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>window.addEventListener('load', () => { if (window.lucide) lucide.createIcons(); });</script>
+</body>
+</html>

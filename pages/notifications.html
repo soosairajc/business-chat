@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full dark" dir="ltr">
 <head>
+  <script>(function(){try{var r=document.documentElement,t=localStorage.getItem("nexus-theme");r.classList.toggle("dark",t?t==="dark":!matchMedia("(prefers-color-scheme: light)").matches);var s=JSON.parse(localStorage.getItem("nexus-settings")||"{}");if(s.accent)r.setAttribute("data-accent",s.accent);if(s.fontSize)r.style.fontSize=s.fontSize+"px";if(s.density)r.setAttribute("data-density",s.density);if(s.sidebar)r.setAttribute("data-sidebar",s.sidebar);if(s.layout)r.setAttribute("data-layout",s.layout);if(s.reduceMotion)r.setAttribute("data-reduce-motion","true");}catch(e){}})();</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notifications — Nexus</title>
@@ -49,7 +50,7 @@
   </nav>
 
   <!-- ─── Notification Filters Sidebar ──────────────────────── -->
-  <aside aria-label="Notification filters" class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto">
+  <aside data-app-sidebar aria-label="Notification filters" class="flex flex-col w-56 shrink-0 bg-slate-900 border-r border-slate-800 overflow-y-auto transition-all">
     <div class="px-4 py-4 border-b border-slate-800 shrink-0">
       <h1 class="text-base font-bold text-slate-100">Notifications</h1>
       <p class="text-xs text-slate-500 mt-0.5">9 unread</p>
@@ -107,7 +108,7 @@
   </aside>
 
   <!-- ─── Notification Feed ──────────────────────────────────── -->
-  <main class="flex-1 flex flex-col overflow-hidden bg-slate-950">
+  <main data-app-main class="flex-1 flex flex-col overflow-hidden bg-slate-950">
 
     <!-- Feed header -->
     <div class="flex items-center justify-between px-5 py-3 bg-slate-900 border-b border-slate-800 shrink-0">
@@ -134,7 +135,7 @@
     </div>
 
     <!-- Scrollable feed -->
-    <div class="flex-1 overflow-y-auto" id="notif-feed">
+    <div class="flex-1 overflow-y-auto" id="notif-feed" data-paginate="6">
 
       <!-- ─── TODAY ─── -->
       <div class="notif-date-group px-5 pt-5 pb-2">
@@ -146,7 +147,7 @@
       </div>
 
       <!-- MENTION — unread -->
-      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="mention">
+      <div data-filter-item data-page-item class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="mention">
         <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0" aria-label="Unread"></div>
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-10 h-10 rounded-xl bg-slate-700" />
@@ -170,7 +171,7 @@
       </div>
 
       <!-- THREAD REPLY — unread -->
-      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="thread">
+      <div data-filter-item data-page-item class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="thread">
         <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=bob" alt="Bob Martinez" class="w-10 h-10 rounded-xl bg-slate-700" />
@@ -196,7 +197,7 @@
       </div>
 
       <!-- REACTION — unread -->
-      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="reaction">
+      <div data-filter-item data-page-item class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="reaction">
         <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David Kim" class="w-10 h-10 rounded-xl bg-slate-700" />
@@ -220,7 +221,7 @@
       </div>
 
       <!-- MENTION — unread #2 -->
-      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="mention">
+      <div data-filter-item data-page-item class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="mention">
         <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=mike" alt="Mike Johnson" class="w-10 h-10 rounded-xl bg-slate-700" />
@@ -244,7 +245,7 @@
       </div>
 
       <!-- CHANNEL INVITE — unread -->
-      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="invite">
+      <div data-filter-item data-page-item class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="invite">
         <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=priya" alt="Priya Sharma" class="w-10 h-10 rounded-xl bg-slate-700" />
@@ -278,7 +279,7 @@
       </div>
 
       <!-- THREAD REPLY — unread -->
-      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="thread">
+      <div data-filter-item data-page-item class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="thread">
         <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=sarah" alt="Sarah Lee" class="w-10 h-10 rounded-xl bg-slate-700" />
@@ -304,7 +305,7 @@
       </div>
 
       <!-- REACTION — read -->
-      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="reaction">
+      <div data-filter-item data-page-item class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="reaction">
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=tom" alt="Tom Wilson" class="w-10 h-10 rounded-xl bg-slate-700 opacity-75" />
           <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-amber-500 border-2 border-slate-950 flex items-center justify-center text-[10px]">❤️</div>
@@ -324,7 +325,7 @@
       </div>
 
       <!-- THREAD REPLY — read -->
-      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="thread">
+      <div data-filter-item data-page-item class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="thread">
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=carol" alt="Carol Wu" class="w-10 h-10 rounded-xl bg-slate-700 opacity-75" />
           <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-blue-600 border-2 border-slate-950 flex items-center justify-center">
@@ -358,7 +359,7 @@
       </div>
 
       <!-- THREAD REPLIES — unread (multiple) -->
-      <div class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="thread">
+      <div data-filter-item data-page-item class="notif-item unread group relative flex items-start gap-3 px-5 py-4 border-l-2 border-violet-500 bg-violet-950/20 hover:bg-violet-950/30 transition cursor-pointer" data-type="thread">
         <div class="w-2 h-2 rounded-full bg-violet-500 absolute top-5 right-5 shrink-0"></div>
         <div class="relative shrink-0">
           <div class="flex -space-x-2">
@@ -382,7 +383,7 @@
       </div>
 
       <!-- SYSTEM — read -->
-      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="app">
+      <div data-filter-item data-page-item class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="app">
         <div class="relative shrink-0">
           <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center">
             <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i>
@@ -404,7 +405,7 @@
       </div>
 
       <!-- APP NOTIFICATION — read -->
-      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="app">
+      <div data-filter-item data-page-item class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="app">
         <div class="relative shrink-0">
           <div class="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-700/30 flex items-center justify-center">
             <span class="text-base">Jr</span>
@@ -425,7 +426,7 @@
       </div>
 
       <!-- MENTION — read -->
-      <div class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="mention">
+      <div data-filter-item data-page-item class="notif-item group relative flex items-start gap-3 px-5 py-4 border-l-2 border-transparent hover:bg-slate-900/60 transition cursor-pointer" data-type="mention">
         <div class="relative shrink-0">
           <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=david" alt="David Kim" class="w-10 h-10 rounded-xl bg-slate-700 opacity-75" />
           <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-violet-600 border-2 border-slate-950 flex items-center justify-center text-[10px]">@</div>
